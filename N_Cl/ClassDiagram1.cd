@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DN_Cl.ConfigEntity.ActionObjects.KeyBoardAct" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\ActionObjects\KeyBoardAct.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.ActionObjects.ListAction" Collapsed="true">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\ActionObjects\ListAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.ActionObjects.ListBotAction" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\ActionObjects\ListBotAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.ActionObjects.LoopAct" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\ActionObjects\LoopAct.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.ActionObjects.MouseMoveAct" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\ActionObjects\MouseMoveAct.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.ActionObjects.MouseSetPosAct" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAYAA=</HashCode>
+      <FileName>ConfigEntity\ActionObjects\MouseSetPosAct.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.ActionObjects.SleepAct" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\ActionObjects\SleepAct.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.BotAction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAgAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\BotAction.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.Config" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.ConfigReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\ConfigReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DN_Cl.ConfigEntity.FileVersion" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAAAAAAEAAAAAAAAAAAAgAAAAIAgAAAAIiA=</HashCode>
+      <FileName>ConfigEntity\FileVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DN_Cl.ConfigEntity.ActionObjects.IAction" Collapsed="true">
+    <Position X="2" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\ActionObjects\IAction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DN_Cl.ConfigEntity.IBotAction" Collapsed="true">
+    <Position X="3.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAgAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\IBotAction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DN_Cl.ConfigEntity.IConfigReader" Collapsed="true">
+    <Position X="5.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigEntity\IConfigReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DN_Cl.ConfigEntity.ActionType" Collapsed="true">
+    <Position X="2" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAIAQAAAAAAAAAAAAAIACAAAAACAAAAACCAAAA=</HashCode>
+      <FileName>ConfigEntity\ActionType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
