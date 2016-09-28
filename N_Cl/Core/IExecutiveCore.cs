@@ -1,4 +1,5 @@
-﻿using Executor.Events;
+﻿using Executor.ConfigEntity;
+using Executor.Events;
 
 namespace Executor.Core
 {   
@@ -16,8 +17,18 @@ namespace Executor.Core
         /// </summary>
         void Abort();
         /// <summary>
-        /// Запустить выполнителя
+        /// Запустить исполнителя идействий описанных в конфигурации
         /// </summary>
-        void Run();
+        void Run(Config config);
+        /// <summary>
+        /// Выполнить список действий
+        /// </summary>
+        /// <param name="actions">Список действий к исполнению</param>
+        void Run(ListBotAction actions);
+        /// <summary>
+        /// Выполнить одно действие бота
+        /// </summary>
+        /// <param name="action">Действие к исполнению ботом</param>
+        void Run(IBotAction action);
     }
 }
