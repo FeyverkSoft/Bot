@@ -3,15 +3,36 @@ using System.Collections.Generic;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Helpers;
-using Core.Handlers;
-using System.Threading;
 using Core.Core;
+using System.Threading;
 
 namespace Executor
 {
     class Program
     {
+
         static void Main(string[] args)
+        {
+            IExecutiveCore core = new DefaultExecutiveCore();
+            core.OnPrintMessageEvent += (message) => Console.WriteLine(message);
+
+#if !DEBUG
+            core.Run(DnConf());
+#else
+
+            Thread.Sleep(8000);
+            core.Run(new BotAction(ActionType.MouseMove, new MouseMoveAct(200, -200)));
+
+#endif
+
+            /* 
+             //mouse.MouseMove(100, 100);
+             keyBoard.PressKey(KeyCode.I);*/
+            //mouse.MouseRightCl();
+            Console.ReadLine();
+        }
+
+        static Config DnConf()
         {
             IConfigReader cr = new ConfigReader("test.jsn");
 #if DEBUG
@@ -76,18 +97,7 @@ namespace Executor
             var conf2 = conf1.ParseJson<Config>();
             cr.Save(conf);
 #endif
-            var loads = cr.Load();
-
-            IExecutiveCore core = new DefaultExecutiveCore();
-            core.OnPrintMessageEvent += (message) => Console.WriteLine(message);
-
-            core.Run(loads);
-
-            /* 
-             //mouse.MouseMove(100, 100);
-             keyBoard.PressKey(KeyCode.I);*/
-            //mouse.MouseRightCl();
-            Console.ReadLine();
+            return cr.Load();
         }
     }
 }

@@ -46,6 +46,14 @@ namespace Core.ConfigEntity
             SubActions.AddRange(subActions);
         }
 
+        public BotAction(ActionType actionType, IAction subAction) : this(actionType)
+        {
+            Debug.WriteLine($"{GetType().Name}.ctor->(subActions.Count:{subAction};)");
+            if (subAction == null)
+                throw new ArgumentNullException(nameof(subAction));
+            SubActions.Add(subAction);
+        }
+
         /// <summary>
         /// Провалидировать массив событий
         /// </summary>

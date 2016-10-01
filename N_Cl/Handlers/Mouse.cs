@@ -38,7 +38,7 @@ namespace Core.Handlers
         {
             Debug.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseMove)}(dx: {dx}; dy: {dy});");
             Int32 absDx = Math.Abs(dx), absDy = Math.Abs(dy);
-           var len = 15;
+            var len = 15;
             var count = Math.Max(absDx, absDy) / len; //колличество отрезков длинной не более в 15px для плавного движения
 
             var x = GetArray(dx, count, len);
@@ -71,12 +71,16 @@ namespace Core.Handlers
                     list.Add(x / localCount);
                 for (var i = 0; i < count - localCount; i++)
                     list.Add(0);
+                if (list.Count > 0)
+                    list[0] += (x - list.Sum(z => z));
                 return list.OrderBy(u => rand.Next()).ToArray();
             }
             else
             {
                 for (var i = 0; i < count; i++)
                     list.Add(x / count);
+                if (list.Count > 0)
+                    list[0] += (x - list.Sum(z => z));
                 return list.OrderBy(u => rand.Next()).ToArray();
             }
         }
