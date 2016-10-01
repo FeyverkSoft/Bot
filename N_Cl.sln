@@ -4,11 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "N_Cl\Core.csproj", "{88EF1877-5E4C-4440-82D9-B64C89CD11EF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3} = {C0EEDCF7-134E-43A4-B8AE-12003C6602B3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Executor", "Executor\Executor.csproj", "{D8B5ED2E-00DF-497E-8207-695F611A1DC7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{88EF1877-5E4C-4440-82D9-B64C89CD11EF} = {88EF1877-5E4C-4440-82D9-B64C89CD11EF}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogWrapper", "LogWrapper\LogWrapper.csproj", "{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +29,10 @@ Global
 		{D8B5ED2E-00DF-497E-8207-695F611A1DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8B5ED2E-00DF-497E-8207-695F611A1DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8B5ED2E-00DF-497E-8207-695F611A1DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

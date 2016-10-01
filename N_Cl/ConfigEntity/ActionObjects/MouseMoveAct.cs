@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -22,7 +23,7 @@ namespace Core.ConfigEntity.ActionObjects
         [JsonConstructor]
         public MouseMoveAct(Int32 dx, Int32 dy)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(dx:{dx}; dy: {dy})");
+            Log.WriteLine($"{GetType().Name}.ctor->(dx:{dx}; dy: {dy})");
             Dx = dx;
             Dy = dy;
         }

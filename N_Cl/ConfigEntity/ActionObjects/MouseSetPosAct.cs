@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -46,7 +47,7 @@ namespace Core.ConfigEntity.ActionObjects
         [JsonConstructor]
         public MouseSetPosAct(Int32 x, Int32 y, String relativelyWindowName = null)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(x:{x}; y: {y}; relativelyWindowName: {relativelyWindowName ?? ""})");
+            Log.WriteLine($"{GetType().Name}.ctor->(x:{x}; y: {y}; relativelyWindowName: {relativelyWindowName ?? ""})");
             X = x;
             Y = y;
             RelativelyWindowName = relativelyWindowName;

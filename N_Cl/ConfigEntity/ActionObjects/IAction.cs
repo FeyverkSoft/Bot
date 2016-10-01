@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Core.ConfigEntity.ActionObjects
+﻿namespace Core.ConfigEntity.ActionObjects
 {
     /// <summary>
     /// Базовый interface любых действий

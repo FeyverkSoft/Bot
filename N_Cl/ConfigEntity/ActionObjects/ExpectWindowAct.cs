@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Runtime.Serialization;
+using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -25,7 +25,7 @@ namespace Core.ConfigEntity.ActionObjects
         [JsonConstructor]
         public ExpectWindowAct(String winTitle, Boolean setFocus = true)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(winTitle:{winTitle}; SetFocus:{setFocus})");
+            Log.WriteLine($"{GetType().Name}.ctor->(winTitle:{winTitle}; SetFocus:{setFocus})");
             if (String.IsNullOrEmpty(winTitle))
                 throw new ArgumentOutOfRangeException(nameof(winTitle));
 

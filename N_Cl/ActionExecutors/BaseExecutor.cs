@@ -2,6 +2,7 @@
 using Core.ConfigEntity.ActionObjects;
 using Core.Events;
 using Core.Helpers;
+using LogWrapper;
 
 namespace Core.ActionExecutors
 {
@@ -18,6 +19,7 @@ namespace Core.ActionExecutors
         /// <param name="o"></param>
         internal void Print(Object o, Boolean formatting = true)
         {
+            Log.WriteLine(o);
             OnPrintMessageEvent?.Invoke(o?.ToJson(formatting, false));
         }
 

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Runtime.Serialization;
 using Core.Core;
+using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -20,7 +21,7 @@ namespace Core.ConfigEntity.ActionObjects
         [JsonConstructor]
         public KeyBoardAct(KeyCode key)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(key:{key};)");
+            Log.WriteLine($"{GetType().Name}.ctor->(key:{key};)");
             Key = key;
         }
     }

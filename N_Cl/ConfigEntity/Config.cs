@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System.Reflection;
 using System.Diagnostics;
+using LogWrapper;
 
 namespace Core.ConfigEntity
 {
@@ -21,13 +22,13 @@ namespace Core.ConfigEntity
 
         public Config()
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->()");
+            Log.WriteLine($"{GetType().Name}.ctor->()");
             BotVer = new FileVersion(Assembly.GetExecutingAssembly().GetName().Version);
         }
 
         public Config(ListBotAction actions, FileVersion botVer = null)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(actions:{actions?.Count ?? -1}; botVer: {botVer?.ToString() ?? "null"})");
+            Log.WriteLine($"{GetType().Name}.ctor->(actions:{actions?.Count ?? -1}; botVer: {botVer?.ToString() ?? "null"})");
             if (botVer != null)
                 BotVer = botVer;
 

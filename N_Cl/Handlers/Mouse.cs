@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using LogWrapper;
 
 namespace Core.Handlers
 {
@@ -36,7 +36,7 @@ namespace Core.Handlers
         /// <param name="dy"></param>
         public void MouseMove(Int32 dx, Int32 dy)
         {
-            Debug.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseMove)}(dx: {dx}; dy: {dy});");
+            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseMove)}(dx: {dx}; dy: {dy});");
             Int32 absDx = Math.Abs(dx), absDy = Math.Abs(dy);
             var len = 15;
             var count = Math.Max(absDx, absDy) / len; //колличество отрезков длинной не более в 15px для плавного движения
@@ -50,7 +50,7 @@ namespace Core.Handlers
                 var xd = rand.Next(0, 5);//уличная магия
                 Thread.Sleep(8 + xd + (xd % 3 > 0 ? i : 0));//при преближении к кнопке эмулируется некоторое торможение движения указателя, так как это делает человек :D
             }
-            Debug.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseMove)};");
+            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseMove)};");
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Core.Handlers
         /// <param name="y"></param>
         public void MouseSetPos(Int32 x, Int32 y)
         {
-            Debug.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseSetPos)}(x: {x}; y: {y});");
+            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseSetPos)}(x: {x}; y: {y});");
             if (x < 0 || y < 0)
                 throw new ArgumentException(nameof(MouseSetPos));
             Thread.Sleep(10);
@@ -99,7 +99,7 @@ namespace Core.Handlers
 
             Size resolution = Screen.PrimaryScreen.Bounds.Size;
             mouse_event(MouseFlags.Absolute | MouseFlags.Move, (Int32)((65535.0 / resolution.Width) * x), (Int32)((65535.0 / resolution.Height) * y), 0, UIntPtr.Zero);
-            Debug.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseSetPos)};");
+            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseSetPos)};");
         }
 
         /// <summary>
@@ -107,12 +107,12 @@ namespace Core.Handlers
         /// </summary>
         public void MouseLeftCl()
         {
-            Debug.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseLeftCl)}");
+            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseLeftCl)}");
             mouse_event(MouseFlags.LeftDown, 0, 0, 0, UIntPtr.Zero);
             Thread.Sleep(10);
             mouse_event(MouseFlags.LeftUp, 0, 0, 0, UIntPtr.Zero);
             Thread.Sleep(10);
-            Debug.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseLeftCl)}");
+            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseLeftCl)}");
         }
 
         /// <summary>
@@ -120,11 +120,11 @@ namespace Core.Handlers
         /// </summary>
         public void MouseRightCl()
         {
-            Debug.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseRightCl)}");
+            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseRightCl)}");
             mouse_event(MouseFlags.RightDown, 0, 0, 0, UIntPtr.Zero);
             Thread.Sleep(10);
             mouse_event(MouseFlags.RightUp, 0, 0, 0, UIntPtr.Zero);
-            Debug.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseRightCl)}");
+            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseRightCl)}");
             Thread.Sleep(10);
         }
     }

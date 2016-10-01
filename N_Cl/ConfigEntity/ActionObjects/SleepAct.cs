@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -24,7 +25,7 @@ namespace Core.ConfigEntity.ActionObjects
         [JsonConstructor]
         public SleepAct(Int32 delay, Int32 randDelay = 0)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(delay:{delay}; randDelay: {randDelay})");
+            Log.WriteLine($"{GetType().Name}.ctor->(delay:{delay}; randDelay: {randDelay})");
             if (delay < 0)
                 throw new ArgumentOutOfRangeException(nameof(delay));
             if (randDelay < 0)

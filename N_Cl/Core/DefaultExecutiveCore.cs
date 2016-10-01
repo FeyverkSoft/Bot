@@ -6,7 +6,7 @@ using Core.Events;
 using Core.ActionExecutors;
 using Core.Helpers;
 using System.Threading.Tasks;
-using System.Threading;
+using LogWrapper;
 
 namespace Core.Core
 {
@@ -31,6 +31,7 @@ namespace Core.Core
         /// <param name="o"></param>
         private void Print(Object o)
         {
+            Log.WriteLine(o);
             OnPrintMessageEvent?.Invoke(o?.ToJson(true, false));
         }
 

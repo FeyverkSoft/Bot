@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -26,7 +27,7 @@ namespace Core.ConfigEntity.ActionObjects
         [JsonConstructor]
         public LoopAct(Int32 iterationCount, List<BotAction> actions)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(iterationCount:{iterationCount}; actions: {actions?.Count ?? -1})");
+            Log.WriteLine($"{GetType().Name}.ctor->(iterationCount:{iterationCount}; actions: {actions?.Count ?? -1})");
             if (iterationCount < 0)
                 throw new ArgumentOutOfRangeException(nameof(iterationCount));
             if (actions != null)
@@ -34,7 +35,7 @@ namespace Core.ConfigEntity.ActionObjects
         }
         public LoopAct(Int32 iterationCount, ListBotAction actions)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(iterationCount:{iterationCount}; actions: {actions?.Count ?? -1})");
+            Log.WriteLine($"{GetType().Name}.ctor->(iterationCount:{iterationCount}; actions: {actions?.Count ?? -1})");
             if (iterationCount < 0)
                 throw new ArgumentOutOfRangeException(nameof(iterationCount));
             if (actions != null)

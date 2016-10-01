@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using Core.ConfigEntity.ActionObjects;
+using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity
@@ -26,13 +27,13 @@ namespace Core.ConfigEntity
         [JsonConstructor]
         public BotAction(ActionType actionType)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(actionType:{actionType};)");
+            Log.WriteLine($"{GetType().Name}.ctor->(actionType:{actionType};)");
             ActionType = actionType;
         }
 
         public BotAction(ActionType actionType, ListAction subActions) : this(actionType)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(subActions.Count:{subActions?.Count ?? -1};)");
+            Log.WriteLine($"{GetType().Name}.ctor->(subActions.Count:{subActions?.Count ?? -1};)");
             if (subActions == null)
                 throw new ArgumentNullException(nameof(subActions));
             SubActions = subActions;
@@ -40,7 +41,7 @@ namespace Core.ConfigEntity
 
         public BotAction(ActionType actionType, List<IAction> subActions) : this(actionType)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(subActions.Count:{subActions?.Count ?? -1};)");
+            Log.WriteLine($"{GetType().Name}.ctor->(subActions.Count:{subActions?.Count ?? -1};)");
             if (subActions == null)
                 throw new ArgumentNullException(nameof(subActions));
             SubActions.AddRange(subActions);
@@ -48,7 +49,7 @@ namespace Core.ConfigEntity
 
         public BotAction(ActionType actionType, IAction subAction) : this(actionType)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(subActions.Count:{subAction};)");
+            Log.WriteLine($"{GetType().Name}.ctor->(subActions.Count:{subAction};)");
             if (subAction == null)
                 throw new ArgumentNullException(nameof(subAction));
             SubActions.Add(subAction);
@@ -65,7 +66,7 @@ namespace Core.ConfigEntity
                 var flag = true; //пустое валидно!
                 foreach (var subAction in SubActions)
                 {
-                    Debug.WriteLine($"{GetType().Name}.IsValid->(ActionType:{ActionType}; subAction: {subAction.GetType().Name})");
+                    Log.WriteLine($"{GetType().Name}.IsValid->(ActionType:{ActionType}; subAction: {subAction.GetType().Name})");
                     switch (ActionType)
                     {
                         case ActionType.MouseMove:

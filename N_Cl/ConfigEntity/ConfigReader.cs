@@ -3,6 +3,7 @@ using System.IO;
 using Core.Helpers;
 using System.Diagnostics;
 using System.Reflection;
+using LogWrapper;
 
 namespace Core.ConfigEntity
 {
@@ -11,7 +12,7 @@ namespace Core.ConfigEntity
         private String directory;
         public ConfigReader(String dir)
         {
-            Debug.WriteLine($"{GetType().Name}.ctor->(dir: {dir});");
+            Log.WriteLine($"{GetType().Name}.ctor->(dir: {dir});");
 
             if (String.IsNullOrEmpty(dir))
                 throw new ArgumentNullException(nameof(dir));
@@ -23,7 +24,7 @@ namespace Core.ConfigEntity
         /// <param name="conf"></param>
         public void Save(Config conf)
         {
-            Debug.WriteLine($"{GetType().Name}.{nameof(Save)}->(conf: {(conf == null ? "not null" : " null")})");
+            Log.WriteLine($"{GetType().Name}.{nameof(Save)}->(conf: {(conf == null ? "not null" : " null")})");
             if (conf == null)
                 throw new ArgumentNullException(nameof(conf));
             using (StreamWriter sw = new StreamWriter(directory))
@@ -38,7 +39,7 @@ namespace Core.ConfigEntity
         /// <returns></returns>
         public Config Load()
         {
-            Debug.WriteLine($"{GetType().Name}.{nameof(Load)}->(dir: {directory})");
+            Log.WriteLine($"{GetType().Name}.{nameof(Load)}->(dir: {directory})");
             Config temp;
             var vers = Assembly.GetExecutingAssembly().GetName().Version;
             using (StreamReader sr = new StreamReader(directory))
@@ -46,8 +47,8 @@ namespace Core.ConfigEntity
                 temp = sr.ParseJson<Config>();
                 if (temp.BotVer != new FileVersion(vers))
                 {
-                    Debug.WriteLine($"Не совпадают версии файла и приложения, возможны побочные эффекты!");
-                    Debug.WriteLine($"{temp.BotVer} != {vers}");
+                    Log.WriteLine($"Не совпадают версии файла и приложения, возможны побочные эффекты!");
+                    Log.WriteLine($"{temp.BotVer} != {vers}");
                 }
                 return temp;
             }
