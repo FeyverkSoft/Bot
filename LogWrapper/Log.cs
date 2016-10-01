@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using LogWrapper.Helpers;
 
 namespace LogWrapper
@@ -12,7 +13,8 @@ namespace LogWrapper
             try
             {
                 Debug.WriteLine(s);
-                using (StreamWriter sw = new StreamWriter($"\\logs\\{DateTime.Now.ToShortDateString()}", true))
+                using (var fs = new FileStream($"logs/{DateTime.Now.ToShortDateString()}.{level}", FileMode.OpenOrCreate | FileMode.Append))
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
                 {
                     sw.WriteLine(new
                     {
@@ -23,14 +25,15 @@ namespace LogWrapper
                     sw.Flush();
                 }
             }
-            catch { }
+            catch (Exception ex) { Debug.WriteLine(ex); }
         }
         public static void WriteLine(Object o, LogLevel level = LogLevel.Info)
         {
             try
             {
                 Debug.WriteLine(o.ToJson());
-                using (StreamWriter sw = new StreamWriter($"\\logs\\{DateTime.Now.ToShortDateString()}", true))
+                using (var fs = new FileStream($"logs/{DateTime.Now.ToShortDateString()}.{level}", FileMode.OpenOrCreate | FileMode.Append))
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
                 {
                     sw.WriteLine(new
                     {
@@ -41,7 +44,7 @@ namespace LogWrapper
                     sw.Flush();
                 }
             }
-            catch { }
+            catch (Exception ex) { Debug.WriteLine(ex); }
         }
 
         public static void Write(String s, LogLevel level = LogLevel.Info)
@@ -49,7 +52,8 @@ namespace LogWrapper
             try
             {
                 Debug.WriteLine(s);
-                using (StreamWriter sw = new StreamWriter($"\\logs\\{DateTime.Now.ToShortDateString()}", true))
+                using (var fs = new FileStream($"logs/{DateTime.Now.ToShortDateString()}.{level}", FileMode.OpenOrCreate | FileMode.Append))
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
                 {
                     sw.Write(new
                     {
@@ -60,14 +64,15 @@ namespace LogWrapper
                     sw.Flush();
                 }
             }
-            catch { }
+            catch (Exception ex) { Debug.WriteLine(ex); }
         }
         public static void Write(Object o, LogLevel level = LogLevel.Info)
         {
             try
             {
                 Debug.Write(o.ToJson());
-                using (StreamWriter sw = new StreamWriter($"\\logs\\{DateTime.Now.ToShortDateString()}", true))
+                using (var fs = new FileStream($"logs/{DateTime.Now.ToShortDateString()}.{level}", FileMode.OpenOrCreate | FileMode.Append))
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
                 {
                     sw.Write(new
                     {
@@ -78,7 +83,7 @@ namespace LogWrapper
                     sw.Flush();
                 }
             }
-            catch { }
+            catch (Exception ex) { Debug.WriteLine(ex); }
         }
     }
 }
