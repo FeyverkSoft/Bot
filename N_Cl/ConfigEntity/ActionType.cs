@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Executor.ConfigEntity
+namespace Core.ConfigEntity
 {
     /// <summary>
     /// Типы доступных боту действий

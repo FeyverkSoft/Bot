@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Executor.ConfigEntity;
-using Executor.ConfigEntity.ActionObjects;
-using Executor.Helpers;
-using Executor.Handlers;
-using Executor.Core;
+using Core.ConfigEntity;
+using Core.ConfigEntity.ActionObjects;
+using Core.Helpers;
+using Core.Handlers;
 using System.Threading;
+using Core.Core;
 
 namespace Executor
 {
@@ -62,14 +62,14 @@ namespace Executor
             var loads = cr.Load();
 
             IExecutiveCore core = new DefaultExecutiveCore();
-            core.OnPrintMessageEvent += (message)=>Console.WriteLine(message);
+            core.OnPrintMessageEvent += (message) => Console.WriteLine(message);
 
             Thread.Sleep(5000);
             core.Run(conf);
 
-           /* 
-            //mouse.MouseMove(100, 100);
-            keyBoard.PressKey(KeyCode.I);*/
+            /* 
+             //mouse.MouseMove(100, 100);
+             keyBoard.PressKey(KeyCode.I);*/
             //mouse.MouseRightCl();
             Console.ReadLine();
         }

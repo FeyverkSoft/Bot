@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Executor.Events
+namespace Core.Events
 {
     public delegate void PrintMessageEvent(String message);
 }

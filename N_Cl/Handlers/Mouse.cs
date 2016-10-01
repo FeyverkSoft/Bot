@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
-namespace Executor.Handlers
+namespace Core.Handlers
 {
     /// <summary>
     /// Класс для эмуляции мышки

@@ -1,4 +1,4 @@
-﻿namespace Executor.Core
+﻿namespace Core.Core
 {
     internal enum EStatus
     {

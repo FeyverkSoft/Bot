@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Executor.ConfigEntity.ActionObjects;
+using Core.ConfigEntity.ActionObjects;
 
-namespace Executor.ConfigEntity
+namespace Core.ConfigEntity
 {
     public interface IBotAction
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace Executor.ConfigEntity
+namespace Core.ConfigEntity
 {
     [DataContract]
     public sealed class FileVersion

@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters;
 using Newtonsoft.Json;
 
-namespace Executor.Helpers
+namespace Core.Helpers
 {
     public static class JsonHelper
     {

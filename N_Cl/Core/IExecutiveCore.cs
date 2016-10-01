@@ -1,7 +1,7 @@
-﻿using Executor.ConfigEntity;
-using Executor.Events;
+﻿using Core.ConfigEntity;
+using Core.Events;
 
-namespace Executor.Core
+namespace Core.Core
 {   
     /// <summary>
      /// Ядро исполнителя действий

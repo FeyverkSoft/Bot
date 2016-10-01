@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Executor.Exceptions
+namespace Core.Exceptions
 {
     public class BotBaseException : Exception
     {

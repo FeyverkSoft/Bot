@@ -1,8 +1,8 @@
 ﻿using System;
-using Executor.ConfigEntity.ActionObjects;
-using Executor.Events;
+using Core.ConfigEntity.ActionObjects;
+using Core.Events;
 
-namespace Executor.ActionExecutors
+namespace Core.ActionExecutors
 {
     /// <summary>
     /// Базовый интерфейс исполнителя действий

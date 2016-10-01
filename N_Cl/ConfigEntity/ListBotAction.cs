@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Executor.ConfigEntity
+namespace Core.ConfigEntity
 {
     /// <summary>
     /// Список действий бота

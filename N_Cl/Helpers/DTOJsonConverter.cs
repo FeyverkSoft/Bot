@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace Executor.Helpers
+namespace Core.Helpers
 {
     class DTOJsonConverter : JsonConverter
     {

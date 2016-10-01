@@ -1,4 +1,4 @@
-﻿namespace Executor.ConfigEntity
+﻿namespace Core.ConfigEntity
 {
     public interface IConfigReader
     {

@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Runtime.Serialization;
-using Executor.Core;
+using Core.Core;
 using Newtonsoft.Json;
 
-namespace Executor.ConfigEntity.ActionObjects
+namespace Core.ConfigEntity.ActionObjects
 {
     /// <summary>
     /// Событие нажатия клавишы на клавиатуре.

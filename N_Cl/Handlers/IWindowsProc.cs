@@ -1,7 +1,7 @@
 ﻿using System;
-using Executor.Core;
+using Core.Core;
 
-namespace Executor.Handlers
+namespace Core.Handlers
 {
     /// <summary>
     /// Класс для работы с окнами

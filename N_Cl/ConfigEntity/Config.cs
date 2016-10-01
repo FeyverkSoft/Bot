@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace Executor.ConfigEntity
+namespace Core.ConfigEntity
 {
     [DataContract]
     public sealed class Config

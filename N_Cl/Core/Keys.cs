@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Executor.Core
+namespace Core.Core
 {
     /// <summary>
     /// Коды клавиш, честно спи с MSDN

@@ -1,9 +1,9 @@
 ﻿using System;
-using Executor.ConfigEntity.ActionObjects;
-using Executor.Core;
-using Executor.Helpers;
+using Core.ConfigEntity.ActionObjects;
+using Core.Core;
+using Core.Helpers;
 
-namespace Executor.ActionExecutors
+namespace Core.ActionExecutors
 {
     /// <summary>
     /// Поддельный класс исполнитель :)

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using Executor.Helpers;
+using Core.Helpers;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace Executor.ConfigEntity
+namespace Core.ConfigEntity
 {
     public sealed class ConfigReader : IConfigReader
     {

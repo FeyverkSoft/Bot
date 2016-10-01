@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace Executor.ConfigEntity.ActionObjects
+namespace Core.ConfigEntity.ActionObjects
 {
     /// <summary>
     /// Описание параметров ожидания появления окна с нужным названием.

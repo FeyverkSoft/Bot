@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Executor.Handlers
+namespace Core.Handlers
 {
     /// <summary>
     /// Интерфейс Класса для эмуляции мышки

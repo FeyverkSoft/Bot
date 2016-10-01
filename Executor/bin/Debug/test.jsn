@@ -1,0 +1,107 @@
+{
+  "$type": "Core.ConfigEntity.Config, Core",
+  "BotVer": {
+    "$type": "Core.ConfigEntity.FileVersion, Core",
+    "Major": 1,
+    "Minor": 0,
+    "Build": 0
+  },
+  "Actions": [
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "ExpectWindow",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.ExpectWindowAct, Core",
+          "WinTitle": "DragonNest",
+          "SetFocus": true
+        }
+      ]
+    },
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "Sleep",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.SleepAct, Core",
+          "Delay": 6000,
+          "MaxRandDelay": 500
+        }
+      ]
+    },
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "KeyBoard",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.KeyBoardAct, Core",
+          "Key": "Up"
+        }
+      ]
+    },
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "Sleep",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.SleepAct, Core",
+          "Delay": 1000,
+          "MaxRandDelay": 500
+        }
+      ]
+    },
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "MouseMove",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.MouseMoveAct, Core",
+          "Dx": 100,
+          "Dy": 100
+        }
+      ]
+    },
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "KeyBoard",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.KeyBoardAct, Core",
+          "Key": "I"
+        }
+      ]
+    },
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "Sleep",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.SleepAct, Core",
+          "Delay": 3000,
+          "MaxRandDelay": 500
+        }
+      ]
+    },
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "MouseMove",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.MouseMoveAct, Core",
+          "Dx": 150,
+          "Dy": 120
+        }
+      ]
+    },
+    {
+      "$type": "Core.ConfigEntity.BotAction, Core",
+      "ActionType": "KeyBoard",
+      "SubActions": [
+        {
+          "$type": "Core.ConfigEntity.ActionObjects.KeyBoardAct, Core",
+          "Key": "I"
+        }
+      ]
+    }
+  ]
+}

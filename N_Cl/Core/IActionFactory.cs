@@ -1,7 +1,7 @@
-﻿using Executor.ActionExecutors;
-using Executor.ConfigEntity;
+﻿using Core.ActionExecutors;
+using Core.ConfigEntity;
 
-namespace Executor.Core
+namespace Core.Core
 {
     /// <summary>
     /// Интерфейс фабрики действий

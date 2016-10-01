@@ -1,8 +1,8 @@
-﻿using Executor.ConfigEntity;
-using Executor.ActionExecutors;
+﻿using Core.ConfigEntity;
+using Core.ActionExecutors;
 using System.Collections.Generic;
 
-namespace Executor.Core
+namespace Core.Core
 {
     /// <summary>
     /// Дефолтная фабрика действий

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Executor.Core;
+using Core.Core;
 
-namespace Executor.Handlers
+namespace Core.Handlers
 {
     /// <summary>
     /// Интерфейс Класса для эмуляции клавиатуры

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Executor.Core;
+using Core.Core;
 
-namespace Executor.Handlers
+namespace Core.Handlers
 {
     /// <summary>
     /// Класс для эмуляции клавиатуры

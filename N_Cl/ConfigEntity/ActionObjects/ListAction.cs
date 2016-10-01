@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Executor.ConfigEntity.ActionObjects
+namespace Core.ConfigEntity.ActionObjects
 {
     public sealed class ListAction : List<IAction>
     {

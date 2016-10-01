@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.Serialization;
-using Executor.ConfigEntity.ActionObjects;
+using Core.ConfigEntity.ActionObjects;
 using Newtonsoft.Json;
 
-namespace Executor.ConfigEntity
+namespace Core.ConfigEntity
 {
     /// <summary>
     /// Действие бота, который он должен сделать

@@ -1,9 +1,9 @@
 ﻿using System;
-using Executor.ConfigEntity.ActionObjects;
-using Executor.Events;
-using Executor.Helpers;
+using Core.ConfigEntity.ActionObjects;
+using Core.Events;
+using Core.Helpers;
 
-namespace Executor.ActionExecutors
+namespace Core.ActionExecutors
 {
     public abstract class BaseExecutor : IExecutor
     {

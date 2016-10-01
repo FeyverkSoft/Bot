@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Reflection;
-using Executor.ConfigEntity;
-using Executor.ConfigEntity.ActionObjects;
-using Executor.Events;
-using Executor.ActionExecutors;
-using Executor.Helpers;
+using Core.ConfigEntity;
+using Core.ConfigEntity.ActionObjects;
+using Core.Events;
+using Core.ActionExecutors;
+using Core.Helpers;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Executor.Core
+namespace Core.Core
 {
     /// <summary>
     /// Ядро исполнителя действий

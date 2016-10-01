@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
-using Executor.ConfigEntity.ActionObjects;
-using Executor.Core;
-using Executor.Handlers;
+using Core.ConfigEntity.ActionObjects;
+using Core.Core;
+using Core.Handlers;
 
-namespace Executor.ActionExecutors
+namespace Core.ActionExecutors
 {
     /// <summary>
     /// Исполнитель действия перемешения позиции указателя мышки

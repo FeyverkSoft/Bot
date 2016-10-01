@@ -1,0 +1,10 @@
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\obj\Debug\Executor.csprojResolveAssemblyReference.cache
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Executor.exe.config
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Executor.exe
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Executor.pdb
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Core.dll
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Newtonsoft.Json.dll
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Core.pdb
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Newtonsoft.Json.xml
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\obj\Debug\Executor.exe
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\obj\Debug\Executor.pdb
