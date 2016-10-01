@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Executor.ConfigEntity.ActionObjects;
 using Executor.Core;
 using Executor.Handlers;
@@ -24,6 +25,7 @@ namespace Executor.ActionExecutors
                 foreach (MouseMoveAct action in actions)
                 {
                     Mouse.MouseMove(action.Dx, action.Dy);
+                    Thread.Sleep(150);//пауза перед началом нового движения
                 }
             }
             catch (Exception ex)

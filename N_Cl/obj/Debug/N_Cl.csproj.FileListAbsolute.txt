@@ -5,4 +5,3 @@ D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Executo
 D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Executor.pdb
 D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Newtonsoft.Json.dll
 D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Newtonsoft.Json.xml
-D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\obj\Debug\N_Cl.csprojResolveAssemblyReference.cache

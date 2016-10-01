@@ -61,11 +61,11 @@ namespace Executor
             cr.Save(conf);
             var loads = cr.Load();
 
-            IExecutiveCore core = new DefaultExecutiveCore(conf);
+            IExecutiveCore core = new DefaultExecutiveCore();
             core.OnPrintMessageEvent += (message)=>Console.WriteLine(message);
 
             Thread.Sleep(5000);
-            core.Run();
+            core.Run(conf);
 
            /* 
             //mouse.MouseMove(100, 100);

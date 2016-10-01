@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Executor.ConfigEntity.ActionObjects;
 using Executor.Core;
 using Executor.Handlers;
@@ -33,6 +34,7 @@ namespace Executor.ActionExecutors
                     {
                         Mouse.MouseSetPos(action.X, action.Y);
                     }
+                    Thread.Sleep(150);
                 }
             }
             catch (Exception ex)
