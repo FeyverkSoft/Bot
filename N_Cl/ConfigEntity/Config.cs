@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using System.Reflection;
-using System.Diagnostics;
 using LogWrapper;
 
 namespace Core.ConfigEntity

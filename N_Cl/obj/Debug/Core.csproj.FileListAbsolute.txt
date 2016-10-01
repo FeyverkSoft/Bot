@@ -6,3 +6,5 @@ D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Newtons
 D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\obj\Debug\Core.dll
 D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\obj\Debug\Core.pdb
 D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\LogWrapper.dll
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\LogWrapper.pdb

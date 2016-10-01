@@ -4,7 +4,6 @@ using System.IO;
 using System.Runtime.Serialization.Formatters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-
 namespace LogWrapper.Helpers
 {
     public static class JsonHelper

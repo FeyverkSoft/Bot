@@ -8,3 +8,5 @@ D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Cor
 D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\Newtonsoft.Json.xml
 D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\obj\Debug\Executor.exe
 D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\obj\Debug\Executor.pdb
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\LogWrapper.dll
+D:\users\peter\Documents\Visual Studio 2015\Projects\N_Cl\Executor\bin\Debug\LogWrapper.pdb

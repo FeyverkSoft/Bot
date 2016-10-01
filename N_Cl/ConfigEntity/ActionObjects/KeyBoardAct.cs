@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using Core.Core;
 using LogWrapper;
 using Newtonsoft.Json;
