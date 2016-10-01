@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Core.Handlers
 {
     /// <summary>
@@ -34,40 +37,49 @@ namespace Core.Handlers
         public void MouseMove(Int32 dx, Int32 dy)
         {
             Debug.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseMove)}(dx: {dx}; dy: {dy});");
-            if (Math.Abs(dx) >= 10 && Math.Abs(dy) >= 10 && Math.Abs(dx) < 40 && Math.Abs(dy) < 40)
+            Int32 absDx = Math.Abs(dx), absDy = Math.Abs(dy);
+           var len = 15;
+            var count = Math.Max(absDx, absDy) / len; //колличество отрезков длинной не более в 15px для плавного движения
+
+            var x = GetArray(dx, count, len);
+            var y = GetArray(dy, count, len);
+
+            for (var i = 0; i < x.Length; i++)
             {
-                float x = dx / 10, y = dy / 10;
-                for (var i = 0; i < 10; i++)
-                {
-                    mouse_event(MouseFlags.Move, (Int32)(x + rand.Next(0, 2)), (Int32)(y + rand.Next(0, 2)), 0, UIntPtr.Zero);
-                    Thread.Sleep(10);
-                }
-            }
-            else if (Math.Abs(dx) >= 40 && Math.Abs(dy) >= 40 && Math.Abs(dx) < 400 && Math.Abs(dy) < 400)
-            {
-                float x = dx / 20, y = dy / 20;
-                for (var i = 0; i < 20; i++)
-                {
-                    mouse_event(MouseFlags.Move, (Int32)(x + rand.Next(0, 3)), (Int32)(y + rand.Next(0, 3)), 0, UIntPtr.Zero);
-                    Thread.Sleep(5);
-                }
-            }
-            else if (Math.Abs(dx) > 400 && Math.Abs(dy) > 400)
-            {
-                float x = dx / 50, y = dy / 50;
-                for (var i = 0; i < 50; i++)
-                {
-                    mouse_event(MouseFlags.Move, (Int32)(x + rand.Next(0, 3)), (Int32)(y + rand.Next(0, 3)), 0, UIntPtr.Zero);
-                    Thread.Sleep(10);
-                }
-            }
-            else
-            {
-                mouse_event(MouseFlags.Move, dx, dy, 0, UIntPtr.Zero);
+                mouse_event(MouseFlags.Move, (Int32)(x[i] + rand.Next(0, 2)), (Int32)(y[i] + rand.Next(0, 2)), 0, UIntPtr.Zero);
+                var xd = rand.Next(0, 5);//уличная магия
+                Thread.Sleep(8 + xd + (xd % 3 > 0 ? i : 0));//при преближении к кнопке эмулируется некоторое торможение движения указателя, так как это делает человек :D
             }
             Debug.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseMove)};");
         }
 
+        /// <summary>
+        /// Магическая функция разрезает маршрут на отрезки заданной длинны на указанное коелличество частей, забивая пустоты нулями
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="count"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        private Int32[] GetArray(Int32 x, Int32 count, Int32 len)
+        {
+            Int32 absDx = Math.Abs(x);
+            var list = new List<Int32>();
+            if (count > absDx)
+            {
+                var localCount = absDx / len;
+                for (var i = 0; i < localCount; i++)
+                    list.Add(x / localCount);
+                for (var i = 0; i < count - localCount; i++)
+                    list.Add(0);
+                return list.OrderBy(u => rand.Next()).ToArray();
+            }
+            else
+            {
+                for (var i = 0; i < count; i++)
+                    list.Add(x / count);
+                return list.OrderBy(u => rand.Next()).ToArray();
+            }
+        }
         /// <summary>
         /// Указать точное положение курсора мышки
         /// </summary>

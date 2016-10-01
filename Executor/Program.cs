@@ -13,59 +13,75 @@ namespace Executor
     {
         static void Main(string[] args)
         {
-            IMouse mouse = new Mouse();
-            IKeyBoard keyBoard = new KeyBoard();
             IConfigReader cr = new ConfigReader("test.jsn");
+#if DEBUG
             var list = new List<BotAction>
             {
                 new BotAction(
-                    ActionType.ExpectWindow,
-                    new ListAction { new ExpectWindowAct("DragonNest", true) }),
-                new BotAction(
-                    ActionType.Sleep,
-                    new ListAction  { new SleepAct(6000, 500)}),
-                new BotAction(
-                    ActionType.KeyBoard,
-                    new ListAction { new KeyBoardAct(KeyCode.Up)}),
-                new BotAction(
-                    ActionType.Sleep,
-                    new List<SleepAct>  { new SleepAct(1000, 500)}),
-                new BotAction(
-                    ActionType.MouseMove,
-                    new List<MouseMoveAct> { new MouseMoveAct(100, 100) }),
-                new BotAction(
-                    ActionType.KeyBoard,
-                    new ListAction { new KeyBoardAct(KeyCode.I)}),
-                new BotAction(
-                    ActionType.Sleep,
-                    new List<SleepAct>  { new SleepAct(3000, 500)}),
-                new BotAction(
-                    ActionType.MouseMove,
-                    new List<MouseMoveAct> { new MouseMoveAct(150, 120) }),
-                new BotAction(
-                    ActionType.KeyBoard,
-                    new ListAction { new KeyBoardAct(KeyCode.I)}),
-
-                //new BotAction(
-                //    ActionType.Loop,
-                //    new ListAction { new LoopAct(10, new List<BotAction>()
-                //        {
-                //            new BotAction(
-                //            ActionType.MouseMove,
-                //            new List<MouseMoveAct> { new MouseMoveAct(100, 100) })
-                //        })}),
+                    ActionType.Loop,
+                    new ListAction { new LoopAct(20, new List<BotAction>()
+                        {
+                            new BotAction(
+                                        ActionType.ExpectWindow,
+                                        new ListAction { new ExpectWindowAct("DragonNest", true) }),
+                                    new BotAction(
+                                        ActionType.Sleep,
+                                        new ListAction  { new SleepAct(6000, 500)}),
+                                    //нет смысла, навёл, и само пускай тыкает
+                                    //new BotAction(
+                                    //    ActionType.MouseMove,
+                                    //    new List<MouseMoveAct> { new MouseMoveAct(10, 150) }),
+                                    //new BotAction(
+                                    //    ActionType.Sleep,
+                                    //    new ListAction  { new SleepAct(1000, 500)}),
+                                    new BotAction(
+                                        ActionType.MouseLClick),
+                                    new BotAction(
+                                        ActionType.MouseMove,
+                                        new List<MouseMoveAct> { new MouseMoveAct(200, -190) }),
+                                    new BotAction(
+                                        ActionType.Sleep,
+                                        new ListAction  { new SleepAct(1000, 500)}),
+                                    new BotAction(
+                                        ActionType.MouseLClick),
+                                    new BotAction(
+                                        ActionType.Sleep,
+                                        new ListAction  { new SleepAct(600, 500)}),
+                                    new BotAction(
+                                        ActionType.MouseMove,
+                                        new List<MouseMoveAct> { new MouseMoveAct(0, 380) }),
+                                    new BotAction(
+                                        ActionType.Sleep,
+                                        new ListAction  { new SleepAct(600, 500)}),
+                                    new BotAction(
+                                        ActionType.MouseLClick),
+                                    new BotAction(
+                                        ActionType.Sleep,
+                                        new ListAction  { new SleepAct(12600, 2000)}),
+                                    new BotAction(
+                                        ActionType.MouseLClick),
+                                    new BotAction(
+                                        ActionType.Sleep,
+                                        new ListAction  { new SleepAct(1800000, 62000)}),
+                                    new BotAction(
+                                        ActionType.MouseLClick),
+                                    new BotAction(
+                                        ActionType.Sleep,
+                                        new ListAction  { new SleepAct(12600, 2000)}),
+                        })}),
             };
             var conf = new Config(list);
+
             var conf1 = conf.ToJson();
             var conf2 = conf1.ParseJson<Config>();
             cr.Save(conf);
+#endif
             var loads = cr.Load();
 
             IExecutiveCore core = new DefaultExecutiveCore();
             core.OnPrintMessageEvent += (message) => Console.WriteLine(message);
 
-            Thread.Sleep(5000);
-            core.Run(conf);
+            core.Run(loads);
 
             /* 
              //mouse.MouseMove(100, 100);

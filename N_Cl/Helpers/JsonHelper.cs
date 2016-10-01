@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Core.Helpers
 {
@@ -19,6 +20,7 @@ namespace Core.Helpers
             JsonSerializer serializer = new JsonSerializer();
             serializer.TypeNameHandling = TypeNameHandling.Objects;
             serializer.TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple;
+            serializer.NullValueHandling = NullValueHandling.Ignore;
             return serializer.Deserialize<T>(new JsonTextReader(new StringReader(json)));
         }
         /// <summary>
@@ -33,6 +35,7 @@ namespace Core.Helpers
             //serializer.Converters.Add(new DTOJsonConverter());
             serializer.TypeNameHandling = TypeNameHandling.Objects;
             serializer.TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple;
+            serializer.NullValueHandling = NullValueHandling.Ignore;
             return serializer.Deserialize<T>(new JsonTextReader(json));
         }
 
@@ -52,7 +55,7 @@ namespace Core.Helpers
                 TypeNameHandling = typeName ? TypeNameHandling.Objects : TypeNameHandling.None,
                 Converters = new List<JsonConverter>
                 {
-                    new Newtonsoft.Json.Converters.StringEnumConverter()
+                    new StringEnumConverter()
                 }
             });
         }
