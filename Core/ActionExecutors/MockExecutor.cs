@@ -18,10 +18,10 @@ namespace Core.ActionExecutors
         /// <param name="action">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IBasePreviousResult Invoke(ListAction actions, IBasePreviousResult previousResult = null)
+        public override IPreviousResult Invoke(ListAction actions, IPreviousResult previousResult = null)
         {
             Print(new { Date = DateTime.Now.ToString(), Message = $"{nameof(MockExecutor)}.{nameof(Invoke)}({actions.ToJson(false)}, {previousResult?.ToJson()??"--"})", Status = EStatus.Info }, false);
-            return true;
+            return new BasePreviousResult(EExecutorResultState.Success & EExecutorResultState.NoResult);
         }
     }
 }

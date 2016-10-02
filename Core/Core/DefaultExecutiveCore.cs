@@ -7,6 +7,7 @@ using Core.ActionExecutors;
 using Core.Helpers;
 using System.Threading.Tasks;
 using LogWrapper;
+using Core.ActionExecutors.PreviousResult;
 
 namespace Core.Core
 {
@@ -92,10 +93,10 @@ namespace Core.Core
         /// </summary>
         /// <param name="actions"></param>
         ///<return>Возвращает результат последнего действия</return>
-        private Object InternalIterator(ListBotAction actions, Object res)
+        private IPreviousResult InternalIterator(ListBotAction actions, IPreviousResult res)
         {
             //Если процес находится в процессе отмены, то прирываем итерации
-            if (IsAbort)
+            if (IsAbort || res.State == EExecutorResultState.Error)
                 return null;
 
             foreach (IBotAction act in actions)
@@ -110,7 +111,7 @@ namespace Core.Core
         /// </summary>
         /// <param name="action">Действие к исполнению ботом</param>
         ///<return>Возвращает результат действия</return>
-        private Object InternalActRun(IBotAction action, Object res)
+        private IPreviousResult InternalActRun(IBotAction action, IPreviousResult res)
         {
             if (!action.IsValid)
             {
@@ -132,7 +133,7 @@ namespace Core.Core
                     {
                         for (var i = subAct.IterationCount; i > 0; i--)
                         {
-                            if (IsAbort)
+                            if (IsAbort || res?.State == EExecutorResultState.Error)
                                 return null;
                             Print(new { Message = $"Input loop; iterationCount:{subAct.IterationCount}", Status = EStatus.Info });
                             res = InternalIterator(subAct.Actions, res);// Рекурсия :)

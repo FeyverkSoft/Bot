@@ -21,6 +21,6 @@ namespace Core.ActionExecutors
         /// <param name="action">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        IBasePreviousResult Invoke(ListAction action, IBasePreviousResult previousResult = null);
+        IPreviousResult Invoke(ListAction action, IPreviousResult previousResult = null);
     }
 }

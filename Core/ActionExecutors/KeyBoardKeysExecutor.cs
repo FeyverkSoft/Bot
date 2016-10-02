@@ -20,7 +20,7 @@ namespace Core.ActionExecutors
         /// <param name="action">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IBasePreviousResult Invoke(ListAction actions, IBasePreviousResult previousResult = null)
+        public override IPreviousResult Invoke(ListAction actions, IPreviousResult previousResult = null)
         {
             Print(new { Date = DateTime.Now.ToString(), Message = $"{GetType().Name}.{nameof(Invoke)}(actions.Count:{actions?.Count ?? -1})", Status = EStatus.Info }, false);
             try
@@ -30,7 +30,7 @@ namespace Core.ActionExecutors
             catch (Exception ex)
             {
                 Print(new { Date = DateTime.Now.ToString(), ex });
-                return false;
+                return new BasePreviousResult(EExecutorResultState.Error & EExecutorResultState.NoResult);
             }
             return true;
         }

@@ -60,8 +60,9 @@
     <Compile Include="ActionExecutors\MouseLClickExecutor.cs" />
     <Compile Include="ActionExecutors\KeyBoardExecutor.cs" />
     <Compile Include="ActionExecutors\ExpectWindowExecutor.cs" />
-    <Compile Include="ActionExecutors\PreviousResult\EExecutorResult.cs" />
-    <Compile Include="ActionExecutors\PreviousResult\IBasePreviousResult.cs" />
+    <Compile Include="ActionExecutors\PreviousResult\EExecutorResultState.cs" />
+    <Compile Include="ActionExecutors\PreviousResult\IPreviousResult.cs" />
+    <Compile Include="ActionExecutors\PreviousResult\BasePreviousResult.cs" />
     <Compile Include="ActionExecutors\SleepExecutor.cs" />
     <Compile Include="ActionExecutors\MouseRClickExecutor.cs" />
     <Compile Include="ActionExecutors\MouseSetPosExecutor.cs" />
