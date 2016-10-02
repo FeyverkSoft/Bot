@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "N_Cl\Core.csproj", "{88EF1877-5E4C-4440-82D9-B64C89CD11EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{88EF1877-5E4C-4440-82D9-B64C89CD11EF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3} = {C0EEDCF7-134E-43A4-B8AE-12003C6602B3}
 	EndProjectSection
