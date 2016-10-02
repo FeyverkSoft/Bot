@@ -87,6 +87,7 @@
     <Compile Include="ActionExecutors\IExecutor.cs" />
     <Compile Include="ActionExecutors\MouseMoveExecutor.cs" />
     <Compile Include="Core\WinInfo.cs" />
+    <Compile Include="Core\ESearchParam.cs" />
     <Compile Include="Handlers\IKeyBoard.cs" />
     <Compile Include="Handlers\IMouse.cs" />
     <Compile Include="Handlers\IWindowsProc.cs" />

@@ -12,8 +12,9 @@ namespace Core.Handlers
         /// Получть информацию об окне с указанным заголовком
         /// </summary>
         /// <param name="title"></param>
+        /// <param name="searchParam"></param>
         /// <returns></returns>
-        WinInfo GetWinInfo(String title);
+        WinInfo GetWinInfo(String title, ESearchParam searchParam = ESearchParam.Contained);
 
         /// <summary>
         /// Передать фокус окну с указанным индикатором дескриптора

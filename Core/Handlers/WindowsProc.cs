@@ -84,21 +84,45 @@ namespace Core.Handlers
         /// Получть информацию об окне с указанным заголовком
         /// </summary>
         /// <param name="title"></param>
+        /// <param name="searchParam"></param>
         /// <returns></returns>
-        public WinInfo GetWinInfo(String title)
+        public WinInfo GetWinInfo(String title, ESearchParam searchParam = ESearchParam.Contained)
         {
-            var rets = new WinInfo(null, 0, 0, (IntPtr)0, false);
+            var rets = new WinInfo(title, 0, 0, (IntPtr)0, false);
             EnumWindows((hWnd, lParam) =>
             {
                 if (IsWindowVisible(hWnd))
                 {
                     var desTitle = GetWindowText(hWnd);
-                    if (desTitle.Trim().ToLower().Contains(title?.Trim().ToLower()))
+                    switch (searchParam)
                     {
-                        RECT r = new RECT();
-                        GetWindowRect(hWnd, ref r);
-                        rets = new WinInfo(desTitle, r.X, r.Y, hWnd, true);
+                        case ESearchParam.End:
+                            if (desTitle.Trim().ToLower().EndsWith(title?.Trim().ToLower()))
+                            {
+                                RECT r = new RECT();
+                                GetWindowRect(hWnd, ref r);
+                                rets = new WinInfo(desTitle, r.X, r.Y, hWnd, true);
+                            }
+                            break;
+                        case ESearchParam.Start:
+                            if (desTitle.Trim().ToLower().StartsWith(title?.Trim().ToLower()))
+                            {
+                                RECT r = new RECT();
+                                GetWindowRect(hWnd, ref r);
+                                rets = new WinInfo(desTitle, r.X, r.Y, hWnd, true);
+                            }
+                            break;
+                        case ESearchParam.Contained:
+                        default:
+                            if (desTitle.Trim().ToLower().Contains(title?.Trim().ToLower()))
+                            {
+                                RECT r = new RECT();
+                                GetWindowRect(hWnd, ref r);
+                                rets = new WinInfo(desTitle, r.X, r.Y, hWnd, true);
+                            }
+                            break;
                     }
+
                 }
                 return true;
             }, IntPtr.Zero);

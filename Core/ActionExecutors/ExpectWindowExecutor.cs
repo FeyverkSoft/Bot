@@ -33,7 +33,7 @@ namespace Core.ActionExecutors
                     do
                     {
                         Thread.Sleep(500);
-                        winInfo = windowsProc.GetWinInfo(action.WinTitle);
+                        winInfo = windowsProc.GetWinInfo(action.WinTitle, action.SearchParam);
                     } while (!winInfo.IsFound);
 
                     if (action.SetFocus)
