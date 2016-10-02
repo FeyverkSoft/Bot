@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("DN_Cl")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("https://github.com/FeyverkSoft/Bot")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DN_Cl")]

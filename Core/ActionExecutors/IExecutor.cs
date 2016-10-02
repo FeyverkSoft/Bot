@@ -18,7 +18,8 @@ namespace Core.ActionExecutors
         /// Вызвать выполнение действия у указанной фfбрики
         /// </summary>
         /// <param name="action">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        Boolean Invoke(ListAction action);
+        Boolean Invoke(ListAction action, Object previousResult = null);
     }
 }

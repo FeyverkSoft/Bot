@@ -64,7 +64,7 @@ namespace Core.Core
                 throw new NullReferenceException(nameof(actions));
             Print(new { Status = EStatus.Info, Message = $"--BEGIN--{Environment.NewLine}{nameof(DefaultExecutiveCore)}.Run()", Date = DateTime.Now });
             IsAbort = false;
-            await Task.Factory.StartNew(() => InternalIterator(actions));
+            await Task.Factory.StartNew(() => InternalIterator(actions, null));
             Print(new { Status = EStatus.Info, Message = $"--END--{Environment.NewLine}{nameof(DefaultExecutiveCore)}.Run()", Date = DateTime.Now });
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Core.Core
         {
             if (action == null)
                 throw new NullReferenceException(nameof(action));
-            InternalActRun(action);
+            InternalActRun(action, null);
         }
 
         /// <summary>
@@ -91,22 +91,26 @@ namespace Core.Core
         /// Внутреняя логика выполнения действий
         /// </summary>
         /// <param name="actions"></param>
-        private void InternalIterator(ListBotAction actions)
+        ///<return>Возвращает результат последнего действия</return>
+        private Object InternalIterator(ListBotAction actions, Object res)
         {
             //Если процес находится в процессе отмены, то прирываем итерации
             if (IsAbort)
-                return;
+                return null;
+
             foreach (IBotAction act in actions)
             {
-                InternalActRun(act);
+                res = InternalActRun(act, res);
             }
+            return res;
         }
 
         /// <summary>
         /// Выполнить одно действие бота
         /// </summary>
         /// <param name="action">Действие к исполнению ботом</param>
-        private void InternalActRun(IBotAction action)
+        ///<return>Возвращает результат действия</return>
+        private Object InternalActRun(IBotAction action, Object res)
         {
             if (!action.IsValid)
             {
@@ -119,7 +123,7 @@ namespace Core.Core
                 IsAbort = true;
             }
             if (IsAbort)
-                return;
+                return null;
 
             switch (action.ActionType)//Логика для особых, не фабричных действий
             {
@@ -128,19 +132,18 @@ namespace Core.Core
                     {
                         for (var i = subAct.IterationCount; i > 0; i--)
                         {
+                            if (IsAbort)
+                                return null;
                             Print(new { Message = $"Input loop; iterationCount:{subAct.IterationCount}", Status = EStatus.Info });
-                            InternalIterator(subAct.Actions);// Рекурсия :)
+                            res = InternalIterator(subAct.Actions, res);// Рекурсия :)
                         }
                     }
-                    break;
+                    return res;
                 default:
                     IExecutor executor = ActionFactory.GetExecutorAction(action.ActionType);
                     executor.OnPrintMessageEvent += OnPrintMessageEvent;//Подписываем и исполнителя на выхлоп
-                    executor.Invoke(action.SubActions);
-                    break;
+                    return executor.Invoke(action.SubActions, res);
             }
-            if (IsAbort)
-                return;
         }
     }
 }
