@@ -22,7 +22,16 @@ namespace Core.ActionExecutors
         /// <returns></returns>
         public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
         {
-            Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), Message = $"{GetType().Name}.{nameof(Invoke)}(actions.Count:{actions?.Count ?? -1})", Status = EStatus.Info }, false);
+            Print(new
+            {
+                Date = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                Message = new
+                {
+                    func = $"{GetType().Name}.{nameof(Invoke)}",
+                    param = $"{nameof(actions)}: {actions.ToJson(false, false)} ;{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
+                },
+                Status = EStatus.Info
+            }, false);
             throw new NotSupportedException();
         }
 
@@ -36,7 +45,11 @@ namespace Core.ActionExecutors
             Print(new
             {
                 Date = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                Message = $"{GetType().Name}.{nameof(Invoke)}(previousResult:{previousResult?.ToJson()})",
+                Message = new
+                {
+                    func = $"{GetType().Name}.{nameof(Invoke)}",
+                    param = $"{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
+                },
                 Status = EStatus.Info
             }, false);
             try

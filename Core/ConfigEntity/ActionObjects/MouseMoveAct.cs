@@ -12,26 +12,18 @@ namespace Core.ConfigEntity.ActionObjects
         /// Смещение по оси X
         /// </summary>
         [DataMember]
-        public Int32 Dx { get; set; } = 0;
+        public Int32 Dx { get; protected set; } = 0;
         /// <summary>
         /// Смещение по оси Y
         /// </summary>
         [DataMember]
-        public Int32 Dy { get; set; } = 0;
+        public Int32 Dy { get; protected set; } = 0;
         /// <summary>
         /// Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно
         /// </summary>
         [DataMember]
-        public Boolean ToObject { get; set; }
-        [JsonConstructor]
-        public MouseMoveAct(Int32 dx, Int32 dy)
-        {
-            Log.WriteLine($"{GetType().Name}.ctor->(dx:{dx}; dy: {dy})");
-            Dx = dx;
-            Dy = dy;
-        }
+        public Boolean ToObject { get; protected set; }
 
-        [JsonConstructor]
         public MouseMoveAct(Boolean toObject = true)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(toObject:{toObject})");
@@ -39,7 +31,7 @@ namespace Core.ConfigEntity.ActionObjects
         }
 
         [JsonConstructor]
-        public MouseMoveAct(Int32 dx, Int32 dy, Boolean toObject)
+        public MouseMoveAct(Int32 dx, Int32 dy, Boolean toObject = false)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(dx:{dx}; dy: {dy}); toObject:{toObject};");
             Dx = dx;

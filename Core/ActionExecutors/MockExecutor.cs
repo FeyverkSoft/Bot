@@ -21,13 +21,31 @@ namespace Core.ActionExecutors
         /// <returns></returns>
         public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
         {
-            Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), Message = $"{nameof(MockExecutor)}.{nameof(Invoke)}({actions.ToJson(false)}, {previousResult?.ToJson() ?? "--"})", Status = EStatus.Info }, false);
+            Print(new
+            {
+                Date = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                Message = new
+                {
+                    func = $"{GetType().Name}.{nameof(Invoke)}",
+                    param = $"{nameof(actions)}: {actions.ToJson(false, false)} ;{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
+                },
+                Status = EStatus.Info
+            }, false);
             return previousResult ?? new BaseExecutorResult();
         }
 
         public override IExecutorResult Invoke(IExecutorResult previousResult = null)
         {
-            Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), Message = $"{nameof(MockExecutor)}.{nameof(Invoke)}({previousResult?.ToJson() ?? "--"})", Status = EStatus.Info }, false);
+            Print(new
+            {
+                Date = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                Message = new
+                {
+                    func = $"{GetType().Name}.{nameof(Invoke)}",
+                    param = $"{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
+                },
+                Status = EStatus.Info
+            }, false);
             return previousResult ?? new BaseExecutorResult();
         }
     }
