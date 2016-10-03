@@ -14,6 +14,6 @@ namespace Core.ActionExecutors.PreviousResult
         /// <summary>
         /// Результат выполнения действия, успех/не успех, ошибка
         /// </summary>
-        EExecutorResultState State { get; }
+        EResultState State { get; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using Core.ActionExecutors.PreviousResult;
 using Core.ConfigEntity.ActionObjects;
@@ -17,22 +18,23 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
-        /// <param name="action">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
         public override IPreviousResult Invoke(ListAction actions, IPreviousResult previousResult = null)
         {
-            Print(new { Date = DateTime.Now.ToString(), Message = $"{GetType().Name}.{nameof(Invoke)}(actions.Count:{actions?.Count ?? -1})", Status = EStatus.Info }, false);
+            Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), Message = $"{GetType().Name}.{nameof(Invoke)}(actions.Count:{actions?.Count ?? -1})", Status = EStatus.Info }, false);
             try
             {
-                KeyBoard.PressKeys(actions.Select(x => ((KeyBoardAct)x).Key).ToList());
+                if (actions != null)
+                    KeyBoard.PressKeys(actions.Select(x => ((KeyBoardAct)x).Key).ToList());
             }
             catch (Exception ex)
             {
-                Print(new { Date = DateTime.Now.ToString(), ex });
-                return new BasePreviousResult(EExecutorResultState.Error & EExecutorResultState.NoResult);
+                Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), ex });
+                return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
             }
-            return true;
+            return previousResult?? new BaseExecutorResult();
         }
     }
 }

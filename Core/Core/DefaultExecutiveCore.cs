@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
@@ -21,7 +22,7 @@ namespace Core.Core
         /// <summary>
         /// Фабрика действий
         /// </summary>
-        private readonly IActionFactory ActionFactory;
+        private readonly IActionFactory _actionFactory;
         /// <summary>
         /// Событие вывода сообщения
         /// </summary>
@@ -39,7 +40,7 @@ namespace Core.Core
         public DefaultExecutiveCore(IActionFactory actionFactory = null)
         {
             if (actionFactory == null)
-                ActionFactory = new DefaultActionFactory();
+                _actionFactory = new DefaultActionFactory();
         }
 
         /// <summary>
@@ -88,29 +89,27 @@ namespace Core.Core
             IsAbort = true;
         }
 
-        /// <summary>
-        /// Внутреняя логика выполнения действий
-        /// </summary>
-        /// <param name="actions"></param>
-        ///<return>Возвращает результат последнего действия</return>
+        ///  <summary>
+        ///  Внутреняя логика выполнения действий
+        ///  </summary>
+        ///  <param name="actions"></param>
+        /// <param name="res"></param>
+        /// <return>Возвращает результат последнего действия</return>
         private IPreviousResult InternalIterator(ListBotAction actions, IPreviousResult res)
         {
             //Если процес находится в процессе отмены, то прирываем итерации
-            if (IsAbort || res.State == EExecutorResultState.Error)
+            if (IsAbort || res.State == EResultState.Error)
                 return null;
 
-            foreach (IBotAction act in actions)
-            {
-                res = InternalActRun(act, res);
-            }
-            return res;
+            return actions.Aggregate(res, (current, act) => InternalActRun(act, current));
         }
 
-        /// <summary>
-        /// Выполнить одно действие бота
-        /// </summary>
-        /// <param name="action">Действие к исполнению ботом</param>
-        ///<return>Возвращает результат действия</return>
+        ///  <summary>
+        ///  Выполнить одно действие бота
+        ///  </summary>
+        ///  <param name="action">Действие к исполнению ботом</param>
+        /// <param name="res"></param>
+        /// <return>Возвращает результат действия</return>
         private IPreviousResult InternalActRun(IBotAction action, IPreviousResult res)
         {
             if (!action.IsValid)
@@ -129,11 +128,11 @@ namespace Core.Core
             switch (action.ActionType)//Логика для особых, не фабричных действий
             {
                 case ActionType.Loop:
-                    foreach (LoopAct subAct in action.SubActions)
+                    foreach (var subAct in action.SubActions.Cast<LoopAct>())
                     {
                         for (var i = subAct.IterationCount; i > 0; i--)
                         {
-                            if (IsAbort || res?.State == EExecutorResultState.Error)
+                            if (IsAbort || res?.State == EResultState.Error)
                                 return null;
                             Print(new { Message = $"Input loop; iterationCount:{subAct.IterationCount}", Status = EStatus.Info });
                             res = InternalIterator(subAct.Actions, res);// Рекурсия :)
@@ -141,9 +140,13 @@ namespace Core.Core
                     }
                     return res;
                 default:
-                    IExecutor executor = ActionFactory.GetExecutorAction(action.ActionType);
-                    executor.OnPrintMessageEvent += OnPrintMessageEvent;//Подписываем и исполнителя на выхлоп
-                    return executor.Invoke(action.SubActions, res);
+                    if (action.SubActions.Count > 0)
+                    {
+                        IExecutor executor = _actionFactory.GetExecutorAction(action.ActionType);
+                        executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
+                        return executor.Invoke(action.SubActions, res);
+                    }
+                    return res;
             }
         }
     }

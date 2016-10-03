@@ -18,6 +18,7 @@ namespace Core.ActionExecutors
         /// Вывести сообщение
         /// </summary>
         /// <param name="o"></param>
+        /// <param name="formatting"></param>
         internal void Print(Object o, Boolean formatting = true)
         {
             Log.WriteLine(o);
@@ -27,7 +28,7 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Вызвать выполнение действия у указанной фfбрики
         /// </summary>
-        /// <param name="action">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
         public abstract IPreviousResult Invoke(ListAction actions, IPreviousResult previousResult = null);

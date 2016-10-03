@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 using Core.ActionExecutors.PreviousResult;
 using Core.ConfigEntity.ActionObjects;
@@ -16,26 +17,27 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
-        /// <param name="action">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
         public override IPreviousResult Invoke(ListAction actions, IPreviousResult previousResult = null)
         {
-            Print(new { Date = DateTime.Now.ToString(), Message = $"{GetType().Name}.{nameof(Invoke)}(actions.Count:{actions?.Count ?? -1})", Status = EStatus.Info }, false);
+            Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), Message = $"{GetType().Name}.{nameof(Invoke)}(actions.Count:{actions?.Count ?? -1})", Status = EStatus.Info }, false);
             try
             {
-                foreach (MouseMoveAct action in actions)
-                {
-                    Mouse.MouseMove(action.Dx, action.Dy);
-                    Thread.Sleep(150);//пауза перед началом нового движения
-                }
+                if (actions != null)
+                    foreach (MouseMoveAct action in actions)
+                    {
+                        Mouse.MouseMove(action.Dx, action.Dy);
+                        Thread.Sleep(150);//пауза перед началом нового движения
+                    }
             }
             catch (Exception ex)
             {
-                Print(new { Date = DateTime.Now.ToString(), ex });
-                return new BasePreviousResult(EExecutorResultState.Error & EExecutorResultState.NoResult);
+                Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), ex });
+                return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
             }
-            return true;
+            return previousResult?? new BaseExecutorResult() ;
         }
     }
 }

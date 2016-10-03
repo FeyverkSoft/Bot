@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
 using System.Threading;
 using Core.ActionExecutors.PreviousResult;
 using Core.ConfigEntity.ActionObjects;
@@ -15,42 +17,46 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Функции для работы с окнами
         /// </summary>
-        IWindowsProc windowsProc { get; set; } = new WindowsProc();
+        IWindowsProc WindowsProc { get; set; } = new WindowsProc();
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
-        /// <param name="action">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
         public override IPreviousResult Invoke(ListAction actions, IPreviousResult previousResult = null)
         {
-            Print(new { Date = DateTime.Now.ToString(), Message = $"{GetType().Name}.{nameof(Invoke)}(actions.Count:{actions?.Count ?? -1})", Status = EStatus.Info }, false);
+            Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), Message = $"{GetType().Name}.{nameof(Invoke)}(actions.Count:{actions?.Count ?? -1})", Status = EStatus.Info }, false);
+
             try
             {
                 //:D как-то тупо, несколько действий сна подряд....
-                foreach (ExpectWindowAct action in actions)
+                if (actions != null)
                 {
-                    WinInfo winInfo = new WinInfo("", 0, 0, (IntPtr)0, false);
-                    do
+                    WinInfo winInfo = null;
+                    foreach (var action in actions.Cast<ExpectWindowAct>())
                     {
-                        Thread.Sleep(500);
-                        winInfo = windowsProc.GetWinInfo(action.WinTitle, action.SearchParam);
-                    } while (!winInfo.IsFound);
+                        do
+                        {
+                            Thread.Sleep(500);
+                            winInfo = WindowsProc.GetWinInfo(action.WinTitle, action.SearchParam);
+                        } while (!winInfo.IsFound);
 
-                    if (action.SetFocus)
-                    {
-                        windowsProc.ShowWindow(winInfo.Descriptor);
+                        if (action.SetFocus)
+                        {
+                            WindowsProc.ShowWindow(winInfo.Descriptor);
+                        }
                     }
-
+                    return new ExpectWindowExecutorResult(winInfo);
                 }
             }
             catch (Exception ex)
             {
-                Print(new { Date = DateTime.Now.ToString(), ex });
-                return new BasePreviousResult(EExecutorResultState.Error & EExecutorResultState.NoResult);
+                Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), ex });
+                return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
             }
-            return true;
+            return previousResult ?? new BaseExecutorResult();
         }
     }
 }

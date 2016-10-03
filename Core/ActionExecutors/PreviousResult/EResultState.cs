@@ -11,7 +11,7 @@ namespace Core.ActionExecutors.PreviousResult
     /// Успешен или не успешен
     /// </summary>
     [Flags]
-    public enum EExecutorResultState
+    public enum EResultState
     {
         /// <summary>
         /// Успех
