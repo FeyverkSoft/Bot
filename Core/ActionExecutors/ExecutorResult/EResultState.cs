@@ -12,18 +12,18 @@ namespace Core.ActionExecutors.ExecutorResult
         /// <summary>
         /// Успех
         /// </summary>
-        Success = 2,
+        Success = 0x0,
         /// <summary>
         /// Провал
         /// </summary>
-        Failure = 4,
+        Failure = 0x1,
         /// <summary>
         /// Ошибка, дальнейшее выполнение не рекомендуется
         /// </summary>
-        Error = 8,
+        Error = 0x2,
         /// <summary>
         /// Нет результата о выполнении или его не возможно получить
         /// </summary>
-        NoResult = 16
+        NoResult = 0x4
     }
 }

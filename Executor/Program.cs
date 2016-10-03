@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
@@ -14,7 +15,7 @@ namespace Executor
         static void Main(string[] args)
         {
             IExecutiveCore core = new DefaultExecutiveCore();
-            core.OnPrintMessageEvent += (message) => Console.WriteLine(message);
+            core.OnPrintMessageEvent += Console.WriteLine;
 
 #if !DEBUG
             core.Run(DnConf());

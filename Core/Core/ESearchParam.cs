@@ -11,14 +11,14 @@ namespace Core.Core
         /// <summary>
         /// Содержит указанный набор
         /// </summary>
-        Contained = 2,
+        Contained = 0x0,
         /// <summary>
         /// Начинается с указанного набора
         /// </summary>
-        Start = 4,
+        Start = 0x1,
         /// <summary>
         /// Заканчивается указанным набором
         /// </summary>
-        End = 8
+        End = 0x2
     }
 }

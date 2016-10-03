@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace LogWrapper
 {
-    [Flags]
     public enum LogLevel
     {
-        Info = 2,
-        Warning = 4,
-        Error = 8
+        Info = 0x0,
+        Warning = 0x1,
+        Error = 0x2
     }
 }
