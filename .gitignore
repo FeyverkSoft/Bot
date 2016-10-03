@@ -3,3 +3,6 @@
 *.suo
 *.user
 /.vs
+/Executor/obj
+/Core/bin
+/Core/obj

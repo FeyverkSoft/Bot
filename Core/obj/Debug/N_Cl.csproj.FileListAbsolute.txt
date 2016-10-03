@@ -1,7 +1,0 @@
-D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Executor.exe.config
-D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\obj\Debug\Executor.exe
-D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\obj\Debug\Executor.pdb
-D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Executor.exe
-D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Executor.pdb
-D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Newtonsoft.Json.dll
-D:\Users\Peter\Documents\Visual Studio 2015\Projects\N_Cl\N_Cl\bin\Debug\Newtonsoft.Json.xml

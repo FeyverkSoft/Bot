@@ -23,10 +23,7 @@ namespace Executor
 
             Thread.Sleep(8000);
             core.Run(new ListBotAction() {
-                new BotAction(
-                 ActionType.ExpectWindow,
-                 new ListAct { new ExpectWindowAct("AkelPad", true) }),
-                new BotAction(ActionType.MouseSetPos, new MouseSetPosAct(100, 100, true)),
+                new BotAction(ActionType.MouseLClick),
                 });
 
 #endif
