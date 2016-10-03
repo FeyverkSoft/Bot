@@ -8,14 +8,14 @@ namespace Core.ConfigEntity
 {
     public sealed class ConfigReader : IConfigReader
     {
-        private String directory;
+        private readonly String _directory;
         public ConfigReader(String dir)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(dir: {dir});");
 
             if (String.IsNullOrEmpty(dir))
                 throw new ArgumentNullException(nameof(dir));
-            directory = dir;
+            _directory = dir;
         }
         /// <summary>
         /// Сохранить конфиг
@@ -23,14 +23,23 @@ namespace Core.ConfigEntity
         /// <param name="conf"></param>
         public void Save(Config conf)
         {
-            Log.WriteLine($"{GetType().Name}.{nameof(Save)}->(conf: {(conf == null ? "not null" : " null")})");
-            if (conf == null)
-                throw new ArgumentNullException(nameof(conf));
-            using (StreamWriter sw = new StreamWriter(directory))
+            try
             {
-                sw.Write(conf.ToJson());
-                sw.Flush();
+                Log.WriteLine($"{GetType().Name}.{nameof(Save)}->(conf: {(conf == null ? "not null" : " null")})");
+                if (conf == null)
+                    throw new ArgumentNullException(nameof(conf));
+                using (StreamWriter sw = new StreamWriter(_directory))
+                {
+                    sw.Write(conf.ToJson());
+                    sw.Flush();
+                }
             }
+            catch (Exception ex)
+            {
+                Log.WriteLine(ex, LogLevel.Error);
+                throw;
+            }
+
         }
         /// <summary>
         /// Загрузить конфиг 
@@ -38,19 +47,27 @@ namespace Core.ConfigEntity
         /// <returns></returns>
         public Config Load()
         {
-            Log.WriteLine($"{GetType().Name}.{nameof(Load)}->(dir: {directory})");
-            Config temp;
-            var vers = Assembly.GetExecutingAssembly().GetName().Version;
-            using (StreamReader sr = new StreamReader(directory))
+            try
             {
-                temp = sr.ParseJson<Config>();
-                if (temp.BotVer != new FileVersion(vers))
+                Log.WriteLine($"{GetType().Name}.{nameof(Load)}->(dir: {_directory})");
+                var vers = Assembly.GetExecutingAssembly().GetName().Version;
+                using (StreamReader sr = new StreamReader(_directory))
                 {
-                    Log.WriteLine($"Не совпадают версии файла и приложения, возможны побочные эффекты!");
-                    Log.WriteLine($"{temp.BotVer} != {vers}");
+                    var temp = sr.ParseJson<Config>();
+                    if (temp.BotVer != new FileVersion(vers))
+                    {
+                        Log.WriteLine($"Не совпадают версии файла и приложения, возможны побочные эффекты!");
+                        Log.WriteLine($"{temp.BotVer} != {vers}");
+                    }
+                    return temp;
                 }
-                return temp;
             }
+            catch (Exception ex)
+            {
+                Log.WriteLine(ex, LogLevel.Error);
+                throw;
+            }
+
         }
     }
 }
