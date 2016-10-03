@@ -11,19 +11,19 @@ namespace Core.Handlers
     /// </summary>
     public class KeyBoard : IKeyBoard
     {
-        const Int32 KEYEVENTF_EXTENDEDKEY = 0x1;
-        const Int32 KEYEVENTF_KEYUP = 0x2;
+        const Int32 KeyeventfExtendedkey = 0x1;
+        const Int32 KeyeventfKeyup = 0x2;
 
         [DllImport("user32.dll")]
-        static extern void keybd_event(Int32 bVk, byte bScan, uint dwFlags, int dwExtraInfo);
+        static extern void keybd_event(Byte bVk, byte bScan, uint dwFlags, IntPtr dwExtraInfo);
 
-        private void PressKeyInternal(Int32 keyCode)
+        private void PressKeyInternal(Byte keyCode)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeyInternal)}");
-            Log.WriteLine($"--> press: 0x{keyCode.ToString("X2")}, ");
-            keybd_event(keyCode, 0x45, KEYEVENTF_EXTENDEDKEY, 0);
-            keybd_event(keyCode, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
-            Log.WriteLine($"--> up: 0x{keyCode.ToString("X2")}");
+            Log.WriteLine($"--> press: 0x{keyCode:X2}, ");
+            keybd_event(keyCode, 0x45, KeyeventfExtendedkey, (IntPtr)0);
+            keybd_event(keyCode, 0x45, KeyeventfExtendedkey | KeyeventfKeyup, (IntPtr)0);
+            Log.WriteLine($"--> up: 0x{keyCode:X2}");
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeyInternal)}");
         }
 
@@ -33,7 +33,7 @@ namespace Core.Handlers
         /// <param name="key"></param>
         public void PressKey(KeyCode key)
         {
-            PressKeyInternal((Int32)key);
+            PressKeyInternal((Byte)key);
         }
 
         /// <summary>
@@ -44,13 +44,13 @@ namespace Core.Handlers
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
             foreach (var k in list) //Выполняем событие последовательного нажатия несколькоих клавиш
             {
-                Log.Write($"--> press: 0x{((Int32)k).ToString("X2")}, ");
-                keybd_event((Int32)k, 0, 0, 0);
+                Log.Write($"--> press: 0x{((Int32)k):X2}, ");
+                keybd_event((Byte)k, 0, 0, (IntPtr)0);
             }
             foreach (var k in list) //Выполняем событие последовательного отпускания несколькоих клавиш
             {
-                Log.Write($"--> up: 0x{((Int32)k).ToString("X2")}, ");
-                keybd_event((Int32)k, 0, KEYEVENTF_KEYUP, 0);
+                Log.Write($"--> up: 0x{((Int32)k):X2}, ");
+                keybd_event((Byte)k, 0, KeyeventfKeyup, (IntPtr)0);
             }
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
         }

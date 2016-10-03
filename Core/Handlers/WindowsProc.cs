@@ -36,7 +36,7 @@ namespace Core.Handlers
         /// <param name="lpString"></param>
         /// <param name="nMaxCount"></param>
         /// <returns></returns>
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         static extern Int32 GetWindowText(IntPtr hWnd, StringBuilder lpString, Int32 nMaxCount);
         /// <summary>
         /// Получить информацию об окне со следующим заголовком

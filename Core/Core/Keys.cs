@@ -5,11 +5,11 @@ namespace Core.Core
     /// <summary>
     /// Коды клавиш, честно спи с MSDN
     /// </summary>
-    public enum KeyCode : Int32
+    public enum KeyCode : Byte
     {
         A = 0x41,
         Add = 0x6b,
-        Alt = 0x40000,
+        Alt = 0x12,
         Apps = 0x5d,
         Attn = 0xf6,
         B = 0x42,
@@ -26,7 +26,8 @@ namespace Core.Core
         Capital = 20,
         CapsLock = 20,
         Clear = 12,
-        Control = 0x20000,
+        LControl = 0xA2,
+        RControl = 0xA3,
         ControlKey = 0x11,
         Crsel = 0xf7,
         D = 0x44,
@@ -62,7 +63,7 @@ namespace Core.Core
         F16 = 0x7f,
         F17 = 0x80,
         F18 = 0x81,
-        F19 = 130,
+        F19 = 0x82,
         F2 = 0x71,
         F20 = 0x83,
         F21 = 0x84,
@@ -75,7 +76,7 @@ namespace Core.Core
         F6 = 0x75,
         F7 = 0x76,
         F8 = 0x77,
-        F9 = 120,
+        F9 = 0x78,
         FinalMode = 0x18,
         G = 0x47,
         H = 0x48,
@@ -96,7 +97,6 @@ namespace Core.Core
         K = 0x4b,
         KanaMode = 0x15,
         KanjiMode = 0x19,
-        KeyCode = 0xffff,
         L = 0x4c,
         LaunchApplication1 = 0xb6,
         LaunchApplication2 = 0xb7,
@@ -115,7 +115,6 @@ namespace Core.Core
         MediaPreviousTrack = 0xb1,
         MediaStop = 0xb2,
         Menu = 0x12,
-        Modifiers = -65536,
         Multiply = 0x6a,
         N = 0x4e,
         Next = 0x22,
@@ -180,7 +179,8 @@ namespace Core.Core
         Select = 0x29,
         SelectMedia = 0xb5,
         Separator = 0x6c,
-        Shift = 0x10000,
+        LShift = 0xA0,
+        RShift = 0xA1,
         ShiftKey = 0x10,
         Sleep = 0x5f,
         Snapshot = 0x2c,
