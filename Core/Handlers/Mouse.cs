@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Core;
 using LogWrapper;
 
 namespace Core.Handlers
@@ -14,7 +15,7 @@ namespace Core.Handlers
     /// </summary>
     public class Mouse : IMouse
     {
-        private static Random rand = new Random();
+        private static readonly Random Rand = new Random();
         [DllImport("User32.dll")]
         private static extern void mouse_event(MouseFlags dwFlags, int dx, int dy, int dwData, UIntPtr dwExtraInfo);
 
@@ -28,6 +29,16 @@ namespace Core.Handlers
             RightUp = 0x0010,
             Absolute = 0x8000
         };
+
+        /// <summary>
+        /// API для ролучения позиции курсора
+        /// </summary>
+        /// <param name="lpPoint"></param>
+        /// <returns></returns>
+
+        [DllImport("user32.dll")]
+        static extern Boolean GetCursorPos(ref Point lpPoint);
+
         /// <summary>
         /// Сместить указатель на указанное смешение по осям кустарно эмулируя неточное поведение указателя человека
         /// Юзать алгоритмы впадлу.
@@ -46,8 +57,8 @@ namespace Core.Handlers
 
             for (var i = 0; i < x.Length; i++)
             {
-                mouse_event(MouseFlags.Move, (Int32)(x[i] + rand.Next(0, 2)), (Int32)(y[i] + rand.Next(0, 2)), 0, UIntPtr.Zero);
-                var xd = rand.Next(0, 5);//уличная магия
+                mouse_event(MouseFlags.Move, (Int32)(x[i] + Rand.Next(0, 2)), (Int32)(y[i] + Rand.Next(0, 2)), 0, UIntPtr.Zero);
+                var xd = Rand.Next(0, 5);//уличная магия
                 Thread.Sleep(8 + xd + (xd % 3 > 0 ? i : 0));//при преближении к кнопке эмулируется некоторое торможение движения указателя, так как это делает человек :D
             }
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseMove)};");
@@ -73,7 +84,7 @@ namespace Core.Handlers
                     list.Add(0);
                 if (list.Count > 0)
                     list[0] += (x - list.Sum(z => z));
-                return list.OrderBy(u => rand.Next()).ToArray();
+                return list.OrderBy(u => Rand.Next()).ToArray();
             }
             else
             {
@@ -81,7 +92,7 @@ namespace Core.Handlers
                     list.Add(x / count);
                 if (list.Count > 0)
                     list[0] += (x - list.Sum(z => z));
-                return list.OrderBy(u => rand.Next()).ToArray();
+                return list.OrderBy(u => Rand.Next()).ToArray();
             }
         }
         /// <summary>
@@ -100,6 +111,20 @@ namespace Core.Handlers
             Size resolution = Screen.PrimaryScreen.Bounds.Size;
             mouse_event(MouseFlags.Absolute | MouseFlags.Move, (Int32)((65535.0 / resolution.Width) * x), (Int32)((65535.0 / resolution.Height) * y), 0, UIntPtr.Zero);
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseSetPos)};");
+        }
+
+        /// <summary>
+        /// Получить текущю позицию указателя
+        /// </summary>
+        /// <returns></returns>
+        public CurrentMousePos GetCurrentPos()
+        {
+            Point lpPoint = new Point();
+            // заполняем defPnt информацией о координатах мышки
+            GetCursorPos(ref lpPoint);
+            if (lpPoint.IsEmpty)
+                throw new Exception("Mouse Point IS Empty!!!!");
+            return new CurrentMousePos(lpPoint.X, lpPoint.Y);
         }
 
         /// <summary>

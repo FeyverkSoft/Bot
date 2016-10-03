@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Core;
 
 namespace Core.Handlers
 {
@@ -28,5 +29,11 @@ namespace Core.Handlers
         /// <param name="x"></param>
         /// <param name="y"></param>
         void MouseSetPos(Int32 x, Int32 y);
+
+        /// <summary>
+        /// Получить текущю позицию указателя
+        /// </summary>
+        /// <returns></returns>
+        CurrentMousePos GetCurrentPos();
     }
 }

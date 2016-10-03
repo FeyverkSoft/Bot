@@ -82,6 +82,7 @@
     <Compile Include="ConfigEntity\ConfigReader.cs" />
     <Compile Include="ConfigEntity\IBotAction.cs" />
     <Compile Include="ConfigEntity\IConfigReader.cs" />
+    <Compile Include="Core\CurrentMousePos.cs" />
     <Compile Include="Core\DefaultActionFactory.cs" />
     <Compile Include="ConfigEntity\FileVersion.cs" />
     <Compile Include="Core\DefaultExecutiveCore.cs" />

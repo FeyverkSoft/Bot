@@ -43,13 +43,19 @@ namespace Core.ConfigEntity.ActionObjects
         [DataMember]
         public String RelativelyWindowName { get; private set; }
 
+        /// <summary>
+        /// Использовать относительную позицию или нет
+        /// </summary>
+        [DataMember]
+        public Boolean Relatively { get; private set; }
         [JsonConstructor]
-        public MouseSetPosAct(Int32 x, Int32 y, String relativelyWindowName = null)
+        public MouseSetPosAct(Int32 x, Int32 y, Boolean relatively = false, String relativelyWindowName = null)
         {
-            Log.WriteLine($"{GetType().Name}.ctor->(x:{x}; y: {y}; relativelyWindowName: {relativelyWindowName ?? ""})");
+            Log.WriteLine($"{GetType().Name}.ctor->(x:{x}; y: {y}; relativelyWindowName: {relativelyWindowName ?? ""}; relatively:{relatively};)");
             X = x;
             Y = y;
             RelativelyWindowName = relativelyWindowName;
+            Relatively = relatively;
         }
     }
 }

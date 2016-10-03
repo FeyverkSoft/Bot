@@ -29,10 +29,30 @@ namespace Core.ActionExecutors
                 if (actions != null)
                     foreach (MouseSetPosAct action in actions)
                     {
-                        if (!String.IsNullOrEmpty(action.RelativelyWindowName))
+                        //приоритет
+                        //сначало относительно названия окна
+                        //потом относительно окна полученного на предыдущем шаге
+                        //потом обсолютная позиция
+                        if (action.Relatively && !String.IsNullOrEmpty(action.RelativelyWindowName))
                         {
                             var winInfo = WindowsProc.GetWinInfo(action.RelativelyWindowName);
                             Mouse.MouseSetPos(action.X + (winInfo.PosX > 0 ? winInfo.PosX : 0), action.Y + (winInfo.PosY > 0 ? winInfo.PosY : 0));
+                        }
+                        else if (action.Relatively && previousResult != null)
+                        {
+                            //выбор особых сценариев дляразных результатов
+                            //например перемещение относительно окна или еще чего то
+                            switch (previousResult.GetType().Name)
+                            {
+                                case nameof(ExpectWindowExecutorResult):
+                                    var expWin = (ExpectWindowExecutorResult)previousResult;
+                                    if (expWin.State != EResultState.Success && expWin.ExecutorResult == null)
+                                        throw new Exception("Ошибка относительного позиционирования, ExpectWindowExecutorResult не валиден");
+                                    Mouse.MouseSetPos(action.X + (expWin.ExecutorResult.PosX > 0 ? expWin.ExecutorResult.PosX : 0), action.Y + (expWin.ExecutorResult.PosY > 0 ? expWin.ExecutorResult.PosY : 0));
+                                    break;
+                                default:
+                                    throw new NotImplementedException();
+                            }
                         }
                         else
                         {
