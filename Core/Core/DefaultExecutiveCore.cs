@@ -112,41 +112,49 @@ namespace Core.Core
         /// <return>Возвращает результат действия</return>
         private IPreviousResult InternalActRun(IBotAction action, IPreviousResult res)
         {
-            if (!action.IsValid)
+            try
             {
-                Print(new
+                if (!action.IsValid)
                 {
-                    Message = $"При выполнении действия {action.ActionType}, произошла ошибка. {Environment.NewLine}Тип действия не совпадает с членами действия.",
-                    Date = DateTime.Now,
-                    Status = EStatus.Abort
-                });
-                IsAbort = true;
-            }
-            if (IsAbort)
-                return null;
+                    Print(new
+                    {
+                        Message = $"При выполнении действия {action.ActionType}, произошла ошибка. {Environment.NewLine}Тип действия не совпадает с членами действия.",
+                        Date = DateTime.Now,
+                        Status = EStatus.Abort
+                    });
+                    IsAbort = true;
+                }
+                if (IsAbort)
+                    return null;
 
-            switch (action.ActionType)//Логика для особых, не фабричных действий
-            {
-                case ActionType.Loop:
-                    foreach (var subAct in action.SubActions.Cast<LoopAct>())
-                    {
-                        for (var i = subAct.IterationCount; i > 0; i--)
+                switch (action.ActionType)//Логика для особых, не фабричных действий
+                {
+                    case ActionType.Loop:
+                        foreach (var subAct in action.SubActions.Cast<LoopAct>())
                         {
-                            if (IsAbort || res?.State == EResultState.Error)
-                                return null;
-                            Print(new { Message = $"Input loop; iterationCount:{subAct.IterationCount}", Status = EStatus.Info });
-                            res = InternalIterator(subAct.Actions, res);// Рекурсия :)
+                            for (var i = subAct.IterationCount; i > 0; i--)
+                            {
+                                if (IsAbort || res?.State == EResultState.Error)
+                                    return null;
+                                Print(new { Message = $"Input loop; iterationCount:{subAct.IterationCount}", Status = EStatus.Info });
+                                res = InternalIterator(subAct.Actions, res);// Рекурсия :)
+                            }
                         }
-                    }
-                    return res;
-                default:
-                    if (action.SubActions.Count > 0)
-                    {
-                        IExecutor executor = _actionFactory.GetExecutorAction(action.ActionType);
-                        executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
-                        return executor.Invoke(action.SubActions, res);
-                    }
-                    return res;
+                        return res;
+                    default:
+                        if (action.SubActions.Count > 0)
+                        {
+                            IExecutor executor = _actionFactory.GetExecutorAction(action.ActionType);
+                            executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
+                            return executor.Invoke(action.SubActions, res);
+                        }
+                        return res;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteLine(ex, LogLevel.Error);
+                throw;
             }
         }
     }
