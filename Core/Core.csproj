@@ -56,8 +56,10 @@
   <ItemGroup>
     <Compile Include="ActionExecutors\BaseExecutor.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\BooleanExecutorResult.cs" />
+    <Compile Include="ActionExecutors\ExecutorResult\CurrentMousePosExecutorResult.cs" />
     <Compile Include="ActionExecutors\GetObjectExecutor.cs" />
     <Compile Include="ActionExecutors\IfExecutor.cs" />
+    <Compile Include="ActionExecutors\GetMousePosExecutor.cs" />
     <Compile Include="ActionExecutors\KeyBoardKeysExecutor.cs" />
     <Compile Include="ActionExecutors\MockExecutor.cs" />
     <Compile Include="ActionExecutors\MouseLClickExecutor.cs" />

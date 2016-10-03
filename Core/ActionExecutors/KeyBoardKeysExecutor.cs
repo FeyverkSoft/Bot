@@ -36,5 +36,10 @@ namespace Core.ActionExecutors
             }
             return previousResult?? new BaseExecutorResult();
         }
+
+        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

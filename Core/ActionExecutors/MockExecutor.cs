@@ -24,5 +24,11 @@ namespace Core.ActionExecutors
             Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), Message = $"{nameof(MockExecutor)}.{nameof(Invoke)}({actions.ToJson(false)}, {previousResult?.ToJson() ?? "--"})", Status = EStatus.Info }, false);
             return previousResult ?? new BaseExecutorResult();
         }
+
+        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
+            Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), Message = $"{nameof(MockExecutor)}.{nameof(Invoke)}({previousResult?.ToJson() ?? "--"})", Status = EStatus.Info }, false);
+            return previousResult ?? new BaseExecutorResult();
+        }
     }
 }

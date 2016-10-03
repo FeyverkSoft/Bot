@@ -35,18 +35,30 @@ namespace Core.ActionExecutors
                             switch (previousResult.GetType().Name)
                             {
                                 case nameof(ExpectWindowExecutorResult):
-                                    var expWin = (ExpectWindowExecutorResult)previousResult;
-                                    if (expWin.State != EResultState.Success && expWin.ExecutorResult == null)
-                                        throw new Exception("Ошибка относительного позиционирования, ExpectWindowExecutorResult не валиден");
-                                    var win = expWin.ExecutorResult;
+                                    {
+                                        var expWin = (ExpectWindowExecutorResult)previousResult;
+                                        if (expWin.State != EResultState.Success && expWin.ExecutorResult == null)
+                                            throw new Exception(
+                                                "Ошибка относительного позиционирования, ExpectWindowExecutorResult не валиден");
+                                        var win = expWin.ExecutorResult;
 
-                                    var currentPos = Mouse.GetCurrentPos();
-                                    Int32 x = (currentPos.X - win.PosX), y = (currentPos.Y - win.PosY);
-                                    Mouse.MouseSetPos(x + action.Dx, y + action.Dy);
-
+                                        var currentPos = Mouse.GetCurrentPos();
+                                        Int32 x = (win.PosX - currentPos.X), y = (win.PosY - currentPos.Y);
+                                        Mouse.MouseMove(x + action.Dx, y + action.Dy);
+                                    }
+                                    break;
+                                case nameof(CurrentMousePosExecutorResult):
+                                    {
+                                        var mousePos = (CurrentMousePosExecutorResult)previousResult;
+                                        if (mousePos.State != EResultState.Success && mousePos.ExecutorResult == null)
+                                            throw new Exception(
+                                                "Ошибка относительного позиционирования, CurrentMousePosExecutorResult не валиден");
+                                        var currentPos = mousePos.ExecutorResult;
+                                        Mouse.MouseMove(currentPos.X + action.Dx, currentPos.Y + action.Dy);//Дич, аналогично тому что просто вызвать, но но, при передаче тунельемпараметра может быть эффект :)
+                                    }
                                     break;
                                 default:
-                                    throw new NotImplementedException();
+                                    throw new NotSupportedException(previousResult.GetType().Name);
                             }
                         }
                         else if (!action.ToObject)
@@ -63,6 +75,15 @@ namespace Core.ActionExecutors
                 return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
             }
             return previousResult ?? new BaseExecutorResult();
+        }
+        /// <summary>
+        /// Вызвать выполнение действия у указанной фабрики
+        /// </summary>
+        /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
+        /// <returns></returns>
+        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
+            throw new NotSupportedException();
         }
     }
 }

@@ -32,5 +32,12 @@ namespace Core.ActionExecutors
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
         public abstract IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null);
+
+        /// <summary>
+        /// Вызвать выполнение действия у указанной фабрики
+        /// </summary>
+        /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
+        /// <returns></returns>
+        public abstract IExecutorResult Invoke(IExecutorResult previousResult = null);
     }
 }

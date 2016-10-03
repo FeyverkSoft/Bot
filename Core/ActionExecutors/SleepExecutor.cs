@@ -12,7 +12,7 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class SleepExecutor : BaseExecutor
     {
-        Random rand = new Random();
+        readonly Random _rand = new Random();
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
@@ -28,7 +28,7 @@ namespace Core.ActionExecutors
                 if (actions != null)
                     foreach (SleepAct action in actions)
                     {
-                        Thread.Sleep(action.Delay + rand.Next(0, action.MaxRandDelay));
+                        Thread.Sleep(action.Delay + _rand.Next(0, action.MaxRandDelay));
                     }
             }
             catch (Exception ex)
@@ -37,6 +37,16 @@ namespace Core.ActionExecutors
                 return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
             }
             return previousResult ?? new BaseExecutorResult();
+        }
+
+        /// <summary>
+        /// Вызвать выполнение действия у указанной фабрики
+        /// </summary>
+        /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
+        /// <returns></returns>
+        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
+            throw new NotSupportedException();
         }
     }
 }

@@ -58,5 +58,15 @@ namespace Core.ActionExecutors
             }
             return previousResult ?? new BaseExecutorResult();
         }
+
+        /// <summary>
+        /// Вызвать выполнение действия у указанной фабрики
+        /// </summary>
+        /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
+        /// <returns></returns>
+        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

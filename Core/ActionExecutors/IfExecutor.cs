@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
 
@@ -22,6 +18,16 @@ namespace Core.ActionExecutors
         public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Не поддерживается
+        /// </summary>
+        /// <param name="previousResult">Результат проверки</param>
+        /// <returns></returns>
+        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
+            throw new NotSupportedException();
         }
     }
 }

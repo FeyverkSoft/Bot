@@ -66,7 +66,7 @@ namespace Core.Core
                 throw new NullReferenceException(nameof(actions));
             Print(new { Status = EStatus.Info, Message = $"--BEGIN--{Environment.NewLine}{nameof(DefaultExecutiveCore)}.Run()", Date = DateTime.Now });
             IsAbort = false;
-            await Task.Factory.StartNew(() => InternalIterator(actions, null));
+            await Task.Factory.StartNew(() => InternalIterator(actions, new BaseExecutorResult()));
             Print(new { Status = EStatus.Info, Message = $"--END--{Environment.NewLine}{nameof(DefaultExecutiveCore)}.Run()", Date = DateTime.Now });
         }
         /// <summary>
@@ -127,43 +127,52 @@ namespace Core.Core
                 if (IsAbort)
                     return null;
 
+                IExecutor executor = _actionFactory.GetExecutorAction(action.ActionType);
                 switch (action.ActionType)//Логика для особых, не фабричных действий
                 {
                     case ActionType.Loop:
-                        foreach (var subAct in action.SubActions.Cast<LoopAct>())
                         {
-                            for (var i = subAct.IterationCount; i > 0; i--)
+                            foreach (var subAct in action.SubActions.Cast<LoopAct>())
                             {
-                                if (IsAbort || res?.State == EResultState.Error)
-                                    return null;
-                                Print(new { Message = $"Input loop; iterationCount:{subAct.IterationCount}", Status = EStatus.Info });
-                                res = InternalIterator(subAct.Actions, res);// Рекурсия :)
+                                for (var i = subAct.IterationCount; i > 0; i--)
+                                {
+                                    if (IsAbort || res?.State == EResultState.Error)
+                                        return null;
+                                    Print(
+                                        new
+                                        {
+                                            Message = $"Input loop; iterationCount:{subAct.IterationCount}",
+                                            Status = EStatus.Info
+                                        });
+                                    res = InternalIterator(subAct.Actions, res); // Рекурсия :)
+                                }
                             }
+                            return res;
                         }
-                        return res;
                     case ActionType.If:
-                        if (action.SubActions.Count > 0)
                         {
-                            IExecutor executor = _actionFactory.GetExecutorAction(action.ActionType);
-                            executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
-                            var ifRes = executor.Invoke(action.SubActions, res);
-                            if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
+                            if (action.SubActions.Count > 0)
                             {
-                                return InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult ?
-                                    (action as IfAction).Actions : (action as IfAction).FailActions, res);
+                                executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
+                                var ifRes = executor.Invoke(action.SubActions, res);
+                                if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
+                                {
+                                    return InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult
+                                        ? (action as IfAction).Actions
+                                        : (action as IfAction).FailActions, res);
+                                }
+                                IsAbort = true;
+                                throw new Exception("Incorrect If>BooleanExecutorResult!");
                             }
-                            IsAbort = true;
-                            throw new Exception("Incorrect If>BooleanExecutorResult!");
+                            return res;
                         }
-                        return res;
                     default:
-                        if (action.SubActions.Count > 0)
-                        {
-                            IExecutor executor = _actionFactory.GetExecutorAction(action.ActionType);
-                            executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
-                            return executor.Invoke(action.SubActions, res);
-                        }
-                        return res;
+                    {
+                        executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
+                        return action.SubActions != null && action.SubActions.Count > 0
+                            ? executor.Invoke(action.SubActions, res)
+                            : executor.Invoke(res);
+                    }
                 }
             }
             catch (Exception ex)
