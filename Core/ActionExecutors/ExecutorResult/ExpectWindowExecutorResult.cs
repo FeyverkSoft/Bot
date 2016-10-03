@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Core;
+﻿using Core.Core;
 
-namespace Core.ActionExecutors.PreviousResult
+namespace Core.ActionExecutors.ExecutorResult
 {
     /// <summary>
     /// Результат выполнения вункции поиска и ожидания окна
@@ -16,7 +11,11 @@ namespace Core.ActionExecutors.PreviousResult
         /// Результат выполнения
         /// </summary>
         public WinInfo ExecutorResult { get; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="executorResult">Информация о найденном окне</param>
+        /// <param name="executorState"></param>
         public ExpectWindowExecutorResult(WinInfo executorResult, EResultState executorState = EResultState.Success) : base(executorState)
         {
             ExecutorResult = executorResult;

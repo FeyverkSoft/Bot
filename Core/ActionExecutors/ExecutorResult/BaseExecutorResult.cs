@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.ActionExecutors.PreviousResult
+﻿namespace Core.ActionExecutors.ExecutorResult
 {
     /// <summary>
     /// Базовый метод для возвращения результата
     /// </summary>
-    public class BaseExecutorResult : IPreviousResult
+    public class BaseExecutorResult : IExecutorResult
     {
         /// <summary>
         /// Результат выполнения действия, успех/не успех, ошибка

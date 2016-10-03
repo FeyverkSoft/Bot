@@ -48,15 +48,23 @@ namespace Core.Core
                     if (!executorCache.ContainsKey(type))
                         executorCache.Add(type, new SleepExecutor());
                     return executorCache[type];
-                case ActionType.AiBool:
+                case ActionType.Ai:
                     return new MockExecutor();
-                case ActionType.AiFactory:
+                case ActionType.PluginInvoke:
                     return new MockExecutor();
                 case ActionType.ExpectWindow:
                     if (!executorCache.ContainsKey(type))
                         executorCache.Add(type, new ExpectWindowExecutor());
                     return executorCache[type];
-                //case ActionType.If:
+                case ActionType.If:
+                    if (!executorCache.ContainsKey(type))
+                        executorCache.Add(type, new IfExecutor());
+                    return executorCache[type];
+                case ActionType.GetObject:
+                    if (!executorCache.ContainsKey(type))
+                        executorCache.Add(type, new GetObjectExecutor());
+                    return executorCache[type];
+                case ActionType.Loop:
                 case ActionType.Mock:
                 default:
                     return new MockExecutor();

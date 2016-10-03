@@ -7,8 +7,8 @@ using Core.Events;
 using Core.ActionExecutors;
 using Core.Helpers;
 using System.Threading.Tasks;
+using Core.ActionExecutors.ExecutorResult;
 using LogWrapper;
-using Core.ActionExecutors.PreviousResult;
 
 namespace Core.Core
 {
@@ -95,7 +95,7 @@ namespace Core.Core
         ///  <param name="actions"></param>
         /// <param name="res"></param>
         /// <return>Возвращает результат последнего действия</return>
-        private IPreviousResult InternalIterator(ListBotAction actions, IPreviousResult res)
+        private IExecutorResult InternalIterator(ListBotAction actions, IExecutorResult res)
         {
             //Если процес находится в процессе отмены, то прирываем итерации
             if (IsAbort || res.State == EResultState.Error)
@@ -110,7 +110,7 @@ namespace Core.Core
         ///  <param name="action">Действие к исполнению ботом</param>
         /// <param name="res"></param>
         /// <return>Возвращает результат действия</return>
-        private IPreviousResult InternalActRun(IBotAction action, IPreviousResult res)
+        private IExecutorResult InternalActRun(IBotAction action, IExecutorResult res)
         {
             try
             {
@@ -139,6 +139,21 @@ namespace Core.Core
                                 Print(new { Message = $"Input loop; iterationCount:{subAct.IterationCount}", Status = EStatus.Info });
                                 res = InternalIterator(subAct.Actions, res);// Рекурсия :)
                             }
+                        }
+                        return res;
+                    case ActionType.If:
+                        if (action.SubActions.Count > 0)
+                        {
+                            IExecutor executor = _actionFactory.GetExecutorAction(action.ActionType);
+                            executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
+                            var ifRes = executor.Invoke(action.SubActions, res);
+                            if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
+                            {
+                                return InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult ?
+                                    (action as IfAction).Actions : (action as IfAction).FailActions, res);
+                            }
+                            IsAbort = true;
+                            throw new Exception("Incorrect If>BooleanExecutorResult!");
                         }
                         return res;
                     default:

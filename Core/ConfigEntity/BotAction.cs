@@ -22,7 +22,7 @@ namespace Core.ConfigEntity
         /// Описание действий для данного события
         /// </summary>
         [DataMember]
-        public ListAction SubActions { get; private set; } = new ListAction();
+        public ListAct SubActions { get; private set; } = new ListAct();
         [JsonConstructor]
         public BotAction(ActionType actionType)
         {
@@ -30,7 +30,7 @@ namespace Core.ConfigEntity
             ActionType = actionType;
         }
 
-        public BotAction(ActionType actionType, ListAction subActions) : this(actionType)
+        public BotAction(ActionType actionType, ListAct subActions) : this(actionType)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(subActions.Count:{subActions?.Count ?? -1};)");
             if (subActions == null)
@@ -86,6 +86,15 @@ namespace Core.ConfigEntity
                             break;
                         case ActionType.ExpectWindow:
                             flag = subAction is ExpectWindowAct;
+                            break;
+                        case ActionType.If:
+                            flag = subAction is IfAction;
+                            break;
+                        case ActionType.GetObject:
+                            flag = subAction is GetObjectAct;
+                            break;
+                        case ActionType.PluginInvoke:
+                            flag = subAction is PluginInvokeAct;
                             break;
                         default:
                             throw new Exception($"Incorrect ActionType ({ActionType})");

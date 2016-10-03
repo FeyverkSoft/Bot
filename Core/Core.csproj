@@ -55,21 +55,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionExecutors\BaseExecutor.cs" />
+    <Compile Include="ActionExecutors\ExecutorResult\BooleanExecutorResult.cs" />
+    <Compile Include="ActionExecutors\GetObjectExecutor.cs" />
+    <Compile Include="ActionExecutors\IfExecutor.cs" />
     <Compile Include="ActionExecutors\KeyBoardKeysExecutor.cs" />
     <Compile Include="ActionExecutors\MockExecutor.cs" />
     <Compile Include="ActionExecutors\MouseLClickExecutor.cs" />
     <Compile Include="ActionExecutors\KeyBoardExecutor.cs" />
     <Compile Include="ActionExecutors\ExpectWindowExecutor.cs" />
-    <Compile Include="ActionExecutors\PreviousResult\EResultState.cs" />
-    <Compile Include="ActionExecutors\PreviousResult\ExpectWindowExecutorResult.cs" />
-    <Compile Include="ActionExecutors\PreviousResult\IPreviousResult.cs" />
-    <Compile Include="ActionExecutors\PreviousResult\BaseExecutorResult.cs" />
+    <Compile Include="ActionExecutors\ExecutorResult\EResultState.cs" />
+    <Compile Include="ActionExecutors\ExecutorResult\ExpectWindowExecutorResult.cs" />
+    <Compile Include="ActionExecutors\ExecutorResult\IExecutorResult.cs" />
+    <Compile Include="ActionExecutors\ExecutorResult\BaseExecutorResult.cs" />
     <Compile Include="ActionExecutors\SleepExecutor.cs" />
     <Compile Include="ActionExecutors\MouseRClickExecutor.cs" />
     <Compile Include="ActionExecutors\MouseSetPosExecutor.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\IfAction.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\PluginInvokeAct.cs" />
     <Compile Include="ConfigEntity\ListBotAction.cs" />
-    <Compile Include="ConfigEntity\ActionObjects\ListAction.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\ListAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\KeyBoardAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\MouseMoveAct.cs" />

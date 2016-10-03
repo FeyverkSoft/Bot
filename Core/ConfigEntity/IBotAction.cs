@@ -15,7 +15,7 @@ namespace Core.ConfigEntity
         /// <summary>
         /// Описание действий для данного события
         /// </summary>[DataMember]
-        ListAction SubActions { get; }
+        ListAct SubActions { get; }
         /// <summary>
         /// Провалидировать массив событий
         /// </summary>

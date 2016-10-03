@@ -1,5 +1,5 @@
 ﻿using System;
-using Core.ActionExecutors.PreviousResult;
+using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
 using Core.Events;
 
@@ -21,6 +21,6 @@ namespace Core.ActionExecutors
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        IPreviousResult Invoke(ListAction actions, IPreviousResult previousResult = null);
+        IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null);
     }
 }
