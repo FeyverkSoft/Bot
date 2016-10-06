@@ -21,7 +21,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Указывает, на то что после того как окно найденно, ему необходимо передать фокус
         /// </summary>
         [DataMember]
-        public Boolean SetFocus { get; private set; } = true;
+        public Boolean SetFocus { get; private set; }
         /// <summary>
         /// Параметр поиска, указавающий как и где искать. в начале, конце или просто содержание
         /// </summary>

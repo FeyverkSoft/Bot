@@ -65,6 +65,7 @@ namespace Core.Core
                         executorCache.Add(type, new GetObjectExecutor());
                     return executorCache[type];
                 case ActionType.Loop:
+                case ActionType.GetScreenshot:
                 case ActionType.Mock:
                 default:
                     return new MockExecutor();

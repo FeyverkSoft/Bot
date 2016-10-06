@@ -30,6 +30,10 @@ namespace Core.ActionExecutors
                 },
                 Status = EStatus.Info
             }, false);
+
+            if (actions.Count>1)
+                throw new Exception("Получить можно только один объект.");
+
             throw new NotImplementedException();
         }
 

@@ -3,37 +3,25 @@
 namespace Core.Core
 {
     /// <summary>
-    /// Класс содержащий информацию об 
+    /// Класс содержащий информацию об окне
     /// </summary>
-    public class WinInfo
+    public class WinInfo : BaseObjectInfo
     {
-        /// <summary>
-        /// Заголовок окна
-        /// </summary>
-        public String WindowTitile { get; private set; }
-        /// <summary>
-        /// Позиция окна по оси X
-        /// </summary>
-        public Int32 PosX { get; private set; } = 0;
-        /// <summary>
-        /// Позиция окна по оси Y
-        /// </summary>
-        public Int32 PosY { get; private set; } = 0;
+
         /// <summary>
         /// Было ли окно найдено?
         /// </summary>
-        public Boolean IsFound { get; private set; } = false;
-        /// <summary>
-        /// Идентификатор дескриптора окна
-        /// </summary>
-        public IntPtr Descriptor { get; private set; }
-        public WinInfo(String title, Int32 posX, Int32 posY, IntPtr descriptor, Boolean isFound = true)
+        public Boolean IsFound { get; private set; }
+
+        public WinInfo(String title, Int32 posX, Int32 posY, IntPtr descriptor, Boolean isFound = true) :
+            base(descriptor, posX, posY, title)
         {
-            WindowTitile = title;
-            PosX = posX;
-            PosY = posY;
             IsFound = isFound;
-            Descriptor = descriptor;
+        }
+
+        public WinInfo(String title, Point point, IntPtr descriptor, Boolean isFound = true) : base(descriptor, point, title)
+        {
+            IsFound = isFound;
         }
     }
 }

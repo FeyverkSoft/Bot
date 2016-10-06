@@ -61,6 +61,10 @@ namespace Core.ConfigEntity
         /// </summary>
         GetObject = 4096,
         /// <summary>
+        /// Получить скриншот
+        /// </summary>
+        GetScreenshot = 8192,
+        /// <summary>
         /// Фальшивый объект, для эмулации чего либо :) но не исполнения этого в реале
         /// </summary>
         Mock = 16384

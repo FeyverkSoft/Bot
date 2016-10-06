@@ -53,7 +53,7 @@ namespace Core.ActionExecutors
                                         var win = expWin.ExecutorResult;
 
                                         var currentPos = Mouse.GetCurrentPos();
-                                        Int32 x = (win.PosX - currentPos.X), y = (win.PosY - currentPos.Y);
+                                        Int32 x = (win.Pos.X - currentPos.X), y = (win.Pos.Y - currentPos.Y);
                                         Mouse.MouseMove(x + action.Dx, y + action.Dy);
                                     }
                                     break;

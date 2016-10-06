@@ -46,7 +46,7 @@ namespace Core.ActionExecutors
                         if (action.Relatively && !String.IsNullOrEmpty(action.RelativelyWindowName))
                         {
                             var winInfo = WindowsProc.GetWinInfo(action.RelativelyWindowName);
-                            Mouse.MouseSetPos(action.X + (winInfo.PosX > 0 ? winInfo.PosX : 0), action.Y + (winInfo.PosY > 0 ? winInfo.PosY : 0));
+                            Mouse.MouseSetPos(action.X + (winInfo.Pos.X > 0 ? winInfo.Pos.X : 0), action.Y + (winInfo.Pos.Y > 0 ? winInfo.Pos.Y : 0));
                         }
                         else if (action.Relatively && previousResult != null)
                         {
@@ -61,8 +61,8 @@ namespace Core.ActionExecutors
                                             throw new Exception(
                                                 "Ошибка относительного позиционирования, ExpectWindowExecutorResult не валиден");
                                         Mouse.MouseSetPos(
-                                            action.X + (expWin.ExecutorResult.PosX > 0 ? expWin.ExecutorResult.PosX : 0),
-                                            action.Y + (expWin.ExecutorResult.PosY > 0 ? expWin.ExecutorResult.PosY : 0));
+                                            action.X + (expWin.ExecutorResult.Pos.X > 0 ? expWin.ExecutorResult.Pos.X : 0),
+                                            action.Y + (expWin.ExecutorResult.Pos.Y > 0 ? expWin.ExecutorResult.Pos.Y : 0));
                                         break;
                                     }
                                 case nameof(CurrentMousePosExecutorResult):

@@ -94,11 +94,14 @@
     <Compile Include="Core\DefaultActionFactory.cs" />
     <Compile Include="ConfigEntity\FileVersion.cs" />
     <Compile Include="Core\DefaultExecutiveCore.cs" />
+    <Compile Include="Core\EObjectType.cs" />
     <Compile Include="Core\EStatus.cs" />
     <Compile Include="Core\IActionFactory.cs" />
     <Compile Include="Core\IExecutiveCore.cs" />
     <Compile Include="ActionExecutors\IExecutor.cs" />
     <Compile Include="ActionExecutors\MouseMoveExecutor.cs" />
+    <Compile Include="Core\ObjectInfo.cs" />
+    <Compile Include="Core\Point.cs" />
     <Compile Include="Core\WinInfo.cs" />
     <Compile Include="Core\ESearchParam.cs" />
     <Compile Include="Handlers\IKeyBoard.cs" />

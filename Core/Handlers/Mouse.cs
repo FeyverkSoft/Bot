@@ -37,7 +37,7 @@ namespace Core.Handlers
         /// <returns></returns>
 
         [DllImport("user32.dll")]
-        static extern Boolean GetCursorPos(ref Point lpPoint);
+        static extern Boolean GetCursorPos(ref System.Drawing.Point lpPoint);
 
         /// <summary>
         /// Сместить указатель на указанное смешение по осям кустарно эмулируя неточное поведение указателя человека
@@ -119,12 +119,12 @@ namespace Core.Handlers
         /// <returns></returns>
         public CurrentMousePos GetCurrentPos()
         {
-            Point lpPoint = new Point();
+            var lpPoint = new System.Drawing.Point();
             // заполняем defPnt информацией о координатах мышки
             GetCursorPos(ref lpPoint);
             if (lpPoint.IsEmpty)
                 throw new Exception("Mouse Point IS Empty!!!!");
-            return new CurrentMousePos(lpPoint.X, lpPoint.Y);
+            return new CurrentMousePos(lpPoint);
         }
 
         /// <summary>

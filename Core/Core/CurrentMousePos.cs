@@ -21,5 +21,11 @@ namespace Core.Core
             X = x;
             Y = y;
         }
+
+        public CurrentMousePos(Point p)
+        {
+            X = p.X;
+            Y = p.Y;
+        }
     }
 }

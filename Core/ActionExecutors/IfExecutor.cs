@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
@@ -10,7 +11,7 @@ namespace Core.ActionExecutors
     /// <summary>
     /// Проверяет условие, и возвращает результат проверки
     /// </summary>
-    public class IfExecutor:BaseExecutor
+    public class IfExecutor : BaseExecutor
     {
         /// <summary>
         /// Исполняет проверку условия, и возвращает результат проверки
@@ -30,7 +31,15 @@ namespace Core.ActionExecutors
                 },
                 Status = EStatus.Info
             }, false);
-            throw new NotImplementedException();
+            if (actions.Count == 0)
+                return new BooleanExecutorResult(false);
+            Boolean result = true;
+
+            foreach (var action in actions.Cast<IfAction>())
+            {
+
+            }
+            return new BooleanExecutorResult(result);
         }
 
         /// <summary>
