@@ -18,7 +18,7 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Функции для работы с окнами
         /// </summary>
-        IWindowsProc WindowsProc { get; set; } = new WindowsProc();
+        IWindowsProc WindowsProc { get; set; } = new NativeWindowsProc();
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики

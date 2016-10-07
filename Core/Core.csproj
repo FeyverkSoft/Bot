@@ -90,7 +90,6 @@
     <Compile Include="ConfigEntity\ConfigReader.cs" />
     <Compile Include="ConfigEntity\IBotAction.cs" />
     <Compile Include="ConfigEntity\IConfigReader.cs" />
-    <Compile Include="Core\CurrentMousePos.cs" />
     <Compile Include="Core\DefaultActionFactory.cs" />
     <Compile Include="ConfigEntity\FileVersion.cs" />
     <Compile Include="Core\DefaultExecutiveCore.cs" />
@@ -107,13 +106,14 @@
     <Compile Include="Handlers\IKeyBoard.cs" />
     <Compile Include="Handlers\IMouse.cs" />
     <Compile Include="Handlers\IWindowsProc.cs" />
-    <Compile Include="Handlers\KeyBoard.cs" />
+    <Compile Include="Handlers\NativeKeyBoard.cs" />
     <Compile Include="Core\Keys.cs" />
-    <Compile Include="Handlers\Mouse.cs" />
+    <Compile Include="Handlers\NativeMouse.cs" />
     <Compile Include="Events\PrintMessageEvent.cs" />
     <Compile Include="Exceptions\BotBaseException.cs" />
-    <Compile Include="Handlers\WindowsProc.cs" />
+    <Compile Include="Handlers\NativeWindowsProc.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="Helpers\ScreenCaptureHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

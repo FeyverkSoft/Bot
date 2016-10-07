@@ -13,7 +13,7 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class GetMousePosExecutor : BaseExecutor
     {
-        private IMouse Mouse { get; set; } = new Mouse();
+        private IMouse Mouse { get; set; } = new NativeMouse();
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>

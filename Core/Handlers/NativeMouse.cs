@@ -13,7 +13,7 @@ namespace Core.Handlers
     /// <summary>
     /// Класс для эмуляции мышки
     /// </summary>
-    public class Mouse : IMouse
+    public class NativeMouse : IMouse
     {
         private static readonly Random Rand = new Random();
         [DllImport("User32.dll")]
@@ -117,14 +117,14 @@ namespace Core.Handlers
         /// Получить текущю позицию указателя
         /// </summary>
         /// <returns></returns>
-        public CurrentMousePos GetCurrentPos()
+        public Core.Point GetCurrentPos()
         {
             var lpPoint = new System.Drawing.Point();
             // заполняем defPnt информацией о координатах мышки
             GetCursorPos(ref lpPoint);
             if (lpPoint.IsEmpty)
                 throw new Exception("Mouse Point IS Empty!!!!");
-            return new CurrentMousePos(lpPoint);
+            return lpPoint;
         }
 
         /// <summary>

@@ -8,7 +8,7 @@ namespace Core.Handlers
     /// <summary>
     /// Класс для работы с окнами
     /// </summary>
-    public class WindowsProc : IWindowsProc
+    public class NativeWindowsProc : IWindowsProc
     {
         delegate Boolean EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
         /// <summary>

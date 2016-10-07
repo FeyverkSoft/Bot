@@ -11,17 +11,15 @@ namespace Core.ActionExecutors.ExecutorResult
         /// <summary>
         /// Результат выполнения
         /// </summary>
-        public CurrentMousePos ExecutorResult { get; }
+        public Point ExecutorResult { get; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="executorResult"></param>
         /// <param name="executorState">Статус выполнения</param>
-        public CurrentMousePosExecutorResult(CurrentMousePos executorResult, EResultState executorState = EResultState.Success) : base(executorState)
+        public CurrentMousePosExecutorResult(Point executorResult, EResultState executorState = EResultState.Success) : base(executorState)
         {
-            if(executorResult== null)
-                throw new ArgumentNullException(nameof(executorResult));
             ExecutorResult = executorResult;
         }
     }

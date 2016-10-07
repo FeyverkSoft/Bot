@@ -14,8 +14,8 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MouseSetPosExecutor : BaseExecutor
     {
-        private IMouse Mouse { get; set; } = new Mouse();
-        IWindowsProc WindowsProc { get; set; } = new WindowsProc();
+        private IMouse Mouse { get; set; } = new NativeMouse();
+        IWindowsProc WindowsProc { get; set; } = new NativeWindowsProc();
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
@@ -68,7 +68,7 @@ namespace Core.ActionExecutors
                                 case nameof(CurrentMousePosExecutorResult):
                                     {
                                         var mousePos = (CurrentMousePosExecutorResult)previousResult;
-                                        if (mousePos.State != EResultState.Success && mousePos.ExecutorResult == null)
+                                        if (mousePos.State != EResultState.Success)
                                             throw new Exception(
                                                 "Ошибка относительного позиционирования, CurrentMousePosExecutorResult не валиден");
                                         var currentPos = mousePos.ExecutorResult;

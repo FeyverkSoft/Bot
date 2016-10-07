@@ -34,6 +34,6 @@ namespace Core.Handlers
         /// Получить текущю позицию указателя
         /// </summary>
         /// <returns></returns>
-        CurrentMousePos GetCurrentPos();
+        Point GetCurrentPos();
     }
 }

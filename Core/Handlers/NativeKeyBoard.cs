@@ -9,7 +9,7 @@ namespace Core.Handlers
     /// <summary>
     /// Класс для эмуляции клавиатуры
     /// </summary>
-    public class KeyBoard : IKeyBoard
+    public class NativeKeyBoard : IKeyBoard
     {
         const Int32 KeyeventfExtendedkey = 0x1;
         const Int32 KeyeventfKeyup = 0x2;

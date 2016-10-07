@@ -14,7 +14,7 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MouseMoveExecutor : BaseExecutor
     {
-        private IMouse Mouse { get; set; } = new Mouse();
+        private IMouse Mouse { get; set; } = new NativeMouse();
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
@@ -60,7 +60,7 @@ namespace Core.ActionExecutors
                                 case nameof(CurrentMousePosExecutorResult):
                                     {
                                         var mousePos = (CurrentMousePosExecutorResult)previousResult;
-                                        if (mousePos.State != EResultState.Success && mousePos.ExecutorResult == null)
+                                        if (mousePos.State != EResultState.Success)
                                             throw new Exception(
                                                 "Ошибка относительного позиционирования, CurrentMousePosExecutorResult не валиден");
                                         var currentPos = mousePos.ExecutorResult;

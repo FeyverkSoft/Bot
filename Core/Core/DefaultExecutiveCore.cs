@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Events;
@@ -167,12 +168,12 @@ namespace Core.Core
                             return res;
                         }
                     default:
-                    {
-                        executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
-                        return action.SubActions != null && action.SubActions.Count > 0
-                            ? executor.Invoke(action.SubActions, res)
-                            : executor.Invoke(res);
-                    }
+                        {
+                            executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
+                            return action.SubActions != null && action.SubActions.Count > 0
+                                ? executor.Invoke(action.SubActions, res)
+                                : executor.Invoke(res);
+                        }
                 }
             }
             catch (Exception ex)
