@@ -67,6 +67,15 @@ namespace Core.ActionExecutors
                                         Mouse.MouseMove(currentPos.X + action.Dx, currentPos.Y + action.Dy);//Дич, аналогично тому что просто вызвать, но но, при передаче тунельемпараметра может быть эффект :)
                                     }
                                     break;
+                                case nameof(ObjectExecutorResult):
+                                    {
+                                        var mousePos = (ObjectExecutorResult)previousResult;
+                                        if (mousePos.State != EResultState.Success)
+                                            throw new Exception("Ошибка относительного позиционирования, ObjectExecutorResult не валиден");
+                                        var currentPos = mousePos.ExecutorResult.Pos;
+                                        Mouse.MouseMove(currentPos.X + action.Dx, currentPos.Y + action.Dy);//Дич, аналогично тому что просто вызвать, но но, при передаче тунельемпараметра может быть эффект :)
+                                    }
+                                    break;
                                 default:
                                     throw new NotSupportedException(previousResult.GetType().Name);
                             }
