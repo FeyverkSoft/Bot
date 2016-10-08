@@ -108,7 +108,7 @@ namespace Core.Handlers
             Thread.Sleep(10);
 
 
-            Size resolution = Screen.PrimaryScreen.Bounds.Size;
+            var resolution = Screen.PrimaryScreen.Bounds.Size;
             mouse_event(MouseFlags.Absolute | MouseFlags.Move, (Int32)((65535.0 / resolution.Width) * x), (Int32)((65535.0 / resolution.Height) * y), 0, UIntPtr.Zero);
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseSetPos)};");
         }

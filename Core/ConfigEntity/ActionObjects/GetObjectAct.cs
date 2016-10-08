@@ -53,7 +53,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// <param name="setFocus">Передать фокус найденному объекту?</param>
         public GetObjectAct(EObjectType objectType, Point objectPos, Boolean setFocus = true)
         {
-            ObjectType = objectType;
+            //ObjectType = objectType;
             ObjectPos = objectPos;
             SetFocus = setFocus;
         }
