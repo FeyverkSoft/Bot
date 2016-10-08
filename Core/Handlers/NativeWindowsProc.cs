@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using Core.Core;
+using LogWrapper;
 
 namespace Core.Handlers
 {
@@ -104,7 +105,7 @@ namespace Core.Handlers
         /// <returns></returns>
         public WinInfo GetWinInfo(String title, ESearchParam searchParam = ESearchParam.Contained)
         {
-            var rets = new WinInfo(title, 0, 0,0,0, (IntPtr)0, false);
+            var rets = new WinInfo(title, 0, 0, 0, 0, (IntPtr)0, false);
             EnumWindows((hWnd, lParam) =>
             {
                 if (IsWindowVisible(hWnd))
@@ -117,7 +118,7 @@ namespace Core.Handlers
                             {
                                 RECT r = new RECT();
                                 GetWindowRect(hWnd, ref r);
-                                rets = new WinInfo(desTitle, r.X, r.Y,r.Width,r.Height, hWnd, true);
+                                rets = new WinInfo(desTitle, r.X, r.Y, r.Width, r.Height, hWnd, true);
                             }
                             break;
                         case ESearchParam.Start:
@@ -162,7 +163,106 @@ namespace Core.Handlers
         /// <returns></returns>
         public ObjectInfo GetObjectFromPoint(Point p)
         {
-            throw new NotImplementedException();
+            IntPtr hWnd = WindowFromPoint(p);
+            Log.Write(hWnd);
+            RECT r = new RECT();
+            if (GetWindowRect(hWnd, ref r))
+            {
+                var hWnd1 = ChildWindowFromPoint(hWnd, new Point(p.X - r.X, p.Y - r.Y));
+                if (hWnd1 != (IntPtr)0)
+                {
+                    RECT r2 = new RECT();
+                    GetWindowRect(hWnd, ref r2);
+                    return new ObjectInfo(hWnd1, new Point(r2.X, r2.Y), new Size(r2.Width, r2.Height), ParseClass(GetWindowClassName(hWnd1)), GetWindowText(hWnd1));
+                }
+                else
+                {
+                    return new ObjectInfo(hWnd, new Point(r.X, r.Y), new Size(r.Width, r.Height), ParseClass(GetWindowClassName(hWnd)), GetWindowText(hWnd));
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Логика разбора, тяжёлый ппц метод :D
+        /// </summary>
+        /// <param name="obgectName"></param>
+        /// <returns></returns>
+        private EObjectType ParseClass(String obgectName)
+        {
+            if (String.IsNullOrEmpty(obgectName))
+                return EObjectType.Any;
+            var res = EObjectType.Any;
+            if (obgectName.Trim().ToLower().Contains("button") || obgectName.Trim().ToLower().Contains("traybutton"))
+            {
+                res &= EObjectType.Button;
+                if (obgectName.Trim().ToLower().Contains("traybutton"))
+                    res &= EObjectType.TrayButton;
+                return res;
+            }
+            if (obgectName.Trim().ToLower().Contains("start"))
+            {
+                return res & EObjectType.Start;
+            }
+            if (obgectName.Trim().ToLower().Contains("window") || obgectName.Trim().ToLower().Contains("cabinetwclass") ||
+                obgectName.Trim().ToLower().Contains("consolewindow"))
+            {
+                res &= EObjectType.Window;
+                if (obgectName.Trim().ToLower().Contains("consolewindow"))
+                    res &= EObjectType.ConsoleWindow;
+                return res;
+            }
+            if (obgectName.Trim().ToLower().Contains("netuihwnd") ||
+                obgectName.Trim().ToLower().Contains("directuihwnd"))
+            {
+                res &= EObjectType.UIHWND;
+                if (obgectName.Trim().ToLower().Contains("netuihwnd"))
+                    res &= EObjectType.NetUIHWND;
+                if (obgectName.Trim().ToLower().Contains("directuihwnd"))
+                    res &= EObjectType.DirectUIHWND;
+                return res;
+            }
+            if (obgectName.Trim().ToLower().Contains("treeview"))
+            {
+                return res & EObjectType.TreeView;
+            }
+            if (obgectName.Trim().ToLower().Contains("combobox"))
+            {
+                return res & EObjectType.ComboBox;
+            }
+            if (obgectName.Trim().ToLower().Contains("edit"))
+            {
+                return res & EObjectType.Edit;
+            }
+            if (obgectName.Trim().ToLower().Contains("toolbar"))
+            {
+                return res & EObjectType.Toolbar;
+            }
+            if (obgectName.Trim().ToLower().Contains("folderview"))
+            {
+                return res & EObjectType.FolderView;
+            }
+            if (obgectName.Trim().ToLower().Contains("windows.ui.core.corewindow"))
+            {
+                return res & EObjectType.UICoreWindow;
+            }
+            if (obgectName.Trim().ToLower().Contains("static"))
+            {
+                return res & EObjectType.Static;
+            }
+            if (obgectName.Trim().ToLower().Contains("tabcontrol"))
+            {
+                return res & EObjectType.TabControl;
+            }
+            if (obgectName.Trim().ToLower().Contains("statusbar"))
+            {
+                return res & EObjectType.StatusBar;
+            }
+            if (obgectName.Trim().ToLower().Contains("progress"))
+            {
+                return res & EObjectType.StatusBar;
+            }
+            return res;
         }
     }
 }

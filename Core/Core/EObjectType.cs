@@ -9,6 +9,7 @@ namespace Core.Core
     /// <summary>
     /// Тип объектов которые надо получить
     /// </summary>
+    [Flags]
     public enum EObjectType
     {
         /// <summary>
@@ -19,6 +20,23 @@ namespace Core.Core
         /// Кнопка
         /// </summary>
         Button,
+        TrayButton,
+        TreeView,
+        ConsoleWindow,
+        Start,
+        Edit,
+        ComboBox,
+        FolderView,
+        Toolbar,
+        UICoreWindow,
+        Static,
+        TabControl,
+        StatusBar,
+        ProgressBar,
+        UIHWND,
+        NetUIHWND,
+        DirectUIHWND,
+
         /// <summary>
         /// Любой тип
         /// </summary>
