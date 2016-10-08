@@ -27,7 +27,7 @@ namespace Core.Core
         public Int32 Y { get; set; }
 
         /// <summary>
-        /// Это путая точка? пустая если x и y = 0
+        /// Это пустая точка? пустая если x и y = 0
         /// </summary>
         public Boolean IsEmpty => X == 0 && Y == 0;
 

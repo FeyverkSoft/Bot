@@ -80,6 +80,22 @@ namespace Core.Handlers
         [DllImport("User32.dll", SetLastError = true)]
         private static extern Int32 SetForegroundWindow([In] IntPtr hWnd);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern IntPtr WindowFromPoint(Point point);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern IntPtr ChildWindowFromPoint(IntPtr hWndParent, Point point);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 GetClassName(IntPtr hWnd, StringBuilder lpClassName, Int32 nMaxCount);
+        private static String GetWindowClassName(IntPtr hWnd)
+        {
+            StringBuilder buffer = new StringBuilder(128);
+            GetClassName(hWnd, buffer, buffer.Capacity);
+            return buffer.ToString();
+        }
+
+
         /// <summary>
         /// Получть информацию об окне с указанным заголовком
         /// </summary>
@@ -88,7 +104,7 @@ namespace Core.Handlers
         /// <returns></returns>
         public WinInfo GetWinInfo(String title, ESearchParam searchParam = ESearchParam.Contained)
         {
-            var rets = new WinInfo(title, 0, 0, (IntPtr)0, false);
+            var rets = new WinInfo(title, 0, 0,0,0, (IntPtr)0, false);
             EnumWindows((hWnd, lParam) =>
             {
                 if (IsWindowVisible(hWnd))
@@ -97,28 +113,28 @@ namespace Core.Handlers
                     switch (searchParam)
                     {
                         case ESearchParam.End:
-                            if (desTitle.Trim().ToLower().EndsWith(title?.Trim().ToLower()))
+                            if (title != null && desTitle.Trim().ToLower().EndsWith(title?.Trim().ToLower()))
                             {
                                 RECT r = new RECT();
                                 GetWindowRect(hWnd, ref r);
-                                rets = new WinInfo(desTitle, r.X, r.Y, hWnd, true);
+                                rets = new WinInfo(desTitle, r.X, r.Y,r.Width,r.Height, hWnd, true);
                             }
                             break;
                         case ESearchParam.Start:
-                            if (desTitle.Trim().ToLower().StartsWith(title?.Trim().ToLower()))
+                            if (title != null && desTitle.Trim().ToLower().StartsWith(title?.Trim().ToLower()))
                             {
                                 RECT r = new RECT();
                                 GetWindowRect(hWnd, ref r);
-                                rets = new WinInfo(desTitle, r.X, r.Y, hWnd, true);
+                                rets = new WinInfo(desTitle, r.X, r.Y, r.Width, r.Height, hWnd, true);
                             }
                             break;
                         case ESearchParam.Contained:
                         default:
-                            if (desTitle.Trim().ToLower().Contains(title?.Trim().ToLower()))
+                            if (title != null && desTitle.Trim().ToLower().Contains(title?.Trim().ToLower()))
                             {
                                 RECT r = new RECT();
                                 GetWindowRect(hWnd, ref r);
-                                rets = new WinInfo(desTitle, r.X, r.Y, hWnd, true);
+                                rets = new WinInfo(desTitle, r.X, r.Y, r.Width, r.Height, hWnd, true);
                             }
                             break;
                     }
@@ -137,6 +153,16 @@ namespace Core.Handlers
         {
             ShowWindow(winId, 1);
             SetForegroundWindow(winId);
+        }
+
+        /// <summary>
+        /// Возвращает объект, который содержит указанную точку
+        /// </summary>
+        /// <param name="p">точка, которая должна содержаться в объекте</param>
+        /// <returns></returns>
+        public ObjectInfo GetObjectFromPoint(Point p)
+        {
+            throw new NotImplementedException();
         }
     }
 }

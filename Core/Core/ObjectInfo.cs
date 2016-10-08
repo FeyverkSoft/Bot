@@ -1,51 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Core
 {
     /// <summary>
-    /// Базовый класс с информацией об объекте
+    /// Информация об объекте
     /// </summary>
-    public class BaseObjectInfo
+    public class ObjectInfo : BaseObjectInfo
     {
+        /// <summary>
+        /// Тип объекта
+        /// </summary>
+        public EObjectType ObjectType { get; private set; }
 
-        /// <summary>
-        /// Наименование объекта, если оно есть
-        /// </summary>
-        [DataMember]
-        public String ObjectTitile { get; private set; }
-        /// <summary>
-        /// Точка указывающая на позицию объекта
-        /// </summary>
-        [DataMember]
-        public Point Pos { get; private set; }
-
-        /// <summary>
-        /// Идентификатор дескриптора
-        /// </summary>
-        [DataMember]
-        public IntPtr Descriptor { get; private set; }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="descriptor">Дескриптор объекта</param>
         /// <param name="pos">Позация объекта</param>
+        /// <param name="size">Размер объекта</param>
+        /// <param name="objectType">Тип объекта</param>
         /// <param name="objectTitile">Наименование объекта, если оно есть</param>
-        public BaseObjectInfo(IntPtr descriptor, Point pos, String objectTitile = null)
+        public ObjectInfo(IntPtr descriptor, Point pos, Size size, EObjectType objectType, String objectTitile = null) : base(descriptor, pos, size, objectTitile)
         {
-            ObjectTitile = objectTitile;
-            Descriptor = descriptor;
-            Pos = pos;
+            ObjectType = objectType;
         }
-        public BaseObjectInfo(IntPtr descriptor, Int32 x, Int32 y, String objectTitile = null)
+
+        public ObjectInfo(IntPtr descriptor, Int32 x, Int32 y, Int32 widthX, Int32 heightY, EObjectType objectType, String objectTitile = null) : base(descriptor, x, y, widthX, heightY, objectTitile)
         {
-            ObjectTitile = objectTitile;
-            Descriptor = descriptor;
-            Pos = new Point(x, y);
+            ObjectType = objectType;
         }
     }
 }

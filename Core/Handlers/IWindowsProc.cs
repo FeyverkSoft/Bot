@@ -21,5 +21,12 @@ namespace Core.Handlers
         /// </summary>
         /// <param name="winId">дескриптор</param>
         void ShowWindow(IntPtr winId);
+
+        /// <summary>
+        /// Возвращает объект, который содержит указанную точку
+        /// </summary>
+        /// <param name="p">точка, которая должна содержаться в объекте</param>
+        /// <returns></returns>
+        ObjectInfo GetObjectFromPoint(Point p);
     }
 }
