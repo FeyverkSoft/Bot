@@ -84,7 +84,7 @@ namespace Core.ActionExecutors
                                         Mouse.MouseMove(currentPos.X + action.X, currentPos.Y + action.Y);//Дич, аналогично тому что просто вызвать, но но, при передаче тунельемпараметра может быть эффект :)
                                     } break;
                                 default:
-                                    throw new NotSupportedException(previousResult.GetType().Name);
+                                    break;
                             }
                         }
                         else

@@ -38,8 +38,37 @@ namespace Core.ActionExecutors
 
             if (actions.Count > 1)
                 throw new Exception("Получить можно только один объект.");
+
             ObjectExecutorResult res = null;
-            if (actions.Count == 0 && previousResult != null)
+
+            var tr = Invoke(previousResult);
+            if (tr.State == EResultState.Success)
+                res = ((ObjectExecutorResult)Invoke(previousResult));
+
+            var objectAct = actions.Cast<GetObjectAct>().First();
+            if (res != null)
+            {
+                if (objectAct.SetFocus)
+                    try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
+                return res;
+            }
+
+            if (!objectAct.ObjectPos.IsEmpty)
+                res = new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(objectAct.ObjectPos));
+
+            if (res != null)
+            {
+                if (objectAct.SetFocus)
+                    try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
+                return res;
+            }
+            return new BaseExecutorResult(EResultState.NoResult);
+        }
+
+        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
+            ObjectExecutorResult res = null;
+            if (previousResult != null)
             {
                 //выбор особых сценариев дляразных результатов
                 //например перемещение относительно окна или еще чего то
@@ -76,32 +105,10 @@ namespace Core.ActionExecutors
                         }
                         break;
                     default:
-                        throw new NotSupportedException(previousResult.GetType().Name);
+                        break;
                 }
             }
-            var objectAct = actions.Cast<GetObjectAct>().First();
-            if (res != null)
-            {
-                if (objectAct.SetFocus)
-                    try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
-                return res;
-            }
-
-            if (!objectAct.ObjectPos.IsEmpty)
-                res = new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(objectAct.ObjectPos));
-
-            if (res != null)
-            {
-                if (objectAct.SetFocus)
-                    try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
-                return res;
-            }
-            return new BaseExecutorResult(EResultState.NoResult);
-        }
-
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
-        {
-            throw new NotSupportedException();
+            return res ?? previousResult ?? new BaseExecutorResult(EResultState.NoResult);
         }
     }
 }

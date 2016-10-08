@@ -77,7 +77,7 @@ namespace Core.ActionExecutors
                                     }
                                     break;
                                 default:
-                                    throw new NotSupportedException(previousResult.GetType().Name);
+                                    break;
                             }
                         }
                         else if (!action.ToObject)
