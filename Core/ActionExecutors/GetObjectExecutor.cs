@@ -15,6 +15,7 @@ namespace Core.ActionExecutors
     public class GetObjectExecutor : BaseExecutor
     {
         readonly IWindowsProc _windowsProc = new NativeWindowsProc();
+
         /// <summary>
         /// Исполняет метод получения информации об указанном объекте
         /// </summary>
@@ -29,14 +30,15 @@ namespace Core.ActionExecutors
                 Message = new
                 {
                     func = $"{GetType().Name}.{nameof(Invoke)}",
-                    param = $"{nameof(actions)}: {actions.ToJson(false, false)} ;{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
+                    param =
+                    $"{nameof(actions)}: {actions.ToJson(false, false)} ;{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
                 },
                 Status = EStatus.Info
             }, false);
 
             if (actions.Count > 1)
                 throw new Exception("Получить можно только один объект.");
-
+            ObjectExecutorResult res = null;
             if (actions.Count == 0 && previousResult != null)
             {
                 //выбор особых сценариев дляразных результатов
@@ -50,33 +52,50 @@ namespace Core.ActionExecutors
                             if (expWin.State != EResultState.Success && expWin.ExecutorResult == null)
                                 throw new Exception("Ошибка относительного позиционирования, ExpectWindowExecutorResult не валиден");
 
-                            return new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(expWin.ExecutorResult.Pos));
+                            res = new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(expWin.ExecutorResult.Pos));
                         }
+                        break;
                     case nameof(CurrentMousePosExecutorResult):
                         {
                             var mousePos = (CurrentMousePosExecutorResult)previousResult;
                             if (mousePos.State != EResultState.Success)
                                 throw new Exception("Ошибка относительного позиционирования, CurrentMousePosExecutorResult не валиден");
                             var currentPos = mousePos.ExecutorResult;
-                            return new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(currentPos));
+                            res = new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(currentPos));
                         }
+                        break;
                     case nameof(ObjectExecutorResult):
                         {
                             var mousePos = (ObjectExecutorResult)previousResult;
                             if (mousePos.State != EResultState.Success)
                                 throw new Exception("Ошибка относительного позиционирования, ObjectExecutorResult не валиден");
                             var currentPos = mousePos.ExecutorResult.Pos;
-                            return new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(currentPos));
+                            var info = _windowsProc.GetObjectFromPoint(currentPos);
+                            _windowsProc.ShowWindow(info.Descriptor);
+                            res = new ObjectExecutorResult(info);
                         }
+                        break;
                     default:
                         throw new NotSupportedException(previousResult.GetType().Name);
                 }
             }
-
             var objectAct = actions.Cast<GetObjectAct>().First();
-            if (!objectAct.ObjectPos.IsEmpty)
-                return new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(objectAct.ObjectPos));
+            if (res != null)
+            {
+                if (objectAct.SetFocus)
+                    try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
+                return res;
+            }
 
+            if (!objectAct.ObjectPos.IsEmpty)
+                res = new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(objectAct.ObjectPos));
+
+            if (res != null)
+            {
+                if (objectAct.SetFocus)
+                    try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
+                return res;
+            }
             return new BaseExecutorResult(EResultState.NoResult);
         }
 
