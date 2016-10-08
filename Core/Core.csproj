@@ -58,6 +58,7 @@
     <Compile Include="ActionExecutors\ExecutorResult\BooleanExecutorResult.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\CurrentMousePosExecutorResult.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\ObjectExecutorResult.cs" />
+    <Compile Include="ActionExecutors\ExecutorResult\ScreenShotExecutorResult.cs" />
     <Compile Include="ActionExecutors\GetObjectExecutor.cs" />
     <Compile Include="ActionExecutors\GetScreenShotExecutor.cs" />
     <Compile Include="ActionExecutors\IfExecutor.cs" />

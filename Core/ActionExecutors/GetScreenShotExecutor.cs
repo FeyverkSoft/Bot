@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
+using Core.Helpers;
 
 namespace Core.ActionExecutors
 {
     /// <summary>
     /// Функция получения скриншота
     /// </summary>
-   public class GetScreenShotExecutor:BaseExecutor
+    public class GetScreenShotExecutor : BaseExecutor
     {
         /// <summary>
         /// Вызвать выполнение действия у указанной фfбрики
@@ -31,7 +33,10 @@ namespace Core.ActionExecutors
         /// <returns></returns>
         public override IExecutorResult Invoke(IExecutorResult previousResult = null)
         {
-            throw new NotImplementedException();
+            if (previousResult == null)
+                return new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(0, 0, Screen.PrimaryScreen.Bounds.Width,
+                    Screen.PrimaryScreen.Bounds.Height));
+            return new BaseExecutorResult(EResultState.NoResult);
         }
     }
 }
