@@ -21,9 +21,11 @@ namespace Executor
             core.Run(DnConf());
 #else
 
-            Thread.Sleep(8000);
+            Thread.Sleep(4000);
             core.Run(new ListBotAction() {
-                new BotAction(ActionType.MouseLClick),
+                new BotAction(ActionType.GetMousePos),
+                new BotAction(ActionType.GetObject, new GetObjectAct()),
+                new BotAction(ActionType.GetScreenshot, new ScreenShotAct())
                 });
 
 #endif

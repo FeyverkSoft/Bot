@@ -10,63 +10,63 @@ namespace Core.ConfigEntity
         /// <summary>
         /// Действие перемещения мышки в нужную позицию
         /// </summary>
-        MouseMove = 0,
+        MouseMove,
         /// <summary>
         /// Действие установки указателя в указанную позицию
         /// </summary>
-        MouseSetPos = 2,
+        MouseSetPos,
         /// <summary>
         /// Действие нажатия Правой кнопки мышки
         /// </summary>
-        MouseRClick = 4,
+        MouseRClick,
         /// <summary>
         /// Действие нажатия Левой кнопки мышки
         /// </summary>
-        MouseLClick = 8,
+        MouseLClick,
+        /// <summary>
+        /// Получить позицию курсора
+        /// </summary>
+        GetMousePos,
         /// <summary>
         /// Действие нажатия клавишы на клавиатуре если переданно несколько, то они нажимаются последовательно
         /// </summary>
-        KeyBoard = 16,
+        KeyBoard,
         /// <summary>
         /// Действие нажатия одновременно нескольких клавиш на клавиатуре
         /// Если перереданно несколько, то они нажимаются одновременно :D
         /// </summary>
-        KeyBoardKeys = 32,
+        KeyBoardKeys,
         /// <summary>
         /// Действие сна бота на указанное время
         /// </summary>
-        Sleep = 64,
+        Sleep,
         /// <summary>
         /// Цикл Особый оператор, не требующий фабрики
         /// </summary>
-        Loop = 128,
+        Loop,
         /// <summary>
         /// Описание действий который должен проверить и/или выполнить плагин
         /// </summary>
-        PluginInvoke = 256,
-        /// <summary>
-        /// Выполнить действие для AI, возможно вытеснится плагинами
-        /// </summary>
-        Ai = 512,
+        PluginInvoke,
         /// <summary>
         /// Особый оператор условного ветвления
         /// </summary>
-        If = 1024,
+        If,
         /// <summary>
         /// Оператор поиска окна с указанным названием, как только окно появится, выполение комманд продолжится
         /// </summary>
-        ExpectWindow = 2048,
+        ExpectWindow,
         /// <summary>
         /// Получить инфу об указанном объекте
         /// </summary>
-        GetObject = 4096,
+        GetObject,
         /// <summary>
         /// Получить скриншот
         /// </summary>
-        GetScreenshot = 8192,
+        GetScreenshot,
         /// <summary>
         /// Фальшивый объект, для эмулации чего либо :) но не исполнения этого в реале
         /// </summary>
-        Mock = 16384
+        Mock
     }
 }

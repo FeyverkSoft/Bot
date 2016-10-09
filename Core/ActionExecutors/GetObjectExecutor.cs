@@ -41,26 +41,34 @@ namespace Core.ActionExecutors
 
             ObjectExecutorResult res = null;
 
-            var tr = Invoke(previousResult);
-            if (tr.State == EResultState.Success)
-                res = ((ObjectExecutorResult)Invoke(previousResult));
+            var objectAct = actions.Cast<GetObjectAct>().FirstOrDefault();
 
-            var objectAct = actions.Cast<GetObjectAct>().First();
+            if (objectAct == null|| objectAct.ObjectPos.IsEmpty|| previousResult != null)
+                res = (ObjectExecutorResult)Invoke(previousResult);
+
             if (res != null)
             {
-                if (objectAct.SetFocus)
+                if (objectAct?.SetFocus == true)
                     try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
                 return res;
             }
-
-            if (!objectAct.ObjectPos.IsEmpty)
-                res = new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(objectAct.ObjectPos));
-
-            if (res != null)
+            if (objectAct != null)
             {
-                if (objectAct.SetFocus)
-                    try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
-                return res;
+                if (!objectAct.ObjectPos.IsEmpty)
+                    res = new ObjectExecutorResult(_windowsProc.GetObjectFromPoint(objectAct.ObjectPos));
+
+                if (res != null)
+                {
+                    if (objectAct.SetFocus)
+                        try
+                        {
+                            _windowsProc.ShowWindow(res.ExecutorResult.Descriptor);
+                        }
+                        catch
+                        {
+                        }
+                    return res;
+                }
             }
             return new BaseExecutorResult(EResultState.NoResult);
         }

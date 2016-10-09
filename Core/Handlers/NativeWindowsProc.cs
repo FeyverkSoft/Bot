@@ -59,6 +59,15 @@ namespace Core.Handlers
         /// <returns></returns>
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         private static extern Boolean GetWindowRect(IntPtr hwnd, ref RECT rectangle);
+        /// <summary>
+        /// Вернуть размеры и позицию окна
+        /// </summary>
+        /// <param name="hwnd">Дескриптор окна, для которого ищем размеры и позицию</param>
+        /// <param name="rectangle"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern Boolean GetClientRect(IntPtr hwnd, ref RECT rectangle);
+        
 
         [StructLayout(LayoutKind.Sequential)]
         private struct RECT
@@ -165,19 +174,20 @@ namespace Core.Handlers
         {
             IntPtr hWnd = WindowFromPoint(p);
             Log.Write(hWnd);
-            RECT r = new RECT();
-            if (GetWindowRect(hWnd, ref r))
+            RECT r = new RECT(), rr = new RECT();
+            GetWindowRect(hWnd, ref rr);
+            if (GetClientRect(hWnd, ref r))
             {
-                var hWnd1 = ChildWindowFromPoint(hWnd, new Point(p.X - r.X, p.Y - r.Y));
+                var hWnd1 = ChildWindowFromPoint(hWnd, new Point(p.X - rr.X, p.Y - rr.Y));
                 if (hWnd1 != (IntPtr)0)
                 {
                     RECT r2 = new RECT();
-                    GetWindowRect(hWnd, ref r2);
-                    return new ObjectInfo(hWnd1, new Point(r2.X, r2.Y), new Size(r2.Width, r2.Height), ParseClass(GetWindowClassName(hWnd1)), GetWindowText(hWnd1));
+                    GetClientRect(hWnd1, ref r2);
+                    return new ObjectInfo(hWnd1, new Point(rr.X, rr.Y), new Size(r2.Width, r2.Height), ParseClass(GetWindowClassName(hWnd1)), GetWindowText(hWnd1));
                 }
                 else
                 {
-                    return new ObjectInfo(hWnd, new Point(r.X, r.Y), new Size(r.Width, r.Height), ParseClass(GetWindowClassName(hWnd)), GetWindowText(hWnd));
+                    return new ObjectInfo(hWnd, new Point(rr.X, rr.Y), new Size(r.Width, r.Height), ParseClass(GetWindowClassName(hWnd)), GetWindowText(hWnd));
                 }
             }
             return null;

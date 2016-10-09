@@ -48,8 +48,6 @@ namespace Core.Core
                     if (!executorCache.ContainsKey(type))
                         executorCache.Add(type, new SleepExecutor());
                     return executorCache[type];
-                case ActionType.Ai:
-                    return new MockExecutor();
                 case ActionType.PluginInvoke:
                     return new MockExecutor();
                 case ActionType.ExpectWindow:
@@ -64,8 +62,15 @@ namespace Core.Core
                     if (!executorCache.ContainsKey(type))
                         executorCache.Add(type, new GetObjectExecutor());
                     return executorCache[type];
-                case ActionType.Loop:
                 case ActionType.GetScreenshot:
+                    if (!executorCache.ContainsKey(type))
+                        executorCache.Add(type, new GetScreenShotExecutor());
+                    return executorCache[type];
+                case ActionType.GetMousePos:
+                    if (!executorCache.ContainsKey(type))
+                        executorCache.Add(type, new GetMousePosExecutor());
+                    return executorCache[type];
+                case ActionType.Loop:
                 case ActionType.Mock:
                 default:
                     return new MockExecutor();

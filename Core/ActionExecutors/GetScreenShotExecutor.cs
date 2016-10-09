@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Core.ActionExecutors.ExecutorResult;
@@ -30,13 +31,18 @@ namespace Core.ActionExecutors
             var act = actions.Cast<ScreenShotAct>().First();
             ScreenShotExecutorResult res;
             if (!act.Size.IsEmpty)
-                res = new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y, act.Size.WidthX, act.Size.HeightY));
+                    res = new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y, act.Size.WidthX, act.Size.HeightY));
             else
             {
-                var width = (Screen.PrimaryScreen.Bounds.Width - act.Point.X);
-                var height = (Screen.PrimaryScreen.Bounds.Height - act.Point.Y);
-                res = new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y,
-                   width > 0 ? width : 1, height > 0 ? height : 1));
+                if (previousResult != null)
+                    res = (ScreenShotExecutorResult) Invoke(previousResult);
+                else
+                {
+                    var width = (Screen.PrimaryScreen.Bounds.Width - act.Point.X);
+                    var height = (Screen.PrimaryScreen.Bounds.Height - act.Point.Y);
+                    res = new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y,
+                        width > 0 ? width : 1, height > 0 ? height : 1));
+                }
             }
             if (act.SaveFileParam != null)
             {
@@ -61,7 +67,7 @@ namespace Core.ActionExecutors
                         imgF = ImageFormat.Png;
                         break;
                 }
-                res.Bitmap.Save($"{param.Path}{param.Type}", imgF);
+                res.Bitmap.Save($"{param.Path}/{param.Name ?? DateTime.UtcNow.ToString("O").Replace(":", "_")}.{param.Type}", imgF);
             }
             return res;
         }

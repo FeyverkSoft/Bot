@@ -20,7 +20,11 @@ namespace Core.ConfigEntity
         /// </summary>
         public String Type { get; private set; }
 
-        public SaveFileParam(String path, String type)
+        /// <summary>
+        /// Наименование файла
+        /// </summary>
+        public String Name { get; private set; }
+        public SaveFileParam(String path, String type, String name = null)
         {
             if(String.IsNullOrEmpty(path))
                 throw new ArgumentNullException(nameof(path));
@@ -28,6 +32,7 @@ namespace Core.ConfigEntity
                 throw new ArgumentNullException(nameof(type));
             Path = path;
             Type = type;
+            Name = name;
         }
     }
 }

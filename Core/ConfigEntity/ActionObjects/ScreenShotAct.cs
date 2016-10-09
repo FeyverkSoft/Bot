@@ -27,6 +27,11 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         public SaveFileParam SaveFileParam { get; private set; }
 
+        public ScreenShotAct()
+        {
+            SaveFileParam = new SaveFileParam("ScreenShot","png");
+        }
+
         public ScreenShotAct(SaveFileParam saveFileParam)
         {
             SaveFileParam = saveFileParam;
