@@ -33,6 +33,8 @@ namespace Core.ActionExecutors
             }, false);
             if (actions.Count == 0)
                 return new BooleanExecutorResult(false);
+            if(actions.Count > 1)
+                throw new Exception("Проверка может быть только одна");
             Boolean result = true;
 
             foreach (var action in actions.Cast<IfAction>())

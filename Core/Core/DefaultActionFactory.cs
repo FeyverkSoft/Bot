@@ -9,7 +9,7 @@ namespace Core.Core
     /// </summary>
     public sealed class DefaultActionFactory : IActionFactory
     {
-        private Dictionary<ActionType, IExecutor> executorCache = new Dictionary<ActionType, IExecutor>();
+        private readonly Dictionary<ActionType, IExecutor> _executorCache = new Dictionary<ActionType, IExecutor>();
         /// <summary>
         /// Возвращает исполнителя по типу действия
         /// </summary>
@@ -21,55 +21,57 @@ namespace Core.Core
             switch (type)
             {
                 case ActionType.MouseMove:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new MouseMoveExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new MouseMoveExecutor());
+                    return _executorCache[type];
                 case ActionType.MouseSetPos:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new MouseSetPosExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new MouseSetPosExecutor());
+                    return _executorCache[type];
                 case ActionType.MouseRClick:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new MouseRClickExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new MouseRClickExecutor());
+                    return _executorCache[type];
                 case ActionType.MouseLClick:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new MouseLClickExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new MouseLClickExecutor());
+                    return _executorCache[type];
                 case ActionType.KeyBoard:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new KeyBoardExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new KeyBoardExecutor());
+                    return _executorCache[type];
                 case ActionType.KeyBoardKeys:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new KeyBoardKeysExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new KeyBoardKeysExecutor());
+                    return _executorCache[type];
                 case ActionType.Sleep:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new SleepExecutor());
-                    return executorCache[type];
-                case ActionType.PluginInvoke:
-                    return new MockExecutor();
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new SleepExecutor());
+                    return _executorCache[type];
                 case ActionType.ExpectWindow:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new ExpectWindowExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new ExpectWindowExecutor());
+                    return _executorCache[type];
                 case ActionType.If:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new IfExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new IfExecutor());
+                    return _executorCache[type];
                 case ActionType.GetObject:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new GetObjectExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new GetObjectExecutor());
+                    return _executorCache[type];
                 case ActionType.GetScreenshot:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new GetScreenShotExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new GetScreenShotExecutor());
+                    return _executorCache[type];
                 case ActionType.GetMousePos:
-                    if (!executorCache.ContainsKey(type))
-                        executorCache.Add(type, new GetMousePosExecutor());
-                    return executorCache[type];
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new GetMousePosExecutor());
+                    return _executorCache[type];
+                case ActionType.PluginInvoke:
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new PluginInvokeExecutor());
+                    return _executorCache[type];
                 case ActionType.Loop:
                 case ActionType.Mock:
                 default:

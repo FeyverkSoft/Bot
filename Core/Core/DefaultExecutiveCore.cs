@@ -47,7 +47,7 @@ namespace Core.Core
         /// <summary>
         /// Запустить исполнителя идействий описанных в конфигурации
         /// </summary>
-        public async void Run(Config config)
+        public async Task<IExecutorResult> Run(Config config)
         {
             if (config == null)
                 throw new NullReferenceException(nameof(config));
@@ -55,30 +55,31 @@ namespace Core.Core
             if (config.BotVer != Assembly.GetExecutingAssembly().GetName().Version)
                 Print(new { Status = EStatus.Warning, Message = $"Версия конфигурауционного файла не совпадает сверсией интерпретатора! Возможны побочные эффекты.", Date = DateTime.Now });
 
-            await Task.Factory.StartNew(() => Run(config.Actions));
+           return await Run(config.Actions);
         }
         /// <summary>
         /// Выполнить список действий
         /// </summary>
         /// <param name="actions">Список действий к исполнению</param>
-        public async void Run(ListBotAction actions)
+        public async Task<IExecutorResult> Run(ListBotAction actions)
         {
             if (actions == null)
                 throw new NullReferenceException(nameof(actions));
             Print(new { Status = EStatus.Info, Message = $"--BEGIN--{Environment.NewLine}{nameof(DefaultExecutiveCore)}.Run()", Date = DateTime.Now });
             IsAbort = false;
-            await Task.Factory.StartNew(() => InternalIterator(actions, new BaseExecutorResult()));
+            var res = await Task.Factory.StartNew(() => InternalIterator(actions, new BaseExecutorResult()));
             Print(new { Status = EStatus.Info, Message = $"--END--{Environment.NewLine}{nameof(DefaultExecutiveCore)}.Run()", Date = DateTime.Now });
+            return res;
         }
         /// <summary>
         /// Выполнить одно действие бота
         /// </summary>
         /// <param name="action">Действие к исполнению ботом</param>
-        public void Run(IBotAction action)
+        public IExecutorResult Run(IBotAction action)
         {
             if (action == null)
                 throw new NullReferenceException(nameof(action));
-            InternalActRun(action, null);
+            return InternalActRun(action, null);
         }
 
         /// <summary>
@@ -150,7 +151,7 @@ namespace Core.Core
                             }
                             return res;
                         }
-                    case ActionType.If:
+                    case ActionType.If: // пока что нет идей что и как можно проверять
                         {
                             if (action.SubActions.Count > 0)
                             {
@@ -160,7 +161,7 @@ namespace Core.Core
                                 {
                                     return InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult
                                         ? (action as IfAction).Actions
-                                        : (action as IfAction).FailActions, res);
+                                        : (action as IfAction).FailActions,res);
                                 }
                                 IsAbort = true;
                                 throw new Exception("Incorrect If>BooleanExecutorResult!");

@@ -43,10 +43,10 @@ namespace Core.ActionExecutors
 
             var objectAct = actions.Cast<GetObjectAct>().FirstOrDefault();
 
-            if (objectAct == null|| objectAct.ObjectPos.IsEmpty|| previousResult != null)
+            if ((objectAct == null || objectAct.ObjectPos.IsEmpty) && previousResult?.State == EResultState.Success)
                 res = (ObjectExecutorResult)Invoke(previousResult);
 
-            if (res != null)
+            if (res != null && res.State == EResultState.Success)
             {
                 if (objectAct?.SetFocus == true)
                     try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
@@ -60,13 +60,7 @@ namespace Core.ActionExecutors
                 if (res != null)
                 {
                     if (objectAct.SetFocus)
-                        try
-                        {
-                            _windowsProc.ShowWindow(res.ExecutorResult.Descriptor);
-                        }
-                        catch
-                        {
-                        }
+                        try { _windowsProc.ShowWindow(res.ExecutorResult.Descriptor); } catch { }
                     return res;
                 }
             }

@@ -19,7 +19,7 @@ namespace Core.Helpers
         /// <returns></returns>
         public static Bitmap GetScreenShot(Int32 x, Int32 y, Int32 width, Int32 height, Boolean grayScale = false)
         {
-            var primaryScreen = Screen.PrimaryScreen;
+            //var primaryScreen = Screen.PrimaryScreen;
             var bmpScreenShot = new Bitmap(width, height);
             Graphics gScreenShot = Graphics.FromImage(bmpScreenShot);
             gScreenShot.CopyFromScreen(x, y, 0, 0, new Size(width, height), CopyPixelOperation.SourceCopy);

@@ -1,4 +1,6 @@
-﻿using Core.ConfigEntity;
+﻿using System.Threading.Tasks;
+using Core.ActionExecutors.ExecutorResult;
+using Core.ConfigEntity;
 using Core.Events;
 
 namespace Core.Core
@@ -19,16 +21,16 @@ namespace Core.Core
         /// <summary>
         /// Запустить исполнителя идействий описанных в конфигурации
         /// </summary>
-        void Run(Config config);
+        Task<IExecutorResult> Run(Config config);
         /// <summary>
         /// Выполнить список действий
         /// </summary>
         /// <param name="actions">Список действий к исполнению</param>
-        void Run(ListBotAction actions);
+        Task<IExecutorResult> Run(ListBotAction actions);
         /// <summary>
         /// Выполнить одно действие бота
         /// </summary>
         /// <param name="action">Действие к исполнению ботом</param>
-        void Run(IBotAction action);
+        IExecutorResult Run(IBotAction action);
     }
 }

@@ -1,9 +1,12 @@
-﻿namespace Core.ConfigEntity.ActionObjects
+﻿using System.Runtime.Serialization;
+
+namespace Core.ConfigEntity.ActionObjects
 {
     /// <summary>
-    /// Информация для выхова плагина
+    /// Информация для вызова плагина
     /// </summary>
     public class PluginInvokeAct : IAction
     {
+
     }
 }
