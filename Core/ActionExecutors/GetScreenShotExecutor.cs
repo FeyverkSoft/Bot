@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
@@ -30,7 +28,42 @@ namespace Core.ActionExecutors
             if (actions.Count > 1)
                 throw new Exception("Возможно выполнение только 1го действия");
             var act = actions.Cast<ScreenShotAct>().First();
-
+            ScreenShotExecutorResult res;
+            if (!act.Size.IsEmpty)
+                res = new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y, act.Size.WidthX, act.Size.HeightY));
+            else
+            {
+                var width = (Screen.PrimaryScreen.Bounds.Width - act.Point.X);
+                var height = (Screen.PrimaryScreen.Bounds.Height - act.Point.Y);
+                res = new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y,
+                   width > 0 ? width : 1, height > 0 ? height : 1));
+            }
+            if (act.SaveFileParam != null)
+            {
+                var param = act.SaveFileParam;
+                DirectoryHelper.CreateDirectory(param.Path);
+                ImageFormat imgF;
+                switch (param.Type.ToLower())
+                {
+                    case "tiff":
+                        imgF = ImageFormat.Tiff;
+                        break;
+                    case "bmp":
+                        imgF = ImageFormat.Bmp;
+                        break;
+                    case "jpeg":
+                        imgF = ImageFormat.Jpeg;
+                        break;
+                    case "png":
+                        imgF = ImageFormat.Png;
+                        break;
+                    default:
+                        imgF = ImageFormat.Png;
+                        break;
+                }
+                res.Bitmap.Save($"{param.Path}{param.Type}", imgF);
+            }
+            return res;
         }
 
         /// <summary>

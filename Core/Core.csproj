@@ -119,6 +119,7 @@
     <Compile Include="Events\PrintMessageEvent.cs" />
     <Compile Include="Exceptions\BotBaseException.cs" />
     <Compile Include="Handlers\NativeWindowsProc.cs" />
+    <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="Helpers\ScreenCaptureHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
