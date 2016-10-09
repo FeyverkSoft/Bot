@@ -27,8 +27,10 @@ namespace Core.ActionExecutors
         {
             if (actions == null)
                 return Invoke(previousResult);
+            if (actions.Count > 1)
+                throw new Exception("Возможно выполнение только 1го действия");
+            var act = actions.Cast<ScreenShotAct>().First();
 
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -77,7 +79,7 @@ namespace Core.ActionExecutors
                     }
                     break;
                 default:
-                   break;
+                    break;
             }
             return res ?? previousResult ?? new BaseExecutorResult(EResultState.NoResult);
         }

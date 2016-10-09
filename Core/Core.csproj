@@ -79,6 +79,7 @@
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IfAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\PluginInvokeAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\ScreenShotAct.cs" />
     <Compile Include="ConfigEntity\ListBotAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ListAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IAction.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="ConfigEntity\ConfigReader.cs" />
     <Compile Include="ConfigEntity\IBotAction.cs" />
     <Compile Include="ConfigEntity\IConfigReader.cs" />
+    <Compile Include="ConfigEntity\SaveFileParam.cs" />
     <Compile Include="Core\DefaultActionFactory.cs" />
     <Compile Include="ConfigEntity\FileVersion.cs" />
     <Compile Include="Core\DefaultExecutiveCore.cs" />

@@ -40,5 +40,17 @@ namespace Core.ConfigEntity.ActionObjects
             temp.AddRange(list);
             return temp;
         }
+        public static implicit operator ListAct(List<ScreenShotAct> list)
+        {
+            var temp = new ListAct();
+            temp.AddRange(list);
+            return temp;
+        }
+        public static implicit operator ListAct(List<PluginInvokeAct> list)
+        {
+            var temp = new ListAct();
+            temp.AddRange(list);
+            return temp;
+        }
     }
 }
