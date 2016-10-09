@@ -205,72 +205,72 @@ namespace Core.Handlers
             var res = EObjectType.Any;
             if (obgectName.Trim().ToLower().Contains("button") || obgectName.Trim().ToLower().Contains("traybutton"))
             {
-                res &= EObjectType.Button;
+                res |= EObjectType.Button;
                 if (obgectName.Trim().ToLower().Contains("traybutton"))
-                    res &= EObjectType.TrayButton;
+                    res |= EObjectType.TrayButton;
                 return res;
             }
             if (obgectName.Trim().ToLower().Contains("start"))
             {
-                return res & EObjectType.Start;
+                return res | EObjectType.Start;
             }
             if (obgectName.Trim().ToLower().Contains("window") || obgectName.Trim().ToLower().Contains("cabinetwclass") ||
                 obgectName.Trim().ToLower().Contains("consolewindow"))
             {
-                res &= EObjectType.Window;
+                res |= EObjectType.Window;
                 if (obgectName.Trim().ToLower().Contains("consolewindow"))
-                    res &= EObjectType.ConsoleWindow;
+                    res |= EObjectType.ConsoleWindow;
                 return res;
             }
             if (obgectName.Trim().ToLower().Contains("netuihwnd") ||
                 obgectName.Trim().ToLower().Contains("directuihwnd"))
             {
-                res &= EObjectType.UIHWND;
+                res |= EObjectType.UIHWND;
                 if (obgectName.Trim().ToLower().Contains("netuihwnd"))
-                    res &= EObjectType.NetUIHWND;
+                    res |= EObjectType.NetUIHWND;
                 if (obgectName.Trim().ToLower().Contains("directuihwnd"))
-                    res &= EObjectType.DirectUIHWND;
+                    res |= EObjectType.DirectUIHWND;
                 return res;
             }
             if (obgectName.Trim().ToLower().Contains("treeview"))
             {
-                return res & EObjectType.TreeView;
+                return res | EObjectType.TreeView;
             }
             if (obgectName.Trim().ToLower().Contains("combobox"))
             {
-                return res & EObjectType.ComboBox;
+                return res | EObjectType.ComboBox;
             }
             if (obgectName.Trim().ToLower().Contains("edit"))
             {
-                return res & EObjectType.Edit;
+                return res | EObjectType.Edit;
             }
             if (obgectName.Trim().ToLower().Contains("toolbar"))
             {
-                return res & EObjectType.Toolbar;
+                return res | EObjectType.Toolbar;
             }
             if (obgectName.Trim().ToLower().Contains("folderview"))
             {
-                return res & EObjectType.FolderView;
+                return res | EObjectType.FolderView;
             }
             if (obgectName.Trim().ToLower().Contains("windows.ui.core.corewindow"))
             {
-                return res & EObjectType.UICoreWindow;
+                return res | EObjectType.UICoreWindow;
             }
             if (obgectName.Trim().ToLower().Contains("static"))
             {
-                return res & EObjectType.Static;
+                return res | EObjectType.Static;
             }
             if (obgectName.Trim().ToLower().Contains("tabcontrol"))
             {
-                return res & EObjectType.TabControl;
+                return res | EObjectType.TabControl;
             }
             if (obgectName.Trim().ToLower().Contains("statusbar"))
             {
-                return res & EObjectType.StatusBar;
+                return res | EObjectType.StatusBar;
             }
             if (obgectName.Trim().ToLower().Contains("progress"))
             {
-                return res & EObjectType.StatusBar;
+                return res | EObjectType.StatusBar;
             }
             return res;
         }
