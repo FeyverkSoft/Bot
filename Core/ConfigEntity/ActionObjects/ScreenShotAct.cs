@@ -27,16 +27,23 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         public SaveFileParam SaveFileParam { get; private set; }
 
-        public ScreenShotAct()
+        /// <summary>
+        /// Сделать картинку в оттенках серого?
+        /// </summary>
+        public Boolean GrayScale { get; private set; }
+
+        public ScreenShotAct(Boolean grayScale = false)
         {
             SaveFileParam = new SaveFileParam("ScreenShot","png");
+            GrayScale = grayScale;
         }
 
-        public ScreenShotAct(SaveFileParam saveFileParam)
+        public ScreenShotAct(SaveFileParam saveFileParam, Boolean grayScale = false)
         {
             SaveFileParam = saveFileParam;
+            GrayScale = grayScale;
         }
-        public ScreenShotAct(Point point, Size size, SaveFileParam saveFileParam):this(saveFileParam)
+        public ScreenShotAct(Point point, Size size, SaveFileParam saveFileParam, Boolean grayScale = false) :this(saveFileParam, grayScale)
         {
             Point = point;
             Size = size;

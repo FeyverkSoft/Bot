@@ -25,7 +25,7 @@ namespace Executor
             core.Run(new ListBotAction() {
                 new BotAction(ActionType.GetMousePos),
                 new BotAction(ActionType.GetObject, new GetObjectAct()),
-                new BotAction(ActionType.GetScreenshot, new ScreenShotAct())
+                new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))
                 });
 
 #endif
