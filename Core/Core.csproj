@@ -121,9 +121,10 @@
     <Compile Include="Handlers\NativeWindowsProc.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="Helpers\MySerializationBinder.cs" />
     <Compile Include="Helpers\ScreenCaptureHelper.cs" />
     <Compile Include="IPlugin.cs" />
-    <Compile Include="Plugins.cs" />
+    <Compile Include="Assemblys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

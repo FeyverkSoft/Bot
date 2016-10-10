@@ -17,10 +17,13 @@ namespace Core.Helpers
         /// <returns></returns>
         public static T ParseJson<T>(this String json) where T : class
         {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.TypeNameHandling = TypeNameHandling.Objects;
-            serializer.TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple;
-            serializer.NullValueHandling = NullValueHandling.Ignore;
+            JsonSerializer serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.Objects,
+                TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
+                NullValueHandling = NullValueHandling.Ignore,
+                Binder = new MySerializationBinder()
+            };
             return serializer.Deserialize<T>(new JsonTextReader(new StringReader(json)));
         }
         /// <summary>
@@ -31,11 +34,14 @@ namespace Core.Helpers
         /// <returns></returns>
         public static T ParseJson<T>(this StreamReader json) where T : class
         {
-            JsonSerializer serializer = new JsonSerializer();
-            //serializer.Converters.Add(new DTOJsonConverter());
-            serializer.TypeNameHandling = TypeNameHandling.Objects;
-            serializer.TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple;
-            serializer.NullValueHandling = NullValueHandling.Ignore;
+            JsonSerializer serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.Objects,
+                TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
+                NullValueHandling = NullValueHandling.Ignore,
+                Binder = new MySerializationBinder()
+            };
+            //serializer.Converters.Add(new PluginConverter());
             return serializer.Deserialize<T>(new JsonTextReader(json));
         }
 

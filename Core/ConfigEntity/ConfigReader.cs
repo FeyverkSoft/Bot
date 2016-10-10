@@ -80,16 +80,17 @@ namespace Core.ConfigEntity
             var sPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName); ;
 
             //Проходим циклом по всем файлом с расширением .dll
+            DirectoryHelper.CreateDirectory($"{sPath}/Plugins");
             foreach (var f in Directory.GetFiles($"{sPath}/Plugins", "*.dll"))
             {
-                Plugins.AssemblyPluginsList.Add(Assembly.LoadFrom(f));
-                foreach (var t in Plugins.AssemblyPluginsList.Select(x => x.GetTypes().FirstOrDefault(t=>t.GetInterfaces().Any(i=>i == typeof(IPlugin)))))
+                Assemblys.AssemblyPluginsList.Add(Assembly.LoadFrom(f));
+                foreach (var t in Assemblys.AssemblyPluginsList.Select(x => x.GetTypes().FirstOrDefault(t=>t.GetInterfaces().Any(i=>i == typeof(IPlugin)))))
                 {
                     try
                     {
                         //Подписываемся на события плагина и добавляем его в список плагинов
                         IPlugin p = (IPlugin)Activator.CreateInstance(t);
-                        Plugins.PluginsList.Add(p);
+                        Assemblys.PluginsList.Add(p);
                     }
                     catch { }
 

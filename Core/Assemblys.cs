@@ -8,9 +8,12 @@ using Plugin;
 
 namespace Core
 {
-    internal static class Plugins
+    internal static class Assemblys
     {
         internal static readonly List<Assembly> AssemblyPluginsList = new List<Assembly>();
         internal static readonly List<IPlugin> PluginsList = new List<IPlugin>();
+
+        private static List<Type> _typeList;
+        internal static List<Type> TypeList => _typeList ?? (_typeList = Assembly.GetExecutingAssembly().GetTypes().ToList());
     }
 }
