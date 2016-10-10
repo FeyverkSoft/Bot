@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.ActionExecutors.ExecutorResult;
+using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Plugin;
 
@@ -19,7 +20,7 @@ namespace TestPlugin
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
-        public IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
+        public IExecutorResult Invoke(BotAction actions, IExecutorResult previousResult = null)
         {
             throw new NotImplementedException();
         }

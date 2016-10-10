@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.ActionExecutors.ExecutorResult;
-using Core.ConfigEntity.ActionObjects;
+using Core.ConfigEntity;
 
 namespace Plugin
 {
@@ -18,7 +14,7 @@ namespace Plugin
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
-        IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null);
+        IExecutorResult Invoke(BotAction actions, IExecutorResult previousResult = null);
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики

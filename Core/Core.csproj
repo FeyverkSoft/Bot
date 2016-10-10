@@ -60,6 +60,8 @@
     <Compile Include="ActionExecutors\ExecutorResult\IExecutorResult.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\ObjectExecutorResult.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\ScreenShotExecutorResult.cs" />
+    <Compile Include="ActionExecutors\Factory\DefaultPluginFactory.cs" />
+    <Compile Include="ActionExecutors\Factory\IPluginFactory.cs" />
     <Compile Include="ActionExecutors\GetObjectExecutor.cs" />
     <Compile Include="ActionExecutors\GetScreenShotExecutor.cs" />
     <Compile Include="ActionExecutors\GetMousePosExecutor.cs" />

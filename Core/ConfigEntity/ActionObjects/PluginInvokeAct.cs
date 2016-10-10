@@ -17,9 +17,9 @@ namespace Core.ConfigEntity.ActionObjects
         /// Список действий которые необходимо передать плагину
         /// </summary>
         [DataMember]
-        public ListBotAction Actions { get; set; } = new ListBotAction();
+        public BotAction Actions { get; set; }
 
-        public PluginInvokeAct(String pluginName, ListBotAction actions)
+        public PluginInvokeAct(String pluginName, BotAction actions)
         {
             PluginName = pluginName;
             Actions = actions;

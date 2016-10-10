@@ -23,7 +23,7 @@ namespace Executor
 #else
             var list = new ListBotAction()
             {
-                //new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new ListBotAction {new BotAction(ActionType.PluginAct, new TestAct("Test"))})),
+                //new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
                 new BotAction(ActionType.GetMousePos),
                 new BotAction(ActionType.GetObject, new GetObjectAct()),
                 new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))
@@ -33,7 +33,7 @@ namespace Executor
             var d = cr.Load();
             d = d;
             //Thread.Sleep(4000);
-            //core.Run(conf);
+            core.Run(d);
 
 #endif
 
