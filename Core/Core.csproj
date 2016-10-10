@@ -136,6 +136,7 @@
     <ProjectReference Include="..\CommonLib\CommonLib.csproj">
       <Project>{e9360285-7369-4e6a-b485-6318b39b1077}</Project>
       <Name>CommonLib</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\LogWrapper\LogWrapper.csproj">
       <Project>{c0eedcf7-134e-43a4-b8ae-12003c6602b3}</Project>
