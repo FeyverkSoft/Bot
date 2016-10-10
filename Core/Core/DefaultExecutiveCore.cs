@@ -42,6 +42,7 @@ namespace Core.Core
         {
             if (actionFactory == null)
                 _actionFactory = new DefaultActionFactory();
+            Assemblys.LoadPlugins();
         }
 
         /// <summary>

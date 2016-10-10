@@ -19,7 +19,7 @@ namespace Core.ConfigEntity
             if (String.IsNullOrEmpty(dir))
                 throw new ArgumentNullException(nameof(dir));
             _directory = dir;
-            LoadPlugins();
+            Assemblys.LoadPlugins();
         }
         /// <summary>
         /// Сохранить конфиг
@@ -74,29 +74,6 @@ namespace Core.ConfigEntity
 
         }
 
-        private void LoadPlugins()
-        {
-            //Получаем путь до программы
-            var sPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName); ;
-
-            //Проходим циклом по всем файлом с расширением .dll
-            DirectoryHelper.CreateDirectory($"{sPath}/Plugins");
-            foreach (var f in Directory.GetFiles($"{sPath}/Plugins", "*.dll"))
-            {
-                Assemblys.AssemblyPluginsList.Add(Assembly.LoadFrom(f));
-                foreach (var t in Assemblys.AssemblyPluginsList.Select(x => x.GetTypes().FirstOrDefault(t=>t.GetInterfaces().Any(i=>i == typeof(IPlugin)))))
-                {
-                    try
-                    {
-                        //Подписываемся на события плагина и добавляем его в список плагинов
-                        IPlugin p = (IPlugin)Activator.CreateInstance(t);
-                        Assemblys.PluginsList.Add(p);
-                    }
-                    catch { }
-
-                }
-            }
-        }
 
     }
 }
