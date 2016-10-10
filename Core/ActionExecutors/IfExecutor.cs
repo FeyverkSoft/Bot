@@ -33,14 +33,18 @@ namespace Core.ActionExecutors
             }, false);
             if (actions.Count == 0)
                 return new BooleanExecutorResult(false);
-            if(actions.Count > 1)
+            if (actions.Count > 1)
                 throw new Exception("Проверка может быть только одна");
             Boolean result = true;
 
-            foreach (var action in actions.Cast<IfAction>())
-            {
+            var action = actions.Cast<IfAction>().First();
 
-            }
+            if (previousResult == null || !previousResult.GetType().Name.ToLower().Contains(action.PrevResType.ToLower()))
+                return new BooleanExecutorResult(false, EResultState.Success);
+
+
+            var conditions = СonditionsParse(action.Сonditions);
+
             return new BooleanExecutorResult(result);
         }
 
@@ -52,6 +56,16 @@ namespace Core.ActionExecutors
         public override IExecutorResult Invoke(IExecutorResult previousResult = null)
         {
             throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Разбор условия на лексемы, пока что заглушка
+        /// </summary>
+        /// <param name="conditions"></param>
+        /// <returns></returns>
+        private String СonditionsParse(String conditions)
+        {
+            return conditions;
         }
     }
 }

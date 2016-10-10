@@ -24,14 +24,21 @@ namespace Core.ConfigEntity.ActionObjects
         public ListBotAction FailActions { get; private set; } = new ListBotAction();
 
         /// <summary>
+        /// Проверка на тип предыдущего результата 
+        /// </summary>
+        public String PrevResType { get; private set; }
+
+        /// <summary>
         /// Список условий, которые необходимо проверить над предыдущим объектом
         /// </summary>
         [DataMember]
         public String Сonditions { get; private set; }
 
         [JsonConstructor]
-        public IfAction(String сonditions, ListBotAction actions, ListBotAction failActions)
+        public IfAction(String prevResType, String сonditions, ListBotAction actions, ListBotAction failActions)
         {
+            if(String.IsNullOrEmpty(prevResType))
+                throw new ArgumentNullException(nameof(prevResType));
             Сonditions = сonditions;
             Log.WriteLine($"{GetType().Name}.ctor->(actions: {actions?.Count ?? -1}; failActions: {failActions?.Count ?? -1})");
             if (actions != null)
