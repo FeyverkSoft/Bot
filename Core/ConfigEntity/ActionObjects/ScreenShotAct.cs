@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Core;
+using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
 {
@@ -43,6 +44,7 @@ namespace Core.ConfigEntity.ActionObjects
             SaveFileParam = saveFileParam;
             GrayScale = grayScale;
         }
+        [JsonConstructor]
         public ScreenShotAct(Point point, Size size, SaveFileParam saveFileParam, Boolean grayScale = false) :this(saveFileParam, grayScale)
         {
             Point = point;

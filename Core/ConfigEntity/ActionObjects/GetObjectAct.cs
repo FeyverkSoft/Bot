@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Core.Core;
+using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
 {
@@ -51,6 +52,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// <param name="objectType">Тип искомого объекта</param>
         /// <param name="objectPos">Позиция объекта, который необходимо захватить</param>
         /// <param name="setFocus">Передать фокус найденному объекту?</param>
+        [JsonConstructor]
         public GetObjectAct(EObjectType objectType, Point objectPos, Boolean setFocus = true)
         {
             //ObjectType = objectType;

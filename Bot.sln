@@ -16,6 +16,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Executor", "Executor\Execut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogWrapper", "LogWrapper\LogWrapper.csproj", "{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{1A7AC4B6-5BCC-475E-85C5-581986F356FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{DA900EDD-46A2-4A02-A721-9F416649E128}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLib", "CommonLib\CommonLib.csproj", "{E9360285-7369-4E6A-B485-6318B39B1077}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,8 +40,19 @@ Global
 		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0EEDCF7-134E-43A4-B8AE-12003C6602B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA900EDD-46A2-4A02-A721-9F416649E128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA900EDD-46A2-4A02-A721-9F416649E128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA900EDD-46A2-4A02-A721-9F416649E128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA900EDD-46A2-4A02-A721-9F416649E128}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9360285-7369-4E6A-B485-6318B39B1077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9360285-7369-4E6A-B485-6318B39B1077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9360285-7369-4E6A-B485-6318B39B1077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9360285-7369-4E6A-B485-6318B39B1077}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA900EDD-46A2-4A02-A721-9F416649E128} = {1A7AC4B6-5BCC-475E-85C5-581986F356FB}
 	EndGlobalSection
 EndGlobal

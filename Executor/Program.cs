@@ -6,27 +6,34 @@ using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Helpers;
+//using TestPlugin;
 
 namespace Executor
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             IExecutiveCore core = new DefaultExecutiveCore();
             core.OnPrintMessageEvent += Console.WriteLine;
+            IConfigReader cr = new ConfigReader("test1.jsn");
 
 #if !DEBUG
             core.Run(DnConf());
 #else
-
-            Thread.Sleep(4000);
-            core.Run(new ListBotAction() {
+            var list = new ListBotAction()
+            {
+                //new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new ListBotAction {new BotAction(ActionType.PluginAct, new TestAct("Test"))})),
                 new BotAction(ActionType.GetMousePos),
                 new BotAction(ActionType.GetObject, new GetObjectAct()),
                 new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))
-                });
+            };
+            var conf = new Config(list);
+            //cr.Save(conf);
+            var d = cr.Load();
+            d = d;
+            //Thread.Sleep(4000);
+            //core.Run(conf);
 
 #endif
 

@@ -99,6 +99,9 @@ namespace Core.ConfigEntity
                         case ActionType.GetScreenshot:
                             flag = subAction is ScreenShotAct;
                             break;
+                        case ActionType.PluginAct:
+                            flag = true;
+                            break;
                         default:
                             throw new Exception($"Incorrect ActionType ({ActionType})");
                     }

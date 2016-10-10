@@ -67,6 +67,10 @@ namespace Core.ConfigEntity
         /// <summary>
         /// Фальшивый объект, для эмулации чего либо :) но не исполнения этого в реале
         /// </summary>
-        Mock
+        Mock,
+        /// <summary>
+        /// Действие которое знает как выполнять только бот
+        /// </summary>
+        PluginAct
     }
 }

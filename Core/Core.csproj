@@ -118,11 +118,12 @@
     <Compile Include="Core\Keys.cs" />
     <Compile Include="Handlers\NativeMouse.cs" />
     <Compile Include="Events\PrintMessageEvent.cs" />
-    <Compile Include="Exceptions\BotBaseException.cs" />
     <Compile Include="Handlers\NativeWindowsProc.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="Helpers\ScreenCaptureHelper.cs" />
+    <Compile Include="IPlugin.cs" />
+    <Compile Include="Plugins.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +132,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{e9360285-7369-4e6a-b485-6318b39b1077}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LogWrapper\LogWrapper.csproj">
       <Project>{c0eedcf7-134e-43a4-b8ae-12003c6602b3}</Project>
       <Name>LogWrapper</Name>
