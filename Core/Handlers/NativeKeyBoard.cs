@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Core.Core;
 using LogWrapper;
 
@@ -17,11 +18,12 @@ namespace Core.Handlers
         [DllImport("user32.dll")]
         static extern void keybd_event(Byte bVk, byte bScan, uint dwFlags, IntPtr dwExtraInfo);
 
-        private void PressKeyInternal(Byte keyCode)
+        private void PressKeyInternal(Byte keyCode, UInt32 pressTime = 0)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeyInternal)}");
             Log.WriteLine($"--> press: 0x{keyCode:X2}, ");
-            keybd_event(keyCode, 0x45, KeyeventfExtendedkey, (IntPtr)0);
+            keybd_event(keyCode, 0x45, KeyeventfExtendedkey | 0, (IntPtr)0);
+            //Thread.Sleep((Int32)pressTime);
             keybd_event(keyCode, 0x45, KeyeventfExtendedkey | KeyeventfKeyup, (IntPtr)0);
             Log.WriteLine($"--> up: 0x{keyCode:X2}");
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeyInternal)}");
@@ -31,9 +33,10 @@ namespace Core.Handlers
         /// Эмулировать нажатие клавишы на клавиатуре
         /// </summary>
         /// <param name="key"></param>
-        public void PressKey(KeyCode key)
+        /// <param name="pressTime"></param>
+        public void PressKey(KeyCode key, UInt32 pressTime = 0)
         {
-            PressKeyInternal((Byte)key);
+            PressKeyInternal((Byte)key, pressTime);
         }
 
         /// <summary>

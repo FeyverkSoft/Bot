@@ -74,6 +74,10 @@
     <Compile Include="ActionExecutors\ExecutorResult\EResultState.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\ExpectWindowExecutorResult.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\BaseExecutorResult.cs" />
+    <Compile Include="ActionExecutors\MouseRPressExecutor.cs" />
+    <Compile Include="ActionExecutors\MouseRUpExecutor.cs" />
+    <Compile Include="ActionExecutors\MouseLPressExecutor.cs" />
+    <Compile Include="ActionExecutors\MouseLUpExecutor.cs" />
     <Compile Include="ActionExecutors\PluginInvokeExecutor.cs" />
     <Compile Include="ActionExecutors\SleepExecutor.cs" />
     <Compile Include="ActionExecutors\MouseRClickExecutor.cs" />

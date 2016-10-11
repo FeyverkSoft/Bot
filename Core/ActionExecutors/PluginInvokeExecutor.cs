@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ActionExecutors.Factory;
 using Core.ConfigEntity.ActionObjects;
@@ -29,9 +26,7 @@ namespace Core.ActionExecutors
                 throw new Exception("Для данного действия колличество параметров должно не привышать 1");
             var action = actions.Cast<PluginInvokeAct>().First();
             var plugin = _pluginFactory.GetPlugin(action.PluginName);
-            if (action.Actions == null)
-                return plugin.Invoke(previousResult);
-            return plugin.Invoke(action.Actions, previousResult);
+            return action.Actions == null ? plugin.Invoke(previousResult) : plugin.Invoke(action.Actions, previousResult);
         }
 
         /// <summary>

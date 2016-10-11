@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core.Core;
 
 namespace Core.Handlers
@@ -12,7 +13,8 @@ namespace Core.Handlers
         /// Эмулировать нажатие клавишы на клавиатуре
         /// </summary>
         /// <param name="key"></param>
-        void PressKey(KeyCode key);
+        /// <param name="pressTime"></param>
+        void PressKey(KeyCode key, UInt32 pressTime = 0);
 
         /// <summary>
         /// Эмулирует нажатие нескольких клавиш

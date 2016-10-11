@@ -32,6 +32,22 @@ namespace Core.Core
                     if (!_executorCache.ContainsKey(type))
                         _executorCache.Add(type, new MouseRClickExecutor());
                     return _executorCache[type];
+                case ActionType.MouseRPress:
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new MouseRPressExecutor());
+                    return _executorCache[type];
+                case ActionType.MouseRUp:
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new MouseRUpExecutor());
+                    return _executorCache[type];
+                case ActionType.MouseLPress:
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new MouseLPressExecutor());
+                    return _executorCache[type];
+                case ActionType.MouseLUp:
+                    if (!_executorCache.ContainsKey(type))
+                        _executorCache.Add(type, new MouseLUpExecutor());
+                    return _executorCache[type];
                 case ActionType.MouseLClick:
                     if (!_executorCache.ContainsKey(type))
                         _executorCache.Add(type, new MouseLClickExecutor());

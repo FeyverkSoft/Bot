@@ -16,11 +16,27 @@ namespace Core.ConfigEntity
         /// </summary>
         MouseSetPos,
         /// <summary>
-        /// Действие нажатия Правой кнопки мышки
+        /// Действие клика Правой кнопки мышки
         /// </summary>
         MouseRClick,
         /// <summary>
+        /// Действие нажатия Правой кнопки мышки
+        /// </summary>
+        MouseRPress,
+        /// <summary>
+        /// Действие отпускания Правой кнопки мышки
+        /// </summary>
+        MouseRUp,
+        /// <summary>
         /// Действие нажатия Левой кнопки мышки
+        /// </summary>
+        MouseLPress,
+        /// <summary>
+        /// Действие отпускания Левой кнопки мышки
+        /// </summary>
+        MouseLUp,
+        /// <summary>
+        /// Действие клика Левой кнопки мышки
         /// </summary>
         MouseLClick,
         /// <summary>

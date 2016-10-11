@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using Core.Core;
 using LogWrapper;
 using Newtonsoft.Json;
@@ -16,12 +17,18 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         public KeyCode Key { get; private set; }
+        /// <summary>
+        /// Время удержания клавиши
+        /// </summary>
+        [DataMember]
+        public UInt32 Time { get; private set; }
 
         [JsonConstructor]
-        public KeyBoardAct(KeyCode key)
+        public KeyBoardAct(KeyCode key, UInt32 time = 0)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(key:{key};)");
             Key = key;
+            Time = time;
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
@@ -10,11 +9,11 @@ using Core.Helpers;
 namespace Core.ActionExecutors
 {
     /// <summary>
-    /// Исполнитель действия одиночного нажатия клавишы на клавиатуре
+    /// Исполнитель действия отпускания правой кнопки мышки
     /// </summary>
-    internal sealed class KeyBoardExecutor : BaseExecutor
+    internal sealed class MouseRUpExecutor : BaseExecutor
     {
-        private IKeyBoard KeyBoard { get; set; } = new NativeKeyBoard();
+        private IMouse Mouse { get; set; } = new NativeMouse();
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
@@ -23,24 +22,31 @@ namespace Core.ActionExecutors
         /// <returns></returns>
         public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
         {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Вызвать выполнение действия у указанной фабрики
+        /// </summary>
+        /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
+        /// <returns></returns>
+        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
             Print(new
             {
                 Date = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                 Message = new
                 {
                     func = $"{GetType().Name}.{nameof(Invoke)}",
-                    param = $"{nameof(actions)}: {actions.ToJson(false, false)} ;{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
+                    param = $"{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
                 },
                 Status = EStatus.Info
             }, false);
-
             try
             {
-                if (actions != null)
-                    foreach (var action in actions.Cast<KeyBoardAct>())
-                    {
-                        KeyBoard.PressKey(action.Key, action.Time);
-                    }
+                // Для данного действия не поддерживается список действий actions игнорируем, знаю что косяк архитектуры
+                // Но возможно потом будут дабл клики, итд
+                Mouse.MouseRightUp();
             }
             catch (Exception ex)
             {
@@ -48,11 +54,6 @@ namespace Core.ActionExecutors
                 return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
             }
             return previousResult ?? new BaseExecutorResult();
-        }
-
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
-        {
-            throw new NotSupportedException();
         }
     }
 }

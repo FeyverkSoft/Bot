@@ -16,7 +16,22 @@ namespace Core.Handlers
         /// Выполнить клик правой кнопкой мышки
         /// </summary>
         void MouseRightCl();
-
+        /// <summary>
+        /// Выполнить нажатие и удерживание левой кнопкй мышки
+        /// </summary>
+        void MouseLeftPress();
+        /// <summary>
+        /// Выполнить отжатие левой кнопкй мышки
+        /// </summary>
+        void MouseLeftUp();
+        /// <summary>
+        /// Выполнить нажатие и удерживание правой кнопкй мышки
+        /// </summary>
+        void MouseRightPress();
+        /// <summary>
+        /// Выполнить отжатие правой кнопкй мышки
+        /// </summary>
+        void MouseRightUp();
         /// <summary>
         /// Сместить указатель на указанное смешение по осям кустарно эмулируя неточное поведение указателя человека
         /// </summary>
@@ -35,5 +50,6 @@ namespace Core.Handlers
         /// </summary>
         /// <returns></returns>
         Point GetCurrentPos();
+
     }
 }

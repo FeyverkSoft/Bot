@@ -152,5 +152,44 @@ namespace Core.Handlers
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseRightCl)}");
             Thread.Sleep(10);
         }
+
+        /// <summary>
+        /// Выполнить нажатие и удерживание левой кнопкй мышки
+        /// </summary>
+        public void MouseLeftPress()
+        {
+            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseLeftPress)}");
+            mouse_event(MouseFlags.LeftDown, 0, 0, 0, UIntPtr.Zero);
+            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseLeftPress)}");
+        }
+
+        /// <summary>
+        /// Выполнить отжатие левой кнопкй мышки
+        /// </summary>
+        public void MouseLeftUp()
+        {
+            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseLeftUp)}");
+            mouse_event(MouseFlags.LeftUp, 0, 0, 0, UIntPtr.Zero);
+            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseLeftUp)}");
+        }
+
+        /// <summary>
+        /// Выполнить отжатие правой кнопкй мышки
+        /// </summary>
+        public void MouseRightUp()
+        {
+            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseRightUp)}");
+            mouse_event(MouseFlags.RightUp, 0, 0, 0, UIntPtr.Zero);
+            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseRightUp)}");
+        }
+        /// <summary>
+        /// Выполнить нажатие и удерживание правой кнопкй мышки
+        /// </summary>
+        public void MouseRightPress()
+        {
+            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(MouseRightPress)}");
+            mouse_event(MouseFlags.RightDown, 0, 0, 0, UIntPtr.Zero);
+            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(MouseRightPress)}");
+        }
     }
 }
