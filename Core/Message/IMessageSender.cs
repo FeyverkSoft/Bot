@@ -11,5 +11,10 @@ namespace Core.Message
     /// </summary>
     internal interface IMessageSender
     {
+        /// <summary>
+        /// Отправить сообщение указанному адресату
+        /// </summary>
+        /// <returns></returns>
+        MessageResult SendMessage();
     }
 }

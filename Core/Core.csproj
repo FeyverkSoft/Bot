@@ -131,6 +131,10 @@
     <Compile Include="Helpers\ScreenCaptureHelper.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="Assemblys.cs" />
+    <Compile Include="Message\EmailMessageSender.cs" />
+    <Compile Include="Message\IMessageSender.cs" />
+    <Compile Include="Message\EMessageStatus.cs" />
+    <Compile Include="Message\MessageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
