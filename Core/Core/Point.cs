@@ -34,13 +34,13 @@ namespace Core.Core
         [JsonConstructor]
         public Point(Int32 x, Int32 y)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
         }
         public Point(System.Drawing.Point p)
         {
-            this.X = p.X;
-            this.Y = p.Y;
+            X = p.X;
+            Y = p.Y;
         }
         /// <summary>
         /// Сместить точку

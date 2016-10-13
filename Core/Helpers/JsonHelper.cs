@@ -76,8 +76,8 @@ namespace Core.Helpers
             {
                 Converters = new List<JsonConverter>
                 {
-                    new Newtonsoft.Json.Converters.StringEnumConverter(),
-                    new Newtonsoft.Json.Converters.IsoDateTimeConverter(),
+                    new StringEnumConverter(),
+                    new IsoDateTimeConverter(),
                 },
                 NullValueHandling = NullValueHandling.Ignore,
                 TypeNameHandling = TypeNameHandling.Objects,

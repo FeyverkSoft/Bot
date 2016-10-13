@@ -34,13 +34,13 @@ namespace Core.Core
         [JsonConstructor]
         public Size(Int32 x, Int32 y)
         {
-            this.WidthX = x;
-            this.HeightY = y;
+            WidthX = x;
+            HeightY = y;
         }
         public Size(System.Drawing.Point p)
         {
-            this.WidthX = p.X;
-            this.HeightY = p.Y;
+            WidthX = p.X;
+            HeightY = p.Y;
         }
         /// <summary>
         /// Добавить
