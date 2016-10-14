@@ -53,7 +53,13 @@ namespace Core.Core
                 throw new NullReferenceException(nameof(config));
 
             if (config.BotVer != Assembly.GetExecutingAssembly().GetName().Version)
-                Print(new { Status = EStatus.Warning, Message = $"Версия конфигурауционного файла не совпадает сверсией интерпретатора! Возможны побочные эффекты.", Date = DateTime.Now });
+                Print(new
+                {
+                    Status = EStatus.Warning,
+                    Message = $"Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты.",
+                    Ifo = $"{config.BotVer} != {Assembly.GetExecutingAssembly().GetName().Version}",
+                    Date = DateTime.Now
+                });
 
             return await Run(config.Actions);
         }
