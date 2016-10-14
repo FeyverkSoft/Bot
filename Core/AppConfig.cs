@@ -21,6 +21,7 @@ namespace Core
             SmtpLogin = temp.SmtpLogin;
             SmtpPassword = temp.SmtpPassword;
             DefaultCore = temp.DefaultCore;
+            LoadPlugin = temp.LoadPlugin;
         }
 
         /// <summary>
@@ -46,6 +47,10 @@ namespace Core
         /// Использовать ядро по умолчанию?
         /// </summary>
         public static Boolean DefaultCore { get; }
+        /// <summary>
+        /// Загружать плагины?
+        /// </summary>
+        public static Boolean LoadPlugin { get; }
     }
 
     class InternalAppConfig
@@ -66,9 +71,14 @@ namespace Core
         /// Пароль к почтовому аккаунту с которого будет производиться рассылка
         /// </summary>
         public String SmtpPassword { get; set; }
+
         /// <summary>
         /// Использовать ядро по умолчанию?
         /// </summary>
-        public Boolean DefaultCore { get; set; }
+        public Boolean DefaultCore { get; set; } = true;
+        /// <summary>
+        /// Загружать плагины?
+        /// </summary>
+        public Boolean LoadPlugin { get; set; } = true;
     }
 }

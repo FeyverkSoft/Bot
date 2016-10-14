@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Core.ConfigEntity.ActionObjects;
 using Newtonsoft.Json.Serialization;
 
 namespace Core.Helpers
@@ -22,6 +23,10 @@ namespace Core.Helpers
 
             if (type != null)
                 return type;
+
+            if(!AppConfig.LoadPlugin)
+                return typeof(MockAction);
+
             throw new Exception($"Тип {typeName} в сборке {assemblyName} не был найден не в одной из подключенных сборок");
         }
     }

@@ -7,6 +7,7 @@ using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Helpers;
+
 //using TestPlugin;
 
 namespace Executor
@@ -24,11 +25,10 @@ namespace Executor
 #else
             var list = new ListBotAction()
             {
-                new BotAction(ActionType.KeyBoard, new KeyBoardAct(KeyCode.A, 5000)),
-                //new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
-                //new BotAction(ActionType.GetMousePos),
-                //new BotAction(ActionType.GetObject, new GetObjectAct()),
-                //new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))
+               // new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
+                new BotAction(ActionType.GetMousePos),
+                new BotAction(ActionType.GetObject, new GetObjectAct()),
+                new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))
             };
             var conf = new Config(list);
             //cr.Save(conf);

@@ -103,6 +103,8 @@ namespace Core.ConfigEntity
                             flag = true;
                             break;
                         default:
+                            if (subAction is MockAction)
+                                return true;
                             throw new Exception($"Incorrect ActionType ({ActionType})");
                     }
                 }

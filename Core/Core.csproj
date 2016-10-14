@@ -86,6 +86,7 @@
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IfAction.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\MockAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\PluginInvokeAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ScreenShotAct.cs" />
     <Compile Include="ConfigEntity\ListBotAction.cs" />

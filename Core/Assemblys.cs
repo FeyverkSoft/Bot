@@ -29,6 +29,9 @@ namespace Core
         /// </summary>
         public static void LoadPlugins()
         {
+            //Если выбран путь игнорирования плагинов
+            if (!AppConfig.LoadPlugin)
+                return;
             //При повторном вызове не загружаем всё снова
             if (AssemblyPluginsList.Count > 0)
                 return;

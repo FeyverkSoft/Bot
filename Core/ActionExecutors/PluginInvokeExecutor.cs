@@ -20,6 +20,8 @@ namespace Core.ActionExecutors
         /// <returns></returns>
         public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
         {
+            if (!AppConfig.LoadPlugin)
+                return previousResult;
             if (actions == null)
                 throw new ArgumentNullException(nameof(actions));
             if (actions.Count > 1)
