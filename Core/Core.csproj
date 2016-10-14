@@ -66,6 +66,7 @@
     <Compile Include="ActionExecutors\GetScreenShotExecutor.cs" />
     <Compile Include="ActionExecutors\GetMousePosExecutor.cs" />
     <Compile Include="ActionExecutors\IfExecutor.cs" />
+    <Compile Include="ActionExecutors\SendMessageExecutor.cs" />
     <Compile Include="ActionExecutors\KeyBoardKeysExecutor.cs" />
     <Compile Include="ActionExecutors\MockExecutor.cs" />
     <Compile Include="ActionExecutors\MouseLClickExecutor.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IfAction.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\SendMessageAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\MockAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\PluginInvokeAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ScreenShotAct.cs" />
@@ -135,9 +137,11 @@
     <Compile Include="IPlugin.cs" />
     <Compile Include="Assemblys.cs" />
     <Compile Include="Message\EmailMessageSender.cs" />
+    <Compile Include="Message\EMessageType.cs" />
     <Compile Include="Message\IMessageSender.cs" />
     <Compile Include="Message\EMessageStatus.cs" />
     <Compile Include="Message\MessageResult.cs" />
+    <Compile Include="Message\MessageSenderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

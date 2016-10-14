@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 
 namespace Core.Message
 {
@@ -10,10 +11,12 @@ namespace Core.Message
         /// <summary>
         /// Статус отправки
         /// </summary>
+        [Description("Статус отправки")]
         public EMessageStatus Status { get; set; }
         /// <summary>
         /// Причина отказа или ошибки, если статус не успешен
         /// </summary>
+        [Description("Причина отказа или ошибки, если статус не успешен")]
         public String Reason { get; set; }
 
         /// <summary>

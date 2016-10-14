@@ -52,5 +52,17 @@ namespace Core.ConfigEntity.ActionObjects
             temp.AddRange(list);
             return temp;
         }
+        public static implicit operator ListAct(List<MockAction> list)
+        {
+            var temp = new ListAct();
+            temp.AddRange(list);
+            return temp;
+        }
+        public static implicit operator ListAct(List<SendMessageAct> list)
+        {
+            var temp = new ListAct();
+            temp.AddRange(list);
+            return temp;
+        }
     }
 }

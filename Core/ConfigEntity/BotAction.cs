@@ -99,6 +99,9 @@ namespace Core.ConfigEntity
                         case ActionType.GetScreenshot:
                             flag = subAction is ScreenShotAct;
                             break;
+                        case ActionType.SendMessage:
+                            flag = subAction is SendMessageAct;
+                            break;
                         case ActionType.PluginAct:
                             flag = true;
                             break;

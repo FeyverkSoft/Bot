@@ -129,7 +129,7 @@ namespace Core.Core
                 if (IsAbort)
                     return null;
 
-                IExecutor executor = _actionFactory.GetExecutorAction(action.ActionType);
+                var executor = _actionFactory.GetExecutorAction(action.ActionType);
                 switch (action.ActionType)//Логика для особых, не фабричных действий
                 {
                     case ActionType.Loop:

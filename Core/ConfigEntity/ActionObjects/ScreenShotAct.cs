@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.Serialization;
 using Core.Core;
 using Newtonsoft.Json;
 
@@ -11,26 +9,32 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Действие получения скриншота
     /// </summary>
+    [Description("Действие получения скриншота")]
+    [DataContract]
     public class ScreenShotAct : IAction
     {
 
         /// <summary>
-        /// Начало прямоугольной области которой надо сделать скриншёт
+        /// Начало прямоугольной области которой надо сделать скриншот
         /// </summary>
+        [Description("Начало прямоугольной области которой надо сделать скриншот")]
         public Point Point { get; private set; } = Point.Empty;
 
         /// <summary>
         /// Размер прямоугольной области
         /// </summary>
+        [Description("Размер прямоугольной области")]
         public Size Size { get; private set; } = Point.Empty;
         /// <summary>
         /// Описание пути и параметров файла для сейва
         /// </summary>
+        [Description("Описание пути и параметров файла для сейва")]
         public SaveFileParam SaveFileParam { get; private set; }
 
         /// <summary>
         /// Сделать картинку в оттенках серого?
         /// </summary>
+        [Description("Сделать картинку в оттенках серого?")]
         public Boolean GrayScale { get; private set; }
 
         public ScreenShotAct(Boolean grayScale = false)

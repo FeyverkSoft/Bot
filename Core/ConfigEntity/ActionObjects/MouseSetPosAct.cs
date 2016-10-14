@@ -1,10 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
 {
+    /// <summary>
+    /// Событие установки позиции мышки в указанную точку
+    /// </summary>
+    [Description("Событие установки позиции мышки в указанную точку")]
     [DataContract]
     public class MouseSetPosAct : IAction
     {
@@ -12,6 +17,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// <summary>
         /// Положение указателя по оси X
         /// </summary>
+        [Description("Положение указателя по оси X")]
         [DataMember]
         public Int32 X
         {
@@ -27,6 +33,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Положение указателя по оси Y
         /// </summary>
         [DataMember]
+        [Description("Положение указателя по оси Y")]
         public Int32 Y
         {
             get { return y; }
@@ -41,12 +48,14 @@ namespace Core.ConfigEntity.ActionObjects
         /// Название окна относительно которого устанавливается позиция
         /// </summary>
         [DataMember]
+        [Description("Название окна относительно которого устанавливается позиция")]
         public String RelativelyWindowName { get; private set; }
 
         /// <summary>
         /// Использовать относительную позицию или нет
         /// </summary>
         [DataMember]
+        [Description("Использовать относительную позицию или нет")]
         public Boolean Relatively { get; private set; }
         [JsonConstructor]
         public MouseSetPosAct(Int32 x, Int32 y, Boolean relatively = false, String relativelyWindowName = null)
