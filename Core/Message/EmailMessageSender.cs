@@ -31,7 +31,7 @@ namespace Core.Message
                     Sender = from,
                     IsBodyHtml = true,
                     Body = body,
-                    Subject = $"Bot message {DateTime.UtcNow.ToString("G")}"
+                    Subject = $"Bot message {DateTime.UtcNow:G}"
                 };
                 mailClient.Send(message);
                 return new MessageResult();

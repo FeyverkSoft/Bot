@@ -31,8 +31,15 @@ namespace Core.ActionExecutors
                 },
                 Status = EStatus.Info
             }, false);
+            if (actions.Count == 0 && previousResult == null)
+                return new BooleanExecutorResult(false);
+
+            if (actions.Count == 0 && previousResult is BooleanExecutorResult)
+                return previousResult;
+
             if (actions.Count == 0)
                 return new BooleanExecutorResult(false);
+
             if (actions.Count > 1)
                 throw new Exception("Проверка может быть только одна");
             Boolean result = true;

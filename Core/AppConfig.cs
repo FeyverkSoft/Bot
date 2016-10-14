@@ -8,76 +8,44 @@ namespace Core
     /// </summary>
     internal static class AppConfig
     {
-        static IConfigReader<InternalAppConfig> _appConfigReader;
-        private static int _smtpPort;
-        private static string _smtpHost;
-        private static string _smtpLogin;
-        private static string _smtpPassword;
+        static readonly IConfigReader<InternalAppConfig> AppConfigReader;
 
-        private static void Init()
+        static AppConfig()
         {
-            if (_appConfigReader != null)
+            if (AppConfigReader != null)
                 return;
+            var temp = (AppConfigReader = new ConfigReader<InternalAppConfig>("CoreConfig.json", false, false, false)).Load();
 
-            _appConfigReader = new ConfigReader<InternalAppConfig>("CoreConfig.json", false);
-            var temp = _appConfigReader.Load();
             SmtpPort = temp.SmtpPort;
             SmtpHost = temp.SmtpHost;
             SmtpLogin = temp.SmtpLogin;
             SmtpPassword = temp.SmtpPassword;
+            DefaultCore = temp.DefaultCore;
         }
 
         /// <summary>
         /// Номер порта для доставки SmtpPort
         /// </summary>
-        public static Int32 SmtpPort
-        {
-            get
-            {
-                Init();
-                return _smtpPort;
-            }
-            private set { _smtpPort = value; }
-        }
+        public static Int32 SmtpPort { get; }
 
         /// <summary>
         /// Имя хоста доставки для email
         /// </summary>
-        public static String SmtpHost
-        {
-            get
-            {
-                Init();
-                return _smtpHost;
-            }
-            private set { _smtpHost = value; }
-        }
+        public static String SmtpHost { get; }
 
         /// <summary>
         /// логин к почтовому аккаунту с которого будет производиться рассылка
         /// </summary>
-        public static String SmtpLogin
-        {
-            get
-            {
-                Init();
-                return _smtpLogin;
-            }
-            private set { _smtpLogin = value; }
-        }
+        public static String SmtpLogin { get; }
 
         /// <summary>
         /// Пароль к почтовому аккаунту с которого будет производиться рассылка
         /// </summary>
-        public static String SmtpPassword
-        {
-            get
-            {
-                Init();
-                return _smtpPassword;
-            }
-            private set { _smtpPassword = value; }
-        }
+        public static String SmtpPassword { get; }
+        /// <summary>
+        /// Использовать ядро по умолчанию?
+        /// </summary>
+        public static Boolean DefaultCore { get; }
     }
 
     class InternalAppConfig
@@ -98,5 +66,9 @@ namespace Core
         /// Пароль к почтовому аккаунту с которого будет производиться рассылка
         /// </summary>
         public String SmtpPassword { get; set; }
+        /// <summary>
+        /// Использовать ядро по умолчанию?
+        /// </summary>
+        public Boolean DefaultCore { get; set; }
     }
 }

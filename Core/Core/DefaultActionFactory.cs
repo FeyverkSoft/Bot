@@ -7,7 +7,7 @@ namespace Core.Core
     /// <summary>
     /// Дефолтная фабрика действий
     /// </summary>
-    public sealed class DefaultActionFactory : IActionFactory
+    internal sealed class DefaultActionFactory : IActionFactory
     {
         private readonly Dictionary<ActionType, IExecutor> _executorCache = new Dictionary<ActionType, IExecutor>();
         /// <summary>

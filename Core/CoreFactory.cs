@@ -13,15 +13,14 @@ namespace Core
     /// </summary>
     public static class CoreFactory
     {
-
-
         /// <summary>
         /// Получить экземпляр ядра по умолчанию
         /// </summary>
         /// <returns></returns>
         public static IExecutiveCore GetCore()
         {
-           var s = AppConfig.SmtpLogin;
+            if (AppConfig.DefaultCore)
+                return new DefaultExecutiveCore(new DefaultActionFactory());
             return new DefaultExecutiveCore(new DefaultActionFactory());
         }
     }

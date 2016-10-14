@@ -9,14 +9,17 @@ namespace Core.ConfigEntity
     {
         private readonly String _directory;
         private readonly Boolean _ignoreNull;
-        public ConfigReader(String dir, Boolean ignoreNull = true)
+        private readonly Boolean _typeName;
+        public ConfigReader(String dir, Boolean ignoreNull = true, Boolean loadPlugins = true, Boolean typeName = true)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(dir: {dir}); ignoreNull: {ignoreNull}");
             _ignoreNull = ignoreNull;
+            _typeName = typeName;
             if (String.IsNullOrEmpty(dir))
                 throw new ArgumentNullException(nameof(dir));
             _directory = dir;
-            Assemblys.LoadPlugins();
+            if (loadPlugins)
+                Assemblys.LoadPlugins();
         }
         /// <summary>
         /// Сохранить конфиг
@@ -31,7 +34,7 @@ namespace Core.ConfigEntity
                     throw new ArgumentNullException(nameof(conf));
                 using (var sw = new StreamWriter(_directory))
                 {
-                    sw.Write(conf.ToJson(ignoreNull: _ignoreNull));
+                    sw.Write(conf.ToJson(ignoreNull: _ignoreNull, typeName: _typeName));
                     sw.Flush();
                 }
                 return conf;
@@ -54,7 +57,6 @@ namespace Core.ConfigEntity
                 Log.WriteLine($"{GetType().Name}.{nameof(Load)}->(dir: {_directory})");
                 using (var sr = new StreamReader(_directory))
                 {
-
                     return sr.ParseJson<TConfigType>();
                 }
             }
