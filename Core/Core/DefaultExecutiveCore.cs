@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Events;
-using Core.ActionExecutors;
 using Core.Helpers;
 using System.Threading.Tasks;
 using Core.ActionExecutors.ExecutorResult;
@@ -56,7 +54,7 @@ namespace Core.Core
                 Print(new
                 {
                     Status = EStatus.Warning,
-                    Message = $"Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты.",
+                    Message = CoreText.DifferentConfigVersions,
                     Ifo = $"{config.BotVer} != {Assembly.GetExecutingAssembly().GetName().Version}",
                     Date = DateTime.Now
                 });
@@ -126,7 +124,7 @@ namespace Core.Core
                 {
                     Print(new
                     {
-                        Message = $"При выполнении действия {action.ActionType}, произошла ошибка. {Environment.NewLine}Тип действия не совпадает с членами действия.",
+                        Message = String.Format(CoreText.IncorrectAction, action.ActionType, Environment.NewLine),
                         Date = DateTime.Now,
                         Status = EStatus.Abort
                     });

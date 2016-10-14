@@ -107,6 +107,11 @@
     <Compile Include="ConfigEntity\IConfigReader.cs" />
     <Compile Include="ConfigEntity\SaveFileParam.cs" />
     <Compile Include="CoreFactory.cs" />
+    <Compile Include="CoreText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreText.resx</DependentUpon>
+    </Compile>
     <Compile Include="Core\DefaultActionFactory.cs" />
     <Compile Include="ConfigEntity\FileVersion.cs" />
     <Compile Include="Core\DefaultExecutiveCore.cs" />
@@ -160,7 +165,12 @@
       <Name>LogWrapper</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="CoreText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
