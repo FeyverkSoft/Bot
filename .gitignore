@@ -4,5 +4,10 @@
 *.user
 /.vs
 /Executor/obj
+/Executor/bin
 /Core/bin
 /Core/obj
+/Plugin/TestPlugin/obj
+/Plugin/TestPlugin/bin
+/Plugin/DNPlugin/obj
+/Plugin/DNPlugin/bin
