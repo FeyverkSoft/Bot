@@ -18,11 +18,12 @@ namespace Executor
         {
             IExecutiveCore core = CoreFactory.GetCore();
             core.OnPrintMessageEvent += Console.WriteLine;
-            var cr = new ConfigReader<Config>("test1.jsn");
 
 #if !DEBUG
-            core.Run(DnConf());
+            Console.WriteLine(args?.ToJson());
+            core.Run(args?.Length == 0 ? DnConf() : DnConf(args[0]));
 #else
+            var cr = new ConfigReader<Config>("test1.jsn");
             var list = new ListBotAction()
             {
                // new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
@@ -46,9 +47,9 @@ namespace Executor
             Console.ReadLine();
         }
 
-        static Config DnConf()
+        static Config DnConf(String path = "test.jsn")
         {
-            var cr = new ConfigReader<Config>("test.jsn");
+            var cr = new ConfigReader<Config>(path);
 #if DEBUG
             var list = new List<BotAction>
             {
