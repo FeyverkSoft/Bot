@@ -82,6 +82,7 @@
     <Compile Include="ActionExecutors\SleepExecutor.cs" />
     <Compile Include="ActionExecutors\MouseRClickExecutor.cs" />
     <Compile Include="ActionExecutors\MouseSetPosExecutor.cs" />
+    <Compile Include="AppConfig.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IfAction.cs" />
@@ -152,6 +153,9 @@
       <Project>{c0eedcf7-134e-43a4-b8ae-12003c6602b3}</Project>
       <Name>LogWrapper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CoreConfig\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

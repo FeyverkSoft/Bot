@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Message
 {
@@ -14,7 +10,9 @@ namespace Core.Message
         /// <summary>
         /// Отправить сообщение указанному адресату
         /// </summary>
+        /// <param name="body">Тело сообщения</param>
+        /// <param name="recipient">Получатель сообщения</param>
         /// <returns></returns>
-        MessageResult SendMessage();
+        MessageResult SendMessage(String body, String recipient);
     }
 }
