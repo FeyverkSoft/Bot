@@ -31,7 +31,10 @@ namespace Core
         {
             //Если выбран путь игнорирования плагинов
             if (!AppConfig.LoadPlugin)
+            {
+                Log.WriteLine(new {Message = "Загрузка плагинов была отключена"});
                 return;
+            }
             //При повторном вызове не загружаем всё снова
             if (AssemblyPluginsList.Count > 0)
                 return;
