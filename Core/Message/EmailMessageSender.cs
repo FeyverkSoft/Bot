@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using System.Net.Mail;
+using LogWrapper;
 
 namespace Core.Message
 {
@@ -38,6 +39,7 @@ namespace Core.Message
             }
             catch (Exception ex)
             {
+                Log.WriteLine(ex.Message);
                 return new MessageResult(EMessageStatus.Fail, ex.Message);
             }
 

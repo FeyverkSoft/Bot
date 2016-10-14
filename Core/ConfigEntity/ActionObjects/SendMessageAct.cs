@@ -40,5 +40,15 @@ namespace Core.ConfigEntity.ActionObjects
         [DataMember]
         [Description("Включить предыдущий результат после тела сообщения")]
         public Boolean IncludePrevRes { get; }
+
+        public SendMessageAct(String recipient, String body, EMessageType messageType = EMessageType.Email, Boolean includePrevRes = true)
+        {
+            if(String.IsNullOrEmpty(recipient))
+                throw new ArgumentNullException(nameof(recipient));
+            MessageType = messageType;
+            Recipient = recipient;
+            Body = body;
+            IncludePrevRes = includePrevRes;
+        }
     }
 }
