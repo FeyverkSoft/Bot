@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using Core.Helpers;
-using System.Reflection;
 using LogWrapper;
-using Plugin;
 
 namespace Core.ConfigEntity
 {
-    public sealed class ConfigReader : IConfigReader
+    public sealed class ConfigReader<TConfigType> : IConfigReader<TConfigType> where TConfigType : class, new()
     {
         private readonly String _directory;
-        public ConfigReader(String dir)
+        private readonly Boolean _ignoreNull;
+        public ConfigReader(String dir, Boolean ignoreNull = true)
         {
-            Log.WriteLine($"{GetType().Name}.ctor->(dir: {dir});");
-
+            Log.WriteLine($"{GetType().Name}.ctor->(dir: {dir}); ignoreNull: {ignoreNull}");
+            _ignoreNull = ignoreNull;
             if (String.IsNullOrEmpty(dir))
                 throw new ArgumentNullException(nameof(dir));
             _directory = dir;
@@ -25,18 +22,19 @@ namespace Core.ConfigEntity
         /// Сохранить конфиг
         /// </summary>
         /// <param name="conf"></param>
-        public void Save(Config conf)
+        public TConfigType Save(TConfigType conf)
         {
             try
             {
                 Log.WriteLine($"{GetType().Name}.{nameof(Save)}->(conf: {(conf == null ? "not null" : " null")})");
                 if (conf == null)
                     throw new ArgumentNullException(nameof(conf));
-                using (StreamWriter sw = new StreamWriter(_directory))
+                using (var sw = new StreamWriter(_directory))
                 {
-                    sw.Write(conf.ToJson());
+                    sw.Write(conf.ToJson(ignoreNull: _ignoreNull));
                     sw.Flush();
                 }
+                return conf;
             }
             catch (Exception ex)
             {
@@ -49,22 +47,20 @@ namespace Core.ConfigEntity
         /// Загрузить конфиг 
         /// </summary>
         /// <returns></returns>
-        public Config Load()
+        public TConfigType Load()
         {
             try
             {
                 Log.WriteLine($"{GetType().Name}.{nameof(Load)}->(dir: {_directory})");
-                var vers = Assembly.GetExecutingAssembly().GetName().Version;
-                using (StreamReader sr = new StreamReader(_directory))
+                using (var sr = new StreamReader(_directory))
                 {
-                    var temp = sr.ParseJson<Config>();
-                    if (temp.BotVer != new FileVersion(vers))
-                    {
-                        Log.WriteLine($"Не совпадают версии файла и приложения, возможны побочные эффекты!");
-                        Log.WriteLine($"{temp.BotVer} != {vers}");
-                    }
-                    return temp;
+
+                    return sr.ParseJson<TConfigType>();
                 }
+            }
+            catch (FileNotFoundException)
+            {
+                return Save(new TConfigType());
             }
             catch (Exception ex)
             {
@@ -73,7 +69,5 @@ namespace Core.ConfigEntity
             }
 
         }
-
-
     }
 }

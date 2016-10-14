@@ -30,7 +30,7 @@ namespace Core
         public static void LoadPlugins()
         {
             //При повторном вызове не загружаем всё снова
-            if(AssemblyPluginsList.Count>0)
+            if (AssemblyPluginsList.Count > 0)
                 return;
             //Получаем путь до программы
             var sPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName); ;
@@ -43,7 +43,7 @@ namespace Core
                 if (!AssemblyPluginsList.Contains(assem))
                     AssemblyPluginsList.Add(assem);
 
-                foreach (var t in AssemblyPluginsList.Select(x => x.GetTypes().FirstOrDefault(t => t.GetInterfaces().Any(i => i == typeof(IPlugin)))))
+                foreach (var t in AssemblyPluginsList.Select(x => x.GetTypes().FirstOrDefault(t => t.GetInterfaces().Any(i => i == typeof(IPlugin)))).Where(tt => tt != null))
                 {
                     try
                     {
@@ -51,7 +51,7 @@ namespace Core
                         IPlugin p = (IPlugin)Activator.CreateInstance(t);
                         if (!PluginsList.Contains(p))
                             PluginsList.Add(p);
-                        Log.WriteLine(new {message= $"Add plagin {p.Name}" });
+                        Log.WriteLine(new { message = $"Add plagin {p.Name}" });
                     }
                     catch { }
                 }

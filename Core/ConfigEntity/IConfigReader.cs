@@ -1,16 +1,16 @@
 ﻿namespace Core.ConfigEntity
 {
-    public interface IConfigReader
+    public interface IConfigReader<TConfigType> where TConfigType : class, new()
     {
         /// <summary>
         /// Загрузить конфиг 
         /// </summary>
         /// <returns></returns>
-        Config Load();
+        TConfigType Load();
         /// <summary>
         /// Сохранить конфиг
         /// </summary>
         /// <param name="conf"></param>
-        void Save(Config conf);
+        TConfigType Save(TConfigType conf);
     }
 }

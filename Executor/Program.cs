@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using Core;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
@@ -14,9 +15,9 @@ namespace Executor
     {
         static void Main(string[] args)
         {
-            IExecutiveCore core = new DefaultExecutiveCore();
+            IExecutiveCore core = CoreFactory.GetCore();
             core.OnPrintMessageEvent += Console.WriteLine;
-            IConfigReader cr = new ConfigReader("test1.jsn");
+            var cr = new ConfigReader<Config>("test1.jsn");
 
 #if !DEBUG
             core.Run(DnConf());
@@ -47,7 +48,7 @@ namespace Executor
 
         static Config DnConf()
         {
-            IConfigReader cr = new ConfigReader("test.jsn");
+            var cr = new ConfigReader<Config>("test.jsn");
 #if DEBUG
             var list = new List<BotAction>
             {

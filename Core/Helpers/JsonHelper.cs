@@ -46,17 +46,19 @@ namespace Core.Helpers
         }
 
 
-
         /// <summary>
         /// Преобразовать объект в JSON, причём Enum будет записано текстом
         /// </summary>
         /// <param name="obj"></param>
+        /// <param name="formatting"></param>
+        /// <param name="typeName"></param>
+        /// <param name="ignoreNull"></param>
         /// <returns></returns>
-        public static String ToJson(this Object obj, Boolean formatting = true, Boolean typeName = true)
+        public static String ToJson(this Object obj, Boolean formatting = true, Boolean typeName = true, Boolean ignoreNull = true)
         {
             return JsonConvert.SerializeObject(obj, formatting ? Formatting.Indented : Formatting.None, new JsonSerializerSettings
             {
-                NullValueHandling = NullValueHandling.Ignore,
+                NullValueHandling = ignoreNull ? NullValueHandling.Ignore : NullValueHandling.Include,
                 TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
                 TypeNameHandling = typeName ? TypeNameHandling.Objects : TypeNameHandling.None,
                 Converters = new List<JsonConverter>

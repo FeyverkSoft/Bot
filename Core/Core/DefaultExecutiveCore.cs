@@ -16,7 +16,7 @@ namespace Core.Core
     /// <summary>
     /// Ядро исполнителя действий
     /// </summary>
-    public sealed class DefaultExecutiveCore : IExecutiveCore
+    internal sealed class DefaultExecutiveCore : IExecutiveCore
     {
         private Boolean IsAbort { get; set; } = false;
 
@@ -38,10 +38,9 @@ namespace Core.Core
             OnPrintMessageEvent?.Invoke(o?.ToJson(true, false));
         }
 
-        public DefaultExecutiveCore(IActionFactory actionFactory = null)
+        public DefaultExecutiveCore(IActionFactory actionFactory)
         {
-            if (actionFactory == null)
-                _actionFactory = new DefaultActionFactory();
+            _actionFactory = actionFactory;
             Assemblys.LoadPlugins();
         }
 
@@ -56,7 +55,7 @@ namespace Core.Core
             if (config.BotVer != Assembly.GetExecutingAssembly().GetName().Version)
                 Print(new { Status = EStatus.Warning, Message = $"Версия конфигурауционного файла не совпадает сверсией интерпретатора! Возможны побочные эффекты.", Date = DateTime.Now });
 
-           return await Run(config.Actions);
+            return await Run(config.Actions);
         }
         /// <summary>
         /// Выполнить список действий
@@ -162,7 +161,7 @@ namespace Core.Core
                                 {
                                     return InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult
                                         ? (action as IfAction).Actions
-                                        : (action as IfAction).FailActions,res);
+                                        : (action as IfAction).FailActions, res);
                                 }
                                 IsAbort = true;
                                 throw new Exception("Incorrect If>BooleanExecutorResult!");
