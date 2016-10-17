@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfExecutor"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        mc:Ignorable="d" Title="BotTools" 
+        d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         
+        <Menu Grid.Row="0" Background="#FFF4F4FF">
+            <MenuItem Header="Help">
+                <Button/>
+            </MenuItem>
+
+        </Menu>
+        
+        <!--Шапка-->
+        <Border Grid.Row="1" Style="{StaticResource ShadowBorder}">
+
+        </Border>
+
     </Grid>
 </Window>
