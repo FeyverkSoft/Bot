@@ -4,25 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfExecutor"
+        xmlns:markup="clr-namespace:W1.AdminTools.WPF.Extensions.Markup"
         mc:Ignorable="d" Title="BotTools" 
         d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="52px" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        
-        <Menu Grid.Row="0" Background="#FFF4F4FF">
+
+        <Menu Grid.Row="0" Background="#FFC4C4C5">
             <MenuItem Header="Help">
                 <Button/>
             </MenuItem>
-
         </Menu>
-        
+
         <!--Шапка-->
         <Border Grid.Row="1" Style="{StaticResource ShadowBorder}">
-
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{StaticResource PlayIcon}" Height="21" Width="21" Stretch="Fill" />
+                        <!--Выполнить -->
+                        <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{markup:Localization Key=Text_Run}" />
+                    </StackPanel>
+                </Button>
+                <Button>
+                </Button>
+            </StackPanel>
         </Border>
 
     </Grid>

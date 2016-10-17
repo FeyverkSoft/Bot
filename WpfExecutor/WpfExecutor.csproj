@@ -67,6 +67,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Extensions\Commands\CommandManagerHelper.cs" />
+    <Compile Include="Extensions\Commands\DelegateCommand.cs" />
+    <Compile Include="Extensions\Localization\BaseLocalizationListener.cs" />
+    <Compile Include="Extensions\Localization\BindingLocalizationConverter.cs" />
+    <Compile Include="Extensions\Localization\CultureChangedEventArgs.cs" />
+    <Compile Include="Extensions\Localization\CultureChangedEventManager.cs" />
+    <Compile Include="Extensions\Localization\CultureChangedListener.cs" />
+    <Compile Include="Extensions\Localization\ILocalizationProvider.cs" />
+    <Compile Include="Extensions\Localization\KeyLocalizationListener.cs" />
+    <Compile Include="Extensions\Localization\LocalizationExtension.cs" />
+    <Compile Include="Extensions\Localization\LocalizationManager.cs" />
+    <Compile Include="Extensions\Localization\LocalizedStringsConverter.cs" />
+    <Compile Include="Extensions\Localization\LocalizedStringsHelper.cs" />
+    <Compile Include="Extensions\Localization\XmlLocalizationConverter.cs" />
+    <Compile Include="Extensions\Localization\XmlLocalizationExtension.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -102,6 +117,25 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\About-32.png" />
+    <Resource Include="Resources\icons\Calendar_7-64.png" />
+    <Resource Include="Resources\icons\Folder-32.png" />
+    <Resource Include="Resources\icons\Great_Britain-32.png" />
+    <Resource Include="Resources\icons\Happy-32.png" />
+    <Resource Include="Resources\icons\High_Importance-32.png" />
+    <Resource Include="Resources\icons\High_Priority-32.png" />
+    <Resource Include="Resources\icons\Open_Folder-32.png" />
+    <Resource Include="Resources\icons\Play-32.png" />
+    <Resource Include="Resources\icons\Plus-32.png" />
+    <Resource Include="Resources\icons\Repeat-32.png" />
+    <Resource Include="Resources\icons\Russian_Federation-32.png" />
+    <Resource Include="Resources\icons\Search-32.png" />
+    <Resource Include="Resources\icons\Sent-48.png" />
+    <Resource Include="Resources\icons\Shutdown-32.png" />
+    <Resource Include="Resources\icons\ViewFile-32.png" />
+    <Resource Include="Resources\icons\Visible-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

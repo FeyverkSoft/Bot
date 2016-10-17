@@ -3,9 +3,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:WpfExecutor" 
-    x:Name="Thema"
+    xmlns:local="clr-namespace:WpfExecutor"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
     mc:Ignorable="d">
+
+    <system:Boolean x:Key="True">True</system:Boolean>
+    <system:Boolean x:Key="False">False</system:Boolean>
+
+    <DropShadowEffect x:Key="z-depth1" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#CCCCCC" RenderingBias="Quality"/>
+    <DropShadowEffect x:Key="z-depth2" BlurRadius="8" ShadowDepth="2.5" Direction="270" Color="#BBBBBB" RenderingBias="Quality"/>
+    <DropShadowEffect x:Key="z-depth3" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB" RenderingBias="Quality"/>
+    <DropShadowEffect x:Key="z-depth4" BlurRadius="25" ShadowDepth="8" Direction="270" Color="#BBBBBB" RenderingBias="Quality"/>
+    <DropShadowEffect x:Key="z-depth5" BlurRadius="35" ShadowDepth="13" Direction="270" Color="#BBBBBB" RenderingBias="Quality"/>
+
+    <BitmapImage x:Key="PlayIcon" UriSource="pack://application:,,,/Resources/icons/Play-32.png" />
+    <BitmapImage x:Key="RefreshIcon" UriSource="pack://application:,,,/Resources/icons/Repeat-32.png" />
+    <BitmapImage x:Key="Calendar" UriSource="pack://application:,,,/Resources/icons/Calendar_7-64.png" />
+    <BitmapImage x:Key="ru-RUIcon" UriSource="pack://application:,,,/Resources/icons/Russian_Federation-32.png" />
+    <BitmapImage x:Key="en-USIcon" UriSource="pack://application:,,,/Resources/icons/Great_Britain-32.png" />
+    <BitmapImage x:Key="ViewFileIcon" UriSource="pack://application:,,,/Resources/icons/ViewFile-32.png"/>
+    <BitmapImage x:Key="HighImportanceIcon" UriSource="pack://application:,,,/Resources/icons/High_Importance-32.png" />
+    <BitmapImage x:Key="FolderIcon" UriSource="pack://application:,,,/Resources/icons/Folder-32.png" />
+    <BitmapImage x:Key="OpenFolderIcon" UriSource="pack://application:,,,/Resources/icons/Open_Folder-32.png" />
+    <BitmapImage x:Key="ShutdownIcon" UriSource="pack://application:,,,/Resources/icons/Shutdown-32.png" />
+    <BitmapImage x:Key="HappyIcon" UriSource="pack://application:,,,/Resources/icons/Happy-32.png" />
+    <BitmapImage x:Key="AddIcon" UriSource="pack://application:,,,/Resources/icons/Plus-32.png" />
+    <BitmapImage x:Key="VisibleIcon" UriSource="pack://application:,,,/Resources/icons/Visible-32.png" />
+    <BitmapImage x:Key="AboutIcon" UriSource="pack://application:,,,/Resources/icons/About-32.png" />
+    <BitmapImage x:Key="SearchIcon" UriSource="pack://application:,,,/Resources/icons/Search-32.png" />
+    <BitmapImage x:Key="SentIcon" UriSource="pack://application:,,,/Resources/icons/Sent-48.png" />
+
 
     <Style x:Key="ShadowBorder" x:Name="ShadowBorder" TargetType="Border" >
         <Setter Property= "Background" Value="WhiteSmoke"/>
