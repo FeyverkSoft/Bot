@@ -18,8 +18,7 @@ namespace Core.Helpers
             if (type != null)
                 return type;
 
-            type = Assemblys.AssemblyPluginsList.Where(x => x.GetName().Name == assemblyName).Select(y => y.GetTypes()
-                .FirstOrDefault(x => x.FullName == typeName && x.Assembly.GetName().Name == assemblyName)).FirstOrDefault();
+            type = Assemblys.PluginsTypeList.FirstOrDefault(x => x.FullName == typeName && x.Assembly.GetName().Name == assemblyName);
 
             if (type != null)
                 return type;

@@ -21,6 +21,11 @@ namespace Core
         /// </summary>
         internal static readonly List<IPlugin> PluginsList = new List<IPlugin>();
 
+        /// <summary>
+        /// Список плагинов
+        /// </summary>
+        internal static readonly List<Type> PluginsTypeList = new List<Type>();
+
         private static List<Type> _typeList;
         internal static List<Type> TypeList => _typeList ?? (_typeList = Assembly.GetExecutingAssembly().GetTypes().ToList());
 
@@ -56,7 +61,10 @@ namespace Core
                         //Подписываемся на события плагина и добавляем его в список плагинов
                         IPlugin p = (IPlugin)Activator.CreateInstance(t);
                         if (!PluginsList.Contains(p))
+                        {
                             PluginsList.Add(p);
+                            PluginsTypeList.AddRange(assem.GetTypes());
+                        }
                         Log.WriteLine(new { message = $"Add plagin {p.Name}" });
                     }
                     catch { }

@@ -27,15 +27,15 @@ namespace Executor
             var list = new ListBotAction()
             {
                 new BotAction(ActionType.SendMessage, new SendMessageAct("@gmail.com", "Привет мир!!")),
-               // new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
-                //new BotAction(ActionType.GetMousePos),
-               // new BotAction(ActionType.GetObject, new GetObjectAct()),
-               // new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))
+            /*    new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
+                new BotAction(ActionType.GetMousePos),
+                new BotAction(ActionType.GetObject, new GetObjectAct()),
+                new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))*/
             };
             var conf = new Config(list);
             //cr.Save(conf);
-            //var d = cr.Load();
-            //d = d;
+            var d = cr.Load();
+            d = d;
             Thread.Sleep(4000);
             core.Run(conf);
 
