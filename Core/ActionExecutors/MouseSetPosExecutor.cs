@@ -14,8 +14,8 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MouseSetPosExecutor : BaseExecutor
     {
-        private IMouse Mouse { get; set; } = new NativeMouse();
-        IWindowsProc WindowsProc { get; set; } = new NativeWindowsProc();
+        private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
+        IWindowsProc WindowsProc { get; set; } = AppContext.Get<IWindowsProc>();
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>

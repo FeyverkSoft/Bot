@@ -14,7 +14,7 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MouseMoveExecutor : BaseExecutor
     {
-        private IMouse Mouse { get; set; } = new NativeMouse();
+        private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>

@@ -16,7 +16,7 @@ namespace Core.ActionExecutors
     /// </summary>
     public class GetScreenShotExecutor : BaseExecutor
     {
-        readonly IWindowsProc _win = new NativeWindowsProc();
+        readonly IWindowsProc _win = AppContext.Get<IWindowsProc>();
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фfбрики

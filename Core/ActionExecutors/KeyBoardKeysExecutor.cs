@@ -15,7 +15,7 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class KeyBoardKeysExecutor : BaseExecutor
     {
-        private IKeyBoard KeyBoard { get; set; } = new NativeKeyBoard();
+        private IKeyBoard KeyBoard { get; set; } = AppContext.Get<IKeyBoard>();
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>

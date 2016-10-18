@@ -14,7 +14,7 @@ namespace Core.ActionExecutors
     /// </summary>
     public class GetObjectExecutor : BaseExecutor
     {
-        readonly IWindowsProc _windowsProc = new NativeWindowsProc();
+        readonly IWindowsProc _windowsProc = AppContext.Get<IWindowsProc>();
 
         /// <summary>
         /// Исполняет метод получения информации об указанном объекте
