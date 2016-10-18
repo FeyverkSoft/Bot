@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Input;
-using WpfExecutor.Extensions.Commands;
+using WpfConverters.Extensions.Commands;
 
 namespace WpfExecutor.Extensions.Localization
 {

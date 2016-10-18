@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "Plugin\TestPl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfExecutor", "WpfExecutor\WpfExecutor.csproj", "{6E9C0A50-A3E5-4BD0-AE2E-9924ECD369C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfConverters", "WpfConverters\WpfConverters.csproj", "{E7046A14-C2E7-4B26-B54C-D2CF717ADC1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfExtensions", "WpfConverters\WpfExtensions.csproj", "{E7046A14-C2E7-4B26-B54C-D2CF717ADC1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

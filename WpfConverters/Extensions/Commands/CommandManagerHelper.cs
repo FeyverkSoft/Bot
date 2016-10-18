@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace WpfExecutor.Extensions.Commands
+namespace WpfConverters.Extensions.Commands
 {
     /// <summary>
     ///     This class contains methods for the CommandManager that help avoid memory leaks by

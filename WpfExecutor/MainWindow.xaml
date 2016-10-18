@@ -22,8 +22,8 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <!--Меню слева-->
-            <Menu Grid.Row="0" Background="#FFC4C4C5">
-                <MenuItem Header="{localization:Localization Key=Text_Actions}">
+            <Menu x:Name="Menu" Grid.Row="0">
+                <MenuItem Header="{localization:Localization Key=Text_Actions}" Height="{Binding ActualHeight, ElementName=Menu, Mode=OneWay}" Width="auto">
                     <!--Открыть-->
                     <MenuItem Header="{localization:Localization Text_Open}" Command="{Binding OpenCommand}">
                         <MenuItem.Icon>
@@ -111,6 +111,5 @@
                 </Button>
             </StackPanel>
         </Border>
-
     </Grid>
 </Window>

@@ -119,6 +119,8 @@
     <Compile Include="Converters\Format\FormatNumberConverter.cs" />
     <Compile Include="Converters\Format\FormatTimeSpanConverter.cs" />
     <Compile Include="Converters\Format\InlineStringConverter.cs" />
+    <Compile Include="Extensions\Commands\CommandManagerHelper.cs" />
+    <Compile Include="Extensions\Commands\DelegateCommand.cs" />
     <Compile Include="Extensions\ScrollViewerExtensions.cs" />
     <Compile Include="Helpers\VisualHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace WpfExecutor.Extensions.Commands
+namespace WpfConverters.Extensions.Commands
 {
     /// <summary>
     ///     This class allows delegating the commanding logic to methods passed as parameters,
