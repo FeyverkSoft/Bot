@@ -25,6 +25,11 @@ namespace WpfConverters.Extensions.Commands
             _isAutomaticRequeryDisabled = isAutomaticRequeryDisabled;
         }
 
+        public DelegateCommand(Action p)
+        {
+            this.p = p;
+        }
+
         #endregion
 
         #region Public Methods
@@ -46,7 +51,7 @@ namespace WpfConverters.Extensions.Commands
         /// </summary>
         private void Execute()
         {
-            _executeMethod?.Invoke();
+            (_executeMethod ?? p)?.Invoke();
         }
 
         /// <summary>
@@ -136,6 +141,7 @@ namespace WpfConverters.Extensions.Commands
         private readonly Func<bool> _canExecuteMethod;
         private bool _isAutomaticRequeryDisabled;
         private List<WeakReference> _canExecuteChangedHandlers;
+        private Action p;
 
         #endregion
     }

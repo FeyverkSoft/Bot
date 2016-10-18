@@ -47,7 +47,7 @@
                     </MenuItem>
 
                     <!--Выход-->
-                    <MenuItem Header="{localization:Localization Text_Exit}" Command="{Binding ExitCommand}">
+                    <MenuItem Header="{localization:Localization Text_Exit}" Command="{Binding CloseCommand}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource ShutdownIcon}" />
                         </MenuItem.Icon>
@@ -107,7 +107,7 @@
                 <Button Background="WhiteSmoke" Padding="2" Margin="0,2" BorderThickness="0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{StaticResource PlayIcon}" Height="21" Width="21" Stretch="Fill" />
-                        <!--Выполнить -->
+                        <!--Выполнить--> 
                         <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{localization:Localization Key=Text_Run}" />
                     </StackPanel>
                 </Button>

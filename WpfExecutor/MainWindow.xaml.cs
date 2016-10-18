@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WpfExecutor.Model;
 
 namespace WpfExecutor
 {
@@ -7,9 +8,10 @@ namespace WpfExecutor
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(MainWindowModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }

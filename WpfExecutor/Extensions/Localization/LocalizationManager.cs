@@ -42,7 +42,7 @@ namespace WpfExecutor.Extensions.Localization
 
         public IEnumerable<CultureInfo> Cultures => LocalizationProvider?.Cultures ?? Enumerable.Empty<CultureInfo>();
 
-        private ILocalizationProvider LocalizationProvider { get; } = AppContext.Get<ILocalizationProvider>();
+        public ILocalizationProvider LocalizationProvider { get; set; }
 
         private void OnCultureChanged(CultureInfo culture)
         {

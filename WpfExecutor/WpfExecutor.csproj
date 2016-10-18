@@ -153,6 +153,10 @@
     <Resource Include="Resources\icons\SaveIcon-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{88ef1877-5e4c-4440-82d9-b64c89cd11ef}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WpfConverters\WpfExtensions.csproj">
       <Project>{e7046a14-c2e7-4b26-b54c-d2cf717adc1e}</Project>
       <Name>WpfExtensions</Name>
