@@ -7,8 +7,10 @@
         xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
         xmlns:globalization="clr-namespace:System.Globalization;assembly=mscorlib"
         xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
-        mc:Ignorable="d" Title="BotTools" 
-        d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF">
+        xmlns:model="clr-namespace:WpfExecutor.Model"
+        mc:Ignorable="d" Title="{localization:Localization Title_MainWin}" 
+        d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF"
+        d:DataContext="{d:DesignInstance Type=model:MainWindowModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

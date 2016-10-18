@@ -150,4 +150,7 @@
   <data name="Text_Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Title_MainWin" xml:space="preserve">
+    <value>Management Console for the bot</value>
+  </data>
 </root>

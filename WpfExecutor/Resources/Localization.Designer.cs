@@ -158,5 +158,14 @@ namespace WpfExecutor.Resources {
                 return ResourceManager.GetString("Text_Save", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Консоль управления для бота.
+        /// </summary>
+        internal static string Title_MainWin {
+            get {
+                return ResourceManager.GetString("Title_MainWin", resourceCulture);
+            }
+        }
     }
 }

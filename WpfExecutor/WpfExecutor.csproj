@@ -55,8 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Annotations.cs" />
     <Compile Include="AppContext.cs" />
     <Compile Include="Extensions\Localization\ResxLocalizationProvider.cs" />
+    <Compile Include="Model\BaseViewModel.cs" />
+    <Compile Include="Model\MainWindowModel.cs" />
     <Compile Include="Resources\Localization.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,7 +128,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
