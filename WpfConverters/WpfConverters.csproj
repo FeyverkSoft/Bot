@@ -44,6 +44,22 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\Button.cs" />
+    <Compile Include="Behaviors\Click.cs" />
+    <Compile Include="Behaviors\ContextMenu.cs" />
+    <Compile Include="Behaviors\DataGrid.cs" />
+    <Compile Include="Behaviors\DataGridColumn.cs" />
+    <Compile Include="Behaviors\DataGridColumnHeader.cs" />
+    <Compile Include="Behaviors\DoubleClick.cs" />
+    <Compile Include="Behaviors\DragAndDrop.cs" />
+    <Compile Include="Behaviors\Element.cs" />
+    <Compile Include="Behaviors\GridSplitter.cs" />
+    <Compile Include="Behaviors\Hyperlink.cs" />
+    <Compile Include="Behaviors\MultiselectTreeView.cs" />
+    <Compile Include="Behaviors\RichTextBox.cs" />
+    <Compile Include="Behaviors\ScrollViewer.cs" />
+    <Compile Include="Behaviors\TreeView.cs" />
+    <Compile Include="Behaviors\TreeViewItem.cs" />
     <Compile Include="Converters\BaseHybridConverterExtension.cs" />
     <Compile Include="Converters\BaseMultiValueConverterExtension.cs" />
     <Compile Include="Converters\BaseValueConverterExtension.cs" />
@@ -103,6 +119,7 @@
     <Compile Include="Converters\Format\FormatNumberConverter.cs" />
     <Compile Include="Converters\Format\FormatTimeSpanConverter.cs" />
     <Compile Include="Converters\Format\InlineStringConverter.cs" />
+    <Compile Include="Extensions\ScrollViewerExtensions.cs" />
     <Compile Include="Helpers\VisualHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
