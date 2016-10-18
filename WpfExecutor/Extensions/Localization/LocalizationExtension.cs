@@ -6,9 +6,8 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
-using WpfExecutor.Extensions.Localization;
 
-namespace W1.AdminTools.WPF.Extensions.Markup
+namespace WpfExecutor.Extensions.Localization
 {
     /// <summary>
     /// Расширение разметки, которое возвращает локализованную строку по ключу или привязке
@@ -76,8 +75,8 @@ namespace W1.AdminTools.WPF.Extensions.Markup
             if (target.TargetObject.GetType().FullName == "System.Windows.SharedDp")
                 return this;
 
-            if (!string.IsNullOrEmpty(Key) && !string.IsNullOrEmpty(KeyFormat))
-                Key = string.Format(KeyFormat, Key);
+            if (!String.IsNullOrEmpty(Key) && !String.IsNullOrEmpty(KeyFormat))
+                Key = String.Format(KeyFormat, Key);
 
 
             // Если заданы привязка ключа или список привязок аргументов,
@@ -112,7 +111,7 @@ namespace W1.AdminTools.WPF.Extensions.Markup
             }
 
             // Если задан ключ, то используем KeyLocalizationListener
-            if (!string.IsNullOrEmpty(Key))
+            if (!String.IsNullOrEmpty(Key))
             {
                 var listener = new KeyLocalizationListener(Key, Arguments?.ToArray(), ValueFormat);
 

@@ -4,33 +4,110 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfExecutor"
-        xmlns:markup="clr-namespace:W1.AdminTools.WPF.Extensions.Markup"
+        xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
+        xmlns:globalization="clr-namespace:System.Globalization;assembly=mscorlib"
+        xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
         mc:Ignorable="d" Title="BotTools" 
         d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="52px" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Background="#FFC4C4C5">
-            <MenuItem Header="Help">
-                <Button/>
-            </MenuItem>
-        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <!--Меню слева-->
+            <Menu Grid.Row="0" Background="#FFC4C4C5">
+                <MenuItem Header="{localization:Localization Key=Text_Actions}">
+                    <!--Открыть-->
+                    <MenuItem Header="{localization:Localization Text_Open}" Command="{Binding OpenCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource OpenFolderIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <!--Сохранить-->
+                    <MenuItem Header="{localization:Localization Text_Save}" Command="{Binding SaveCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource SaveIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
 
+                    <!--новый-->
+                    <MenuItem Header="{localization:Localization Text_New}" Command="{Binding NewCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource AddIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <!--Выход-->
+                    <MenuItem Header="{localization:Localization Text_Exit}" Command="{Binding ExitCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource ShutdownIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{localization:Localization Key=Text_Help}">
+                    <!--Справка-->
+                    <MenuItem Header="{localization:Localization Text_Help}" Command="{Binding HelpCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource AboutIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <!--О программе-->
+                    <MenuItem Header="{localization:Localization Text_About}" Command="{Binding AboutCommand}">
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+            <!--Меню справа-->
+            <Menu Grid.Column="1" HorizontalAlignment="Right">
+                <!--Язык-->
+                <MenuItem ItemsSource="{Binding Source={x:Static localization:LocalizationManager.Instance}, Path=Cultures}" UsesItemContainerTemplate="True">
+                    <MenuItem.Icon>
+                        <Image>
+                            <Image.Source>
+                                <Binding Source="{x:Static localization:LocalizationManager.Instance}" Path="CurrentCulture.ThreeLetterISOLanguageName" 
+                                     Converter="{common:ResourceConverter}" ConverterParameter="{}{0}Icon" />
+                            </Image.Source>
+                        </Image>
+                    </MenuItem.Icon>
+                    <MenuItem.Header>
+                        <TextBlock Text="{localization:Localization Language}" VerticalAlignment="Center" />
+                    </MenuItem.Header>
+                    <MenuItem.Resources>
+                        <ItemContainerTemplate DataType="{x:Type globalization:CultureInfo}">
+                            <MenuItem d:DataContext="{d:DesignInstance Type=globalization:CultureInfo}"
+                                      CommandParameter="{Binding Converter={common:ValueConverter}}" IsCheckable="True"
+                                      Header="{localization:Localization KeyBinding={Binding ThreeLetterISOLanguageName}, KeyFormat='Language_{0}'}"
+                                      Command="{Binding Source={x:Static localization:LocalizationManager.Instance}, Path=ChangeCultureCommand}">
+                                <MenuItem.IsChecked>
+                                    <MultiBinding Converter="{common:EqualsConverter}" Mode="OneWay">
+                                        <Binding Source="{x:Static localization:LocalizationManager.Instance}" Path="CurrentCulture" />
+                                        <Binding />
+                                    </MultiBinding>
+                                </MenuItem.IsChecked>
+                                <MenuItem.Icon>
+                                    <Image Source="{Binding ThreeLetterISOLanguageName, Converter={common:ResourceConverter}, ConverterParameter={}{0}Icon}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </ItemContainerTemplate>
+                    </MenuItem.Resources>
+                </MenuItem>
+            </Menu>
+        </Grid>
         <!--Шапка-->
         <Border Grid.Row="1" Style="{StaticResource ShadowBorder}">
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                <Button>
+                <Button Background="WhiteSmoke" Padding="2" Margin="0,2" BorderThickness="0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{StaticResource PlayIcon}" Height="21" Width="21" Stretch="Fill" />
                         <!--Выполнить -->
-                        <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{markup:Localization Key=Text_Run}" />
+                        <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{localization:Localization Key=Text_Run}" />
                     </StackPanel>
-                </Button>
-                <Button>
                 </Button>
             </StackPanel>
         </Border>

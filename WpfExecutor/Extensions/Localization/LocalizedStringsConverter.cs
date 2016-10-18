@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using W1.AdminTools.WPF.Extensions.Markup;
 
 namespace WpfExecutor.Extensions.Localization
 {

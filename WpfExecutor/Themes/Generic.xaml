@@ -21,6 +21,8 @@
     <BitmapImage x:Key="Calendar" UriSource="pack://application:,,,/Resources/icons/Calendar_7-64.png" />
     <BitmapImage x:Key="ru-RUIcon" UriSource="pack://application:,,,/Resources/icons/Russian_Federation-32.png" />
     <BitmapImage x:Key="en-USIcon" UriSource="pack://application:,,,/Resources/icons/Great_Britain-32.png" />
+    <BitmapImage x:Key="rusIcon" UriSource="pack://application:,,,/Resources/icons/Russian_Federation-32.png" />
+    <BitmapImage x:Key="engIcon" UriSource="pack://application:,,,/Resources/icons/Great_Britain-32.png" />
     <BitmapImage x:Key="ViewFileIcon" UriSource="pack://application:,,,/Resources/icons/ViewFile-32.png"/>
     <BitmapImage x:Key="HighImportanceIcon" UriSource="pack://application:,,,/Resources/icons/High_Importance-32.png" />
     <BitmapImage x:Key="FolderIcon" UriSource="pack://application:,,,/Resources/icons/Folder-32.png" />
@@ -32,6 +34,7 @@
     <BitmapImage x:Key="AboutIcon" UriSource="pack://application:,,,/Resources/icons/About-32.png" />
     <BitmapImage x:Key="SearchIcon" UriSource="pack://application:,,,/Resources/icons/Search-32.png" />
     <BitmapImage x:Key="SentIcon" UriSource="pack://application:,,,/Resources/icons/Sent-48.png" />
+    <BitmapImage x:Key="SaveIcon" UriSource="pack://application:,,,/Resources/icons/SaveIcon-48.png" />
 
 
     <Style x:Key="ShadowBorder" x:Name="ShadowBorder" TargetType="Border" >

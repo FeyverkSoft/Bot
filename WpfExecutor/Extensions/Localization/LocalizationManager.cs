@@ -66,7 +66,7 @@ namespace WpfExecutor.Extensions.Localization
 
         public object Localize(string key)
         {
-            if (string.IsNullOrEmpty(key))
+            if (String.IsNullOrEmpty(key))
                 return "[NULL]";
             var localizedValue = LocalizationProvider?.Localize(key);
             return localizedValue ?? $"[{key}]";
@@ -75,7 +75,7 @@ namespace WpfExecutor.Extensions.Localization
         public static string GetString(string key, params object[] args)
         {
             var format = Convert.ToString(Instance.Localize(key));
-            return !string.IsNullOrEmpty(format) && args.Length > 0 ? string.Format(format, args) : format;
+            return !String.IsNullOrEmpty(format) && args.Length > 0 ? string.Format(format, args) : format;
         }
 
 

@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using W1.AdminTools.WPF.Extensions.Markup;
 
 namespace WpfExecutor.Extensions.Localization
 {

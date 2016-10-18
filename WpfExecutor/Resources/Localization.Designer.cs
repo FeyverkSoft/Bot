@@ -61,11 +61,101 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Язык.
+        /// </summary>
+        internal static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на English.
+        /// </summary>
+        internal static string Language_eng {
+            get {
+                return ResourceManager.GetString("Language_eng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Русский.
+        /// </summary>
+        internal static string Language_rus {
+            get {
+                return ResourceManager.GetString("Language_rus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на О программе.
+        /// </summary>
+        internal static string Text_About {
+            get {
+                return ResourceManager.GetString("Text_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действия.
+        /// </summary>
+        internal static string Text_Actions {
+            get {
+                return ResourceManager.GetString("Text_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выход.
+        /// </summary>
+        internal static string Text_Exit {
+            get {
+                return ResourceManager.GetString("Text_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Справка.
+        /// </summary>
+        internal static string Text_Help {
+            get {
+                return ResourceManager.GetString("Text_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новый.
+        /// </summary>
+        internal static string Text_New {
+            get {
+                return ResourceManager.GetString("Text_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Открыть.
+        /// </summary>
+        internal static string Text_Open {
+            get {
+                return ResourceManager.GetString("Text_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Старт.
         /// </summary>
         internal static string Text_Run {
             get {
                 return ResourceManager.GetString("Text_Run", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить.
+        /// </summary>
+        internal static string Text_Save {
+            get {
+                return ResourceManager.GetString("Text_Save", resourceCulture);
             }
         }
     }

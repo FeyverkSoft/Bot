@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E7046A14-C2E7-4B26-B54C-D2CF717ADC1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WpfConverters</RootNamespace>
+    <AssemblyName>WpfConverters</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Converters\BaseHybridConverterExtension.cs" />
+    <Compile Include="Converters\BaseMultiValueConverterExtension.cs" />
+    <Compile Include="Converters\BaseValueConverterExtension.cs" />
+    <Compile Include="Converters\Common\AdditionConverter.cs" />
+    <Compile Include="Converters\Common\ArithmeticConverter.cs" />
+    <Compile Include="Converters\Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\Common\CommandToVisibilityConverter.cs" />
+    <Compile Include="Converters\Common\ConcatStringsConverter.cs" />
+    <Compile Include="Converters\Common\ConverterChains.cs" />
+    <Compile Include="Converters\Common\DateTimeOffsetConverter.cs" />
+    <Compile Include="Converters\Common\DisplayInputGesturesConverter.cs" />
+    <Compile Include="Converters\Common\DivisionConverter.cs" />
+    <Compile Include="Converters\Common\EmptyStringToNullConverter.cs" />
+    <Compile Include="Converters\Common\EmptyToBooleanConverter.cs" />
+    <Compile Include="Converters\Common\EmptyToInverseBooleanConverter.cs" />
+    <Compile Include="Converters\Common\EqualsConverter.cs" />
+    <Compile Include="Converters\Common\FirstItemConverter.cs" />
+    <Compile Include="Converters\Common\FirstNotNullConverter.cs" />
+    <Compile Include="Converters\Common\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\Common\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\Common\IsNotNullConverter.cs" />
+    <Compile Include="Converters\Common\IsNullConverter.cs" />
+    <Compile Include="Converters\Common\IsTypeConverter.cs" />
+    <Compile Include="Converters\Common\ListOfConverter.cs" />
+    <Compile Include="Converters\Common\LogicalAndConverter.cs" />
+    <Compile Include="Converters\Common\LogicalOrConverter.cs" />
+    <Compile Include="Converters\Common\LowerCaseConverter.cs" />
+    <Compile Include="Converters\Common\MoreOrEqualConverter.cs" />
+    <Compile Include="Converters\Common\MoreThenConverter.cs" />
+    <Compile Include="Converters\Common\MultilineOrTrimmedTextVisibilityConverter.cs" />
+    <Compile Include="Converters\Common\MultiplicationConverter.cs" />
+    <Compile Include="Converters\Common\NullIfConverter.cs" />
+    <Compile Include="Converters\Common\OffsetDateTimeConverter.cs" />
+    <Compile Include="Converters\Common\PropertyConverter.cs" />
+    <Compile Include="Converters\Common\ResourceConverter.cs" />
+    <Compile Include="Converters\Common\SecondToStringConverter.cs" />
+    <Compile Include="Converters\Common\StartsWithConverter.cs" />
+    <Compile Include="Converters\Common\StringToUriConverter.cs" />
+    <Compile Include="Converters\Common\SubtractionConverter.cs" />
+    <Compile Include="Converters\Common\ThicknessConverter.cs" />
+    <Compile Include="Converters\Common\TrimConverter.cs" />
+    <Compile Include="Converters\Common\TrimmedTextVisibilityConverter.cs" />
+    <Compile Include="Converters\Common\ValueConverter.cs" />
+    <Compile Include="Converters\Common\ValueInListConverter.cs" />
+    <Compile Include="Converters\Common\ValueNotInListConverter.cs" />
+    <Compile Include="Converters\Common\ValueSelectorConverter.cs" />
+    <Compile Include="Converters\Common\VisualChildConverter.cs" />
+    <Compile Include="Converters\DataType\BooleanConverter.cs" />
+    <Compile Include="Converters\DataType\DateTimeConverter.cs" />
+    <Compile Include="Converters\DataType\DecimalConverter.cs" />
+    <Compile Include="Converters\DataType\Int16Converter.cs" />
+    <Compile Include="Converters\DataType\Int32Converter.cs" />
+    <Compile Include="Converters\DataType\KeyGestureConverter.cs" />
+    <Compile Include="Converters\Format\FormatAmountConverter.cs" />
+    <Compile Include="Converters\Format\FormatConverter.cs" />
+    <Compile Include="Converters\Format\FormatDateConverter.cs" />
+    <Compile Include="Converters\Format\FormatNumberConverter.cs" />
+    <Compile Include="Converters\Format\FormatTimeSpanConverter.cs" />
+    <Compile Include="Converters\Format\InlineStringConverter.cs" />
+    <Compile Include="Helpers\VisualHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
-using W1.AdminTools.WPF.Extensions.Markup;
 
 namespace WpfExecutor.Extensions.Localization
 {
@@ -26,8 +25,8 @@ namespace WpfExecutor.Extensions.Localization
             if (values == null || values.Length < 2)
                 return null;
             var key = System.Convert.ToString(values[1] ?? "");
-            if (!string.IsNullOrEmpty(_keyFormat))
-                key = string.Format(_keyFormat, key);
+            if (!String.IsNullOrEmpty(_keyFormat))
+                key = String.Format(_keyFormat, key);
             var value = LocalizationManager.Instance.Localize(key);
             var stringValue = value as string;
             if (stringValue != null)
@@ -36,9 +35,9 @@ namespace WpfExecutor.Extensions.Localization
                 if (args.Length == 1 && !(args[0] is string) && args[0] is IEnumerable)
                     args = ((IEnumerable) args[0]).Cast<object>().ToArray();
                 if (args.Any())
-                    stringValue = string.Format(stringValue, args);
-                if (!string.IsNullOrEmpty(_valueFormat))
-                    stringValue = string.Format(_valueFormat, stringValue);
+                    stringValue = String.Format(stringValue, args);
+                if (!String.IsNullOrEmpty(_valueFormat))
+                    stringValue = String.Format(_valueFormat, stringValue);
                 return stringValue;
             }
             return value;

@@ -1,5 +1,5 @@
-﻿using System.ComponentModel;
-using W1.AdminTools.WPF.Extensions.Markup;
+﻿using System;
+using System.ComponentModel;
 
 namespace WpfExecutor.Extensions.Localization
 {
@@ -31,8 +31,8 @@ namespace WpfExecutor.Extensions.Localization
                 {
                     if (_args != null && _args.Length > 0)
                         stringValue = string.Format(stringValue, _args);
-                    if (!string.IsNullOrEmpty(_valueFormat))
-                        stringValue = string.Format(_valueFormat, stringValue);
+                    if (!String.IsNullOrEmpty(_valueFormat))
+                        stringValue = String.Format(_valueFormat, stringValue);
                     return stringValue;
                 }
                 return value;

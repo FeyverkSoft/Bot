@@ -149,6 +149,15 @@
     <Resource Include="Resources\icons\ViewFile-32.png" />
     <Resource Include="Resources\icons\Visible-32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\SaveIcon-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfConverters\WpfConverters.csproj">
+      <Project>{e7046a14-c2e7-4b26-b54c-d2cf717adc1e}</Project>
+      <Name>WpfConverters</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
