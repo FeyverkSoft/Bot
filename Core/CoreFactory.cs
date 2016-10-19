@@ -19,6 +19,8 @@ namespace Core
         /// <returns></returns>
         public static IExecutiveCore GetCore()
         {
+            if (AppConfig.DefaultCore)
+                return AppContext.Get<IExecutiveCore>();
             return new DefaultExecutiveCore(new DefaultActionFactory());
         }
     }
