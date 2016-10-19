@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using WpfConverters.Extensions;
@@ -53,14 +49,24 @@ namespace WpfExecutor.Model
         /// <summary>
         /// Команда закрытия
         /// </summary>
-        public ICommand CloseCommand => _closeCommand ?? (_closeCommand = new DelegateCommand(CloseMethod));
+        public ICommand CloseCommand => _closeCommand ?? (_closeCommand = new DelegateCommand(CloseCommandMethod));
 
-        private void CloseMethod()
+        private void CloseCommandMethod()
         {
             if (MessageBox.Show(
                 LocalizationManager.GetString("CloseMessage"),
                 LocalizationManager.GetString("CloseMessageTitle"), MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// Команда открытия нового документа
+        /// </summary>
+        public ICommand OpenCommand => _openCommand ?? (_openCommand = new DelegateCommand(OpenCommandMethod));
+
+        private void OpenCommandMethod()
+        {
+            throw new NotImplementedException();
         }
     }
 }

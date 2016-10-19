@@ -23,7 +23,7 @@ namespace Executor
             Console.WriteLine(args?.ToJson());
             core.Run(args?.Length == 0 ? DnConf() : DnConf(args[0]));
 #else
-            var cr = new ConfigReader<Config>("test1.jsn");
+            var cr = ConfigReaderFactory.Get<Config>();
             var list = new ListBotAction()
             {
                 new BotAction(ActionType.SendMessage, new SendMessageAct("@gmail.com", "Привет мир!!")),
@@ -33,8 +33,8 @@ namespace Executor
                 new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))*/
             };
             var conf = new Config(list);
-            //cr.Save(conf);
-            var d = cr.Load();
+            //cr.Save(conf,"test1.jsn");
+            var d = cr.Load("test1.jsn");
             d = d;
             Thread.Sleep(4000);
             core.Run(conf);
@@ -50,7 +50,7 @@ namespace Executor
 
         static Config DnConf(String path = "test.jsn")
         {
-            var cr = new ConfigReader<Config>(path);
+            var cr = ConfigReaderFactory.Get<Config>();
 #if DEBUG
             var list = new List<BotAction>
             {
@@ -111,9 +111,9 @@ namespace Executor
 
             var conf1 = conf.ToJson();
             var conf2 = conf1.ParseJson<Config>();
-            cr.Save(conf);
+            cr.Save(conf, path);
 #endif
-            return cr.Load();
+            return cr.Load(path);
         }
     }
 }

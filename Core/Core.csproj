@@ -92,6 +92,7 @@
     <Compile Include="ConfigEntity\ActionObjects\MockAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\PluginInvokeAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ScreenShotAct.cs" />
+    <Compile Include="ConfigEntity\ConfigReaderFactory.cs" />
     <Compile Include="ConfigEntity\ListBotAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ListAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IAction.cs" />

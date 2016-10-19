@@ -5,34 +5,35 @@ using LogWrapper;
 
 namespace Core.ConfigEntity
 {
-    public sealed class ConfigReader<TConfigType> : IConfigReader<TConfigType> where TConfigType : class, new()
+    internal sealed class ConfigReader<TConfigType> : IConfigReader<TConfigType> where TConfigType : class, new()
     {
-        private readonly String _directory;
         private readonly Boolean _ignoreNull;
         private readonly Boolean _typeName;
-        public ConfigReader(String dir, Boolean ignoreNull = true, Boolean loadPlugins = true, Boolean typeName = true)
+        public ConfigReader(Boolean ignoreNull = true, Boolean loadPlugins = true, Boolean typeName = true)
         {
-            Log.WriteLine($"{GetType().Name}.ctor->(dir: {dir}); ignoreNull: {ignoreNull}");
+            Log.WriteLine($"{GetType().Name}.ctor->(ignoreNull: {ignoreNull}");
             _ignoreNull = ignoreNull;
             _typeName = typeName;
-            if (String.IsNullOrEmpty(dir))
-                throw new ArgumentNullException(nameof(dir));
-            _directory = dir;
+
             if (loadPlugins)
                 Assemblys.LoadPlugins();
         }
+
         /// <summary>
         /// Сохранить конфиг
         /// </summary>
         /// <param name="conf"></param>
-        public TConfigType Save(TConfigType conf)
+        /// <param name="dir"></param>
+        public TConfigType Save(TConfigType conf, String dir)
         {
+            if (String.IsNullOrEmpty(dir))
+                throw new ArgumentNullException(nameof(dir));
             try
             {
                 Log.WriteLine($"{GetType().Name}.{nameof(Save)}->(conf: {(conf == null ? "not null" : " null")})");
                 if (conf == null)
                     throw new ArgumentNullException(nameof(conf));
-                using (var sw = new StreamWriter(_directory))
+                using (var sw = new StreamWriter(dir))
                 {
                     sw.Write(conf.ToJson(ignoreNull: _ignoreNull, typeName: _typeName));
                     sw.Flush();
@@ -50,19 +51,21 @@ namespace Core.ConfigEntity
         /// Загрузить конфиг 
         /// </summary>
         /// <returns></returns>
-        public TConfigType Load()
+        public TConfigType Load(String dir)
         {
+            if (String.IsNullOrEmpty(dir))
+                throw new ArgumentNullException(nameof(dir));
             try
             {
-                Log.WriteLine($"{GetType().Name}.{nameof(Load)}->(dir: {_directory})");
-                using (var sr = new StreamReader(_directory))
+                Log.WriteLine($"{GetType().Name}.{nameof(Load)}->(dir: {dir})");
+                using (var sr = new StreamReader(dir))
                 {
                     return sr.ParseJson<TConfigType>();
                 }
             }
             catch (FileNotFoundException)
             {
-                return Save(new TConfigType());
+                return Save(new TConfigType(), dir);
             }
             catch (Exception ex)
             {

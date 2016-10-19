@@ -14,7 +14,7 @@ namespace Core
         {
             if (AppConfigReader != null)
                 return;
-            var temp = (AppConfigReader = new ConfigReader<InternalAppConfig>("CoreConfig.json", false, false, false)).Load();
+            var temp = (AppConfigReader = ConfigReaderFactory.Get<InternalAppConfig>()).Load("CoreConfig.json");
 
             SmtpPort = temp.SmtpPort;
             SmtpHost = temp.SmtpHost;

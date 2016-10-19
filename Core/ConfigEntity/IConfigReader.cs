@@ -1,4 +1,6 @@
-﻿namespace Core.ConfigEntity
+﻿using System;
+
+namespace Core.ConfigEntity
 {
     public interface IConfigReader<TConfigType> where TConfigType : class, new()
     {
@@ -6,11 +8,13 @@
         /// Загрузить конфиг 
         /// </summary>
         /// <returns></returns>
-        TConfigType Load();
+        TConfigType Load(String path);
+
         /// <summary>
         /// Сохранить конфиг
         /// </summary>
         /// <param name="conf"></param>
-        TConfigType Save(TConfigType conf);
+        /// <param name="dir">Путь для сохранения конфига</param>
+        TConfigType Save(TConfigType conf, String dir);
     }
 }
