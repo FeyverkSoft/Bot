@@ -144,6 +144,12 @@ Icons:
   <data name="Language_rus" xml:space="preserve">
     <value>Русский</value>
   </data>
+  <data name="NewDocMessage" xml:space="preserve">
+    <value>The current document is not empty. Create a new document, will remove all not saved changes are . Do you want to continue?</value>
+  </data>
+  <data name="NewDocMessageTitle" xml:space="preserve">
+    <value>New document</value>
+  </data>
   <data name="Text_About" xml:space="preserve">
     <value>About</value>
   </data>

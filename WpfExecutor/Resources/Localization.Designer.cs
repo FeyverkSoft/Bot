@@ -136,6 +136,24 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Текущий документ не пуст. Создание нового документа приведёт к удалению всех не сохранёных изменений. Вы хотите продолжить?.
+        /// </summary>
+        internal static string NewDocMessage {
+            get {
+                return ResourceManager.GetString("NewDocMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новый документ.
+        /// </summary>
+        internal static string NewDocMessageTitle {
+            get {
+                return ResourceManager.GetString("NewDocMessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на О программе.
         /// </summary>
         internal static string Text_About {

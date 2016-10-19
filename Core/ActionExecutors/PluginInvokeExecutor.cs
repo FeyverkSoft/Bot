@@ -3,6 +3,7 @@ using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ActionExecutors.Factory;
 using Core.ConfigEntity.ActionObjects;
+using Core.Core;
 
 namespace Core.ActionExecutors
 {
@@ -12,13 +13,15 @@ namespace Core.ActionExecutors
     public class PluginInvokeExecutor : BaseExecutor
     {
         readonly IPluginFactory _pluginFactory = new DefaultPluginFactory();
+
         /// <summary>
         /// Вызвать выполнение действия у указанной фfбрики
         /// </summary>
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             if (!AppConfig.LoadPlugin)
                 return previousResult;
@@ -34,9 +37,10 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
         {
             throw new NotImplementedException();
         }

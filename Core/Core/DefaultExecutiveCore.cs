@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Events;
@@ -16,8 +18,24 @@ namespace Core.Core
     /// </summary>
     internal sealed class DefaultExecutiveCore : IExecutiveCore
     {
-        private Boolean IsAbort { get; set; } = false;
+        private Boolean IsAbort
+        {
+            get { return _isAbort; }
+            set { _isAbort = value; }
+        }
 
+        /// <summary>
+        /// Текущий статус ядра
+        /// </summary>
+        public CoreStatus Status
+        {
+            get { return _status; }
+            private set
+            {
+                _status = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Версия ядра исполнителя
@@ -28,10 +46,21 @@ namespace Core.Core
         /// Фабрика действий
         /// </summary>
         private readonly IActionFactory _actionFactory;
+
+        private CoreStatus _status = CoreStatus.Stop;
+        private bool _isAbort = false;
+
         /// <summary>
         /// Событие вывода сообщения
         /// </summary>
         public event PrintMessageEvent OnPrintMessageEvent;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        [NotifyPropertyChangedInvocator]
+        internal void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         /// <summary>
         /// Вывести сообщение
         /// </summary>
@@ -78,6 +107,7 @@ namespace Core.Core
             Print(new { Status = EStatus.Info, Message = $"--BEGIN--{Environment.NewLine}{nameof(DefaultExecutiveCore)}.Run()", Date = DateTime.Now });
             IsAbort = false;
             var res = await Task.Factory.StartNew(() => InternalIterator(actions, new BaseExecutorResult()));
+            Status = CoreStatus.Stop;
             Print(new { Status = EStatus.Info, Message = $"--END--{Environment.NewLine}{nameof(DefaultExecutiveCore)}.Run()", Date = DateTime.Now });
             return res;
         }
@@ -92,6 +122,7 @@ namespace Core.Core
             return InternalActRun(action, null);
         }
 
+
         /// <summary>
         /// Функция производит прирывание выполнения ядра бота
         /// </summary>
@@ -99,6 +130,7 @@ namespace Core.Core
         {
             Print(new { Status = EStatus.Abort, Message = $"{nameof(DefaultExecutiveCore)}.Abort()", Date = DateTime.Now });
             IsAbort = true;
+            Status = CoreStatus.Stop;
         }
 
         ///  <summary>
@@ -109,9 +141,13 @@ namespace Core.Core
         /// <return>Возвращает результат последнего действия</return>
         private IExecutorResult InternalIterator(ListBotAction actions, IExecutorResult res)
         {
+            Status = CoreStatus.Run;
             //Если процес находится в процессе отмены, то прирываем итерации
             if (IsAbort || res.State == EResultState.Error)
+            {
+                Status = CoreStatus.Stop;
                 return null;
+            }
 
             return actions.Aggregate(res, (current, act) => InternalActRun(act, current));
         }
@@ -166,7 +202,7 @@ namespace Core.Core
                             if (action.SubActions.Count > 0)
                             {
                                 executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
-                                var ifRes = executor.Invoke(action.SubActions, res);
+                                var ifRes = executor.Invoke(action.SubActions, ref _isAbort, res);
                                 if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
                                 {
                                     return InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult
@@ -182,8 +218,8 @@ namespace Core.Core
                         {
                             executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
                             return action.SubActions != null && action.SubActions.Count > 0
-                                ? executor.Invoke(action.SubActions, res)
-                                : executor.Invoke(res);
+                                ? executor.Invoke(action.SubActions, ref _isAbort, res)
+                                : executor.Invoke(ref _isAbort, res);
                         }
                 }
             }

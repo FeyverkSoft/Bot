@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
@@ -15,6 +16,12 @@ namespace Core.Core
         /// Событие вывода сообщения
         /// </summary>
         event PrintMessageEvent OnPrintMessageEvent;
+
+        event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Текущий статус ядра
+        /// </summary>
+        CoreStatus Status { get; }
         /// <summary>
         /// Прервать выполнение 
         /// </summary>

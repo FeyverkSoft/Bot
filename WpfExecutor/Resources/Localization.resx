@@ -144,6 +144,12 @@ Icons:
   <data name="Language_rus" xml:space="preserve">
     <value>Русский</value>
   </data>
+  <data name="NewDocMessage" xml:space="preserve">
+    <value>Текущий документ не пуст. Создание нового документа приведёт к удалению всех не сохранёных изменений. Вы хотите продолжить?</value>
+  </data>
+  <data name="NewDocMessageTitle" xml:space="preserve">
+    <value>Новый документ</value>
+  </data>
   <data name="Text_About" xml:space="preserve">
     <value>О программе</value>
   </data>

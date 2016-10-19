@@ -1,6 +1,12 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Core;
+using Core.ConfigEntity;
+using Core.Core;
+using Microsoft.Win32;
 using WpfConverters.Extensions;
 using WpfConverters.Extensions.Commands;
 using WpfExecutor.Extensions.Localization;
@@ -38,7 +44,34 @@ namespace WpfExecutor.Model
         /// Отобрахить инфу о программе
         /// </summary>
         private ICommand _aboutCommand;
+        /// <summary>
+        /// Ядро бота
+        /// </summary>
+        private readonly IExecutiveCore _core;
+
+        private string _textLog;
+
+        public CoreStatus Status => _core.Status;
+
+        public String TextLog
+        {
+            get { return _textLog; }
+            set
+            {
+                _textLog = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand AboutCommand => _aboutCommand ?? (_aboutCommand = new DelegateCommand(About));
+
+        public MainWindowModel()
+        {
+            Document.CreateInstance(new Config());
+            _core = AppContext.Get<IExecutiveCore>();
+            _core.OnPrintMessageEvent += (message) => TextLog += $"{Environment.NewLine}{message}";
+            _core.PropertyChanged +=(sender, e) => OnPropertyChanged(e.PropertyName) ;
+        }
 
         private void About()
         {
@@ -66,7 +99,60 @@ namespace WpfExecutor.Model
 
         private void OpenCommandMethod()
         {
-            throw new NotImplementedException();
+            var od = new OpenFileDialog { Filter = "bot command file|*.jsn" };
+            if (od.ShowDialog() == true)
+            {
+                TextLog = String.Empty;
+                var conf = ConfigReaderFactory.Get<Config>().Load(new StreamReader(od.OpenFile()));
+                _core.Abort();
+                Document.CreateInstance(conf, od.FileName);
+            }
+        }
+
+        /// <summary>
+        /// комманды создания нового документа
+        /// </summary>
+        public ICommand NewCommand => _newCommand ?? (_newCommand = new DelegateCommand(NewCommandMethod));
+
+        private void NewCommandMethod()
+        {
+            if (Document.Instance.DocumentItems.Actions.Count > 0)
+                if (MessageBox.Show(LocalizationManager.GetString("NewDocMessage"), LocalizationManager.GetString("NewDocMessageTitle"), MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    TextLog = String.Empty;
+                    _core.Abort();
+                    Document.CreateInstance(new Config());
+                }
+        }
+
+        /// <summary>
+        /// комманда сохранения документа
+        /// </summary>
+        public ICommand RunCommand => _runCommand ?? (_runCommand = new DelegateCommand(RunCommandMethod));
+
+        private void RunCommandMethod()
+        {
+            _core.Run(Document.Instance.DocumentItems);
+        }
+
+        /// <summary>
+        /// комманда сохранения документа
+        /// </summary>
+        public ICommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(SaveCommandMethod));
+
+        private void SaveCommandMethod()
+        {
+            if (!String.IsNullOrEmpty(Document.Instance.Path))
+            {
+                ConfigReaderFactory.Get<Config>().Save(Document.Instance.DocumentItems, Document.Instance.Path);
+                return;
+            }
+            var sd = new SaveFileDialog { Filter = "bot command file|*.jsn" };
+            if (sd.ShowDialog() == true)
+            {
+                var conf = ConfigReaderFactory.Get<Config>().Save(Document.Instance.DocumentItems, sd.FileName);
+                Document.CreateInstance(conf, sd.FileName);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Core.ConfigEntity
 {
@@ -16,5 +17,11 @@ namespace Core.ConfigEntity
         /// <param name="conf"></param>
         /// <param name="dir">Путь для сохранения конфига</param>
         TConfigType Save(TConfigType conf, String dir);
+
+        /// <summary>
+        /// Загрузить конфиг 
+        /// </summary>
+        /// <returns></returns>
+        TConfigType Load(StreamReader stream);
     }
 }

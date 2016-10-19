@@ -114,6 +114,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CoreText.resx</DependentUpon>
     </Compile>
+    <Compile Include="Core\CoreStatus.cs" />
     <Compile Include="Core\DefaultActionFactory.cs" />
     <Compile Include="ConfigEntity\FileVersion.cs" />
     <Compile Include="Core\DefaultExecutiveCore.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Message\EMessageStatus.cs" />
     <Compile Include="Message\MessageResult.cs" />
     <Compile Include="Message\MessageSenderFactory.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

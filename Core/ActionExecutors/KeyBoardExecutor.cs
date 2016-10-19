@@ -15,13 +15,15 @@ namespace Core.ActionExecutors
     internal sealed class KeyBoardExecutor : BaseExecutor
     {
         private IKeyBoard KeyBoard { get; set; } = AppContext.Get<IKeyBoard>();
+
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -39,6 +41,8 @@ namespace Core.ActionExecutors
                 if (actions != null)
                     foreach (var action in actions.Cast<KeyBoardAct>())
                     {
+                        if (isAbort)
+                            return new BaseExecutorResult(EResultState.NoResult);
                         KeyBoard.PressKey(action.Key, action.Time);
                     }
             }
@@ -50,7 +54,7 @@ namespace Core.ActionExecutors
             return previousResult ?? new BaseExecutorResult();
         }
 
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
         {
             throw new NotSupportedException();
         }
