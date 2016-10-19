@@ -43,6 +43,11 @@ namespace Core.ConfigEntity
             }
         }
 
+        public FileVersion()
+        {
+            Major = Minor = Build = 0;
+        }
+
         public FileVersion(Int32 major = 0, Int32 minor = 0, Int32 build = 0)
         {
             Major = major;
@@ -94,7 +99,8 @@ namespace Core.ConfigEntity
         /// <summary>
         /// Оператор сравнивающий версии на равенство
         /// </summary>
-        /// <param name="ver"></param>
+        /// <param name="first"></param>
+        /// <param name="last"></param>
         public static Boolean operator ==(FileVersion first, FileVersion last)
         {
             if (ReferenceEquals(last, null) && ReferenceEquals(first, null))
@@ -109,7 +115,8 @@ namespace Core.ConfigEntity
         /// <summary>
         /// Оператор сравнивающий версии на неравенство
         /// </summary>
-        /// <param name="ver"></param>
+        /// <param name="first"></param>
+        /// <param name="last"></param>
         public static Boolean operator !=(FileVersion first, FileVersion last)
         {
             return !(first == last);
