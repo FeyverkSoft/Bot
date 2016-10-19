@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutWindow_AdditionalInfo" xml:space="preserve">
+    <value>Дополнительна информация</value>
+  </data>
+  <data name="AboutWindow_packages" xml:space="preserve">
+    <value>packages:
+	Newtonsoft.Json (MIT)
+Icons:
+	https://icons8.com</value>
+  </data>
   <data name="CloseMessage" xml:space="preserve">
     <value>Вы действительно хотите выйти из программы?</value>
   </data>

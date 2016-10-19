@@ -18,6 +18,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0">
@@ -75,10 +76,10 @@
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-
-            <Button Grid.Row="3" Content="{localization:Localization Close}"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom" IsCancel="True" IsDefault="True"
-                    Command="Close" />
+            <Expander Grid.Row="3" Margin="13, 5" Header="{localization:Localization AboutWindow_AdditionalInfo}" Background="Transparent" Foreground="DimGray">
+                <TextBox IsReadOnly="True" Text="{Binding AboutWindowPackages, Mode=OneWay}" Background="White" Foreground="DimGray" BorderThickness="0"></TextBox>
+            </Expander>
+            <Button Grid.Row="4" Content="{localization:Localization Close}" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsCancel="True" IsDefault="True" Command="Close" />
         </Grid>
     </Grid>
 </Window>

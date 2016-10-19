@@ -61,6 +61,27 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Дополнительна информация.
+        /// </summary>
+        internal static string AboutWindow_AdditionalInfo {
+            get {
+                return ResourceManager.GetString("AboutWindow_AdditionalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на packages:
+        ///	Newtonsoft.Json (MIT)
+        ///Icons:
+        ///	https://icons8.com.
+        /// </summary>
+        internal static string AboutWindow_packages {
+            get {
+                return ResourceManager.GetString("AboutWindow_packages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите выйти из программы?.
         /// </summary>
         internal static string CloseMessage {

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using Core.Core;
+using WpfExecutor.Extensions.Localization;
 
 namespace WpfExecutor.Model.About
 {
@@ -33,5 +34,9 @@ namespace WpfExecutor.Model.About
         /// </summary>
         public String Core => AppContext.Get<IExecutiveCore>().Version.ToString();
 
+        /// <summary>
+        /// Информация о дополнительных пакетах используемых в ПО
+        /// </summary>
+        public String AboutWindowPackages => LocalizationManager.GetString("AboutWindow_packages");
     }
 }
