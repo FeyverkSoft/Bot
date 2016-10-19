@@ -61,6 +61,33 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите выйти из программы?.
+        /// </summary>
+        internal static string CloseMessage {
+            get {
+                return ResourceManager.GetString("CloseMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выход.
+        /// </summary>
+        internal static string CloseMessageTitle {
+            get {
+                return ResourceManager.GetString("CloseMessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ядро.
+        /// </summary>
+        internal static string Core {
+            get {
+                return ResourceManager.GetString("Core", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Язык.
         /// </summary>
         internal static string Language {
@@ -165,6 +192,15 @@ namespace WpfExecutor.Resources {
         internal static string Title_MainWin {
             get {
                 return ResourceManager.GetString("Title_MainWin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Версия:.
+        /// </summary>
+        internal static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
             }
         }
     }

@@ -33,7 +33,6 @@ namespace WpfExecutor
 
             var window = new MainWindow(new MainWindowModel());
             window.Show();
-            return;
         }
 
 

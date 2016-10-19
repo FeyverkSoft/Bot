@@ -1,0 +1,84 @@
+﻿<Window x:Class="WpfExecutor.Views.About.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfExecutor.Views.About"
+        xmlns:windows="clr-namespace:WpfExecutor.Model.About"
+        xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
+        xmlns:behaviors="clr-namespace:WpfConverters.Behaviors;assembly=WpfConverters"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type={x:Type windows:AboutViewModel}}"
+        Title="{Binding Title}"
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="0,0,0 5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFCDAE8F" Offset="1"/>
+                        <GradientStop Color="#FFFFD5AC"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Source="{StaticResource Icon}"
+                       Width="42" Height="42" Margin="3,3,10,3" VerticalAlignment="Stretch" />
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Padding="0,0,5,0" VerticalAlignment="Bottom" Foreground="White" FontSize="22pt">
+                        <TextBlock.Text >
+                            <Binding Path="Title" />
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="1" Grid.Column="1" Padding="0,0,5,0" VerticalAlignment="Bottom" Foreground="White" FontSize="10pt">
+                        <TextBlock.Text >
+                            <Binding Path="Description" />
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="2" Grid.Column="1" Padding="0,0,5,0"
+                           VerticalAlignment="Bottom" Foreground="White">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{localization:Localization Version}" />
+                                <Binding Path="Version" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Margin="13, 5" Foreground="DimGray" Text="{Binding Copyright, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="2" Margin="13, 5" VerticalAlignment="Bottom" Foreground="DimGray">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0}: {1}">
+                        <Binding Source="{localization:Localization Core}" />
+                        <Binding Path="Core" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+
+            <Button Grid.Row="3" Content="{localization:Localization Close}"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom" IsCancel="True" IsDefault="True"
+                    Command="Close" />
+        </Grid>
+    </Grid>
+</Window>

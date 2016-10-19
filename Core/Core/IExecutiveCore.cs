@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 using Core.Events;
 
 namespace Core.Core
-{   
+{
     /// <summary>
-     /// Ядро исполнителя действий
-     /// </summary>
+    /// Ядро исполнителя действий
+    /// </summary>
     public interface IExecutiveCore
     {
         /// <summary>
@@ -32,5 +33,10 @@ namespace Core.Core
         /// </summary>
         /// <param name="action">Действие к исполнению ботом</param>
         IExecutorResult Run(IBotAction action);
+
+        /// <summary>
+        /// Версия ядра исполнителя
+        /// </summary>
+        Version Version { get; }
     }
 }

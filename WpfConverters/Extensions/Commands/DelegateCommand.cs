@@ -24,12 +24,6 @@ namespace WpfConverters.Extensions.Commands
             _canExecuteMethod = canExecuteMethod;
             _isAutomaticRequeryDisabled = isAutomaticRequeryDisabled;
         }
-
-        public DelegateCommand(Action p)
-        {
-            this.p = p;
-        }
-
         #endregion
 
         #region Public Methods

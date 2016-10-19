@@ -122,6 +122,7 @@
     <Compile Include="Extensions\Commands\CommandManagerHelper.cs" />
     <Compile Include="Extensions\Commands\DelegateCommand.cs" />
     <Compile Include="Extensions\ScrollViewerExtensions.cs" />
+    <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Helpers\VisualHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

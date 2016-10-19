@@ -8,6 +8,7 @@
         xmlns:globalization="clr-namespace:System.Globalization;assembly=mscorlib"
         xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
         xmlns:model="clr-namespace:WpfExecutor.Model"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d" Title="{localization:Localization Title_MainWin}" 
         d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF"
         d:DataContext="{d:DesignInstance Type=model:MainWindowModel}">
@@ -15,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -102,9 +104,9 @@
             </Menu>
         </Grid>
         <!--Шапка-->
-        <Border Grid.Row="1" Style="{StaticResource ShadowBorder}">
+        <Border Grid.Row="1" Background="WhiteSmoke">
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                <Button Background="WhiteSmoke" Padding="2" Margin="0,2" BorderThickness="0">
+                <Button Background="Transparent" Padding="2" Margin="0,2" BorderThickness="0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{StaticResource PlayIcon}" Height="21" Width="21" Stretch="Fill" />
                         <!--Выполнить--> 
@@ -112,6 +114,39 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
+        </Border>
+       
+        <!--Основной контент-->
+        <ScrollViewer x:Name="ContentScrollViewer" Grid.Row="3" Margin="0,-7,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+
+        </ScrollViewer>
+
+        <!--Тень под шапкой-->
+        <Border Grid.Row="2" BorderThickness="0,0,0,1">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Reference ContentScrollViewer}, Path=VerticalOffset, UpdateSourceTrigger=PropertyChanged}">
+                            <DataTrigger.Value>
+                                <system:Double>0</system:Double>
+                            </DataTrigger.Value>
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="Background" Value="#AAAAAAAA"/>
+                    <Setter Property="Height" Value="7"/>
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Setter Property="OpacityMask">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                                <GradientStop Color="#00FFFFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Border.Style>
         </Border>
     </Grid>
 </Window>

@@ -18,6 +18,12 @@ namespace Core.Core
     {
         private Boolean IsAbort { get; set; } = false;
 
+
+        /// <summary>
+        /// Версия ядра исполнителя
+        /// </summary>
+        public Version Version => Assembly.GetExecutingAssembly().GetName().Version;
+
         /// <summary>
         /// Фабрика действий
         /// </summary>
@@ -50,12 +56,12 @@ namespace Core.Core
             if (config == null)
                 throw new NullReferenceException(nameof(config));
 
-            if (config.BotVer != Assembly.GetExecutingAssembly().GetName().Version)
+            if (config.BotVer != Version)
                 Print(new
                 {
                     Status = EStatus.Warning,
                     Message = CoreText.DifferentConfigVersions,
-                    Ifo = $"{config.BotVer} != {Assembly.GetExecutingAssembly().GetName().Version}",
+                    Ifo = $"{config.BotVer} != {Version}",
                     Date = DateTime.Now
                 });
 

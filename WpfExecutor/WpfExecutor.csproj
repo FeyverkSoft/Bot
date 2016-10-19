@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon-48.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,12 +61,17 @@
     <Compile Include="Annotations.cs" />
     <Compile Include="AppContext.cs" />
     <Compile Include="Extensions\Localization\ResxLocalizationProvider.cs" />
+    <Compile Include="Factories\WindowFactory.cs" />
+    <Compile Include="Model\About\AboutViewModel.cs" />
     <Compile Include="Model\BaseViewModel.cs" />
     <Compile Include="Model\MainWindowModel.cs" />
     <Compile Include="Resources\Localization.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Localization.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
@@ -94,6 +102,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\About\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -128,9 +140,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\icons\About-32.png" />
     <Resource Include="Resources\icons\Calendar_7-64.png" />
     <Resource Include="Resources\icons\Folder-32.png" />
@@ -161,6 +170,13 @@
       <Project>{e7046a14-c2e7-4b26-b54c-d2cf717adc1e}</Project>
       <Name>WpfExtensions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\Icon-48.ico" />
+    <Resource Include="Resources\icons\Icon-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon-48.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

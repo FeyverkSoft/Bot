@@ -35,15 +35,10 @@
     <BitmapImage x:Key="SearchIcon" UriSource="pack://application:,,,/Resources/icons/Search-32.png" />
     <BitmapImage x:Key="SentIcon" UriSource="pack://application:,,,/Resources/icons/Sent-48.png" />
     <BitmapImage x:Key="SaveIcon" UriSource="pack://application:,,,/Resources/icons/SaveIcon-48.png" />
+    <BitmapImage x:Key="Icon" UriSource="pack://application:,,,/Resources/icons/Icon-48.png" />
 
 
-    <Style x:Key="ShadowBorder" x:Name="ShadowBorder" TargetType="Border" >
-        <Setter Property= "Background" Value="WhiteSmoke"/>
-        <Setter Property= "CornerRadius" Value="3"/>
-        <Setter Property="Effect">
-            <Setter.Value>
-                <DropShadowEffect Color="DarkGray" BlurRadius="4" Direction="270" ShadowDepth="1" />
-            </Setter.Value>
-        </Setter>
+    <Style TargetType="ScrollViewer" >
+        <Setter Property= "Background" Value="LightGray"/> 
     </Style>
 </ResourceDictionary>
