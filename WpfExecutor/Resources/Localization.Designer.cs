@@ -154,6 +154,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Прервать!.
+        /// </summary>
+        internal static string Text_Abort {
+            get {
+                return ResourceManager.GetString("Text_Abort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на О программе.
         /// </summary>
         internal static string Text_About {

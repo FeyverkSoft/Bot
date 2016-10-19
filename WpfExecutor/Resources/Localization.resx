@@ -150,6 +150,9 @@ Icons:
   <data name="NewDocMessageTitle" xml:space="preserve">
     <value>Новый документ</value>
   </data>
+  <data name="Text_Abort" xml:space="preserve">
+    <value>Прервать!</value>
+  </data>
   <data name="Text_About" xml:space="preserve">
     <value>О программе</value>
   </data>

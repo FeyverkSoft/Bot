@@ -131,6 +131,29 @@
                         </Style>
                     </Button.Style>
                 </Button>
+
+                <Button Background="Transparent" Padding="2" Margin="0,2" BorderThickness="0" Command="{Binding AbortCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{StaticResource Stop}" Height="21" Width="21" Stretch="Fill" />
+                        <!--Выполнить-->
+                        <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{localization:Localization Key=Text_Abort}" />
+                    </StackPanel>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+                                    <DataTrigger.Value>
+                                        <core:CoreStatus>Stop</core:CoreStatus>
+                                    </DataTrigger.Value>
+                                    <Setter Property="IsEnabled" Value="False" />
+                                    <Setter Property="Background" Value="Gray"/>
+                                    <Setter Property="Foreground" Value="LightGray"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </StackPanel>
         </Border>
 

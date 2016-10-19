@@ -44,6 +44,8 @@ namespace WpfExecutor.Model
         /// Отобрахить инфу о программе
         /// </summary>
         private ICommand _aboutCommand;
+
+        private ICommand _abortCommand;
         /// <summary>
         /// Ядро бота
         /// </summary>
@@ -126,13 +128,23 @@ namespace WpfExecutor.Model
         }
 
         /// <summary>
-        /// комманда сохранения документа
+        /// комманда исполнения документа
         /// </summary>
         public ICommand RunCommand => _runCommand ?? (_runCommand = new DelegateCommand(RunCommandMethod));
 
         private void RunCommandMethod()
         {
             _core.Run(Document.Instance.DocumentItems);
+        }
+
+        /// <summary>
+        /// Комманда прирывания
+        /// </summary>
+        public ICommand AbortCommand => _abortCommand ?? (_abortCommand = new DelegateCommand(AbortCommandMethod));
+
+        private void AbortCommandMethod()
+        {
+            _core.Abort();
         }
 
         /// <summary>
