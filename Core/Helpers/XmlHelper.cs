@@ -117,6 +117,5 @@ namespace Core.Helpers
             }
             return ret;
         }
-
     }
 }

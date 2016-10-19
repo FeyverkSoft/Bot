@@ -36,7 +36,6 @@ namespace Executor
             //cr.Save(conf);
             var d = cr.Load();
             d = d;
-            var xml = d.ToXml();
             Thread.Sleep(4000);
             core.Run(conf);
 
