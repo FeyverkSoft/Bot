@@ -58,7 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Annotations.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="AppContext.cs" />
     <Compile Include="Extensions\Localization\ResxLocalizationProvider.cs" />
     <Compile Include="Factories\WindowFactory.cs" />

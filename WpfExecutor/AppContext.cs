@@ -18,7 +18,7 @@ namespace WpfExecutor
         {
             Dictionary.Add(typeof(ILocalizationProvider), new ResxLocalizationProvider());
             Dictionary.Add(typeof(IExecutiveCore), CoreFactory.GetCore());
-            Dictionary.Add(typeof(IConfigReader<Config>), ConfigReaderFactory.Get<IConfigReader<Config>>());
+            Dictionary.Add(typeof(IConfigReader<Config>), ConfigReaderFactory.Get<Config>());
         }
 
         public static T Get<T>() where T : class
