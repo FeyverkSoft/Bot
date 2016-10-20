@@ -16,13 +16,15 @@ namespace Core.ActionExecutors
     {
         private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
         IWindowsProc WindowsProc { get; set; } = AppContext.Get<IWindowsProc>();
+
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -101,12 +103,14 @@ namespace Core.ActionExecutors
             }
             return previousResult ?? new BaseExecutorResult();
         }
+
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
         {
             throw new NotSupportedException();
         }

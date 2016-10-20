@@ -1,5 +1,7 @@
-﻿using Core.ActionExecutors.ExecutorResult;
+﻿using System;
+using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
+using Core.Core;
 using Core.Events;
 
 namespace Core.ActionExecutors
@@ -18,15 +20,17 @@ namespace Core.ActionExecutors
         /// Вызвать выполнение действия у указанной фfбрики
         /// </summary>
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null);
+        IExecutorResult Invoke(ListAct actions, ref Boolean isAbort, IExecutorResult previousResult = null);
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        IExecutorResult Invoke(IExecutorResult previousResult = null);
+        IExecutorResult Invoke(ref Boolean isAbort, IExecutorResult previousResult = null);
     }
 }

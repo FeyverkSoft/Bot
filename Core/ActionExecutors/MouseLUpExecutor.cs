@@ -14,13 +14,15 @@ namespace Core.ActionExecutors
     internal sealed class MouseLUpExecutor : BaseExecutor
     {
         private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
+
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             throw new NotSupportedException();
         }
@@ -28,9 +30,10 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {

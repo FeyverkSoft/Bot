@@ -20,9 +20,10 @@ namespace Core.ActionExecutors
         /// Исполняет метод получения информации об указанном объекте
         /// </summary>
         /// <param name="actions">Описание объекта, который необходимо получить</param>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат вызова предыдущего действия</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -44,7 +45,7 @@ namespace Core.ActionExecutors
             var objectAct = actions.Cast<GetObjectAct>().FirstOrDefault();
 
             if ((objectAct == null || objectAct.ObjectPos.IsEmpty) && previousResult?.State == EResultState.Success)
-                res = (ObjectExecutorResult)Invoke(previousResult);
+                res = (ObjectExecutorResult)Invoke(ref isAbort, previousResult);
 
             if (res != null && res.State == EResultState.Success)
             {
@@ -67,7 +68,7 @@ namespace Core.ActionExecutors
             return new BaseExecutorResult(EResultState.NoResult);
         }
 
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
         {
             ObjectExecutorResult res = null;
             if (previousResult != null)

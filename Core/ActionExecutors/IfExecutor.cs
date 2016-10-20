@@ -17,9 +17,10 @@ namespace Core.ActionExecutors
         /// Исполняет проверку условия, и возвращает результат проверки
         /// </summary>
         /// <param name="actions">Список проверок</param>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат проверки</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -58,9 +59,10 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Не поддерживается
         /// </summary>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат проверки</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
         {
             throw new NotSupportedException();
         }

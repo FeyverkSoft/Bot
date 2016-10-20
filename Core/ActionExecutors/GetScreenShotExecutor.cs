@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
+using Core.Core;
 using Core.Handlers;
 using Core.Helpers;
 
@@ -22,12 +23,13 @@ namespace Core.ActionExecutors
         /// Вызвать выполнение действия у указанной фfбрики
         /// </summary>
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             if (actions == null)
-                return Invoke(previousResult);
+                return Invoke(ref isAbort, previousResult);
             if (actions.Count > 1)
                 throw new Exception("Возможно выполнение только 1го действия");
             var act = actions.Cast<ScreenShotAct>().First();
@@ -81,9 +83,10 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
+        /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
         {
             return Invoke(false, previousResult);
         }

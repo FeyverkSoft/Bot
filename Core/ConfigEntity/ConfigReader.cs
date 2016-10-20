@@ -72,7 +72,25 @@ namespace Core.ConfigEntity
                 Log.WriteLine(ex, LogLevel.Error);
                 throw;
             }
+        }
 
+        /// <summary>
+        /// Загрузить конфиг 
+        /// </summary>
+        /// <returns></returns>
+        public TConfigType Load(StreamReader dir)
+        {
+            if (dir == null)
+                throw new ArgumentNullException(nameof(dir));
+            try
+            {
+                return dir.ParseJson<TConfigType>();
+            }
+            catch (Exception ex)
+            {
+                Log.WriteLine(ex, LogLevel.Error);
+                throw;
+            }
         }
     }
 }
