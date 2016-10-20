@@ -183,8 +183,6 @@ namespace Core.Core
                         {
                             foreach (var subAct in action.SubActions.Cast<LoopAct>())
                             {
-                                if (IsAbort)
-                                    return null;
                                 for (var i = subAct.IterationCount; i > 0; i--)
                                 {
                                     if (IsAbort || res?.State == EResultState.Error)

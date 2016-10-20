@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
@@ -38,8 +39,10 @@ namespace Core.ActionExecutors
             {
                 //:D как-то тупо, несколько действий сна подряд....
                 if (actions != null)
-                    foreach (SleepAct action in actions)
+                    foreach (var action in actions.Cast<SleepAct>())
                     {
+                        if (isAbort)
+                            return new BaseExecutorResult();
                         Thread.Sleep(action.Delay + _rand.Next(0, action.MaxRandDelay));
                     }
             }
