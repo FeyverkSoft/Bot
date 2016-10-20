@@ -9,7 +9,7 @@ namespace Core.Core
     /// </summary>
     internal sealed class DefaultActionFactory : IActionFactory
     {
-        private static readonly Dictionary<ActionType, IExecutor> ExecutorCache = new Dictionary<ActionType, IExecutor>();
+        private readonly Dictionary<ActionType, IExecutor> ExecutorCache = new Dictionary<ActionType, IExecutor>();
         /// <summary>
         /// Возвращает исполнителя по типу действия
         /// </summary>
