@@ -11,6 +11,7 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:core="clr-namespace:Core.Core;assembly=Core"
         mc:Ignorable="d" Title="{localization:Localization Title_MainWin}" 
+        Icon="{StaticResource Icon}"
         d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF"
         d:DataContext="{d:DesignInstance Type=model:MainWindowModel}">
     <Grid>

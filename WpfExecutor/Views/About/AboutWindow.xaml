@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:WpfExecutor.Views.About"
         xmlns:windows="clr-namespace:WpfExecutor.Model.About"
         xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
-        xmlns:behaviors="clr-namespace:WpfConverters.Behaviors;assembly=WpfConverters"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Icon="{StaticResource Icon}"
         d:DataContext="{d:DesignInstance Type={x:Type windows:AboutViewModel}}"
         Title="{Binding Title}"
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">

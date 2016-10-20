@@ -74,6 +74,10 @@
     <Compile Include="Views\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Error\ExceptionViewModel.cs" />
+    <Compile Include="Views\Error\ExceptionWindow.xaml.cs">
+      <DependentUpon>ExceptionWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +110,10 @@
     <Page Include="Views\About\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Error\ExceptionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +175,10 @@
       <Project>{88ef1877-5e4c-4440-82d9-b64c89cd11ef}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LogWrapper\LogWrapper.csproj">
+      <Project>{c0eedcf7-134e-43a4-b8ae-12003c6602b3}</Project>
+      <Name>LogWrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WpfConverters\WpfExtensions.csproj">
       <Project>{e7046a14-c2e7-4b26-b54c-d2cf717adc1e}</Project>
       <Name>WpfExtensions</Name>
@@ -181,6 +193,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icons\Stop-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\Error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

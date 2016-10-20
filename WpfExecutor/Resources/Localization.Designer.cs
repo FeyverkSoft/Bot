@@ -100,11 +100,38 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Продолжить.
+        /// </summary>
+        internal static string Continue {
+            get {
+                return ResourceManager.GetString("Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ядро.
         /// </summary>
         internal static string Core {
             get {
                 return ResourceManager.GetString("Core", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Произошла ошибка.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Скрыть детали.
+        /// </summary>
+        internal static string HideDetails {
+            get {
+                return ResourceManager.GetString("HideDetails", resourceCulture);
             }
         }
         
@@ -150,6 +177,15 @@ namespace WpfExecutor.Resources {
         internal static string NewDocMessageTitle {
             get {
                 return ResourceManager.GetString("NewDocMessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Показать детали.
+        /// </summary>
+        internal static string ShowDetails {
+            get {
+                return ResourceManager.GetString("ShowDetails", resourceCulture);
             }
         }
         

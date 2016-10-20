@@ -132,8 +132,17 @@ Icons:
   <data name="CloseMessageTitle" xml:space="preserve">
     <value>Выход</value>
   </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
   <data name="Core" xml:space="preserve">
     <value>Ядро</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Произошла ошибка</value>
+  </data>
+  <data name="HideDetails" xml:space="preserve">
+    <value>Скрыть детали</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Язык</value>
@@ -149,6 +158,9 @@ Icons:
   </data>
   <data name="NewDocMessageTitle" xml:space="preserve">
     <value>Новый документ</value>
+  </data>
+  <data name="ShowDetails" xml:space="preserve">
+    <value>Показать детали</value>
   </data>
   <data name="Text_Abort" xml:space="preserve">
     <value>Прервать!</value>
