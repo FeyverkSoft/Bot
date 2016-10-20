@@ -84,7 +84,7 @@ namespace LogWrapper
                     try
                     {
                         if (writeLine)
-                            File.AppendAllText($"{LogsPath}{DateTime.Now.ToShortDateString()}.{level}", new
+                            File.AppendAllText($"{LogsPath}{DateTime.Now:yyyy-MM-dd}.{level}", new
                             {
                                 LogDateTime = DateTime.Now,
                                 LogLevel = level,
@@ -92,7 +92,7 @@ namespace LogWrapper
                             }.ToJson() + Environment.NewLine,
                                 Encoding.UTF8);
                         else if (o != null)
-                            File.AppendAllText($"{LogsPath}{DateTime.Now.ToShortDateString()}.{level}", o.ToString(),
+                            File.AppendAllText($"{LogsPath}{DateTime.Now:yyyy-MM-dd}.{level}", o.ToString(),
                                 Encoding.UTF8);
                     }
                     catch (Exception e)

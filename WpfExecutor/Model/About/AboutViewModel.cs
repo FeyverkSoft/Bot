@@ -9,7 +9,7 @@ namespace WpfExecutor.Model.About
     /// <summary>
     /// Модель окна с информацией о программе
     /// </summary>
-    public class AboutViewModel : BaseViewModel
+    public sealed class AboutViewModel : BaseViewModel
     {
         private static readonly FileVersionInfo Info = FileVersionInfo.GetVersionInfo(Application.ResourceAssembly.Location);
         /// <summary>

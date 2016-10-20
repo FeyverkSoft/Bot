@@ -100,6 +100,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Версия конфигурации.
+        /// </summary>
+        internal static string ConfigVersion {
+            get {
+                return ResourceManager.GetString("ConfigVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Продолжить.
         /// </summary>
         internal static string Continue {

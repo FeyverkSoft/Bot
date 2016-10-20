@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using WpfExecutor.Model;
 
 namespace WpfExecutor
@@ -12,6 +13,11 @@ namespace WpfExecutor
         {
             InitializeComponent();
             DataContext = viewModel;
+        }
+
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

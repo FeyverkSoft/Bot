@@ -95,7 +95,15 @@ namespace Core.ConfigEntity
         {
             return new FileVersion(ver);
         }
-
+        /// <summary>
+        /// Оператор не явного преобразования 
+        /// </summary>
+        /// <param name="ver"></param>
+        public static implicit operator Version(FileVersion ver)
+        {
+            return new Version(ver.major, ver.minor, ver.build);
+        }
+        /*
         /// <summary>
         /// Оператор сравнивающий версии на равенство
         /// </summary>
@@ -120,6 +128,6 @@ namespace Core.ConfigEntity
         public static Boolean operator !=(FileVersion first, FileVersion last)
         {
             return !(first == last);
-        }
+        }*/
     }
 }

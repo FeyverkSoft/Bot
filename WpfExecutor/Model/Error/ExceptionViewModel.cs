@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace WpfExecutor.Model.Error
 {
-    public class ExceptionViewModel : BaseViewModel
+    public sealed class ExceptionViewModel : BaseViewModel
     {
         private readonly Exception _exception;
         private readonly String _message;

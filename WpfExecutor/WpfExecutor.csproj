@@ -59,6 +59,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Document.cs" />
+    <Compile Include="Model\Content\GenCanvasModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="AppContext.cs" />
     <Compile Include="Extensions\Localization\ResxLocalizationProvider.cs" />
@@ -75,6 +76,9 @@
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Error\ExceptionViewModel.cs" />
+    <Compile Include="Views\Content\GenCanvas.xaml.cs">
+      <DependentUpon>GenCanvas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Error\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
     </Compile>
@@ -108,6 +112,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\About\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Content\GenCanvas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

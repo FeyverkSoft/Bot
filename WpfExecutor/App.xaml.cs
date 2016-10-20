@@ -49,6 +49,7 @@ namespace WpfExecutor
         private void OnCultureChanged(object sender, EventArgs eventArgs)
         {
             Settings.Default.Culture = LocalizationManager.Instance.CurrentCulture.Name;
+            Settings.Default.Save();
         }
 
         private void CurrentDomain_FirstChanceException(object sender, FirstChanceExceptionEventArgs e)

@@ -132,6 +132,9 @@ Icons:
   <data name="CloseMessageTitle" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="ConfigVersion" xml:space="preserve">
+    <value>Config version</value>
+  </data>
   <data name="Continue" xml:space="preserve">
     <value>Continue</value>
   </data>
