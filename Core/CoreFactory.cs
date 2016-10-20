@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.ConfigEntity;
-using Core.Core;
+﻿using Core.Core;
 
 namespace Core
 {
@@ -20,7 +14,7 @@ namespace Core
         public static IExecutiveCore GetCore()
         {
             if (AppConfig.DefaultCore)
-                return AppContext.Get<IExecutiveCore>();
+                AppContext.Get<IExecutiveCore>();
             return new DefaultExecutiveCore(new DefaultActionFactory());
         }
     }

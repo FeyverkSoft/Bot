@@ -12,6 +12,9 @@ namespace WpfExecutor
     /// </summary>
     public static class AppContext
     {
+        /// <summary>
+        /// Список сингелтонов в рамках приложения
+        /// </summary>
         private static readonly Dictionary<Type, Object> Dictionary = new Dictionary<Type, Object>();
 
         static AppContext()

@@ -5,17 +5,26 @@ namespace Core.ConfigEntity
 {
     public static class ConfigReaderFactory
     {
+        /// <summary>
+        /// Список сингелтонов
+        /// </summary>
         private static readonly Dictionary<Type, Object> Dictionary = new Dictionary<Type, Object>();
 
         static ConfigReaderFactory()
         {
-            Dictionary.Add(typeof(Config), new ConfigReader<Config>());
             Dictionary.Add(typeof(InternalAppConfig), new ConfigReader<InternalAppConfig>(false, false, false));
         }
 
         public static IConfigReader<T> Get<T>() where T : class, new()
         {
-            return (IConfigReader<T>)Dictionary[typeof(T)];
+            if (Dictionary.ContainsKey(typeof(T)))
+                return (IConfigReader<T>)Dictionary[typeof(T)];
+            switch (typeof(T).Name)
+            {
+                case nameof(Config):
+                    return new ConfigReader<Config>() as IConfigReader<T>;
+            }
+            throw new NotSupportedException(nameof(T));
         }
 
         public static void Set<T>(IConfigReader<T> inst) where T : class, new()

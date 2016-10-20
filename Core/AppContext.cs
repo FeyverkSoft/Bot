@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Core.Core;
 using Core.Handlers;
 
@@ -10,20 +12,31 @@ namespace Core
     /// </summary>
     static class AppContext
     {
-        private static readonly Dictionary<Type, Object> Dictionary = new Dictionary<Type, Object>();
+        /// <summary>
+        /// Список сингелтонов
+        /// </summary>
+        private static readonly Dictionary<Type, Object> SingDictionary = new Dictionary<Type, Object>();
 
         static AppContext()
         {
-            Dictionary.Add(typeof(IActionFactory), new DefaultActionFactory());
-            Dictionary.Add(typeof(IKeyBoard), new NativeKeyBoard());
-            Dictionary.Add(typeof(IMouse), new NativeMouse());
-            Dictionary.Add(typeof(IWindowsProc), new NativeWindowsProc());
-            Dictionary.Add(typeof(IExecutiveCore), new DefaultExecutiveCore(Get<IActionFactory>()));
+            SingDictionary.Add(typeof(IActionFactory), new DefaultActionFactory());
+            SingDictionary.Add(typeof(IKeyBoard), new NativeKeyBoard());
+            SingDictionary.Add(typeof(IMouse), new NativeMouse());
+            SingDictionary.Add(typeof(IWindowsProc), new NativeWindowsProc());
         }
 
         public static T Get<T>() where T : class
         {
-            return (T)Dictionary[typeof(T)];
+            if (SingDictionary.ContainsKey(typeof(T)))
+                return (T)SingDictionary[typeof(T)];
+            switch (typeof(T).Name)
+            {
+                case nameof(IExecutiveCore):
+                    return new DefaultExecutiveCore(new DefaultActionFactory()) as T;
+                case nameof(IActionFactory):
+                    return new DefaultActionFactory() as T;
+            }
+            throw new NotSupportedException(nameof(T));
         }
     }
 }
