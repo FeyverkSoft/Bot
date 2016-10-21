@@ -1,119 +1,119 @@
 ﻿using System;
-using System.ComponentModel;
+using Core.Attributes;
 
 namespace Core.ConfigEntity
 {
     /// <summary>
     /// Типы доступных боту действий
     /// </summary>
-    [Description("Типы доступных боту действий")]
+    [LocDescription("ActionType")]
     public enum ActionType : Int32
     {
         /// <summary>
         /// Действие перемещения мышки в нужную позицию
         /// </summary>
-        [Description("Действие перемещения мышки в нужную позицию")]
+        [LocDescription("ActionType_MouseMove")]
         MouseMove,
         /// <summary>
         /// Действие установки указателя в указанную позицию
         /// </summary>
-        [Description("Действие установки указателя в указанную позицию")]
+        [LocDescription("ActionType_MouseSetPos")]
         MouseSetPos,
         /// <summary>
         /// Действие клика Правой кнопки мышки
         /// </summary>
-        [Description("Действие клика Правой кнопки мышки")]
+        [LocDescription("ActionType_MouseRClick")]
         MouseRClick,
         /// <summary>
         /// Действие нажатия Правой кнопки мышки
         /// </summary>
-        [Description("Действие нажатия Правой кнопки мышки")]
+        [LocDescription("ActionType_MouseRPress")]
         MouseRPress,
         /// <summary>
         /// Действие отпускания Правой кнопки мышки
         /// </summary>
-        [Description("Действие отпускания Правой кнопки мышки")]
+        [LocDescription("ActionType_MouseRUp")]
         MouseRUp,
         /// <summary>
         /// Действие нажатия Левой кнопки мышки
         /// </summary>
-        [Description("Действие нажатия Левой кнопки мышки")]
+        [LocDescription("ActionType_MouseLPress")]
         MouseLPress,
         /// <summary>
         /// Действие отпускания Левой кнопки мышки
         /// </summary>
-        [Description("Действие отпускания Левой кнопки мышки")]
+        [LocDescription("ActionType_MouseLUp")]
         MouseLUp,
         /// <summary>
         /// Действие клика Левой кнопки мышки
         /// </summary>
-        [Description("Действие клика Левой кнопки мышки")]
+        [LocDescription("ActionType_MouseLClick")]
         MouseLClick,
         /// <summary>
         /// Получить позицию курсора
         /// </summary>
-        [Description("Получить позицию курсора")]
+        [LocDescription("ActionType_GetMousePos")]
         GetMousePos,
         /// <summary>
         /// Действие нажатия клавишы на клавиатуре если переданно несколько, то они нажимаются последовательно
         /// </summary>
-        [Description("Действие нажатия клавишы на клавиатуре если переданно несколько, то они нажимаются последовательно")]
+        [LocDescription("ActionType_KeyBoard")]
         KeyBoard,
         /// <summary>
         /// Действие нажатия одновременно нескольких клавиш на клавиатуре
         /// Если перереданно несколько, то они нажимаются одновременно :D
         /// </summary>
-        [Description("Действие нажатия одновременно нескольких клавиш на клавиатуре \r\nЕсли перереданно несколько, то они нажимаются одновременно :D")]
+        [LocDescription("ActionType_KeyBoardKeys")]
         KeyBoardKeys,
         /// <summary>
         /// Действие сна бота на указанное время
         /// </summary>
-        [Description("Действие сна бота на указанное время")]
+        [LocDescription("ActionType_Sleep")]
         Sleep,
         /// <summary>
         /// Цикл Особый оператор, не требующий фабрики
         /// </summary>
-        [Description("Цикл Особый оператор, не требующий фабрики")]
+        [LocDescription("ActionType_Loop")]
         Loop,
         /// <summary>
         /// Описание действий который должен проверить и/или выполнить плагин
         /// </summary>
-        [Description("Описание действий который должен проверить и/или выполнить плагин")]
+        [LocDescription("ActionType_PluginInvoke")]
         PluginInvoke,
         /// <summary>
         /// Особый оператор условного ветвления
         /// </summary>
-        [Description("Особый оператор условного ветвления")]
+        [LocDescription("ActionType_If")]
         If,
         /// <summary>
         /// Оператор поиска окна с указанным названием, как только окно появится, выполение комманд продолжится
         /// </summary>
-        [Description("Оператор поиска окна с указанным названием, как только окно появится, выполение комманд продолжится")]
+        [LocDescription("ActionType_ExpectWindow")]
         ExpectWindow,
         /// <summary>
         /// Получить инфу об указанном объекте
         /// </summary>
-        [Description("Получить инфу об указанном объекте")]
+        [LocDescription("ActionType_GetObject")]
         GetObject,
         /// <summary>
         /// Получить скриншот
         /// </summary>
-        [Description("Получить скриншот")]
+        [LocDescription("ActionType_GetScreenshot")]
         GetScreenshot,
         /// <summary>
         /// Фальшивый объект, для эмулации чего либо :) но не исполнения этого в реале
         /// </summary>
-        [Description("Фальшивый объект, для эмулации чего либо :) но не исполнения этого в реале")]
+        [LocDescription("ActionType_Mock")]
         Mock,
         /// <summary>
         /// Действие которое знает как выполнять только бот
         /// </summary>
-        [Description("Действие которое знает как выполнять только плагин")]
+        [LocDescription("ActionType_PluginAct")]
         PluginAct,
         /// <summary>
         /// Отправить сообщение на указанный канал связи
         /// </summary>
-        [Description("Отправить сообщение на указанный канал связи")]
+        [LocDescription("ActionType_SendMessage")]
         SendMessage
     }
 }

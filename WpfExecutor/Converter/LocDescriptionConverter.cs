@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Attributes;
 using WpfConverters.Converters;
 
 namespace WpfExecutor.Converter
@@ -16,10 +17,10 @@ namespace WpfExecutor.Converter
         public override Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
         {
             var key = $"{value.GetType().FullName}_{value}";
-            if(!AttrInfo.ContainsKey(key))
+            if (!AttrInfo.ContainsKey(key))
                 AttrInfo.Add(key, value.GetType().GetMember(value.ToString()).FirstOrDefault());
 
-            var attr = AttrInfo[key]?.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
+            var attr = AttrInfo[key]?.GetCustomAttribute(typeof(LocDescriptionAttribute)) as LocDescriptionAttribute ?? AttrInfo[key]?.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
 
             return attr != null ? attr.Description : value;
         }

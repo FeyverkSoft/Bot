@@ -13,7 +13,7 @@
         xmlns:content="clr-namespace:WpfExecutor.Views.Content"
         xmlns:behaviors="clr-namespace:WpfConverters.Behaviors;assembly=WpfConverters"
         mc:Ignorable="d" Title="{localization:Localization Title_MainWin}" 
-        Icon="{StaticResource Icon}"
+        Icon="{StaticResource Icon2}"
         d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF"
         d:DataContext="{d:DesignInstance Type=model:MainWindowModel}" Closing="MainWindow_OnClosing">
     <Grid>

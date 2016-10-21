@@ -117,6 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionType" xml:space="preserve">
+    <value>Тип доступных боту действий</value>
+  </data>
+  <data name="ActionType_ExpectWindow" xml:space="preserve">
+    <value>Ожидай окно</value>
+  </data>
+  <data name="ActionType_GetMousePos" xml:space="preserve">
+    <value>Получи позицию курсора</value>
+  </data>
+  <data name="ActionType_GetObject" xml:space="preserve">
+    <value>Получи информацию об объекте</value>
+  </data>
+  <data name="ActionType_GetScreenshot" xml:space="preserve">
+    <value>Получить скриншот (эксперементально)</value>
+  </data>
+  <data name="ActionType_If" xml:space="preserve">
+    <value>Особый оператор условного ветвления (эксперементально)</value>
+  </data>
+  <data name="ActionType_KeyBoard" xml:space="preserve">
+    <value>Нажми последовательность клавиш</value>
+  </data>
+  <data name="ActionType_KeyBoardKeys" xml:space="preserve">
+    <value>Нажми сочитание клавиш</value>
+  </data>
+  <data name="ActionType_Loop" xml:space="preserve">
+    <value>Выполнить в цикле</value>
+  </data>
+  <data name="ActionType_Mock" xml:space="preserve">
+    <value>Ничего не делать :) Заглушка.</value>
+  </data>
+  <data name="ActionType_MouseLClick" xml:space="preserve">
+    <value>Кликни левой кнопкой мыши</value>
+  </data>
+  <data name="ActionType_MouseLPress" xml:space="preserve">
+    <value>Нажми лувую кнопку мыши</value>
+  </data>
+  <data name="ActionType_MouseLUp" xml:space="preserve">
+    <value>Отпусти левую кнопку мыши</value>
+  </data>
+  <data name="ActionType_MouseMove" xml:space="preserve">
+    <value>Перемести указатель мыши относительно координат</value>
+  </data>
+  <data name="ActionType_MouseRClick" xml:space="preserve">
+    <value>Кликни правой кнопкой мыши.</value>
+  </data>
+  <data name="ActionType_MouseRPress" xml:space="preserve">
+    <value>Нажми правую кнопку мыши</value>
+  </data>
+  <data name="ActionType_MouseRUp" xml:space="preserve">
+    <value>Отпусти правую кнопку мыши</value>
+  </data>
+  <data name="ActionType_MouseSetPos" xml:space="preserve">
+    <value>Задать абсолютную позицию указателя.</value>
+  </data>
+  <data name="ActionType_PluginAct" xml:space="preserve">
+    <value>Любые действия плагина</value>
+  </data>
+  <data name="ActionType_PluginInvoke" xml:space="preserve">
+    <value>Вызвать плагин</value>
+  </data>
+  <data name="ActionType_SendMessage" xml:space="preserve">
+    <value>Отправь уведомление</value>
+  </data>
+  <data name="ActionType_Sleep" xml:space="preserve">
+    <value>Усни!</value>
+  </data>
   <data name="DifferentConfigVersions" xml:space="preserve">
     <value>Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты.</value>
   </data>

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Attributes
 {
@@ -11,7 +7,7 @@ namespace Core.Attributes
     /// Локализованный аттрибут описания
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
-    internal class LocDescriptionAttribute : DescriptionAttribute
+    public class LocDescriptionAttribute : DescriptionAttribute
     {
 
         public LocDescriptionAttribute() : this(String.Empty)

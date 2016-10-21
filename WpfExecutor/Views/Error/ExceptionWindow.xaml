@@ -18,8 +18,19 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" Orientation="Horizontal" Margin="2,5">
-            <Image Source="{StaticResource Error}" Height="48" Width="48" Stretch="Fill" Margin="0,0,5,0" />
+        <StackPanel x:Name="StackPanel"  Grid.Row="0" Orientation="Horizontal" Margin="2,5">
+            <Image x:Name="Image" Height="48" Width="48" Stretch="Fill" Margin="0,0,5,0">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Setter Property="Source" Value="{StaticResource Error}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="{StaticResource Icon2}"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Message}" VerticalAlignment="Center"/>
         </StackPanel>
         <Grid Grid.Row="2" Margin="0,3,0,1">

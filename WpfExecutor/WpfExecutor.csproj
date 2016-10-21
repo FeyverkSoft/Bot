@@ -35,7 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon-48.ico</ApplicationIcon>
+    <ApplicationIcon>Logo_2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -218,11 +221,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icons\Icon-48.ico" />
     <Resource Include="Resources\icons\Icon-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icon-48.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icons\Stop-48.png" />
@@ -232,6 +231,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Control\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\Logo_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\Ico.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

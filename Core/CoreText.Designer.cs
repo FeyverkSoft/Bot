@@ -61,6 +61,204 @@ namespace Core {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип доступных боту действий.
+        /// </summary>
+        internal static string ActionType {
+            get {
+                return ResourceManager.GetString("ActionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ожидай окно.
+        /// </summary>
+        internal static string ActionType_ExpectWindow {
+            get {
+                return ResourceManager.GetString("ActionType_ExpectWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Получи позицию курсора.
+        /// </summary>
+        internal static string ActionType_GetMousePos {
+            get {
+                return ResourceManager.GetString("ActionType_GetMousePos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Получи информацию об объекте.
+        /// </summary>
+        internal static string ActionType_GetObject {
+            get {
+                return ResourceManager.GetString("ActionType_GetObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Получить скриншот (эксперементально).
+        /// </summary>
+        internal static string ActionType_GetScreenshot {
+            get {
+                return ResourceManager.GetString("ActionType_GetScreenshot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Особый оператор условного ветвления (эксперементально).
+        /// </summary>
+        internal static string ActionType_If {
+            get {
+                return ResourceManager.GetString("ActionType_If", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нажми последовательность клавиш.
+        /// </summary>
+        internal static string ActionType_KeyBoard {
+            get {
+                return ResourceManager.GetString("ActionType_KeyBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нажми сочитание клавиш.
+        /// </summary>
+        internal static string ActionType_KeyBoardKeys {
+            get {
+                return ResourceManager.GetString("ActionType_KeyBoardKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выполнить в цикле.
+        /// </summary>
+        internal static string ActionType_Loop {
+            get {
+                return ResourceManager.GetString("ActionType_Loop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ничего не делать :) Заглушка..
+        /// </summary>
+        internal static string ActionType_Mock {
+            get {
+                return ResourceManager.GetString("ActionType_Mock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Кликни левой кнопкой мыши.
+        /// </summary>
+        internal static string ActionType_MouseLClick {
+            get {
+                return ResourceManager.GetString("ActionType_MouseLClick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нажми лувую кнопку мыши.
+        /// </summary>
+        internal static string ActionType_MouseLPress {
+            get {
+                return ResourceManager.GetString("ActionType_MouseLPress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отпусти левую кнопку мыши.
+        /// </summary>
+        internal static string ActionType_MouseLUp {
+            get {
+                return ResourceManager.GetString("ActionType_MouseLUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Перемести указатель мыши относительно координат.
+        /// </summary>
+        internal static string ActionType_MouseMove {
+            get {
+                return ResourceManager.GetString("ActionType_MouseMove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Кликни правой кнопкой мыши..
+        /// </summary>
+        internal static string ActionType_MouseRClick {
+            get {
+                return ResourceManager.GetString("ActionType_MouseRClick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нажми правую кнопку мыши.
+        /// </summary>
+        internal static string ActionType_MouseRPress {
+            get {
+                return ResourceManager.GetString("ActionType_MouseRPress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отпусти правую кнопку мыши.
+        /// </summary>
+        internal static string ActionType_MouseRUp {
+            get {
+                return ResourceManager.GetString("ActionType_MouseRUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Задать абсолютную позицию указателя..
+        /// </summary>
+        internal static string ActionType_MouseSetPos {
+            get {
+                return ResourceManager.GetString("ActionType_MouseSetPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Любые действия плагина.
+        /// </summary>
+        internal static string ActionType_PluginAct {
+            get {
+                return ResourceManager.GetString("ActionType_PluginAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вызвать плагин.
+        /// </summary>
+        internal static string ActionType_PluginInvoke {
+            get {
+                return ResourceManager.GetString("ActionType_PluginInvoke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отправь уведомление.
+        /// </summary>
+        internal static string ActionType_SendMessage {
+            get {
+                return ResourceManager.GetString("ActionType_SendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Усни!.
+        /// </summary>
+        internal static string ActionType_Sleep {
+            get {
+                return ResourceManager.GetString("ActionType_Sleep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты..
         /// </summary>
         internal static string DifferentConfigVersions {

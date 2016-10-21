@@ -65,8 +65,10 @@ namespace Core.ActionExecutors
                                         if (mousePos.State != EResultState.Success)
                                             throw new Exception(
                                                 "Ошибка относительного позиционирования, CurrentMousePosExecutorResult не валиден");
-                                        var currentPos = mousePos.ExecutorResult;
-                                        Mouse.MouseMove(currentPos.X + action.Dx, currentPos.Y + action.Dy);//Дич, аналогично тому что просто вызвать, но но, при передаче тунельемпараметра может быть эффект :)
+                                        var pos = mousePos.ExecutorResult;
+                                        var currentPos = Mouse.GetCurrentPos();
+                                        Int32 x = (currentPos.X - pos.X), y = (currentPos.Y - pos.Y);
+                                        Mouse.MouseMove(x + action.Dx, y + action.Dy);
                                     }
                                     break;
                                 case nameof(ObjectExecutorResult):
@@ -74,8 +76,12 @@ namespace Core.ActionExecutors
                                         var mousePos = (ObjectExecutorResult)previousResult;
                                         if (mousePos.State != EResultState.Success)
                                             throw new Exception("Ошибка относительного позиционирования, ObjectExecutorResult не валиден");
-                                        var currentPos = mousePos.ExecutorResult.Pos;
-                                        Mouse.MouseMove(currentPos.X + action.Dx, currentPos.Y + action.Dy);//Дич, аналогично тому что просто вызвать, но но, при передаче тунельемпараметра может быть эффект :)
+                                        var pos = mousePos.ExecutorResult.Pos;
+
+                                        var currentPos = Mouse.GetCurrentPos();
+                                        Int32 x = (currentPos.X - pos.X), y = (currentPos.Y - pos.Y);
+                                        Mouse.MouseMove(x + action.Dx, y + action.Dy);
+
                                     }
                                     break;
                                 default:
