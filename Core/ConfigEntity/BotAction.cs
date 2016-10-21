@@ -115,5 +115,15 @@ namespace Core.ConfigEntity
             }
         }
 
+        /// <summary>
+        /// Возвращает строку, представляющую текущий объект.
+        /// </summary>
+        /// <returns>
+        /// Строка, представляющая текущий объект.
+        /// </returns>
+        public override String ToString()
+        {
+            return $"{ActionType}::\t{base.ToString()}";
+        }
     }
 }

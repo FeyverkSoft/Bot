@@ -164,7 +164,7 @@
             <content:GenCanvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></content:GenCanvas>
         </ScrollViewer>
 
-        <TextBox Grid.Row="4" Text="{Binding TextLog, Mode=OneWay}" Height="50" VerticalScrollBarVisibility="Auto" IsReadOnly="True"></TextBox>
+        <TextBox Grid.Row="4" Text="{Binding TextLog, Mode=OneWay}" Height="100" VerticalScrollBarVisibility="Auto" IsReadOnly="True"></TextBox>
 
         <!--Тень под шапкой-->
         <Border Grid.Row="2" BorderThickness="0,0,0,1">
