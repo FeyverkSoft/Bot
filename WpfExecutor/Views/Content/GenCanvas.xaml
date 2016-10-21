@@ -29,6 +29,16 @@
                 <HierarchicalDataTemplate DataType="{x:Type actionObjects:IAction}" ItemsSource="{Binding}">
                     <TextBlock Text="{Binding}" />
                 </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
+                    <TextBlock Text="{Binding}" />
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type actionObjects:IfAction}" ItemsSource="{Binding}">
+                    <TextBlock Text="{Binding}" />
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type configEntity:ListBotAction}" ItemsSource="{Binding}">
+                    <TextBlock Text="{Binding}" />
+                </HierarchicalDataTemplate>
+                
             </TreeView.Resources>
         </TreeView>
     </Grid>
