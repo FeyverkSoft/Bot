@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Helpers;
 using LogWrapper;
 using Newtonsoft.Json;
@@ -11,27 +12,27 @@ namespace Core.ConfigEntity.ActionObjects
     /// Описание параметров для сна, перед выполнением новой комманды
     /// </summary>
     [DataContract]
-    [Description("Описание параметров для сна, перед выполнением новой комманды")]
+    [LocDescription("Описание параметров для сна, перед выполнением новой комманды")]
     public class IfAction : IAction
     {
         /// <summary>
         /// Список действий которые необходимо выполнить при успешном выполнении условия
         /// </summary>
         [DataMember]
-        [Description("Список действий которые необходимо выполнить при успешном выполнении условия")]
+        [LocDescription("Список действий которые необходимо выполнить при успешном выполнении условия")]
         public ListBotAction Actions { get; private set; } = new ListBotAction();
 
         /// <summary>
         /// Список действий которые необходимо выполнить при НЕ успешном выполнении условия
         /// </summary>
         [DataMember]
-        [Description("Список действий которые необходимо выполнить при НЕ успешном выполнении условия")]
+        [LocDescription("Список действий которые необходимо выполнить при НЕ успешном выполнении условия")]
         public ListBotAction FailActions { get; private set; } = new ListBotAction();
 
         /// <summary>
         /// Проверка на тип предыдущего результата 
         /// </summary>
-        [Description("Проверка на тип предыдущего результата")]
+        [LocDescription("Проверка на тип предыдущего результата")]
         [DataMember]
         public String PrevResType { get; private set; }
 
@@ -39,7 +40,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Список условий, которые необходимо проверить над предыдущим объектом
         /// </summary>
         [DataMember]
-        [Description("Список условий, которые необходимо проверить над предыдущим объектом")]
+        [LocDescription("Список условий, которые необходимо проверить над предыдущим объектом")]
         public String Сonditions { get; private set; }
 
         [JsonConstructor]

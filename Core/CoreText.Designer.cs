@@ -70,6 +70,42 @@ namespace Core {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметр поиска.
+        /// </summary>
+        internal static string ExpectWindowAct_SearchParam {
+            get {
+                return ResourceManager.GetString("ExpectWindowAct_SearchParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Передать фокус окну.
+        /// </summary>
+        internal static string ExpectWindowAct_SetFocus {
+            get {
+                return ResourceManager.GetString("ExpectWindowAct_SetFocus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Наименование ожидаемого окна.
+        /// </summary>
+        internal static string ExpectWindowAct_WinTitle {
+            get {
+                return ResourceManager.GetString("ExpectWindowAct_WinTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Описание параметров действия ожидания окна с указанным именем..
+        /// </summary>
+        internal static string ExpectWindowActDescription {
+            get {
+                return ResourceManager.GetString("ExpectWindowActDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на При выполнении действия {0}, произошла ошибка. {1}Тип действия не совпадает с членами действия..
         /// </summary>
         internal static string IncorrectAction {

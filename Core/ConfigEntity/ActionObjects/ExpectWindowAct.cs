@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Core;
 using Core.Helpers;
 using LogWrapper;
@@ -12,25 +13,25 @@ namespace Core.ConfigEntity.ActionObjects
     /// Описание параметров ожидания появления окна с нужным названием.
     /// </summary>
     [DataContract]
-    [Description("Описание параметров ожидания появления окна с нужным названием.")]
+    [LocDescription("ExpectWindowActDescription")]
     public class ExpectWindowAct : IAction
     {
         /// <summary>
         /// Наименование ожидаемого окна
         /// </summary>
         [DataMember]
-        [Description("Наименование ожидаемого окна")]
+        [LocDescription("ExpectWindowAct_WinTitle")]
         public String WinTitle { get; private set; }
         /// <summary>
         /// Указывает, на то что после того как окно найденно, ему необходимо передать фокус
         /// </summary>
         [DataMember]
-        [Description("Указывает, на то что после того как окно найденно, ему необходимо передать фокус")]
+        [LocDescription("ExpectWindowAct_SetFocus")]
         public Boolean SetFocus { get; private set; }
         /// <summary>
         /// Параметр поиска, указавающий как и где искать. в начале, конце или просто содержание
         /// </summary>
-        [Description("Параметр поиска, указавающий как и где искать. в начале, конце или просто содержание")]
+        [LocDescription("ExpectWindowAct_SearchParam")]
         public ESearchParam SearchParam { get; private set; } = ESearchParam.Contained;
         [JsonConstructor]
         public ExpectWindowAct(String winTitle, Boolean setFocus = true)

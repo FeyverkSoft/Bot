@@ -27,7 +27,7 @@
                     <TextBlock Text="{Binding Path=Actions}" />
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:BotAction}" ItemsSource="{Binding SubActions}">
-                    <TextBlock Text="{Binding Path=ActionType}" />
+                    <TextBlock Text="{Binding Path=ActionType, Converter={converter:LocDescriptionConverter}}" />
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
                     <TextBlock Text="{Binding}" />

@@ -117,22 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DifferentConfigVersions" xml:space="preserve">
-    <value>Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты.</value>
-  </data>
   <data name="ExpectWindowActDescription" xml:space="preserve">
-    <value>Описание параметров действия ожидания окна с указанным именем.</value>
+    <value>Description of the parameters for standby window with the specified name.</value>
   </data>
   <data name="ExpectWindowAct_SearchParam" xml:space="preserve">
-    <value>Параметр поиска</value>
+    <value>Search parameter</value>
   </data>
   <data name="ExpectWindowAct_SetFocus" xml:space="preserve">
-    <value>Передать фокус окну</value>
+    <value>Set focus to the window</value>
   </data>
   <data name="ExpectWindowAct_WinTitle" xml:space="preserve">
-    <value>Наименование ожидаемого окна</value>
+    <value>Name of the expected window</value>
   </data>
   <data name="IncorrectAction" xml:space="preserve">
-    <value>При выполнении действия {0}, произошла ошибка. {1}Тип действия не совпадает с членами действия.</value>
+    <value>In step {0} An error occurred. type of action {1} is not the same with the members of the action.</value>
   </data>
 </root>

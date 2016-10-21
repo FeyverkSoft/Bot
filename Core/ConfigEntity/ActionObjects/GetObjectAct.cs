@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Core;
 using Core.Helpers;
 using Newtonsoft.Json;
@@ -10,7 +11,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Информация об объекте который необходимо получить
     /// </summary>
-    [Description("Информация об объекте который необходимо получить")]
+    [LocDescription("Информация об объекте который необходимо получить")]
     public class GetObjectAct : IAction
     {
 
@@ -24,7 +25,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Указывает, на то что после того как объект найден, ему необходимо передать фокус
         /// </summary>
         [DataMember]
-        [Description("Указывает, на то что после того как объект найден, ему необходимо передать фокус")]
+        [LocDescription("Указывает, на то что после того как объект найден, ему необходимо передать фокус")]
         public Boolean SetFocus { get; }
 
         ///// <summary>
@@ -36,7 +37,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Позиция объекта который необходимо захватить
         /// </summary>
         [DataMember]
-        [Description("Позиция объекта который необходимо захватить")]
+        [LocDescription("Позиция объекта который необходимо захватить")]
         public Point ObjectPos { get; private set; }
         /// <summary>
         /// Тип ожидаемого объекта

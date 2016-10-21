@@ -85,6 +85,7 @@
     <Compile Include="ActionExecutors\MouseSetPosExecutor.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppContext.cs" />
+    <Compile Include="Attributes\LocDescriptionAttribute.cs" />
     <Compile Include="Helpers\ActionHelper.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
@@ -172,6 +173,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CoreText.en.resx" />
     <EmbeddedResource Include="CoreText.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CoreText.Designer.cs</LastGenOutput>
