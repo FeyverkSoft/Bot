@@ -4,7 +4,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:WpfExecutor"
+    xmlns:ext="clr-namespace:WpfConverters"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:format="clr-namespace:WpfConverters.Converters.Format;assembly=WpfConverters"
+    xmlns:control="clr-namespace:WpfExecutor.Control"
     mc:Ignorable="d">
 
     <ResourceDictionary.MergedDictionaries>
@@ -111,5 +114,127 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+
+
+
+
+
+    <Style TargetType="TreeViewItem" x:Key="GTreeView">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TreeViewItem">
+                    <Grid>
+                        <!-- Main Grid-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- Horizontal line-->
+                            <RowDefinition Height="Auto"/>
+                            <!--The top row contains the item's content.-->
+                            <RowDefinition Height="Auto" />
+                            <!-- Item presenter(children) -->
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <!-- Horizontal line grid -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Horizontal line to the left -->
+                            <Rectangle  Grid.Column="0" HorizontalAlignment="Stretch"
+                          Stroke="Black" SnapsToDevicePixels="true">
+                                <Rectangle.Height>
+                                    <Binding  Mode="OneWay"
+                            Converter="{format:HorzontalLineConverter}"
+                            ConverterParameter="left" 
+                            RelativeSource="{RelativeSource
+                                AncestorLevel=1,
+                                AncestorType={x:Type TreeViewItem}}"/>
+                                </Rectangle.Height>
+                            </Rectangle>
+
+                            <!-- Horizontal line to the right -->
+                            <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" 
+                         Stroke="Black"
+                         SnapsToDevicePixels="true">
+                                <Rectangle.Height>
+                                    <Binding Mode="OneWay" 
+                    Converter="{format:HorzontalLineConverter}" 
+                    ConverterParameter="right" 
+                    RelativeSource="{RelativeSource 
+                      AncestorLevel=1, 
+                      AncestorType={x:Type TreeViewItem}}"/>
+                                </Rectangle.Height>
+                            </Rectangle>
+                        </Grid>
+                        <!-- End of Horizontal line grid -->
+
+                        <Grid Grid.Row="1">
+                            <!-- Header grid -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <!-- Vert. line above node	-->
+                                <RowDefinition Height="*"/>
+                                <!-- Header -->
+                                <RowDefinition Height="Auto"/>
+                                <!-- Vert line below node	-->
+                            </Grid.RowDefinitions>
+                            <!-- Vertical line above node -->
+                            <Rectangle Grid.Row="0" 
+                         Height="10" Stroke="Black" SnapsToDevicePixels="true">
+                                <Rectangle.Width>
+                                    <Binding Mode="OneWay" 
+                    Converter="{format:VerticalLineConverter}" 
+                    ConverterParameter="top" 
+                    RelativeSource=
+                      "{RelativeSource AncestorLevel=1, 
+                                       AncestorType={x:Type TreeViewItem}}"/>
+                                </Rectangle.Width>
+                            </Rectangle>
+
+                            <!-- Header -->
+                            <ContentPresenter Grid.Row="1" ContentSource="Header" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                            <!-- Vertical line below node -->
+                            <Rectangle Grid.Row="2"  Height="10" Stroke="Black" 
+                SnapsToDevicePixels="true">
+                                <Rectangle.Width>
+                                    <Binding Mode="OneWay" 
+                    Converter="{format:VerticalLineConverter}" 
+                    ConverterParameter="bottom" 
+                    RelativeSource=
+                      "{RelativeSource  AncestorLevel=1, 
+                                        AncestorType={x:Type TreeViewItem}}"/>
+                                </Rectangle.Width>
+                            </Rectangle>
+                        </Grid>
+                        <!-- End of Header grid -->
+
+                        <ItemsPresenter Grid.Row="2"/>
+                        <!-- Children -->
+
+                    </Grid>
+                    <!-- End of Main grid -->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel
+            HorizontalAlignment="Center" 
+            IsItemsHost="True" 
+            Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 
 </ResourceDictionary>
