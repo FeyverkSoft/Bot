@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Core.ConfigEntity.ActionObjects;
@@ -22,11 +23,11 @@ namespace Core.Helpers
             {
                 var val = props[i].GetValue(act);
                 if (val == null) continue;
-
+               var dsAttr = props[i].CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(DescriptionAttribute))?.ConstructorArguments.FirstOrDefault();
                 if (i + 1 != props.Length)//избавляемся от лишнего перевода строки
-                    sb.AppendLine(val.ToString());
+                    sb.AppendLine($"{dsAttr}: {val}");
                 else
-                    sb.Append(val);
+                    sb.Append($"{dsAttr}: {val}");
             }
             return sb.ToString();
         }

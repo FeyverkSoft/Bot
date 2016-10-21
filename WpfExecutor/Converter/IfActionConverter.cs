@@ -10,19 +10,26 @@ using WpfConverters.Converters;
 
 namespace WpfExecutor.Converter
 {
-    public class IfActionConverter : BaseValueConverterExtension
+    public class IfActionConverter : BaseMultiValueConverterExtension
     {
-        public override Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
+        public override Object Convert(Object[] value, Type targetType, Object parameter, CultureInfo culture)
         {
-            var val = value as IfAction;
-            if (val == null)
-                throw new NotSupportedException();
-            List<ListBotAction> list = new List<ListBotAction>
+            var list = new List<Object>
             {
-                val.Actions,
-                val.FailActions
+               new IfList {
+                   ListName = "Actions",
+                   List =value[0] as ListBotAction},
+               new IfList {
+                   ListName = "FailActions",
+                   List=  value[1] as ListBotAction}
             };
             return list;
         }
+    }
+
+    public class IfList
+    {
+        public String ListName { get; set; }
+        public ListBotAction List { get; set; }
     }
 }

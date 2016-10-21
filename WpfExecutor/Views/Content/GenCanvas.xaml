@@ -9,6 +9,8 @@
              xmlns:configEntity="clr-namespace:Core.ConfigEntity;assembly=Core"
              xmlns:actionObjects="clr-namespace:Core.ConfigEntity.ActionObjects;assembly=Core"
              xmlns:converter="clr-namespace:WpfExecutor.Converter"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type={x:Type content:GenCanvasModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -30,11 +32,22 @@
                 <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
                     <TextBlock Text="{Binding}" />
                 </HierarchicalDataTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type actionObjects:IfAction}" ItemsSource="{Binding Converter={converter:IfActionConverter}}">
-                    <TextBlock Text="{Binding}" />
+                <HierarchicalDataTemplate DataType="{x:Type actionObjects:IfAction}">
+                    <HierarchicalDataTemplate.ItemsSource>
+                        <MultiBinding Converter="{converter:IfActionConverter}">
+                            <Binding Path="Actions"></Binding>
+                            <Binding Path="FailActions"></Binding>
+                        </MultiBinding>
+                    </HierarchicalDataTemplate.ItemsSource>
+                    <TextBlock Text="{Binding Сonditions}" />
                 </HierarchicalDataTemplate>
+                
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:ListBotAction}" ItemsSource="{Binding}">
                     <TextBlock Text="{Binding}" />
+                </HierarchicalDataTemplate>
+                
+                <HierarchicalDataTemplate DataType="{x:Type converter:IfList}" ItemsSource="{Binding List}">
+                    <TextBlock Text="{Binding  ListName}" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
