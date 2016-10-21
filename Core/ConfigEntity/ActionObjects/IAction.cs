@@ -1,4 +1,6 @@
-﻿namespace Core.ConfigEntity.ActionObjects
+﻿using System;
+
+namespace Core.ConfigEntity.ActionObjects
 {
     /// <summary>
     /// Базовый interface любых действий
@@ -8,6 +10,8 @@
         /// <summary>
         /// Наименование объекта класса для сериализации
         /// </summary>
-       // String Class { get; }
+        // String Class { get; }
+
+        String ToString();
     }
 }

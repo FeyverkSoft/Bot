@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+using Core.Helpers;
 using Core.Message;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -49,6 +46,13 @@ namespace Core.ConfigEntity.ActionObjects
             Recipient = recipient;
             Body = body;
             IncludePrevRes = includePrevRes;
+        }
+
+        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
+        /// <returns>Строка, представляющая текущий объект.</returns>
+        public override string ToString()
+        {
+            return this.GetString();
         }
     }
 }

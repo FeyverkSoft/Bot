@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\IfActionConverter.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
     <Compile Include="Properties\Annotations.cs" />

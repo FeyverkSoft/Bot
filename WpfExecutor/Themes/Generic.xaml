@@ -149,6 +149,7 @@
     <Style x:Key="GTreeView" TargetType="{x:Type TreeViewItem}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Padding" Value="1,0,0,0"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
@@ -167,14 +168,24 @@
                         <Rectangle x:Name="HorLn" Margin="9,1,0,0" Height="1" Stroke="#DCDCDC" SnapsToDevicePixels="True"/>
                         <Rectangle x:Name="VerLn" Width="1" Stroke="#DCDCDC" Margin="0,0,1,0" Grid.RowSpan="2" SnapsToDevicePixels="true" Fill="White"/>
                         <ToggleButton Margin="-1,0,0,0" x:Name="Expander" Style="{StaticResource ExpandCollapseToggleStyle}" IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press"/>
-                        <Border Name="Bd" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
-                            <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" MinWidth="20"/>
-                        </Border>
+                        <Grid Grid.Column="1" Margin="2, 5" x:Name="ContentPresenterGrid">
+                            <Border x:Name="Border" Background="White"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                                SnapsToDevicePixels="True"
+                                Effect="{StaticResource ShadowDepth1}">
+                                <ContentPresenter
+                                              x:Name="PART_Header" ContentSource="Header" 
+                                              HorizontalAlignment="Stretch" 
+                                              VerticalAlignment="Stretch" 
+                                              Margin="5, 10"
+                                              MinWidth="20"
+                                              TextOptions.TextFormattingMode="Display"/>
+                            </Border>
+                        </Grid>
                         <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
                     </Grid>
                     <ControlTemplate.Triggers>
 
-                        <!-- This trigger changes the connecting lines if the item is the last in the list -->
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Converter={format:VerticalLineConverter}}" Value="true">
                             <Setter TargetName="VerLn" Property="Height" Value="9"/>
                             <Setter TargetName="VerLn" Property="VerticalAlignment" Value="Top"/>
@@ -184,6 +195,9 @@
                         </Trigger>
                         <Trigger Property="HasItems" Value="false">
                             <Setter TargetName="Expander" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger SourceName="ContentPresenterGrid" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Effect" Value="{StaticResource ShadowDepth3}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -200,7 +214,7 @@
                             <Setter TargetName="PART_Header" Property="MinHeight" Value="19"/>
                         </MultiTrigger>
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
                         </Trigger>
                         <MultiTrigger>
@@ -208,7 +222,7 @@
                                 <Condition Property="IsSelected" Value="true"/>
                                 <Condition Property="IsSelectionActive" Value="false"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background" Value="DimGray"/>
+                            <Setter TargetName="Border" Property="Background" Value="DimGray"/>
                             <Setter Property="Foreground" Value="White"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">

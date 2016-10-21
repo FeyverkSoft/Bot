@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using Core.Helpers;
 
 namespace Core.ConfigEntity.ActionObjects
 {
     [Description("Фейковый класс")]
     public class MockAction : IAction
     {
+        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
+        /// <returns>Строка, представляющая текущий объект.</returns>
+        public override string ToString()
+        {
+            return this.GetString();
+        }
     }
 }

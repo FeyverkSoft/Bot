@@ -74,6 +74,10 @@
       <Project>{88ef1877-5e4c-4440-82d9-b64c89cd11ef}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Plugin\TestPlugin\TestPlugin.csproj">
+      <Project>{da900edd-46a2-4a02-a721-9f416649e128}</Project>
+      <Name>TestPlugin</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

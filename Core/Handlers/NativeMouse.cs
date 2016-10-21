@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Core;
 using LogWrapper;
 
 namespace Core.Handlers

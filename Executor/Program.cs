@@ -8,7 +8,7 @@ using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Helpers;
 
-//using TestPlugin;
+using TestPlugin;
 
 namespace Executor
 {
@@ -27,13 +27,20 @@ namespace Executor
             var list = new ListBotAction()
             {
                 new BotAction(ActionType.SendMessage, new SendMessageAct("@gmail.com", "Привет мир!!")),
-            /*    new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
+                new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
                 new BotAction(ActionType.GetMousePos),
                 new BotAction(ActionType.GetObject, new GetObjectAct()),
-                new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true))*/
+                new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true)),
+                new BotAction(ActionType.If, new IfAction(nameof(BaseExecutorResult), "sd",new ListBotAction
+                {
+                    new BotAction(ActionType.GetObject, new GetObjectAct()),
+                }, new ListBotAction
+                {
+                    new BotAction(ActionType.GetMousePos),
+                }))
             };
             var conf = new Config(list);
-            //cr.Save(conf,"test1.jsn");
+            cr.Save(conf, "test1.jsn");
             var d = cr.Load("test1.jsn");
             d = d;
             Thread.Sleep(4000);

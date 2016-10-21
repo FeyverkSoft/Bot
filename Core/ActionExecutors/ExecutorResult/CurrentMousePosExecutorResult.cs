@@ -1,5 +1,4 @@
-﻿using System;
-using Core.Core;
+﻿using Core.Core;
 
 namespace Core.ActionExecutors.ExecutorResult
 {

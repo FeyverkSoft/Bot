@@ -11,6 +11,7 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:core="clr-namespace:Core.Core;assembly=Core"
         xmlns:content="clr-namespace:WpfExecutor.Views.Content"
+        xmlns:behaviors="clr-namespace:WpfConverters.Behaviors;assembly=WpfConverters"
         mc:Ignorable="d" Title="{localization:Localization Title_MainWin}" 
         Icon="{StaticResource Icon}"
         d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF"
@@ -160,8 +161,10 @@
         </Border>
 
         <!--Основной контент-->
-        <ScrollViewer x:Name="ContentScrollViewer" Grid.Row="3" Margin="0,-7,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <content:GenCanvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></content:GenCanvas>
+        <ScrollViewer behaviors:ScrollViewer.AttachScroll="True" x:Name="ContentScrollViewer" 
+                      Grid.Row="3" Margin="0,-7,0,0" VerticalScrollBarVisibility="Auto" 
+                      HorizontalScrollBarVisibility="Disabled">
+            <content:GenCanvas x:Name="GenCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></content:GenCanvas>
         </ScrollViewer>
 
         <TextBox Grid.Row="4" Text="{Binding TextLog, Mode=OneWay}" Height="100" VerticalScrollBarVisibility="Auto" IsReadOnly="True"></TextBox>
@@ -194,4 +197,6 @@
         </Border>
     </Grid>
 </Window>
+
+
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Helpers;
 using LogWrapper;
 using Newtonsoft.Json;
 
@@ -45,6 +46,13 @@ namespace Core.ConfigEntity.ActionObjects
             Dx = dx;
             Dy = dy;
             ToObject = toObject;
+        }
+
+        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
+        /// <returns>Строка, представляющая текущий объект.</returns>
+        public override string ToString()
+        {
+            return this.GetString();
         }
     }
 }

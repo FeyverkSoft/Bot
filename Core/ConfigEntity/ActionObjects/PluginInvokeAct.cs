@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Helpers;
 
 namespace Core.ConfigEntity.ActionObjects
 {
@@ -27,6 +28,13 @@ namespace Core.ConfigEntity.ActionObjects
         {
             PluginName = pluginName;
             Actions = actions;
+        }
+
+        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
+        /// <returns>Строка, представляющая текущий объект.</returns>
+        public override string ToString()
+        {
+            return this.GetString();
         }
     }
 }

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Drawing;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity.ActionObjects;
-using Core.Core;
 using Core.Handlers;
 using Core.Helpers;
 

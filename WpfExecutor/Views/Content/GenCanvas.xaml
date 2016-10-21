@@ -8,6 +8,7 @@
              xmlns:format="clr-namespace:WpfConverters.Converters.Format;assembly=WpfConverters"
              xmlns:configEntity="clr-namespace:Core.ConfigEntity;assembly=Core"
              xmlns:actionObjects="clr-namespace:Core.ConfigEntity.ActionObjects;assembly=Core"
+             xmlns:converter="clr-namespace:WpfExecutor.Converter"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type={x:Type content:GenCanvasModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -21,24 +22,20 @@
         <TreeView ItemContainerStyle="{StaticResource GTreeView}" Grid.Row="1" ItemsSource="{Binding CommandConfig}">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:Config}" ItemsSource="{Binding Actions}">
-                    <TextBlock Text="{Binding Path=  Actions}" />
+                    <TextBlock Text="{Binding Path=Actions}" />
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:BotAction}" ItemsSource="{Binding SubActions}">
                     <TextBlock Text="{Binding Path=ActionType}" />
                 </HierarchicalDataTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type actionObjects:IAction}" ItemsSource="{Binding}">
-                    <TextBlock Text="{Binding}" />
-                </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
                     <TextBlock Text="{Binding}" />
                 </HierarchicalDataTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type actionObjects:IfAction}" ItemsSource="{Binding}">
+                <HierarchicalDataTemplate DataType="{x:Type actionObjects:IfAction}" ItemsSource="{Binding Converter={converter:IfActionConverter}}">
                     <TextBlock Text="{Binding}" />
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:ListBotAction}" ItemsSource="{Binding}">
                     <TextBlock Text="{Binding}" />
                 </HierarchicalDataTemplate>
-                
             </TreeView.Resources>
         </TreeView>
     </Grid>
