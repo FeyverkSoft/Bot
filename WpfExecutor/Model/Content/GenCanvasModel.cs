@@ -37,21 +37,19 @@ namespace WpfExecutor.Model.Content
         }
 
         public String ConfigVersion => $"{LocalizationManager.GetString("ConfigVersion")}: {Document.Instance.DocumentItems.BotVer}";
+
         public GenCanvasModel()
         {
-            Task.Run(() =>
-            {
-                while (true)
-                {
-                    if (Document.Instance.DocumentItems.Actions != lba)
-                    {
-                        lba = Document.Instance.DocumentItems.Actions;
-                        CommandConfig = CollectionViewSource.GetDefaultView(Document.Instance.DocumentItems.Actions);
-                    }
-                    Thread.Sleep(250);
-                }
-            });
+            StaticPropertyChanged += OnPropertyChanged;
+            CommandConfig = CollectionViewSource.GetDefaultView(Document.Instance.DocumentItems.Actions);
+        }
 
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        {
+            if (propertyChangedEventArgs.PropertyName == nameof(Document.Instance))
+            {
+                CommandConfig = CollectionViewSource.GetDefaultView(Document.Instance.DocumentItems.Actions);
+            }
         }
     }
 }

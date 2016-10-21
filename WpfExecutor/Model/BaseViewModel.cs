@@ -8,10 +8,13 @@ namespace WpfExecutor.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public static event PropertyChangedEventHandler StaticPropertyChanged;
+
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] String propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            StaticPropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
