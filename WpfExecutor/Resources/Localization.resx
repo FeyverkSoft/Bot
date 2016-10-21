@@ -121,10 +121,12 @@
     <value>Дополнительна информация</value>
   </data>
   <data name="AboutWindow_packages" xml:space="preserve">
-    <value>packages:
-	Newtonsoft.Json (MIT)
-Icons:
-	https://icons8.com</value>
+    <value>Сторонние Пакеты:
+	Newtonsoft.Json (MIT) / https://github.com/JamesNK/Newtonsoft.Json
+Сторонние Значки:
+	https://icons8.com
+Сторонние Шрифты:
+	Roboto (Apache License 2.0) / https://github.com/google/roboto</value>
   </data>
   <data name="CloseMessage" xml:space="preserve">
     <value>Вы действительно хотите выйти из программы?</value>

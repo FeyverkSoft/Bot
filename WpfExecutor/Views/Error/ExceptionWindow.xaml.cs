@@ -13,6 +13,11 @@ namespace WpfExecutor.Views.Error
             InitializeComponent();
 
             Loaded += OnLoaded;
+            Closing += (sender, e) =>
+            {
+                ((Window)sender).Hide();
+                e.Cancel = true;
+            };
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)

@@ -82,6 +82,18 @@
     <Compile Include="Views\Error\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Themes\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ShadowEffect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Font.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +164,17 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Roboto\Roboto-Black.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-BlackItalic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Bold.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-BoldItalic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Italic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Light.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-LightItalic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-MediumItalic.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Regular.ttf" />
+    <Resource Include="Resources\Roboto\Roboto-Thin.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

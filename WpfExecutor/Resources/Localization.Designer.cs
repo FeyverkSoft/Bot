@@ -70,10 +70,12 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на packages:
-        ///	Newtonsoft.Json (MIT)
-        ///Icons:
-        ///	https://icons8.com.
+        ///   Ищет локализованную строку, похожую на Сторонние Пакеты:
+        ///	Newtonsoft.Json (MIT) / https://github.com/JamesNK/Newtonsoft.Json
+        ///Сторонние Значки:
+        ///	https://icons8.com
+        ///Сторонние Шрифты:
+        ///	Roboto (Apache License 2.0) / https://github.com/google/roboto.
         /// </summary>
         internal static string AboutWindow_packages {
             get {

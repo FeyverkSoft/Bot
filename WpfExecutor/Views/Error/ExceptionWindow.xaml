@@ -51,9 +51,9 @@
                 </Grid>
             </Expander>
 
-            <Grid Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Grid Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Top">
                 <Button Content="{localization:Localization Continue}" IsDefault="True" IsCancel="True" 
-                        Background="Transparent" BorderThickness="0" Margin="0,5" Padding="4" FontWeight="Bold"></Button>
+                        Background="Transparent" BorderThickness="0" Margin="0,5" Padding="15, 0" FontWeight="Bold"></Button>
             </Grid>
         </Grid>
     </Grid>

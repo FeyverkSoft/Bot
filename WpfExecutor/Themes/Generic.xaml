@@ -7,40 +7,109 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     mc:Ignorable="d">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Font.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/ShadowEffect.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/Icons.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
     <system:Boolean x:Key="True">True</system:Boolean>
     <system:Boolean x:Key="False">False</system:Boolean>
 
-    <DropShadowEffect x:Key="z-depth1" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#CCCCCC" RenderingBias="Quality"/>
-    <DropShadowEffect x:Key="z-depth2" BlurRadius="8" ShadowDepth="2.5" Direction="270" Color="#BBBBBB" RenderingBias="Quality"/>
-    <DropShadowEffect x:Key="z-depth3" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB" RenderingBias="Quality"/>
-    <DropShadowEffect x:Key="z-depth4" BlurRadius="25" ShadowDepth="8" Direction="270" Color="#BBBBBB" RenderingBias="Quality"/>
-    <DropShadowEffect x:Key="z-depth5" BlurRadius="35" ShadowDepth="13" Direction="270" Color="#BBBBBB" RenderingBias="Quality"/>
-
-    <BitmapImage x:Key="PlayIcon" UriSource="pack://application:,,,/Resources/icons/Play-32.png" />
-    <BitmapImage x:Key="RefreshIcon" UriSource="pack://application:,,,/Resources/icons/Repeat-32.png" />
-    <BitmapImage x:Key="Calendar" UriSource="pack://application:,,,/Resources/icons/Calendar_7-64.png" />
-    <BitmapImage x:Key="ru-RUIcon" UriSource="pack://application:,,,/Resources/icons/Russian_Federation-32.png" />
-    <BitmapImage x:Key="en-USIcon" UriSource="pack://application:,,,/Resources/icons/Great_Britain-32.png" />
-    <BitmapImage x:Key="rusIcon" UriSource="pack://application:,,,/Resources/icons/Russian_Federation-32.png" />
-    <BitmapImage x:Key="engIcon" UriSource="pack://application:,,,/Resources/icons/Great_Britain-32.png" />
-    <BitmapImage x:Key="ViewFileIcon" UriSource="pack://application:,,,/Resources/icons/ViewFile-32.png"/>
-    <BitmapImage x:Key="HighImportanceIcon" UriSource="pack://application:,,,/Resources/icons/High_Importance-32.png" />
-    <BitmapImage x:Key="Stop" UriSource="pack://application:,,,/Resources/icons/Stop-48.png" />
-    <BitmapImage x:Key="FolderIcon" UriSource="pack://application:,,,/Resources/icons/Folder-32.png" />
-    <BitmapImage x:Key="OpenFolderIcon" UriSource="pack://application:,,,/Resources/icons/Open_Folder-32.png" />
-    <BitmapImage x:Key="ShutdownIcon" UriSource="pack://application:,,,/Resources/icons/Shutdown-32.png" />
-    <BitmapImage x:Key="HappyIcon" UriSource="pack://application:,,,/Resources/icons/Happy-32.png" />
-    <BitmapImage x:Key="AddIcon" UriSource="pack://application:,,,/Resources/icons/Plus-32.png" />
-    <BitmapImage x:Key="VisibleIcon" UriSource="pack://application:,,,/Resources/icons/Visible-32.png" />
-    <BitmapImage x:Key="AboutIcon" UriSource="pack://application:,,,/Resources/icons/About-32.png" />
-    <BitmapImage x:Key="SearchIcon" UriSource="pack://application:,,,/Resources/icons/Search-32.png" />
-    <BitmapImage x:Key="SentIcon" UriSource="pack://application:,,,/Resources/icons/Sent-48.png" />
-    <BitmapImage x:Key="SaveIcon" UriSource="pack://application:,,,/Resources/icons/SaveIcon-48.png" />
-    <BitmapImage x:Key="Icon" UriSource="pack://application:,,,/Resources/icons/Icon-48.png" />
-    <BitmapImage x:Key="Error" UriSource="pack://application:,,,/Resources/icons/Error.png" />
-
+    <Style TargetType="TextBlock" >
+        <Setter Property="FontFamily" Value="{DynamicResource RobotoFont}"></Setter>
+    </Style>
 
     <Style TargetType="ScrollViewer" >
-        <Setter Property= "Background" Value="LightGray"/> 
+        <Setter Property= "Background" Value="LightGray"/>
+        <Setter Property="FontFamily" Value="{DynamicResource RobotoFont}"></Setter>
     </Style>
+
+    <Style TargetType="{x:Type Separator}">
+        <Setter Property="FontFamily" Value="{DynamicResource RobotoFont}"></Setter>
+        <Setter Property="Background" Value="WhiteSmoke"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="MinHeight" Value="1"/>
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Rectangle Height="1" Fill="{TemplateBinding Background}" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MaterialDesignMenu" TargetType="{x:Type Menu}">
+        <Setter Property= "Background" Value="LightGray"/>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"/>
+        <Setter Property="TextBlock.FontSize" Value="15"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Menu}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="true">
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="{x:Type MenuItem}">
+        <Setter Property="Padding" Value="10 5 10 5"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"/>
+    </Style>
+
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="TextBlock.FontWeight" Value="Medium"/>
+        <Setter Property="TextBlock.FontSize" Value="14"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="16 4 16 4"/>
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Grid>
+                        <AdornerDecorator>
+                            <AdornerDecorator.CacheMode>
+                                <BitmapCache EnableClearType="True" SnapsToDevicePixels="True"/>
+                            </AdornerDecorator.CacheMode>
+                            <Border Background="WhiteSmoke" CornerRadius="2"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    x:Name="border">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                            </Border>
+                        </AdornerDecorator>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Effect" Value="{StaticResource ShadowDepth1}"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>
