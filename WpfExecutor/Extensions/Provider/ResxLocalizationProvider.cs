@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using WpfExecutor.Extensions.Localization;
 
-namespace WpfExecutor.Extensions.Localization
+namespace WpfExecutor.Extensions.Provider
 {
     /// <summary>
     /// Реализация поставщика локализованных строк через ресурсы приложения
@@ -13,6 +14,16 @@ namespace WpfExecutor.Extensions.Localization
         public object Localize(string key)
         {
             return Resources.Localization.ResourceManager.GetObject(key);
+        }
+
+        /// <summary>
+        /// Возвращает локализованный объект по привязки
+        /// </summary>
+        /// <param name="key">Ключ</param>
+        /// <returns></returns>
+        public object Localize(object key)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<CultureInfo> Cultures => _cultures ?? (_cultures = new List<CultureInfo>

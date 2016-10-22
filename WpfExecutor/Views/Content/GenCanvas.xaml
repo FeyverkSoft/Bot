@@ -11,6 +11,7 @@
              xmlns:converter="clr-namespace:WpfExecutor.Converter"
              xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type={x:Type content:GenCanvasModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -27,7 +28,7 @@
                     <TextBlock Text="{Binding Path=Actions}" />
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:BotAction}" ItemsSource="{Binding SubActions}">
-                    <TextBlock Text="{Binding Path=ActionType, Converter={converter:LocDescriptionConverter}}" />
+                    <TextBlock Text="{localization:Localization KeyBinding={Binding Path=ActionType}}" />
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
                     <TextBlock Text="{Binding}" />

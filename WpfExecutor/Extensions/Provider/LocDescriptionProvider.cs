@@ -4,17 +4,19 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Attributes;
-using WpfConverters.Converters;
-
-namespace WpfExecutor.Converter
+namespace WpfExecutor.Extensions.Provider
 {
-    public class LocDescriptionConverter : BaseValueConverterExtension
+    public static class LocDescriptionProvider
     {
         private static readonly Dictionary<String, MemberInfo> AttrInfo = new Dictionary<String, MemberInfo>();
-        public override Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
+
+        /// <summary>
+        /// Возвращает локализованный объект по привязки
+        /// </summary>
+        /// <param name="value">Ключ</param>
+        /// <returns></returns>
+        public static Object Localize(Object value)
         {
             var key = $"{value.GetType().FullName}_{value}";
             if (!AttrInfo.ContainsKey(key))
@@ -22,7 +24,7 @@ namespace WpfExecutor.Converter
 
             var attr = AttrInfo[key]?.GetCustomAttribute(typeof(LocDescriptionAttribute)) as LocDescriptionAttribute ?? AttrInfo[key]?.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
 
-            return attr != null ? attr.Description : value;
+            return attr?.Description;
         }
     }
 }

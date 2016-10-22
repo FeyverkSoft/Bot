@@ -62,12 +62,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\IfActionConverter.cs" />
-    <Compile Include="Converter\LocDescriptionConverter.cs" />
+    <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="AppContext.cs" />
-    <Compile Include="Extensions\Localization\ResxLocalizationProvider.cs" />
+    <Compile Include="Extensions\Provider\ResxLocalizationProvider.cs" />
     <Compile Include="Factories\WindowFactory.cs" />
     <Compile Include="Model\About\AboutViewModel.cs" />
     <Compile Include="Model\BaseViewModel.cs" />

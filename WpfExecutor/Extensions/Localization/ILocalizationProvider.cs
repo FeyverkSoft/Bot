@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace WpfExecutor.Extensions.Localization
@@ -13,7 +14,14 @@ namespace WpfExecutor.Extensions.Localization
         /// </summary>
         /// <param name="key">Ключ</param>
         /// <returns></returns>
-        object Localize(string key);
+        object Localize(String key);
+
+        /// <summary>
+        /// Возвращает локализованный объект по привязки
+        /// </summary>
+        /// <param name="key">Ключ</param>
+        /// <returns></returns>
+        object Localize(Object key);
 
         /// <summary>
         /// Доступные культуры

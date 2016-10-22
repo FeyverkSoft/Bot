@@ -4,6 +4,7 @@ using Core;
 using Core.ConfigEntity;
 using Core.Core;
 using WpfExecutor.Extensions.Localization;
+using WpfExecutor.Extensions.Provider;
 
 namespace WpfExecutor
 {
