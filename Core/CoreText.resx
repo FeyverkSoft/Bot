@@ -186,6 +186,18 @@
   <data name="DifferentConfigVersions" xml:space="preserve">
     <value>Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты.</value>
   </data>
+  <data name="ESearchParam" xml:space="preserve">
+    <value>Параметр поиска</value>
+  </data>
+  <data name="ESearchParam_Contained" xml:space="preserve">
+    <value>Имя Объекта Содержит указанную подстроку.</value>
+  </data>
+  <data name="ESearchParam_End" xml:space="preserve">
+    <value>Имя Объекта Заканчивается на.</value>
+  </data>
+  <data name="ESearchParam_Start" xml:space="preserve">
+    <value>Имя Объекта Начинается с.</value>
+  </data>
   <data name="ExpectWindowActDescription" xml:space="preserve">
     <value>Описание параметров действия ожидания окна с указанным именем.</value>
   </data>
@@ -198,7 +210,40 @@
   <data name="ExpectWindowAct_WinTitle" xml:space="preserve">
     <value>Наименование ожидаемого окна</value>
   </data>
+  <data name="IfAction" xml:space="preserve">
+    <value>Условия</value>
+  </data>
+  <data name="IfAction_Actions" xml:space="preserve">
+    <value>Действия при успешном исходе</value>
+  </data>
+  <data name="IfAction_FailActions" xml:space="preserve">
+    <value>Действия при не успешном</value>
+  </data>
+  <data name="IfAction_PrevResType" xml:space="preserve">
+    <value>Проверка на тип предыдущего</value>
+  </data>
+  <data name="IfAction_Сonditions" xml:space="preserve">
+    <value>Условия</value>
+  </data>
   <data name="IncorrectAction" xml:space="preserve">
     <value>При выполнении действия {0}, произошла ошибка. {1}Тип действия не совпадает с членами действия.</value>
+  </data>
+  <data name="KeyBoardAct" xml:space="preserve">
+    <value>Параметр нажатия клавиши</value>
+  </data>
+  <data name="KeyBoardAct_Key" xml:space="preserve">
+    <value>Клавиша, нажатие которой надо эмулировать</value>
+  </data>
+  <data name="KeyBoardAct_Time" xml:space="preserve">
+    <value>Время удерживания</value>
+  </data>
+  <data name="LoopAct" xml:space="preserve">
+    <value>Действие цикла</value>
+  </data>
+  <data name="LoopAct_Actions" xml:space="preserve">
+    <value>Список действий которые необходимо выполнить в цикле</value>
+  </data>
+  <data name="LoopAct_IterationCount" xml:space="preserve">
+    <value>Колличество выполнений цикла</value>
   </data>
 </root>

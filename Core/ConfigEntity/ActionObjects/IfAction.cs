@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
 using Core.Attributes;
 using Core.Helpers;
@@ -9,30 +8,30 @@ using Newtonsoft.Json;
 namespace Core.ConfigEntity.ActionObjects
 {
     /// <summary>
-    /// Описание параметров для сна, перед выполнением новой комманды
+    /// Описание условий и что необходимо выполнить
     /// </summary>
     [DataContract]
-    [LocDescription("Описание параметров для сна, перед выполнением новой комманды")]
+    [LocDescription("IfAction")]
     public class IfAction : IAction
     {
         /// <summary>
         /// Список действий которые необходимо выполнить при успешном выполнении условия
         /// </summary>
         [DataMember]
-        [LocDescription("Список действий которые необходимо выполнить при успешном выполнении условия")]
+        [LocDescription("IfAction_Actions")]
         public ListBotAction Actions { get; private set; } = new ListBotAction();
 
         /// <summary>
         /// Список действий которые необходимо выполнить при НЕ успешном выполнении условия
         /// </summary>
         [DataMember]
-        [LocDescription("Список действий которые необходимо выполнить при НЕ успешном выполнении условия")]
+        [LocDescription("IfAction_FailActions")]
         public ListBotAction FailActions { get; private set; } = new ListBotAction();
 
         /// <summary>
         /// Проверка на тип предыдущего результата 
         /// </summary>
-        [LocDescription("Проверка на тип предыдущего результата")]
+        [LocDescription("IfAction_PrevResType")]
         [DataMember]
         public String PrevResType { get; private set; }
 
@@ -40,7 +39,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Список условий, которые необходимо проверить над предыдущим объектом
         /// </summary>
         [DataMember]
-        [LocDescription("Список условий, которые необходимо проверить над предыдущим объектом")]
+        [LocDescription("IfAction_Сonditions")]
         public String Сonditions { get; private set; }
 
         [JsonConstructor]

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
+using Core.Attributes;
 
 namespace Core.Core
 {
@@ -7,23 +7,23 @@ namespace Core.Core
     /// Параметры поиска
     /// </summary>
     [Flags]
-    [Description("Параметры поиска")]
+    [LocDescription("ESearchParam")]
     public enum ESearchParam
     {
         /// <summary>
         /// Содержит указанный набор
         /// </summary>
-        [Description("одержит указанный набор")]
+        [LocDescription("ESearchParam_Contained")]
         Contained = 0x0,
         /// <summary>
         /// Начинается с указанного набора
         /// </summary>
-        [Description("Начинается с указанного набора")]
+        [LocDescription("ESearchParam_Start")]
         Start = 0x1,
         /// <summary>
         /// Заканчивается указанным набором
         /// </summary>
-        [Description("Заканчивается указанным набором")]
+        [LocDescription("ESearchParam_End")]
         End = 0x2
     }
 }

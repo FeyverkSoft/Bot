@@ -25,30 +25,28 @@
         <TreeView ItemContainerStyle="{StaticResource GTreeView}" Grid.Row="1" ItemsSource="{Binding CommandConfig}">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:Config}" ItemsSource="{Binding Actions}">
-                    <TextBlock Text="{Binding Path=Actions}" />
+                    <TextBlock Text="{localization:Localization KeyBinding={Binding Path=Actions}}" />
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:BotAction}" ItemsSource="{Binding SubActions}">
                     <TextBlock Text="{localization:Localization KeyBinding={Binding Path=ActionType}}" />
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
-                    <TextBlock Text="{Binding}" />
+                    <TextBlock Text="{localization:Localization KeyBinding={Binding}}" />
                 </HierarchicalDataTemplate>
+
                 <HierarchicalDataTemplate DataType="{x:Type actionObjects:IfAction}">
                     <HierarchicalDataTemplate.ItemsSource>
-                        <MultiBinding Converter="{converter:IfActionConverter}">
-                            <Binding Path="Actions"></Binding>
-                            <Binding Path="FailActions"></Binding>
-                        </MultiBinding>
+                        <Binding Converter="{converter:IfActionConverter}"></Binding>
                     </HierarchicalDataTemplate.ItemsSource>
-                    <TextBlock Text="{Binding Сonditions}" />
+                    <TextBlock Text="{Binding}" />
                 </HierarchicalDataTemplate>
-                
+
                 <HierarchicalDataTemplate DataType="{x:Type configEntity:ListBotAction}" ItemsSource="{Binding}">
                     <TextBlock Text="{Binding}" />
                 </HierarchicalDataTemplate>
-                
+
                 <HierarchicalDataTemplate DataType="{x:Type converter:IfList}" ItemsSource="{Binding List}">
-                    <TextBlock Text="{Binding  ListName}" />
+                    <TextBlock Text="{Binding ListName}" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>

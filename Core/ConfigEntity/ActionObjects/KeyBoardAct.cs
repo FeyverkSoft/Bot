@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
 using Core.Attributes;
 using Core.Core;
@@ -13,20 +12,20 @@ namespace Core.ConfigEntity.ActionObjects
     /// Событие нажатия клавишы на клавиатуре.
     /// </summary>
     [DataContract]
-    [LocDescription("Событие нажатия клавишы на клавиатуре.")]
+    [LocDescription("KeyBoardAct")]
     public sealed class KeyBoardAct : IAction
     {
         /// <summary>
         /// Клавиша, нажатие которой надо эмулировать
         /// </summary>
         [DataMember]
-        [LocDescription("Клавиша, нажатие которой надо эмулировать")]
+        [LocDescription("KeyBoardAct_Key")]
         public KeyCode Key { get; private set; }
         /// <summary>
         /// Время удержания клавиши
         /// </summary>
         [DataMember]
-        [LocDescription("Время удержания клавиши")]
+        [LocDescription("KeyBoardAct_Time")]
         public UInt32 Time { get; private set; }
 
         [JsonConstructor]

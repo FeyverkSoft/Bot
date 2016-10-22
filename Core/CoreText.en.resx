@@ -183,6 +183,15 @@
   <data name="ActionType_Sleep" xml:space="preserve">
     <value>!Sleep!!</value>
   </data>
+  <data name="ESearchParam_Contained" xml:space="preserve">
+    <value>Contains the specified string</value>
+  </data>
+  <data name="ESearchParam_End" xml:space="preserve">
+    <value>Ends on the</value>
+  </data>
+  <data name="ESearchParam_Start" xml:space="preserve">
+    <value>Start with</value>
+  </data>
   <data name="ExpectWindowActDescription" xml:space="preserve">
     <value>Description of the parameters for standby window with the specified name.</value>
   </data>
@@ -195,7 +204,43 @@
   <data name="ExpectWindowAct_WinTitle" xml:space="preserve">
     <value>Name of the expected window</value>
   </data>
+  <data name="IfAction" xml:space="preserve">
+    <value>Condition operator</value>
+  </data>
+  <data name="IfAction_Actions" xml:space="preserve">
+    <value>Success actions</value>
+  </data>
+  <data name="IfAction_FailActions" xml:space="preserve">
+    <value>Fail actions</value>
+  </data>
+  <data name="IfAction_PrevResType" xml:space="preserve">
+    <value>Prev Res Type</value>
+  </data>
+  <data name="IfAction_Сonditions" xml:space="preserve">
+    <value>Conditions</value>
+  </data>
   <data name="IncorrectAction" xml:space="preserve">
     <value>In step {0} An error occurred. type of action {1} is not the same with the members of the action.</value>
+  </data>
+  <data name="KeyBoardAct" xml:space="preserve">
+    <value>Press key act params</value>
+  </data>
+  <data name="KeyBoardAct_Key" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="KeyBoardAct_Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="LoopAct" xml:space="preserve">
+    <value>Loop</value>
+  </data>
+  <data name="LoopAct_Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="LoopAct_IterationCount" xml:space="preserve">
+    <value>Number of iterations</value>
+  </data>
+  <data name="SearchParam" xml:space="preserve">
+    <value>Search parameter</value>
   </data>
 </root>

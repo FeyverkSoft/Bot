@@ -270,6 +270,42 @@ namespace Core {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Параметр поиска.
         /// </summary>
+        internal static string ESearchParam {
+            get {
+                return ResourceManager.GetString("ESearchParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя Объекта Содержит указанную подстроку..
+        /// </summary>
+        internal static string ESearchParam_Contained {
+            get {
+                return ResourceManager.GetString("ESearchParam_Contained", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя Объекта Заканчивается на..
+        /// </summary>
+        internal static string ESearchParam_End {
+            get {
+                return ResourceManager.GetString("ESearchParam_End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя Объекта Начинается с..
+        /// </summary>
+        internal static string ESearchParam_Start {
+            get {
+                return ResourceManager.GetString("ESearchParam_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметр поиска.
+        /// </summary>
         internal static string ExpectWindowAct_SearchParam {
             get {
                 return ResourceManager.GetString("ExpectWindowAct_SearchParam", resourceCulture);
@@ -304,11 +340,110 @@ namespace Core {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Условия.
+        /// </summary>
+        internal static string IfAction {
+            get {
+                return ResourceManager.GetString("IfAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действия при успешном исходе.
+        /// </summary>
+        internal static string IfAction_Actions {
+            get {
+                return ResourceManager.GetString("IfAction_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действия при не успешном.
+        /// </summary>
+        internal static string IfAction_FailActions {
+            get {
+                return ResourceManager.GetString("IfAction_FailActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Проверка на тип предыдущего.
+        /// </summary>
+        internal static string IfAction_PrevResType {
+            get {
+                return ResourceManager.GetString("IfAction_PrevResType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Условия.
+        /// </summary>
+        internal static string IfAction_Сonditions {
+            get {
+                return ResourceManager.GetString("IfAction_Сonditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на При выполнении действия {0}, произошла ошибка. {1}Тип действия не совпадает с членами действия..
         /// </summary>
         internal static string IncorrectAction {
             get {
                 return ResourceManager.GetString("IncorrectAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметр нажатия клавиши.
+        /// </summary>
+        internal static string KeyBoardAct {
+            get {
+                return ResourceManager.GetString("KeyBoardAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Клавиша, нажатие которой надо эмулировать.
+        /// </summary>
+        internal static string KeyBoardAct_Key {
+            get {
+                return ResourceManager.GetString("KeyBoardAct_Key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Время удерживания.
+        /// </summary>
+        internal static string KeyBoardAct_Time {
+            get {
+                return ResourceManager.GetString("KeyBoardAct_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие цикла.
+        /// </summary>
+        internal static string LoopAct {
+            get {
+                return ResourceManager.GetString("LoopAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Список действий которые необходимо выполнить в цикле.
+        /// </summary>
+        internal static string LoopAct_Actions {
+            get {
+                return ResourceManager.GetString("LoopAct_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Колличество выполнений цикла.
+        /// </summary>
+        internal static string LoopAct_IterationCount {
+            get {
+                return ResourceManager.GetString("LoopAct_IterationCount", resourceCulture);
             }
         }
     }
