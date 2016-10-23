@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Helpers;
 using LogWrapper;
 using Newtonsoft.Json;
@@ -10,53 +10,53 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Событие установки позиции мышки в указанную точку
     /// </summary>
-    [Description("Событие установки позиции мышки в указанную точку")]
+    [LocDescription("MouseSetPosAct")]
     [DataContract]
     public class MouseSetPosAct : IAction
     {
-        Int32 x = 0, y = 0;
+        Int32 _x = 0, _y = 0;
         /// <summary>
         /// Положение указателя по оси X
         /// </summary>
-        [Description("Положение указателя по оси X")]
+        [LocDescription("MouseSetPosAct_X")]
         [DataMember]
         public Int32 X
         {
-            get { return x; }
+            get { return _x; }
             private set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(X));
-                x = value;
+                _x = value;
             }
         }
         /// <summary>
         /// Положение указателя по оси Y
         /// </summary>
         [DataMember]
-        [Description("Положение указателя по оси Y")]
+        [LocDescription("MouseSetPosAct_Y")]
         public Int32 Y
         {
-            get { return y; }
+            get { return _y; }
             private set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(Y));
-                y = value;
+                _y = value;
             }
         }
         /// <summary>
         /// Название окна относительно которого устанавливается позиция
         /// </summary>
         [DataMember]
-        [Description("Название окна относительно которого устанавливается позиция")]
+        [LocDescription("MouseSetPosAct_RelativelyWindowName")]
         public String RelativelyWindowName { get; private set; }
 
         /// <summary>
         /// Использовать относительную позицию или нет
         /// </summary>
         [DataMember]
-        [Description("Использовать относительную позицию или нет")]
+        [LocDescription("MouseSetPosAct_Relatively")]
         public Boolean Relatively { get; private set; }
         [JsonConstructor]
         public MouseSetPosAct(Int32 x, Int32 y, Boolean relatively = false, String relativelyWindowName = null)

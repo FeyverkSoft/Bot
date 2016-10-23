@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Core;
 using Core.Helpers;
 using Newtonsoft.Json;
@@ -10,7 +10,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Действие получения скриншота
     /// </summary>
-    [Description("Действие получения скриншота")]
+    [LocDescription("ScreenShotAct")]
     [DataContract]
     public class ScreenShotAct : IAction
     {
@@ -18,24 +18,24 @@ namespace Core.ConfigEntity.ActionObjects
         /// <summary>
         /// Начало прямоугольной области которой надо сделать скриншот
         /// </summary>
-        [Description("Начало прямоугольной области которой надо сделать скриншот")]
+        [LocDescription("ScreenShotAct_Point")]
         public Point Point { get; private set; } = Point.Empty;
 
         /// <summary>
         /// Размер прямоугольной области
         /// </summary>
-        [Description("Размер прямоугольной области")]
+        [LocDescription("ScreenShotAct_Size")]
         public Size Size { get; private set; } = Point.Empty;
         /// <summary>
         /// Описание пути и параметров файла для сейва
         /// </summary>
-        [Description("Описание пути и параметров файла для сейва")]
+        [LocDescription("ScreenShotAct_SaveFileParam")]
         public SaveFileParam SaveFileParam { get; private set; }
 
         /// <summary>
         /// Сделать картинку в оттенках серого?
         /// </summary>
-        [Description("Сделать картинку в оттенках серого?")]
+        [LocDescription("ScreenShotAct_GrayScale")]
         public Boolean GrayScale { get; private set; }
 
         public ScreenShotAct(Boolean grayScale = false)

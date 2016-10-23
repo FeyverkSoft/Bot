@@ -118,168 +118,234 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActionType" xml:space="preserve">
-    <value>Тип доступных боту действий</value>
+    <value>Action type</value>
   </data>
   <data name="ActionType_ExpectWindow" xml:space="preserve">
-    <value>Ожидай окно</value>
+    <value>Expect window</value>
   </data>
   <data name="ActionType_GetMousePos" xml:space="preserve">
-    <value>Получи позицию курсора</value>
+    <value>Get the cursor position</value>
   </data>
   <data name="ActionType_GetObject" xml:space="preserve">
-    <value>Получи информацию об объекте</value>
+    <value>Get information about the object.</value>
   </data>
   <data name="ActionType_GetScreenshot" xml:space="preserve">
-    <value>Получить скриншот (эксперементально)</value>
+    <value>Get a screenshot.</value>
   </data>
   <data name="ActionType_If" xml:space="preserve">
-    <value>Особый оператор условного ветвления (эксперементально)</value>
+    <value>If</value>
   </data>
   <data name="ActionType_KeyBoard" xml:space="preserve">
-    <value>Нажми последовательность клавиш</value>
+    <value>Press keys</value>
   </data>
   <data name="ActionType_KeyBoardKeys" xml:space="preserve">
-    <value>Нажми сочитание клавиш</value>
+    <value>Press the key combination!</value>
   </data>
   <data name="ActionType_Loop" xml:space="preserve">
-    <value>Выполнить в цикле</value>
+    <value>Loop</value>
   </data>
   <data name="ActionType_Mock" xml:space="preserve">
-    <value>Ничего не делать :) Заглушка.</value>
+    <value>Nothing:)</value>
   </data>
   <data name="ActionType_MouseLClick" xml:space="preserve">
-    <value>Кликни левой кнопкой мыши</value>
+    <value>Click the left mouse button.</value>
   </data>
   <data name="ActionType_MouseLPress" xml:space="preserve">
-    <value>Нажми лувую кнопку мыши</value>
+    <value>Press the left mouse button.</value>
   </data>
   <data name="ActionType_MouseLUp" xml:space="preserve">
-    <value>Отпусти левую кнопку мыши</value>
+    <value>Let go of the left mouse button.</value>
   </data>
   <data name="ActionType_MouseMove" xml:space="preserve">
-    <value>Перемести указатель мыши относительно координат</value>
+    <value>Move the mouse pointer to the coordinates</value>
   </data>
   <data name="ActionType_MouseRClick" xml:space="preserve">
-    <value>Кликни правой кнопкой мыши.</value>
+    <value>Click the right mouse button.</value>
   </data>
   <data name="ActionType_MouseRPress" xml:space="preserve">
-    <value>Нажми правую кнопку мыши</value>
+    <value>Press the right mouse button.</value>
   </data>
   <data name="ActionType_MouseRUp" xml:space="preserve">
-    <value>Отпусти правую кнопку мыши</value>
+    <value>Let go of the right mouse button.</value>
   </data>
   <data name="ActionType_MouseSetPos" xml:space="preserve">
-    <value>Задать абсолютную позицию указателя.</value>
+    <value>Set absolute position of a cursor</value>
   </data>
   <data name="ActionType_PluginAct" xml:space="preserve">
-    <value>Любые действия плагина</value>
+    <value>Any action by the plugin</value>
   </data>
   <data name="ActionType_PluginInvoke" xml:space="preserve">
-    <value>Вызвать плагин</value>
+    <value>Plugin Invoke</value>
   </data>
   <data name="ActionType_SendMessage" xml:space="preserve">
-    <value>Отправь уведомление</value>
+    <value>Send notification</value>
   </data>
   <data name="ActionType_Sleep" xml:space="preserve">
-    <value>Усни!</value>
-  </data>
-  <data name="DifferentConfigVersions" xml:space="preserve">
-    <value>Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты.</value>
+    <value>!Sleep!!</value>
   </data>
   <data name="EMessageType" xml:space="preserve">
-    <value>Тип канала доставки уведомления</value>
+    <value>Type notification channe</value>
   </data>
   <data name="EMessageType_Email" xml:space="preserve">
-    <value>Е-Маил</value>
-  </data>
-  <data name="ESearchParam" xml:space="preserve">
-    <value>Параметр поиска</value>
+    <value>Email</value>
   </data>
   <data name="ESearchParam_Contained" xml:space="preserve">
-    <value>Имя Объекта Содержит указанную подстроку.</value>
+    <value>Contains the specified string</value>
   </data>
   <data name="ESearchParam_End" xml:space="preserve">
-    <value>Имя Объекта Заканчивается на.</value>
+    <value>Ends on the</value>
   </data>
   <data name="ESearchParam_Start" xml:space="preserve">
-    <value>Имя Объекта Начинается с.</value>
+    <value>Start with</value>
   </data>
   <data name="ExpectWindowActDescription" xml:space="preserve">
-    <value>Описание параметров действия ожидания окна с указанным именем.</value>
+    <value>Description of the parameters for standby window with the specified name.</value>
   </data>
   <data name="ExpectWindowAct_SearchParam" xml:space="preserve">
-    <value>Параметр поиска</value>
+    <value>Search parameter</value>
   </data>
   <data name="ExpectWindowAct_SetFocus" xml:space="preserve">
-    <value>Передать фокус окну</value>
+    <value>Set focus to the window</value>
   </data>
   <data name="ExpectWindowAct_WinTitle" xml:space="preserve">
-    <value>Наименование ожидаемого окна</value>
+    <value>Name of the expected window</value>
+  </data>
+  <data name="GetObjectAct" xml:space="preserve">
+    <value>Get Object</value>
+  </data>
+  <data name="GetObjectAct_ObjectPos" xml:space="preserve">
+    <value>The position of the object on the screen.</value>
+  </data>
+  <data name="GetObjectAct_SetFocus" xml:space="preserve">
+    <value>Set focus</value>
   </data>
   <data name="IfAction" xml:space="preserve">
-    <value>Условия</value>
+    <value>Condition operator</value>
   </data>
   <data name="IfAction_Actions" xml:space="preserve">
-    <value>Действия при успешном исходе</value>
+    <value>Success actions</value>
   </data>
   <data name="IfAction_FailActions" xml:space="preserve">
-    <value>Действия при не успешном</value>
+    <value>Fail actions</value>
   </data>
   <data name="IfAction_PrevResType" xml:space="preserve">
-    <value>Проверка на тип предыдущего</value>
+    <value>Prev Res Type</value>
   </data>
   <data name="IfAction_Сonditions" xml:space="preserve">
-    <value>Условия</value>
+    <value>Conditions</value>
   </data>
   <data name="IncorrectAction" xml:space="preserve">
-    <value>При выполнении действия {0}, произошла ошибка. {1}Тип действия не совпадает с членами действия.</value>
+    <value>In step {0} An error occurred. type of action {1} is not the same with the members of the action.</value>
   </data>
   <data name="KeyBoardAct" xml:space="preserve">
-    <value>Параметр нажатия клавиши</value>
+    <value>Press key act params</value>
   </data>
   <data name="KeyBoardAct_Key" xml:space="preserve">
-    <value>Клавиша, нажатие которой надо эмулировать</value>
+    <value>Key</value>
   </data>
   <data name="KeyBoardAct_Time" xml:space="preserve">
-    <value>Время удерживания</value>
+    <value>Time</value>
   </data>
   <data name="LoopAct" xml:space="preserve">
-    <value>Действие цикла</value>
+    <value>Loop</value>
   </data>
   <data name="LoopAct_Actions" xml:space="preserve">
-    <value>Список действий которые необходимо выполнить в цикле</value>
+    <value>Actions</value>
   </data>
   <data name="LoopAct_IterationCount" xml:space="preserve">
-    <value>Колличество выполнений цикла</value>
+    <value>Number of iterations</value>
   </data>
   <data name="MockAction" xml:space="preserve">
-    <value>Фальшивка</value>
+    <value>Mock action</value>
   </data>
   <data name="MouseMoveAct" xml:space="preserve">
-    <value>Действие перемещения мышки</value>
+    <value>Mouse Move Action</value>
   </data>
   <data name="MouseMoveAct_Dx" xml:space="preserve">
-    <value>Смещение по оси X</value>
+    <value>Offset X-axis</value>
   </data>
   <data name="MouseMoveAct_Dy" xml:space="preserve">
-    <value>Смещение по оси Y</value>
+    <value>Offset Y-axis</value>
   </data>
   <data name="MouseMoveAct_ToObject" xml:space="preserve">
-    <value>Двигать к объекту являющемуся результатом предыдущего вызова</value>
+    <value>Move the cursor to the object is the result of a previous call.</value>
+  </data>
+  <data name="MouseSetPosAct" xml:space="preserve">
+    <value>Settings of the absolute position of the cursor.</value>
+  </data>
+  <data name="MouseSetPosAct_Relatively" xml:space="preserve">
+    <value>Use Relatively</value>
+  </data>
+  <data name="MouseSetPosAct_RelativelyWindowName" xml:space="preserve">
+    <value>Window name for Window-relative coordinates</value>
+  </data>
+  <data name="MouseSetPosAct_X" xml:space="preserve">
+    <value>Location along the X-axis</value>
+  </data>
+  <data name="MouseSetPosAct_Y" xml:space="preserve">
+    <value>Location along the Y-axis</value>
+  </data>
+  <data name="PluginInvokeAct" xml:space="preserve">
+    <value>Options plug-in</value>
+  </data>
+  <data name="PluginInvokeAct_Actions" xml:space="preserve">
+    <value>Actions for the plugin.</value>
+  </data>
+  <data name="PluginInvokeAct_PluginName" xml:space="preserve">
+    <value>Plugin name</value>
+  </data>
+  <data name="SaveFileParam" xml:space="preserve">
+    <value>File saving options</value>
+  </data>
+  <data name="SaveFileParam_Name" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="SaveFileParam_Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="SaveFileParam_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="ScreenShotAct" xml:space="preserve">
+    <value>Parameters creation a screenshot.</value>
+  </data>
+  <data name="ScreenShotAct_GrayScale" xml:space="preserve">
+    <value>GrayScale</value>
+  </data>
+  <data name="ScreenShotAct_Point" xml:space="preserve">
+    <value>The top left coordinate the capture area.</value>
+  </data>
+  <data name="ScreenShotAct_SaveFileParam" xml:space="preserve">
+    <value>File saving options</value>
+  </data>
+  <data name="ScreenShotAct_Size" xml:space="preserve">
+    <value>The size the capture area.</value>
+  </data>
+  <data name="SearchParam" xml:space="preserve">
+    <value>Search parameter</value>
   </data>
   <data name="SendMessageAct" xml:space="preserve">
-    <value>Действие отправки сообщения</value>
+    <value>Send message params</value>
   </data>
   <data name="SendMessageAct_Body" xml:space="preserve">
-    <value>Тело уведомления</value>
+    <value>Body</value>
   </data>
   <data name="SendMessageAct_IncludePrevRes" xml:space="preserve">
-    <value>Включить предыдущие действие</value>
+    <value>Include previous result</value>
   </data>
   <data name="SendMessageAct_MessageType" xml:space="preserve">
-    <value>Тип уведомления</value>
+    <value>Notification type</value>
   </data>
   <data name="SendMessageAct_Recipient" xml:space="preserve">
-    <value>Получатель сообщения</value>
+    <value>Recipient</value>
+  </data>
+  <data name="SleepAct" xml:space="preserve">
+    <value>Sleep Settings</value>
+  </data>
+  <data name="SleepAct_Delay" xml:space="preserve">
+    <value>The duration of sleep</value>
+  </data>
+  <data name="SleepAct_MaxRandDelay" xml:space="preserve">
+    <value>Maximum value for random delay</value>
   </data>
 </root>

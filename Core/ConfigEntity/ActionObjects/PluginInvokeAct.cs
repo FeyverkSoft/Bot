@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Helpers;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -8,20 +8,21 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Информация для вызова плагина
     /// </summary>
-    [Description("Информация для вызова плагина")]
+   [LocDescription("PluginInvokeAct")]
     public class PluginInvokeAct : IAction
     {
         /// <summary>
         /// Наименование плагина
         /// </summary>
-        [Description("Наименование плагина")]
+        [LocDescription("PluginInvokeAct_PluginName")]
+        [DataMember]
         public String PluginName { get; private set; }
 
         /// <summary>
         /// Список действий которые необходимо передать плагину
         /// </summary>
         [DataMember]
-        [Description("Список действий которые необходимо передать плагину")]
+        [LocDescription("PluginInvokeAct_Actions")]
         public BotAction Actions { get; set; }
 
         public PluginInvokeAct(String pluginName, BotAction actions)

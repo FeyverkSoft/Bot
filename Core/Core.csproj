@@ -111,7 +111,7 @@
     <Compile Include="ConfigEntity\IConfigReader.cs" />
     <Compile Include="ConfigEntity\SaveFileParam.cs" />
     <Compile Include="CoreFactory.cs" />
-    <Compile Include="CoreText.Designer.cs">
+    <Compile Include="Resources\CoreText.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CoreText.resx</DependentUpon>
@@ -173,8 +173,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CoreText.en.resx" />
-    <EmbeddedResource Include="CoreText.resx">
+    <EmbeddedResource Include="Resources\CoreText.en.resx" />
+    <EmbeddedResource Include="Resources\CoreText.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CoreText.Designer.cs</LastGenOutput>
     </EmbeddedResource>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
 using Core.Attributes;
 using Core.Core;
@@ -11,7 +10,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Информация об объекте который необходимо получить
     /// </summary>
-    [LocDescription("Информация об объекте который необходимо получить")]
+    [LocDescription("GetObjectAct")]
     public class GetObjectAct : IAction
     {
 
@@ -25,7 +24,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Указывает, на то что после того как объект найден, ему необходимо передать фокус
         /// </summary>
         [DataMember]
-        [LocDescription("Указывает, на то что после того как объект найден, ему необходимо передать фокус")]
+        [LocDescription("GetObjectAct_SetFocus")]
         public Boolean SetFocus { get; }
 
         ///// <summary>
@@ -37,7 +36,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Позиция объекта который необходимо захватить
         /// </summary>
         [DataMember]
-        [LocDescription("Позиция объекта который необходимо захватить")]
+        [LocDescription("GetObjectAct_ObjectPos")]
         public Point ObjectPos { get; private set; }
         /// <summary>
         /// Тип ожидаемого объекта
@@ -59,7 +58,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// <param name="objectPos">Позиция объекта, который необходимо захватить</param>
         /// <param name="setFocus">Передать фокус найденному объекту?</param>
         [JsonConstructor]
-        public GetObjectAct(EObjectType objectType, Point objectPos, Boolean setFocus = true)
+        public GetObjectAct(/*EObjectType objectType,*/ Point objectPos, Boolean setFocus = true)
         {
             //ObjectType = objectType;
             ObjectPos = objectPos;

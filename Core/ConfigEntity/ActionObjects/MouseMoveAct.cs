@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Helpers;
 using LogWrapper;
 using Newtonsoft.Json;
@@ -11,26 +11,26 @@ namespace Core.ConfigEntity.ActionObjects
     /// Событие смещения мышки
     /// </summary>
     [DataContract]
-    [Description("MouseMoveAct")]
+    [LocDescription("MouseMoveAct")]
     public class MouseMoveAct : IAction
     {
         /// <summary>
         /// Смещение по оси X
         /// </summary>
-        [Description("MouseMoveAct_Dx")]
+        [LocDescription("MouseMoveAct_Dx")]
         [DataMember]
         public Int32 Dx { get; protected set; } = 0;
         /// <summary>
         /// Смещение по оси Y
         /// </summary>
         [DataMember]
-        [Description("MouseMoveAct_Dy")]
+        [LocDescription("MouseMoveAct_Dy")]
         public Int32 Dy { get; protected set; } = 0;
         /// <summary>
         /// Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно
         /// </summary>
         [DataMember]
-        [Description("MouseMoveAct_ToObject")]
+        [LocDescription("MouseMoveAct_ToObject")]
         public Boolean ToObject { get; protected set; }
 
         public MouseMoveAct(Boolean toObject = true)

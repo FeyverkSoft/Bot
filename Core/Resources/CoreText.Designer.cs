@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Core {
+namespace Core.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Core {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Core.CoreText", typeof(CoreText).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Core.Resources.CoreText", typeof(CoreText).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -358,6 +358,33 @@ namespace Core {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие получения информации об объекте.
+        /// </summary>
+        internal static string GetObjectAct {
+            get {
+                return ResourceManager.GetString("GetObjectAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Позиция объекта на экране..
+        /// </summary>
+        internal static string GetObjectAct_ObjectPos {
+            get {
+                return ResourceManager.GetString("GetObjectAct_ObjectPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Установить фокус.
+        /// </summary>
+        internal static string GetObjectAct_SetFocus {
+            get {
+                return ResourceManager.GetString("GetObjectAct_SetFocus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Условия.
         /// </summary>
         internal static string IfAction {
@@ -511,6 +538,159 @@ namespace Core {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметры установки абсолютной позиции курсора.
+        /// </summary>
+        internal static string MouseSetPosAct {
+            get {
+                return ResourceManager.GetString("MouseSetPosAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Использовать относительные координаты.
+        /// </summary>
+        internal static string MouseSetPosAct_Relatively {
+            get {
+                return ResourceManager.GetString("MouseSetPosAct_Relatively", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Наименование окна относительно которого указывается положение..
+        /// </summary>
+        internal static string MouseSetPosAct_RelativelyWindowName {
+            get {
+                return ResourceManager.GetString("MouseSetPosAct_RelativelyWindowName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Расположение по оси X.
+        /// </summary>
+        internal static string MouseSetPosAct_X {
+            get {
+                return ResourceManager.GetString("MouseSetPosAct_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Расположение по оси Y.
+        /// </summary>
+        internal static string MouseSetPosAct_Y {
+            get {
+                return ResourceManager.GetString("MouseSetPosAct_Y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметры вызова плагина.
+        /// </summary>
+        internal static string PluginInvokeAct {
+            get {
+                return ResourceManager.GetString("PluginInvokeAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действия плагина.
+        /// </summary>
+        internal static string PluginInvokeAct_Actions {
+            get {
+                return ResourceManager.GetString("PluginInvokeAct_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Наименование плагина.
+        /// </summary>
+        internal static string PluginInvokeAct_PluginName {
+            get {
+                return ResourceManager.GetString("PluginInvokeAct_PluginName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Опции сохранения файла.
+        /// </summary>
+        internal static string SaveFileParam {
+            get {
+                return ResourceManager.GetString("SaveFileParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя файла.
+        /// </summary>
+        internal static string SaveFileParam_Name {
+            get {
+                return ResourceManager.GetString("SaveFileParam_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Путь.
+        /// </summary>
+        internal static string SaveFileParam_Path {
+            get {
+                return ResourceManager.GetString("SaveFileParam_Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип файла.
+        /// </summary>
+        internal static string SaveFileParam_Type {
+            get {
+                return ResourceManager.GetString("SaveFileParam_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметры скриншота.
+        /// </summary>
+        internal static string ScreenShotAct {
+            get {
+                return ResourceManager.GetString("ScreenShotAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оттенки серого.
+        /// </summary>
+        internal static string ScreenShotAct_GrayScale {
+            get {
+                return ResourceManager.GetString("ScreenShotAct_GrayScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Верхняя левая координата области захвата..
+        /// </summary>
+        internal static string ScreenShotAct_Point {
+            get {
+                return ResourceManager.GetString("ScreenShotAct_Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Опции сохранения файла.
+        /// </summary>
+        internal static string ScreenShotAct_SaveFileParam {
+            get {
+                return ResourceManager.GetString("ScreenShotAct_SaveFileParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Размер области захвата.
+        /// </summary>
+        internal static string ScreenShotAct_Size {
+            get {
+                return ResourceManager.GetString("ScreenShotAct_Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Действие отправки сообщения.
         /// </summary>
         internal static string SendMessageAct {
@@ -552,6 +732,33 @@ namespace Core {
         internal static string SendMessageAct_Recipient {
             get {
                 return ResourceManager.GetString("SendMessageAct_Recipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметры сна.
+        /// </summary>
+        internal static string SleepAct {
+            get {
+                return ResourceManager.GetString("SleepAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Продолжительность сна.
+        /// </summary>
+        internal static string SleepAct_Delay {
+            get {
+                return ResourceManager.GetString("SleepAct_Delay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Максимальное время случайной задержки.
+        /// </summary>
+        internal static string SleepAct_MaxRandDelay {
+            get {
+                return ResourceManager.GetString("SleepAct_MaxRandDelay", resourceCulture);
             }
         }
     }

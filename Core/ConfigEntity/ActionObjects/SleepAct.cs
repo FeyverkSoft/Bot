@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Helpers;
 using LogWrapper;
 using Newtonsoft.Json;
@@ -11,20 +11,20 @@ namespace Core.ConfigEntity.ActionObjects
     /// Описание параметров для сна, перед выполнением новой комманды
     /// </summary>
     [DataContract]
-    [Description("Описание параметров для сна, перед выполнением новой комманды")]
+    [LocDescription("SleepAct")]
     public class SleepAct : IAction
     {
         /// <summary>
         /// Время на сколько процесс должен заснуть
         /// </summary>
         [DataMember]
-        [Description("Время на сколько процесс должен заснуть")]
+        [LocDescription("SleepAct_Delay")]
         public Int32 Delay { get; private set; } = 2;
         /// <summary>
         /// Верхняя граница дополнительной, случайно задержки
         /// </summary>
         [DataMember]
-        [Description("Верхняя граница дополнительной, случайно задержки")]
+        [LocDescription("SleepAct_MaxRandDelay")]
         public Int32 MaxRandDelay { get; private set; } = 0;
         [JsonConstructor]
         public SleepAct(Int32 delay, Int32 randDelay = 0)
