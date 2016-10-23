@@ -8,7 +8,7 @@
         xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
         mc:Ignorable="d" Icon="{StaticResource Icon}"
         d:DataContext="{d:DesignInstance Type={x:Type windows:AboutViewModel}}"
-        Title="{Binding Title}"
+        Title="{localization:Localization Title_AboutWin}" 
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="0,0,0 5">
         <Grid>

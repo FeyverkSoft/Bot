@@ -194,6 +194,12 @@
   <data name="Text_Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="Text_Settings" xml:space="preserve">
+    <value>Параметры ядра</value>
+  </data>
+  <data name="Title_AboutWin" xml:space="preserve">
+    <value>О программе: Консоль управления для бота</value>
+  </data>
   <data name="Title_MainWin" xml:space="preserve">
     <value>Консоль управления для бота</value>
   </data>

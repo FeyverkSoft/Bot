@@ -15,7 +15,8 @@
         mc:Ignorable="d" Title="{localization:Localization Title_MainWin}" 
         Icon="{StaticResource Icon2}"
         d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF"
-        d:DataContext="{d:DesignInstance Type=model:MainWindowModel}" Closing="MainWindow_OnClosing">
+        d:DataContext="{d:DesignInstance Type=model:MainWindowModel}" Closing="MainWindow_OnClosing" 
+        FontFamily="{StaticResource RobotoFont}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -25,13 +26,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Grid Background="WhiteSmoke">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <!--Меню слева-->
-            <Menu x:Name="Menu" Grid.Row="0">
+            <Menu x:Name="Menu" Grid.Row="0" Background="Transparent">
                 <MenuItem Header="{localization:Localization Key=Text_Actions}" Height="{Binding ActualHeight, ElementName=Menu, Mode=OneWay}" Width="auto">
                     <!--Открыть-->
                     <MenuItem Header="{localization:Localization Text_Open}" Command="{Binding OpenCommand}">
@@ -73,7 +74,7 @@
                 </MenuItem>
             </Menu>
             <!--Меню справа-->
-            <Menu Grid.Column="1" HorizontalAlignment="Right">
+            <Menu Grid.Column="1" HorizontalAlignment="Right"  Background="Transparent">
                 <!--Язык-->
                 <MenuItem ItemsSource="{Binding Source={x:Static localization:LocalizationManager.Instance}, Path=Cultures}" UsesItemContainerTemplate="True">
                     <MenuItem.Icon>
@@ -108,13 +109,19 @@
                 </MenuItem>
             </Menu>
         </Grid>
+        
         <!--Шапка-->
-        <Border Grid.Row="1" Background="WhiteSmoke">
-            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-
+        <Grid Grid.Row="1" Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+               
+                <!--Выполнить-->
                 <Button Background="Transparent" Padding="2" Margin="0,2" BorderThickness="0" Command="{Binding RunCommand}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{StaticResource PlayIcon}" Height="21" Width="21" Stretch="Fill" />
+                        <Image Source="{StaticResource PlayIcon}" Height="21" Width="21" Stretch="Fill"/>
                         <!--Выполнить-->
                         <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{localization:Localization Key=Text_Run}" />
                     </StackPanel>
@@ -135,10 +142,11 @@
                     </Button.Style>
                 </Button>
 
+                <!--Прервать-->
                 <Button Background="Transparent" Padding="2" Margin="0,2" BorderThickness="0" Command="{Binding AbortCommand}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{StaticResource Stop}" Height="21" Width="21" Stretch="Fill" />
-                        <!--Выполнить-->
+                        <Image Source="{StaticResource Stop}" Height="21" Width="21" Stretch="Fill"/>
+                        <!--Прервать-->
                         <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{localization:Localization Key=Text_Abort}" />
                     </StackPanel>
                     <Button.Style>
@@ -157,8 +165,23 @@
                         </Style>
                     </Button.Style>
                 </Button>
+
             </StackPanel>
-        </Border>
+            <StackPanel  Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Right">
+                <!--Параметры-->
+                <Button Background="Transparent" Padding="2" Margin="0,2" BorderThickness="0" Command="{Binding SettingsCommand}" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{StaticResource Settings}" Height="21" Width="21" Stretch="Fill"/>
+                        <!--Параметры-->
+                        <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{localization:Localization Key=Text_Settings}" />
+                    </StackPanel>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Grid>
 
         <!--Основной контент-->
         <ScrollViewer behaviors:ScrollViewer.AttachScroll="True" x:Name="ContentScrollViewer" 
@@ -167,7 +190,7 @@
             <content:GenCanvas x:Name="GenCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></content:GenCanvas>
         </ScrollViewer>
 
-        <TextBox Grid.Row="4" Text="{Binding TextLog, Mode=OneWay}" Height="100" VerticalScrollBarVisibility="Auto" IsReadOnly="True"></TextBox>
+        <TextBox Grid.Row="4" Text="{Binding TextLog, Mode=OneWay}" Height="100" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontSize="7pt"></TextBox>
 
         <!--Тень под шапкой-->
         <Border Grid.Row="2" BorderThickness="0,0,0,1">

@@ -194,6 +194,12 @@ Third-party Fonts:
   <data name="Text_Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Text_Settings" xml:space="preserve">
+    <value>Core settings</value>
+  </data>
+  <data name="Title_AboutWin" xml:space="preserve">
+    <value>About: Management Console for the bot</value>
+  </data>
   <data name="Title_MainWin" xml:space="preserve">
     <value>Management Console for the bot</value>
   </data>

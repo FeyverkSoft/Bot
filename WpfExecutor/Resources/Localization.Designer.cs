@@ -282,6 +282,24 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметры ядра.
+        /// </summary>
+        internal static string Text_Settings {
+            get {
+                return ResourceManager.GetString("Text_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на О программе: Консоль управления для бота.
+        /// </summary>
+        internal static string Title_AboutWin {
+            get {
+                return ResourceManager.GetString("Title_AboutWin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Консоль управления для бота.
         /// </summary>
         internal static string Title_MainWin {

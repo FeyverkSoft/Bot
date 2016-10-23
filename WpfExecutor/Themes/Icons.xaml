@@ -24,5 +24,6 @@
     <BitmapImage x:Key="Icon" UriSource="pack://application:,,,/Resources/icons/Icon-48.png" />
     <BitmapImage x:Key="Icon2" UriSource="pack://application:,,,/Resources/icons/Ico.png" />
     <BitmapImage x:Key="Error" UriSource="pack://application:,,,/Resources/icons/Error.png" />
-    
+    <BitmapImage x:Key="Settings" UriSource="pack://application:,,,/Resources/icons/Settings-48.png" />
+
 </ResourceDictionary>
