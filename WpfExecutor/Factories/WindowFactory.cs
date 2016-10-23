@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.ConfigEntity;
 using WpfExecutor.Model.About;
 using WpfExecutor.Model.Settings;
 using WpfExecutor.Views.About;

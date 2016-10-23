@@ -146,6 +146,18 @@ Third-party Fonts:
   <data name="CoreSettingWindow" xml:space="preserve">
     <value>Core settings</value>
   </data>
+  <data name="CoreSettingWindow_SmtpHost" xml:space="preserve">
+    <value>Smtp host</value>
+  </data>
+  <data name="CoreSettingWindow_SmtpLogin" xml:space="preserve">
+    <value>Smtp login</value>
+  </data>
+  <data name="CoreSettingWindow_SmtpPassword" xml:space="preserve">
+    <value>Smtp password</value>
+  </data>
+  <data name="CoreSettingWindow_SmtpPort" xml:space="preserve">
+    <value>Smtp port</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>

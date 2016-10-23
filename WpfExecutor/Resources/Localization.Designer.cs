@@ -138,6 +138,42 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Smtp хост.
+        /// </summary>
+        internal static string CoreSettingWindow_SmtpHost {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_SmtpHost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Smtp логин.
+        /// </summary>
+        internal static string CoreSettingWindow_SmtpLogin {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_SmtpLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Smtp пароль.
+        /// </summary>
+        internal static string CoreSettingWindow_SmtpPassword {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_SmtpPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Smtp порт.
+        /// </summary>
+        internal static string CoreSettingWindow_SmtpPort {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_SmtpPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Произошла ошибка.
         /// </summary>
         internal static string Error {

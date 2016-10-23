@@ -60,6 +60,14 @@
     <Compile Include="Behaviors\ScrollViewer.cs" />
     <Compile Include="Behaviors\TreeView.cs" />
     <Compile Include="Behaviors\TreeViewItem.cs" />
+    <Compile Include="Controls\Impl\BaseControl.cs" />
+    <Compile Include="Controls\Impl\DecimalUpDown.cs" />
+    <Compile Include="Controls\Impl\DoubleUpDown.cs" />
+    <Compile Include="Controls\Impl\Int32UpDown.cs" />
+    <Compile Include="Controls\Impl\Int64UpDown.cs" />
+    <Compile Include="Controls\Impl\NumericUpDown.cs" />
+    <Compile Include="Controls\Impl\NumericUpDownBase.cs" />
+    <Compile Include="Controls\Impl\NumericUpDownGeneric.cs" />
     <Compile Include="Converters\BaseHybridConverterExtension.cs" />
     <Compile Include="Converters\BaseMultiValueConverterExtension.cs" />
     <Compile Include="Converters\BaseValueConverterExtension.cs" />
@@ -127,6 +135,12 @@
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Helpers\VisualHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

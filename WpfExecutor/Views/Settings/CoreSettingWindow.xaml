@@ -5,9 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfExecutor.Views.Settings"
         xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
-        mc:Ignorable="d"
-        Title="{localization:Localization CoreSettingWindow}" Height="300" Width="300">
-    <Grid>
-        
+        xmlns:settings="clr-namespace:WpfExecutor.Model.Settings"
+        xmlns:controls="clr-namespace:WpfConverters.Controls;assembly=WpfConverters"
+        xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
+        mc:Ignorable="d" d:DataContext="{d:DesignInstance settings:CoreSettingViewModel}"
+        Title="{localization:Localization CoreSettingWindow}" ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MinHeight="150" MinWidth="300"
+        Icon="{StaticResource Icon}">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90pt"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- SmtpPort -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPort}"></TextBlock>
+        <impl:Int32UpDown Grid.Row="0" Background="White" Grid.Column="1" Margin="2" Padding="0, 1" Value="{Binding SmtpPort}"></impl:Int32UpDown>
+
+        <!-- SmtpHost -->
+        <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpHost}"></TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpHost}"></TextBox>
+
+        <!-- SmtpLogin -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpLogin}"></TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpLogin}"></TextBox>
+
+        <!-- SmtpPassword -->
+        <TextBlock Grid.Row="3" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPassword}"></TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpPassword}"></TextBox>
+
     </Grid>
 </Window>
+
+
+

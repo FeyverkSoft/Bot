@@ -146,6 +146,18 @@
   <data name="CoreSettingWindow" xml:space="preserve">
     <value>Параметры ядра</value>
   </data>
+  <data name="CoreSettingWindow_SmtpHost" xml:space="preserve">
+    <value>Smtp хост</value>
+  </data>
+  <data name="CoreSettingWindow_SmtpLogin" xml:space="preserve">
+    <value>Smtp логин</value>
+  </data>
+  <data name="CoreSettingWindow_SmtpPassword" xml:space="preserve">
+    <value>Smtp пароль</value>
+  </data>
+  <data name="CoreSettingWindow_SmtpPort" xml:space="preserve">
+    <value>Smtp порт</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Произошла ошибка</value>
   </data>
