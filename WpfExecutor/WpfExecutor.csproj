@@ -65,6 +65,7 @@
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
+    <Compile Include="Model\Settings\CoreSettingViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="AppContext.cs" />
     <Compile Include="Extensions\Provider\ResxLocalizationProvider.cs" />
@@ -86,6 +87,9 @@
     </Compile>
     <Compile Include="Views\Error\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CoreSettingWindow.xaml.cs">
+      <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Themes\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +143,10 @@
     <Page Include="Views\Error\ExceptionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\CoreSettingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

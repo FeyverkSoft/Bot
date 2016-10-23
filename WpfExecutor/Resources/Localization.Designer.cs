@@ -129,6 +129,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметры ядра.
+        /// </summary>
+        internal static string CoreSettingWindow {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Произошла ошибка.
         /// </summary>
         internal static string Error {

@@ -143,6 +143,9 @@ Third-party Fonts:
   <data name="Core" xml:space="preserve">
     <value>Core</value>
   </data>
+  <data name="CoreSettingWindow" xml:space="preserve">
+    <value>Core settings</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>

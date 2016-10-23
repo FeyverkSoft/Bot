@@ -41,11 +41,19 @@ namespace WpfExecutor.Model
         /// </summary>
         private ICommand _helpCommand;
         /// <summary>
-        /// Отобрахить инфу о программе
+        /// Отобразить инфу о программе
         /// </summary>
         private ICommand _aboutCommand;
 
+        /// <summary>
+        /// Прервать
+        /// </summary>
         private ICommand _abortCommand;
+        /// <summary>
+        /// Вызвать Настройки ядра
+        /// </summary>
+        private ICommand _settingsCommand;
+
         /// <summary>
         /// Ядро бота
         /// </summary>
@@ -89,9 +97,12 @@ namespace WpfExecutor.Model
         private void CloseCommandMethod()
         {
             if (MessageBox.Show(
-                LocalizationManager.GetString("CloseMessage"),
-                LocalizationManager.GetString("CloseMessageTitle"), MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    LocalizationManager.GetString("CloseMessage"),
+                    LocalizationManager.GetString("CloseMessageTitle"), MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                _core?.Abort();
                 Application.Current.Shutdown();
+            }
         }
 
         /// <summary>
@@ -145,7 +156,7 @@ namespace WpfExecutor.Model
 
         private void AbortCommandMethod()
         {
-            _core.Abort();
+            _core?.Abort();
         }
 
         /// <summary>
@@ -166,6 +177,18 @@ namespace WpfExecutor.Model
                 var conf = ConfigReaderFactory.Get<Config>().Save(Document.Instance.DocumentItems, sd.FileName);
                 Document.CreateInstance(conf, sd.FileName);
             }
+        }
+
+        /// <summary>
+        /// Отобразить настройки ядра
+        /// </summary>
+        public ICommand SettingsCommand => _settingsCommand ?? (_settingsCommand = new DelegateCommand(SettingsCommandMethod));
+
+        private void SettingsCommandMethod()
+        {
+            var window = WindowFactory.CreateCoreSettingsWindow();
+            window.SetOwner();
+            window.ShowDialog();
         }
     }
 }

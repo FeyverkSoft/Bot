@@ -143,6 +143,9 @@
   <data name="Core" xml:space="preserve">
     <value>Ядро</value>
   </data>
+  <data name="CoreSettingWindow" xml:space="preserve">
+    <value>Параметры ядра</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Произошла ошибка</value>
   </data>
