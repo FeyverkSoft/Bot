@@ -186,6 +186,12 @@
   <data name="DifferentConfigVersions" xml:space="preserve">
     <value>Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты.</value>
   </data>
+  <data name="EMessageType" xml:space="preserve">
+    <value>Тип канала доставки уведомления</value>
+  </data>
+  <data name="EMessageType_Email" xml:space="preserve">
+    <value>Е-Маил</value>
+  </data>
   <data name="ESearchParam" xml:space="preserve">
     <value>Параметр поиска</value>
   </data>
@@ -245,5 +251,35 @@
   </data>
   <data name="LoopAct_IterationCount" xml:space="preserve">
     <value>Колличество выполнений цикла</value>
+  </data>
+  <data name="MockAction" xml:space="preserve">
+    <value>Фальшивка</value>
+  </data>
+  <data name="MouseMoveAct" xml:space="preserve">
+    <value>Действие перемещения мышки</value>
+  </data>
+  <data name="MouseMoveAct_Dx" xml:space="preserve">
+    <value>Смещение по оси X</value>
+  </data>
+  <data name="MouseMoveAct_Dy" xml:space="preserve">
+    <value>Смещение по оси Y</value>
+  </data>
+  <data name="MouseMoveAct_ToObject" xml:space="preserve">
+    <value>Двигать к объекту являющемуся результатом предыдущего вызова</value>
+  </data>
+  <data name="SendMessageAct" xml:space="preserve">
+    <value>Действие отправки сообщения</value>
+  </data>
+  <data name="SendMessageAct_Body" xml:space="preserve">
+    <value>Тело уведомления</value>
+  </data>
+  <data name="SendMessageAct_IncludePrevRes" xml:space="preserve">
+    <value>Включить предыдущие действие</value>
+  </data>
+  <data name="SendMessageAct_MessageType" xml:space="preserve">
+    <value>Тип уведомления</value>
+  </data>
+  <data name="SendMessageAct_Recipient" xml:space="preserve">
+    <value>Получатель сообщения</value>
   </data>
 </root>

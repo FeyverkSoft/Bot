@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.Serialization;
+using Core.Attributes;
 using Core.Helpers;
 using Core.Message;
 
@@ -10,32 +10,32 @@ namespace Core.ConfigEntity.ActionObjects
     /// Действие отправки казанного сообщения на указанные параметры
     /// </summary>
     [DataContract]
-    [Description("Действие отправки казанного сообщения на указанные параметры")]
+    [LocDescription("SendMessageAct")]
     public class SendMessageAct : IAction
     {
         /// <summary>
         /// Тип сообщения, например сообщение на емайл
         /// </summary>
         [DataMember]
-        [Description("Тип сообщения, например сообщение на емайл")]
+        [LocDescription("SendMessageAct_MessageType")]
         public EMessageType MessageType { get; }
         /// <summary>
         /// Тело сообщения
         /// </summary>
         [DataMember]
-        [Description("Тело сообщения, которое необходимо отправить")]
+        [LocDescription("SendMessageAct_Body")]
         public String Body { get; }
         /// <summary>
         /// Получатель сообщения
         /// </summary>
         [DataMember]
-        [Description("Получатель сообщения")]
+        [LocDescription("SendMessageAct_Recipient")]
         public String Recipient { get; }
         /// <summary>
         /// Включить предыдущий результат после тела сообщения
         /// </summary>
         [DataMember]
-        [Description("Включить предыдущий результат после тела сообщения")]
+        [LocDescription("SendMessageAct_IncludePrevRes")]
         public Boolean IncludePrevRes { get; }
 
         public SendMessageAct(String recipient, String body, EMessageType messageType = EMessageType.Email, Boolean includePrevRes = true)

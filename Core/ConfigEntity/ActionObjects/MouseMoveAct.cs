@@ -11,26 +11,26 @@ namespace Core.ConfigEntity.ActionObjects
     /// Событие смещения мышки
     /// </summary>
     [DataContract]
-    [Description("Событие смещения мышки")]
+    [Description("MouseMoveAct")]
     public class MouseMoveAct : IAction
     {
         /// <summary>
         /// Смещение по оси X
         /// </summary>
-        [Description("Смещение по оси X")]
+        [Description("MouseMoveAct_Dx")]
         [DataMember]
         public Int32 Dx { get; protected set; } = 0;
         /// <summary>
         /// Смещение по оси Y
         /// </summary>
         [DataMember]
-        [Description("Смещение по оси Y")]
+        [Description("MouseMoveAct_Dy")]
         public Int32 Dy { get; protected set; } = 0;
         /// <summary>
         /// Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно
         /// </summary>
         [DataMember]
-        [Description("Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно")]
+        [Description("MouseMoveAct_ToObject")]
         public Boolean ToObject { get; protected set; }
 
         public MouseMoveAct(Boolean toObject = true)

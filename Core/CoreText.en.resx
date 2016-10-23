@@ -183,6 +183,12 @@
   <data name="ActionType_Sleep" xml:space="preserve">
     <value>!Sleep!!</value>
   </data>
+  <data name="EMessageType" xml:space="preserve">
+    <value>Type notification channe</value>
+  </data>
+  <data name="EMessageType_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="ESearchParam_Contained" xml:space="preserve">
     <value>Contains the specified string</value>
   </data>
@@ -240,7 +246,37 @@
   <data name="LoopAct_IterationCount" xml:space="preserve">
     <value>Number of iterations</value>
   </data>
+  <data name="MockAction" xml:space="preserve">
+    <value>Mock action</value>
+  </data>
+  <data name="MouseMoveAct" xml:space="preserve">
+    <value>Mouse Move Action</value>
+  </data>
+  <data name="MouseMoveAct_Dx" xml:space="preserve">
+    <value>Offset X axis</value>
+  </data>
+  <data name="MouseMoveAct_Dy" xml:space="preserve">
+    <value>Offset Y axis</value>
+  </data>
+  <data name="MouseMoveAct_ToObject" xml:space="preserve">
+    <value>Move the cursor to the object is the result of a previous call.</value>
+  </data>
   <data name="SearchParam" xml:space="preserve">
     <value>Search parameter</value>
+  </data>
+  <data name="SendMessageAct" xml:space="preserve">
+    <value>Send message params</value>
+  </data>
+  <data name="SendMessageAct_Body" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="SendMessageAct_IncludePrevRes" xml:space="preserve">
+    <value>Include previous result</value>
+  </data>
+  <data name="SendMessageAct_MessageType" xml:space="preserve">
+    <value>Notification type</value>
+  </data>
+  <data name="SendMessageAct_Recipient" xml:space="preserve">
+    <value>Recipient</value>
   </data>
 </root>

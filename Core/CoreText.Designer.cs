@@ -268,6 +268,24 @@ namespace Core {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип канала доставки уведомления.
+        /// </summary>
+        internal static string EMessageType {
+            get {
+                return ResourceManager.GetString("EMessageType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Е-Маил.
+        /// </summary>
+        internal static string EMessageType_Email {
+            get {
+                return ResourceManager.GetString("EMessageType_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Параметр поиска.
         /// </summary>
         internal static string ESearchParam {
@@ -444,6 +462,96 @@ namespace Core {
         internal static string LoopAct_IterationCount {
             get {
                 return ResourceManager.GetString("LoopAct_IterationCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Фальшивка.
+        /// </summary>
+        internal static string MockAction {
+            get {
+                return ResourceManager.GetString("MockAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие перемещения мышки.
+        /// </summary>
+        internal static string MouseMoveAct {
+            get {
+                return ResourceManager.GetString("MouseMoveAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Смещение по оси X.
+        /// </summary>
+        internal static string MouseMoveAct_Dx {
+            get {
+                return ResourceManager.GetString("MouseMoveAct_Dx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Смещение по оси Y.
+        /// </summary>
+        internal static string MouseMoveAct_Dy {
+            get {
+                return ResourceManager.GetString("MouseMoveAct_Dy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Двигать к объекту являющемуся результатом предыдущего вызова.
+        /// </summary>
+        internal static string MouseMoveAct_ToObject {
+            get {
+                return ResourceManager.GetString("MouseMoveAct_ToObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие отправки сообщения.
+        /// </summary>
+        internal static string SendMessageAct {
+            get {
+                return ResourceManager.GetString("SendMessageAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тело уведомления.
+        /// </summary>
+        internal static string SendMessageAct_Body {
+            get {
+                return ResourceManager.GetString("SendMessageAct_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Включить предыдущие действие.
+        /// </summary>
+        internal static string SendMessageAct_IncludePrevRes {
+            get {
+                return ResourceManager.GetString("SendMessageAct_IncludePrevRes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип уведомления.
+        /// </summary>
+        internal static string SendMessageAct_MessageType {
+            get {
+                return ResourceManager.GetString("SendMessageAct_MessageType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Получатель сообщения.
+        /// </summary>
+        internal static string SendMessageAct_Recipient {
+            get {
+                return ResourceManager.GetString("SendMessageAct_Recipient", resourceCulture);
             }
         }
     }

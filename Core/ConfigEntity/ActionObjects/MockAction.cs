@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
+﻿using Core.Attributes;
 using Core.Helpers;
 
 namespace Core.ConfigEntity.ActionObjects
 {
-    [Description("Фейковый класс")]
+    [LocDescription("MockAction")]
     public class MockAction : IAction
     {
         /// <summary>Возвращает строку, представляющую текущий объект.</summary>
