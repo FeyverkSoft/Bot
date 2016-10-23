@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Core.Resources;
 
 namespace Core.Attributes
 {
