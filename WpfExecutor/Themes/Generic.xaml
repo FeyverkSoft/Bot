@@ -16,12 +16,66 @@
         <ResourceDictionary Source="pack://application:,,,/Themes/Icons.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <SolidColorBrush x:Key="Static.Background" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="MouseOver.Background" Color="#3300A2FF" />
+    <SolidColorBrush x:Key="Static.Foreground" Color="#FF121212" />
+    <SolidColorBrush x:Key="Static.Border" Color="#FFABADB3" />
+    <SolidColorBrush x:Key="MouseOver.Border" Color="#FF7EB4EA" />
+    <SolidColorBrush x:Key="Focus.Border" Color="#FF569DE5" />
+
 
     <system:Boolean x:Key="True">True</system:Boolean>
     <system:Boolean x:Key="False">False</system:Boolean>
 
-    <Style TargetType="TextBlock" >
-        <Setter Property="FontFamily" Value="{DynamicResource RobotoFont}"></Setter>
+    <!--******************** TextBox ********************-->
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="{StaticResource Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Static.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource Static.Foreground}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="AllowDrop" Value="True"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="MinHeight" Value="24"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Background="{TemplateBinding Background}" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Static.Background}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Static.Background}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource MouseOver.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Focus.Border}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsInactiveSelectionHighlightEnabled" Value="True"/>
+                    <Condition Property="IsSelectionActive" Value="False"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+            </MultiTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="ScrollViewer" >
