@@ -66,7 +66,7 @@ namespace WpfExecutor.Model
         public String TextLog
         {
             get { return _textLog; }
-            set
+            private set
             {
                 _textLog = value;
                 OnPropertyChanged();
@@ -190,5 +190,7 @@ namespace WpfExecutor.Model
             window.SetOwner();
             window.ShowDialog();
         }
+
+        public ICommand HelpCommand => _helpCommand ?? (_helpCommand = new DelegateCommand(()=> {throw new NotImplementedException("Справка еще не реализована");}));
     }
 }

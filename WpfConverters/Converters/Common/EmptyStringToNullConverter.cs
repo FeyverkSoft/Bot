@@ -16,7 +16,7 @@ namespace WpfConverters.Converters.Common
             return s;
         }
 
-        public virtual Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture)
+        public override Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture)
         {
             if (value == null)
                 return String.Empty;

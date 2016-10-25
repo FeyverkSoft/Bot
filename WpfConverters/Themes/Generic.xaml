@@ -53,10 +53,10 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-                            <Setter Property="Background" TargetName="border" Value="White"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Static.Background}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="White"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Static.Background}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource MouseOver.Border}"/>

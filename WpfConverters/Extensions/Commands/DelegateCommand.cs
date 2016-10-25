@@ -45,7 +45,7 @@ namespace WpfConverters.Extensions.Commands
         /// </summary>
         private void Execute()
         {
-            (_executeMethod ?? p)?.Invoke();
+            _executeMethod?.Invoke();
         }
 
         /// <summary>
@@ -135,7 +135,6 @@ namespace WpfConverters.Extensions.Commands
         private readonly Func<bool> _canExecuteMethod;
         private bool _isAutomaticRequeryDisabled;
         private List<WeakReference> _canExecuteChangedHandlers;
-        private Action p;
 
         #endregion
     }

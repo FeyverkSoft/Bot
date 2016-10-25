@@ -26,7 +26,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="WhiteSmoke">
+        <Grid Background="{StaticResource Static.MenueBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -111,7 +111,7 @@
         </Grid>
         
         <!--Шапка-->
-        <Grid Grid.Row="1" Background="WhiteSmoke">
+        <Grid Grid.Row="1" Background="{StaticResource Static.MenueBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -184,9 +184,9 @@
         </Grid>
 
         <!--Основной контент-->
-        <ScrollViewer behaviors:ScrollViewer.AttachScroll="True" x:Name="ContentScrollViewer" 
+        <ScrollViewer x:Name="ContentScrollViewer" 
                       Grid.Row="3" Margin="0,-7,0,0" VerticalScrollBarVisibility="Auto" 
-                      HorizontalScrollBarVisibility="Disabled">
+                      HorizontalScrollBarVisibility="Disabled" behaviors:ScrollViewer.AttachScroll="True" Background="{StaticResource Static.Background}">
             <content:GenCanvas x:Name="GenCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></content:GenCanvas>
         </ScrollViewer>
 

@@ -17,6 +17,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <SolidColorBrush x:Key="Static.Background" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="Static.MenueBackground" Color="WhiteSmoke" />
     <SolidColorBrush x:Key="MouseOver.Background" Color="#3300A2FF" />
     <SolidColorBrush x:Key="Static.Foreground" Color="#FF121212" />
     <SolidColorBrush x:Key="Static.Border" Color="#FFABADB3" />
@@ -147,7 +148,7 @@
                             <AdornerDecorator.CacheMode>
                                 <BitmapCache EnableClearType="True" SnapsToDevicePixels="True"/>
                             </AdornerDecorator.CacheMode>
-                            <Border Background="White" CornerRadius="2"
+                            <Border Background="{StaticResource Static.Background}" CornerRadius="2"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     x:Name="border">
@@ -220,26 +221,22 @@
 
                         <!-- Connecting Lines -->
                         <Rectangle x:Name="HorLn" Margin="9,1,0,0" Height="1" Stroke="#DCDCDC" SnapsToDevicePixels="True"/>
-                        <Rectangle x:Name="VerLn" Width="1" Stroke="#DCDCDC" Margin="0,0,1,0" Grid.RowSpan="2" SnapsToDevicePixels="true" Fill="White"/>
+                        <Rectangle x:Name="VerLn" Width="1" Stroke="#DCDCDC" Margin="0,0,1,0" Grid.RowSpan="2" SnapsToDevicePixels="true" Fill="{StaticResource Static.Background}"/>
                         <ToggleButton Margin="-1,0,0,0" x:Name="Expander" Style="{StaticResource ExpandCollapseToggleStyle}" IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press"/>
-                        <Grid Grid.Column="1" Margin="2, 5" x:Name="ContentPresenterGrid">
-                            <Border x:Name="Border" Background="White"
+                        <Grid Grid.Column="1" Margin="2, 5" x:Name="ContentPresenterGrid" UseLayoutRounding = "True">
+                            <Border x:Name="Border" Background="{StaticResource Static.Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
-                                SnapsToDevicePixels="True"
-                                Effect="{StaticResource ShadowDepth1}">
-                                <ContentPresenter
+                                SnapsToDevicePixels="True" Effect="{StaticResource ShadowDepth1}"></Border>
+                            <ContentPresenter UseLayoutRounding = "True"
                                               x:Name="PART_Header" ContentSource="Header" 
                                               HorizontalAlignment="Stretch" 
                                               VerticalAlignment="Stretch" 
                                               Margin="5, 10"
-                                              MinWidth="20"
-                                              TextOptions.TextFormattingMode="Display"/>
-                            </Border>
+                                              MinWidth="20"/>
                         </Grid>
                         <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
                     </Grid>
                     <ControlTemplate.Triggers>
-
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Converter={format:VerticalLineConverter}}" Value="true">
                             <Setter TargetName="VerLn" Property="Height" Value="9"/>
                             <Setter TargetName="VerLn" Property="VerticalAlignment" Value="Top"/>
@@ -293,6 +290,46 @@
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.5"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <ItemsPanelTemplate x:Key="ItemsPanelTemplate">
+        <StackPanel IsItemsHost="True"/>
+    </ItemsPanelTemplate>
+    <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
+    <Style x:Key="TreeViewStyle" TargetType="{x:Type TreeView}">
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TreeView}">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <ItemsPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="VirtualizingPanel.IsVirtualizing" Value="true">
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </Style.Triggers>
     </Style>

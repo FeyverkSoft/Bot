@@ -27,7 +27,7 @@
 
         <!-- SmtpPort -->
         <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPort}"></TextBlock>
-        <impl:Int32UpDown Grid.Row="0" Background="White" Grid.Column="1" Margin="2" Padding="0, 1" Value="{Binding SmtpPort}"></impl:Int32UpDown>
+        <impl:Int32UpDown Grid.Row="0" Grid.Column="1" Margin="2" Padding="0, 1" Value="{Binding SmtpPort}"></impl:Int32UpDown>
 
         <!-- SmtpHost -->
         <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpHost}"></TextBlock>
