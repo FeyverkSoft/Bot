@@ -41,7 +41,7 @@ namespace WpfExecutor
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Dispatcher.UnhandledException += Dispatcher_UnhandledException;
 
-            var window = new MainWindow(new MainWindowModel());
+            var window = new MainWindow(new MainWindowModel(e.Args));
             window.Show();
         }
 
