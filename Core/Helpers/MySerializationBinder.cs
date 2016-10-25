@@ -23,7 +23,7 @@ namespace Core.Helpers
             if (type != null)
                 return type;
 
-            if(!AppConfig.LoadPlugin)
+            if(!AppConfig.Instance.LoadPlugin)
                 return typeof(MockAction);
 
             throw new Exception($"Тип {typeName} в сборке {assemblyName} не был найден не в одной из подключенных сборок");

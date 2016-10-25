@@ -13,7 +13,7 @@ namespace Core
         /// <returns></returns>
         public static IExecutiveCore GetCore()
         {
-            if (AppConfig.DefaultCore)
+            if (AppConfig.Instance.DefaultCore)
                 AppContext.Get<IExecutiveCore>();
             return new DefaultExecutiveCore(new DefaultActionFactory());
         }

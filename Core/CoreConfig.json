@@ -1,0 +1,8 @@
+﻿{
+    "SmtpPort": 25,
+    "SmtpHost": "smtp.yandex.ru",
+    "SmtpLogin": "@yandex.ru",
+    "SmtpPassword": "",
+    "DefaultCore": true,
+    "LoadPlugin": true
+}

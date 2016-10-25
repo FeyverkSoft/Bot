@@ -22,7 +22,7 @@ namespace Core.ActionExecutors
         /// <returns></returns>
         public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
-            if (!AppConfig.LoadPlugin)
+            if (!AppConfig.Instance.LoadPlugin)
                 return previousResult;
             if (actions == null)
                 throw new ArgumentNullException(nameof(actions));

@@ -35,7 +35,7 @@ namespace Core
         public static void LoadPlugins()
         {
             //Если выбран путь игнорирования плагинов
-            if (!AppConfig.LoadPlugin)
+            if (!AppConfig.Instance.LoadPlugin)
             {
                 Log.WriteLine(new {Message = "Загрузка плагинов была отключена"});
                 return;

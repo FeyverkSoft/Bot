@@ -12,7 +12,7 @@ namespace Core.ConfigEntity
 
         static ConfigReaderFactory()
         {
-            Dictionary.Add(typeof(InternalAppConfig), new ConfigReader<InternalAppConfig>(false, false, false));
+            Dictionary.Add(typeof(AppConfig), new ConfigReader<AppConfig>(false, false, false));
         }
 
         public static IConfigReader<T> Get<T>() where T : class, new()

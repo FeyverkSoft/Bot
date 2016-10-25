@@ -20,12 +20,12 @@ namespace Core.Message
         {
             try
             {
-                var mailClient = new SmtpClient(AppConfig.SmtpHost, AppConfig.SmtpPort)
+                var mailClient = new SmtpClient(AppConfig.Instance.SmtpHost, AppConfig.Instance.SmtpPort)
                 {
                     EnableSsl = true,
-                    Credentials = new NetworkCredential(AppConfig.SmtpLogin, AppConfig.SmtpPassword)
+                    Credentials = new NetworkCredential(AppConfig.Instance.SmtpLogin, AppConfig.Instance.SmtpPassword)
                 };
-                var from = new MailAddress(AppConfig.SmtpLogin, "Bot message");
+                var from = new MailAddress(AppConfig.Instance.SmtpLogin, "Bot message");
                 var to = new MailAddress(recipient, recipient);
                 var message = new MailMessage(from, to)
                 {
