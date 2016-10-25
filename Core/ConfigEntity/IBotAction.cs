@@ -1,11 +1,17 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Core.ConfigEntity.ActionObjects;
 
 namespace Core.ConfigEntity
 {
-    public interface IBotAction
+    public interface IBotAction: INotifyPropertyChanged
     {
+        /// <summary>
+        /// Указывает на то что в текущий момент выполняется это действие.
+        /// </summary>
+        [IgnoreDataMember]
+        Boolean IsCurrent { get; set; }
         /// <summary>
         /// Тип события
         /// </summary>

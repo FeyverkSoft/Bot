@@ -150,8 +150,17 @@ namespace Core.Core
                 Status = CoreStatus.Stop;
                 return null;
             }
-
-            return actions.Aggregate(res, (current, act) => InternalActRun(act, current));
+            foreach (var action in actions)
+            {
+                action.IsCurrent = false;
+            }
+            return actions.Aggregate(res, (current, act) =>
+            {
+                act.IsCurrent = true;
+                var temp = InternalActRun(act, current);
+                act.IsCurrent = false;
+                return temp;
+            });
         }
 
         ///  <summary>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using Core.ConfigEntity.ActionObjects;
 using LogWrapper;
@@ -13,6 +15,31 @@ namespace Core.ConfigEntity
     [DataContract]
     public sealed class BotAction : IBotAction
     {
+        private bool _isCurrent = false;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public static event PropertyChangedEventHandler StaticPropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        public void OnPropertyChanged([CallerMemberName] String propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            StaticPropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
+        /// Указывает на то что в текущий момент выполняется это действие.
+        /// </summary>
+        public Boolean IsCurrent
+        {
+            get { return _isCurrent; }
+            set
+            {
+                _isCurrent = value;
+                OnPropertyChanged();
+            }
+        }
+
         /// <summary>
         /// Тип события
         /// </summary>

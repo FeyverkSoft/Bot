@@ -33,7 +33,16 @@
                         <TextBlock Text="{localization:Localization KeyBinding={Binding Path=Actions}}" />
                     </HierarchicalDataTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type configEntity:BotAction}" ItemsSource="{Binding SubActions}">
-                        <TextBlock Text="{localization:Localization KeyBinding={Binding Path=ActionType}}" />
+                        <HierarchicalDataTemplate.ItemContainerStyle>
+                            <Style TargetType="TreeViewItem" BasedOn="{StaticResource GTreeView}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource Focus.Border}"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </HierarchicalDataTemplate.ItemContainerStyle>
+                        <TextBlock Text="{localization:Localization KeyBinding={Binding Path=ActionType}}"/>
                     </HierarchicalDataTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
                         <TextBlock Text="{localization:Localization KeyBinding={Binding}}" />
