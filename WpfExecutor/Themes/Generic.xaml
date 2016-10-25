@@ -37,6 +37,7 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="AllowDrop" Value="True"/>
@@ -46,9 +47,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
-                            Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                        <ScrollViewer x:Name="PART_ContentHost" Background="{TemplateBinding Background}" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" SnapsToDevicePixels="True" 
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <ScrollViewer VerticalContentAlignment="Center" VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch"
+                                      x:Name="PART_ContentHost" Background="{TemplateBinding Background}" Focusable="False" 
+                                      HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -79,11 +85,14 @@
         </Style.Triggers>
     </Style>
 
+    <!-- ScrollViewer -->
     <Style TargetType="ScrollViewer" >
-        <Setter Property= "Background" Value="LightGray"/>
+        <Setter Property= "Background" Value="{StaticResource Static.MenueBackground}"/>
         <Setter Property="FontFamily" Value="{DynamicResource RobotoFont}"></Setter>
     </Style>
 
+
+    <!-- Separator -->
     <Style TargetType="{x:Type Separator}">
         <Setter Property="FontFamily" Value="{DynamicResource RobotoFont}"></Setter>
         <Setter Property="Background" Value="WhiteSmoke"/>
@@ -100,33 +109,24 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MaterialDesignMenu" TargetType="{x:Type Menu}">
-        <Setter Property= "Background" Value="LightGray"/>
-        <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"/>
-        <Setter Property="TextBlock.FontSize" Value="15"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Menu}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Background="{TemplateBinding Background}"
-                            Padding="{TemplateBinding Padding}"
-                            SnapsToDevicePixels="true">
-                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
-
+    <!-- MenuItem -->
     <Style TargetType="{x:Type MenuItem}">
         <Setter Property="Padding" Value="10 5 10 5"></Setter>
         <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"/>
     </Style>
 
+    <!-- Image -->
+    <Style TargetType="Image">
+        <Setter Property="Opacity" Value="1"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
+    <!-- BUTTON -->
     <Style TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
@@ -143,28 +143,24 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
-                    <Grid>
+                    <Grid x:Name="_ButtonGrid" >
                         <AdornerDecorator>
                             <AdornerDecorator.CacheMode>
                                 <BitmapCache EnableClearType="True" SnapsToDevicePixels="True"/>
                             </AdornerDecorator.CacheMode>
-                            <Border Background="{StaticResource Static.Background}" CornerRadius="2"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
+                            <Grid>
+                                <Border CornerRadius="2" BorderThickness="{TemplateBinding BorderThickness}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
-                                    x:Name="border">
+                                    x:Name="_border" Background="{StaticResource Static.Background}"/>
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
-                            </Border>
+                            </Grid>
                         </AdornerDecorator>
-                        <Grid.Style>
-                            <Style TargetType="Grid">
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="true">
-                                        <Setter Property="Effect" Value="{StaticResource ShadowDepth1}"></Setter>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="_border" Property="Effect" Value="{StaticResource ShadowDepth1}"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -283,15 +279,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
-
-    <Style TargetType="Image">
-        <Setter Property="Opacity" Value="1"></Setter>
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" Value="0.5"></Setter>
-            </Trigger>
-        </Style.Triggers>
     </Style>
 
     <ItemsPanelTemplate x:Key="ItemsPanelTemplate">

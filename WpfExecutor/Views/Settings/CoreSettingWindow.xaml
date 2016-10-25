@@ -39,8 +39,11 @@
 
         <!-- SmtpPassword -->
         <TextBlock Grid.Row="3" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPassword}"></TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpPassword}"></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpPassword}"/>
 
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Command="{Binding SaveCommand}" Margin="0, 2">
+            <TextBlock Text="{localization:Localization Key=Text_Save}"></TextBlock>
+        </Button>
     </Grid>
 </Window>
 

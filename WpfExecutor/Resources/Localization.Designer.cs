@@ -237,6 +237,24 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите сохранить изменения?.
+        /// </summary>
+        internal static string SaveCommandMessage {
+            get {
+                return ResourceManager.GetString("SaveCommandMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить.
+        /// </summary>
+        internal static string SaveCommandMessageTitle {
+            get {
+                return ResourceManager.GetString("SaveCommandMessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Показать детали.
         /// </summary>
         internal static string ShowDetails {

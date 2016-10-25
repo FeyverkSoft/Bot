@@ -179,6 +179,12 @@
   <data name="NewDocMessageTitle" xml:space="preserve">
     <value>Новый документ</value>
   </data>
+  <data name="SaveCommandMessage" xml:space="preserve">
+    <value>Вы действительно хотите сохранить изменения?</value>
+  </data>
+  <data name="SaveCommandMessageTitle" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
   <data name="ShowDetails" xml:space="preserve">
     <value>Показать детали</value>
   </data>
