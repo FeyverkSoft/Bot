@@ -138,6 +138,24 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Использовать базовое ядро.
+        /// </summary>
+        internal static string CoreSettingWindow_DefaultCore {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_DefaultCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Загружать плагины.
+        /// </summary>
+        internal static string CoreSettingWindow_LoadPlugin {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_LoadPlugin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Smtp хост.
         /// </summary>
         internal static string CoreSettingWindow_SmtpHost {
