@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Core;
 using Core.ConfigEntity;
 using Core.Core;
+using LogWrapper;
 using Microsoft.Win32;
 using WpfConverters.Extensions;
 using WpfConverters.Extensions.Commands;
@@ -79,7 +80,7 @@ namespace WpfExecutor.Model
             Document.CreateInstance(new Config());
             _core = AppContext.Get<IExecutiveCore>();
             _core.OnPrintMessageEvent += (message) => TextLog += $"{Environment.NewLine}{message}";
-            _core.PropertyChanged +=(sender, e) => OnPropertyChanged(e?.PropertyName) ;
+            _core.PropertyChanged +=(sender, e) => OnPropertyChanged(e?.PropertyName);
             if (args?.Length == 1 && File.Exists(args[0]))
             {
                 Document.CreateInstance(ConfigReaderFactory.Get<Config>().Load(args[0]), args[0]);
