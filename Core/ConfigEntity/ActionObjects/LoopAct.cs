@@ -13,7 +13,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("LoopAct")]
-    public class LoopAct : IAction
+    public class LoopAct : BaseActionObject
     {
         /// <summary>
         /// Колличество выполнений цикла
@@ -44,13 +44,6 @@ namespace Core.ConfigEntity.ActionObjects
                 throw new ArgumentOutOfRangeException(nameof(iterationCount));
             if (actions != null)
                 Actions = actions;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

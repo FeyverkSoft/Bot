@@ -12,7 +12,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [LocDescription("ScreenShotAct")]
     [DataContract]
-    public class ScreenShotAct : IAction
+    public class ScreenShotAct : BaseActionObject
     {
 
         /// <summary>
@@ -54,13 +54,6 @@ namespace Core.ConfigEntity.ActionObjects
         {
             Point = point;
             Size = size;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

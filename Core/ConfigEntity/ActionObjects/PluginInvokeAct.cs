@@ -9,7 +9,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// Информация для вызова плагина
     /// </summary>
    [LocDescription("PluginInvokeAct")]
-    public class PluginInvokeAct : IAction
+    public class PluginInvokeAct : BaseActionObject
     {
         /// <summary>
         /// Наименование плагина
@@ -29,13 +29,6 @@ namespace Core.ConfigEntity.ActionObjects
         {
             PluginName = pluginName;
             Actions = actions;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

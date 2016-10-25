@@ -11,7 +11,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// Информация об объекте который необходимо получить
     /// </summary>
     [LocDescription("GetObjectAct")]
-    public class GetObjectAct : IAction
+    public class GetObjectAct : BaseActionObject
     {
 
         ///// <summary>
@@ -63,13 +63,6 @@ namespace Core.ConfigEntity.ActionObjects
             //ObjectType = objectType;
             ObjectPos = objectPos;
             SetFocus = setFocus;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

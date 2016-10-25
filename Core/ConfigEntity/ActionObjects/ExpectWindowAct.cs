@@ -13,7 +13,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("ExpectWindowActDescription")]
-    public class ExpectWindowAct : IAction
+    public class ExpectWindowAct : BaseActionObject
     {
         /// <summary>
         /// Наименование ожидаемого окна
@@ -47,13 +47,6 @@ namespace Core.ConfigEntity.ActionObjects
         {
             Log.WriteLine($"{GetType().Name}.ctor->(winTitle:{winTitle}; SetFocus:{setFocus}); SearchParam: {searchParam}");
             SearchParam = searchParam;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

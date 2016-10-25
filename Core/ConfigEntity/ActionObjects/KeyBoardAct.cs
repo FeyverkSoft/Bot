@@ -13,7 +13,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("KeyBoardAct")]
-    public sealed class KeyBoardAct : IAction
+    public sealed class KeyBoardAct : BaseActionObject
     {
         /// <summary>
         /// Клавиша, нажатие которой надо эмулировать
@@ -34,13 +34,6 @@ namespace Core.ConfigEntity.ActionObjects
             Log.WriteLine($"{GetType().Name}.ctor->(key:{key};)");
             Key = key;
             Time = time;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

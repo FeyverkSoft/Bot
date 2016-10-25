@@ -12,7 +12,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [LocDescription("MouseSetPosAct")]
     [DataContract]
-    public class MouseSetPosAct : IAction
+    public class MouseSetPosAct : BaseActionObject
     {
         Int32 _x = 0, _y = 0;
         /// <summary>
@@ -66,13 +66,6 @@ namespace Core.ConfigEntity.ActionObjects
             Y = y;
             RelativelyWindowName = relativelyWindowName;
             Relatively = relatively;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

@@ -111,12 +111,12 @@
         </Grid>
         
         <!--Шапка-->
-        <Grid Grid.Row="1" Background="{StaticResource Static.MenueBackground}">
+        <Grid Grid.Row="1" x:Name="HeaderGrid" Background="{StaticResource Static.MenueBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+            <StackPanel x:Name="ControllStackPanel" Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
                
                 <!--Выполнить-->
                 <Button Background="Transparent" Padding="2" Margin="0,2" BorderThickness="0" Command="{Binding RunCommand}">

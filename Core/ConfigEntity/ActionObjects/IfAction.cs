@@ -12,7 +12,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("IfAction")]
-    public class IfAction : IAction
+    public class IfAction : BaseActionObject
     {
         /// <summary>
         /// Список действий которые необходимо выполнить при успешном выполнении условия
@@ -56,13 +56,6 @@ namespace Core.ConfigEntity.ActionObjects
                 FailActions = failActions;
             if (сonditions == null)
                 throw new ArgumentNullException(nameof(сonditions));
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

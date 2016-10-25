@@ -12,7 +12,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("SleepAct")]
-    public class SleepAct : IAction
+    public class SleepAct : BaseActionObject
     {
         /// <summary>
         /// Время на сколько процесс должен заснуть
@@ -37,13 +37,6 @@ namespace Core.ConfigEntity.ActionObjects
 
             Delay = delay;
             MaxRandDelay = randDelay;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

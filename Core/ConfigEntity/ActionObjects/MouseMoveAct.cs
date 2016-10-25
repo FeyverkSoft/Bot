@@ -12,7 +12,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("MouseMoveAct")]
-    public class MouseMoveAct : IAction
+    public class MouseMoveAct : BaseActionObject
     {
         /// <summary>
         /// Смещение по оси X
@@ -46,13 +46,6 @@ namespace Core.ConfigEntity.ActionObjects
             Dx = dx;
             Dy = dy;
             ToObject = toObject;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

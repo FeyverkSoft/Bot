@@ -11,7 +11,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("SendMessageAct")]
-    public class SendMessageAct : IAction
+    public class SendMessageAct : BaseActionObject
     {
         /// <summary>
         /// Тип сообщения, например сообщение на емайл
@@ -46,13 +46,6 @@ namespace Core.ConfigEntity.ActionObjects
             Recipient = recipient;
             Body = body;
             IncludePrevRes = includePrevRes;
-        }
-
-        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
-        /// <returns>Строка, представляющая текущий объект.</returns>
-        public override string ToString()
-        {
-            return this.GetString();
         }
     }
 }

@@ -86,6 +86,7 @@
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppContext.cs" />
     <Compile Include="Attributes\LocDescriptionAttribute.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\BaseActionObject.cs" />
     <Compile Include="Helpers\ActionHelper.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
