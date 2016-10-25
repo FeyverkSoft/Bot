@@ -53,6 +53,10 @@
                     <HierarchicalDataTemplate DataType="{x:Type converter:IfList}" ItemsSource="{Binding List}">
                         <TextBlock Text="{Binding ListName}" />
                     </HierarchicalDataTemplate>
+
+                    <HierarchicalDataTemplate DataType="{x:Type actionObjects:BaseActionObject}" ItemsSource="{Binding}">
+                        <TextBlock Text="{localization:Localization KeyBinding={Binding}, IgnoreLoc=True}" />
+                    </HierarchicalDataTemplate>
                 </TreeView.Resources>
             </TreeView>
         </Grid>

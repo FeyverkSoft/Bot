@@ -14,11 +14,13 @@ namespace WpfExecutor.Extensions.Localization
     {
         private readonly string _keyFormat;
         private readonly string _valueFormat;
+        private readonly Boolean _ignore;
 
-        public BindingLocalizationConverter(string keyFormat, string valueFormat)
+        public BindingLocalizationConverter(string keyFormat, string valueFormat, Boolean ignore = false)
         {
             _keyFormat = keyFormat;
             _valueFormat = valueFormat;
+            _ignore = ignore;
         }
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -28,6 +30,9 @@ namespace WpfExecutor.Extensions.Localization
             var key = System.Convert.ToString(values[1] ?? "");
             if (!String.IsNullOrEmpty(_keyFormat))
                 key = String.Format(_keyFormat, key);
+
+            if (_ignore)
+                return key;
 
             var value = LocDescriptionProvider.Localize(values[1]) ?? LocalizationManager.Instance.Localize(key);
 

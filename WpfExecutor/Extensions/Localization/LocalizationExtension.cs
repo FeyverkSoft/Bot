@@ -29,7 +29,7 @@ namespace WpfExecutor.Extensions.Localization
         /// <summary>
         /// Ключ локализованной строки
         /// </summary>
-        public string Key { get; set; }
+        public String Key { get; set; }
 
         /// <summary>
         /// Привязка для ключа локализованной строки
@@ -37,9 +37,14 @@ namespace WpfExecutor.Extensions.Localization
         public Binding KeyBinding { get; set; }
 
         /// <summary>
+        /// Игнорировать, и не пытаться переводить, а просто вызывать обновление поля
+        /// </summary>
+        public Boolean IgnoreLoc { get; set; }
+
+        /// <summary>
         /// Форматирование ключа
         /// </summary>
-        public string KeyFormat { get; set; }
+        public String KeyFormat { get; set; }
 
         /// <summary>
         /// Аргументы форматируемой локализованный строки
@@ -97,7 +102,7 @@ namespace WpfExecutor.Extensions.Localization
 
                 var multiBinding = new MultiBinding
                 {
-                    Converter = new BindingLocalizationConverter(KeyFormat, ValueFormat),
+                    Converter = new BindingLocalizationConverter(KeyFormat, ValueFormat, IgnoreLoc),
                     ConverterParameter = Arguments,
                     Bindings = { listenerBinding, keyBinding }
                 };
@@ -113,6 +118,9 @@ namespace WpfExecutor.Extensions.Localization
             // Если задан ключ, то используем KeyLocalizationListener
             if (!String.IsNullOrEmpty(Key))
             {
+                if (IgnoreLoc)
+                    return String.Format(ValueFormat, Key);
+
                 var listener = new KeyLocalizationListener(Key, Arguments?.ToArray(), ValueFormat);
 
                 // Если локализация навешана на DependencyProperty объекта DependencyObject
