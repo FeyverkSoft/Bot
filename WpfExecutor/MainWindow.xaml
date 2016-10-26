@@ -26,6 +26,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition />
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid Background="{StaticResource Static.MenueBackground}">
@@ -221,6 +222,21 @@
                 </Style>
             </Border.Style>
         </Border>
+
+
+        <StatusBar Grid.Row="5">
+            <TextBlock Text="{Binding Status}"></TextBlock>
+            <StatusBar.Style>
+                <Style TargetType="StatusBar" BasedOn="{StaticResource StatusBar}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status}" Value="Run">
+                            <Setter Property="Foreground" Value="{StaticResource WindowStatusForeground}" />
+                            <Setter Property="Background" Value="{StaticResource Run}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StatusBar.Style>
+        </StatusBar>
     </Grid>
 </Window>
 

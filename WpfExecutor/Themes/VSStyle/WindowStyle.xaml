@@ -242,19 +242,18 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Resources>
-            <Style TargetType="{x:Type StatusBar}">
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="True">
-                        <Setter Property="Foreground" Value="{StaticResource WindowStatusForeground}" />
-                        <Setter Property="Background" Value="{StaticResource WindowBorderBrush}" />
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
-                        <Setter Property="Foreground" Value="{StaticResource WindowStatusForegroundInactive}" />
-                        <Setter Property="Background" Value="{StaticResource WindowBorderBrushInactive}" />
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Style.Resources>
+    </Style>
+
+    <Style x:Key="StatusBar" TargetType="{x:Type StatusBar}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource WindowStatusForeground}" />
+                <Setter Property="Background" Value="{StaticResource WindowBorderBrush}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource WindowStatusForegroundInactive}" />
+                <Setter Property="Background" Value="{StaticResource WindowBorderBrushInactive}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
