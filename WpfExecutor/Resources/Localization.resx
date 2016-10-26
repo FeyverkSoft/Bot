@@ -218,6 +218,9 @@
   <data name="Text_Help" xml:space="preserve">
     <value>Справка</value>
   </data>
+  <data name="Text_Logs" xml:space="preserve">
+    <value>Логи</value>
+  </data>
   <data name="Text_New" xml:space="preserve">
     <value>Новый</value>
   </data>

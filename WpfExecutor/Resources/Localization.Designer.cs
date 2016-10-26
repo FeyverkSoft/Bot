@@ -354,6 +354,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Логи.
+        /// </summary>
+        internal static string Text_Logs {
+            get {
+                return ResourceManager.GetString("Text_Logs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Новый.
         /// </summary>
         internal static string Text_New {

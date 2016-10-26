@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using WpfExecutor.Extensions.Localization;
 
@@ -11,7 +12,7 @@ namespace WpfExecutor.Extensions.Provider
     {
         private IEnumerable<CultureInfo> _cultures;
 
-        public object Localize(string key)
+        public object Localize(String key)
         {
             return Resources.Localization.ResourceManager.GetObject(key);
         }
@@ -21,7 +22,7 @@ namespace WpfExecutor.Extensions.Provider
         /// </summary>
         /// <param name="key">Ключ</param>
         /// <returns></returns>
-        public object Localize(object key)
+        public object Localize(Object key)
         {
             throw new System.NotImplementedException();
         }

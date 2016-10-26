@@ -25,7 +25,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20*" />
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="7*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -36,7 +36,8 @@
             </Grid.ColumnDefinitions>
             <!--Меню слева-->
             <Menu x:Name="Menu" Grid.Row="0" Background="Transparent">
-                <MenuItem Header="{localization:Localization Key=Text_Actions}" Height="{Binding ActualHeight, ElementName=Menu, Mode=OneWay}" Width="auto">
+                <MenuItem Header="{localization:Localization Key=Text_Actions}" Height="{Binding ActualHeight, ElementName=Menu, Mode=OneWay}" Width="auto" 
+                          Template="{StaticResource MenuItemControlTemplate}">
                     <!--Открыть-->
                     <MenuItem Header="{localization:Localization Text_Open}" Command="{Binding OpenCommand}">
                         <MenuItem.Icon>
@@ -64,7 +65,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="{localization:Localization Key=Text_Help}">
+                <MenuItem Template="{StaticResource MenuItemControlTemplate}" Header="{localization:Localization Key=Text_Help}">
                     <!--Справка-->
                     <MenuItem Header="{localization:Localization Text_Help}" Command="{Binding HelpCommand}">
                         <MenuItem.Icon>
@@ -79,7 +80,7 @@
             <!--Меню справа-->
             <Menu Grid.Column="1" HorizontalAlignment="Right"  Background="Transparent">
                 <!--Язык-->
-                <MenuItem ItemsSource="{Binding Source={x:Static localization:LocalizationManager.Instance}, Path=Cultures}" UsesItemContainerTemplate="True">
+                <MenuItem Template="{StaticResource MenuItemControlTemplate}" ItemsSource="{Binding Source={x:Static localization:LocalizationManager.Instance}, Path=Cultures}" UsesItemContainerTemplate="True">
                     <MenuItem.Icon>
                         <Image>
                             <Image.Source>
@@ -194,8 +195,6 @@
             <content:GenCanvas x:Name="GenCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></content:GenCanvas>
         </ScrollViewer>
 
-        <TextBox Grid.Row="4" Text="{Binding TextLog, Mode=OneWay}" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontSize="7pt" VerticalContentAlignment="Top"></TextBox>
-
         <!--Тень под шапкой-->
         <Border Grid.Row="2" BorderThickness="0,0,0,1">
             <Border.Style>
@@ -223,7 +222,17 @@
             </Border.Style>
         </Border>
 
+        <GridSplitter HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Top" 
+                      Height="5" ResizeDirection="Rows" Panel.ZIndex="5"
+                      Background="{StaticResource Focus.Border}" Grid.IsSharedSizeScope="True"/>
 
+        <TabControl Grid.Row="4" TabStripPlacement="Bottom" Margin="0,0,0, 5">
+            <TabItem Header="{localization:Localization Key=Text_Logs}">
+                <TextBox Text="{Binding TextLog, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
+                         IsReadOnly="True" FontSize="7pt" VerticalContentAlignment="Top"
+                         BorderThickness="0"></TextBox>
+            </TabItem>
+        </TabControl>
         <StatusBar Grid.Row="5">
             <TextBlock Text="{Binding Status}"></TextBlock>
             <StatusBar.Style>
@@ -237,9 +246,6 @@
                 </Style>
             </StatusBar.Style>
         </StatusBar>
-        <GridSplitter HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Top" 
-                      Height="3" ResizeDirection="Rows"
-                      Background="{StaticResource Focus.Border}" Grid.IsSharedSizeScope="True"/>
     </Grid>
 </Window>
 
