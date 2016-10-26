@@ -7,7 +7,7 @@
         xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
         xmlns:behaviors="clr-namespace:WpfConverters.Behaviors;assembly=WpfConverters"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=error:ExceptionViewModel}"
-        SizeToContent="Height" ResizeMode="CanResize" WindowStartupLocation="CenterScreen"
+        SizeToContent="Height" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         Icon="{StaticResource Icon}" Title="{localization:Localization Error}"
         MinWidth="500" MinHeight="100" Width="500"
         Style="{StaticResource WindowStyle}"
