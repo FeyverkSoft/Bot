@@ -101,7 +101,7 @@ namespace Core.ConfigEntity
         /// <param name="ver"></param>
         public static implicit operator Version(FileVersion ver)
         {
-            return new Version(ver.major, ver.minor, ver.build);
+            return new Version(ver.major, ver.minor, ver.build, 0);
         }
         /*
         /// <summary>

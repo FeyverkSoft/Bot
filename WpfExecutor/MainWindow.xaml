@@ -24,8 +24,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -194,7 +194,7 @@
             <content:GenCanvas x:Name="GenCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></content:GenCanvas>
         </ScrollViewer>
 
-        <TextBox Grid.Row="4" Text="{Binding TextLog, Mode=OneWay}" Height="100" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontSize="7pt"></TextBox>
+        <TextBox Grid.Row="4" Text="{Binding TextLog, Mode=OneWay}" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontSize="7pt" VerticalContentAlignment="Top"></TextBox>
 
         <!--Тень под шапкой-->
         <Border Grid.Row="2" BorderThickness="0,0,0,1">
@@ -237,6 +237,9 @@
                 </Style>
             </StatusBar.Style>
         </StatusBar>
+        <GridSplitter HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Top" 
+                      Height="3" ResizeDirection="Rows"
+                      Background="{StaticResource Focus.Border}" Grid.IsSharedSizeScope="True"/>
     </Grid>
 </Window>
 

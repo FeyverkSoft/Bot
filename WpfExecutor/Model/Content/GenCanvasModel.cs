@@ -63,6 +63,7 @@ namespace WpfExecutor.Model.Content
             if (propertyChangedEventArgs.PropertyName == nameof(Document.Instance))
             {
                 CommandConfig = CollectionViewSource.GetDefaultView(Document.Instance.DocumentItems.Actions);
+                OnPropertyChanged(nameof(ConfigVersion));
             }
         }
 

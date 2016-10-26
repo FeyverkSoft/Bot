@@ -61,6 +61,7 @@
     <Compile Include="Behaviors\TreeView.cs" />
     <Compile Include="Behaviors\TreeViewItem.cs" />
     <Compile Include="Controls\Impl\BaseControl.cs" />
+    <Compile Include="Controls\Impl\CustomTreeView.cs" />
     <Compile Include="Controls\Impl\DecimalUpDown.cs" />
     <Compile Include="Controls\Impl\DoubleUpDown.cs" />
     <Compile Include="Controls\Impl\Int32UpDown.cs" />
