@@ -10,6 +10,7 @@
         SizeToContent="Height" ResizeMode="CanResize" WindowStartupLocation="CenterScreen"
         Icon="{StaticResource Icon}" Title="{localization:Localization Error}"
         MinWidth="500" MinHeight="100" Width="500"
+        Style="{StaticResource WindowStyle}"
         MaxWidth="{x:Static SystemParameters.MaximizedPrimaryScreenWidth}"
         MaxHeight="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}">
     <Grid>

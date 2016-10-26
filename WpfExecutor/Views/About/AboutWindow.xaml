@@ -9,6 +9,7 @@
         mc:Ignorable="d" Icon="{StaticResource Icon}"
         d:DataContext="{d:DesignInstance Type={x:Type windows:AboutViewModel}}"
         Title="{localization:Localization Title_AboutWin}" 
+        Style="{StaticResource WindowStyle}"
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="0,0,0 5">
         <Grid>
@@ -75,7 +76,7 @@
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <Expander Grid.Row="3" Margin="13, 5" Header="{localization:Localization AboutWindow_AdditionalInfo}" Background="Transparent" Foreground="DimGray">
+            <Expander Grid.Row="3" Margin="13, 5" Header="{localization:Localization AboutWindow_AdditionalInfo}" Foreground="DimGray">
                 <TextBox IsReadOnly="True" Text="{Binding AboutWindowPackages, Mode=OneWay}" Background="{StaticResource Static.Background}" Foreground="DimGray" BorderThickness="0"></TextBox>
             </Expander>
             <Button Grid.Row="4" Content="{localization:Localization Close}" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsCancel="True" IsDefault="True" Command="Close" />

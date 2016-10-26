@@ -2,7 +2,12 @@
     x:Class="WpfExecutor.Themes.VSStyle.WindowStyle"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Color.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/Font.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
     <SolidColorBrush x:Key="TitleBarBackgroundBrush" Color="#EFEFF2" />
     <SolidColorBrush x:Key="WindowBorderBrush" Color="#007ACC" />
     <SolidColorBrush x:Key="WindowBorderBrushInactive" Color="#999999" />
@@ -65,7 +70,7 @@
                                     ShadowDepth="2"
                                     Direction="315"/>
                             </Border.Effect>
-                            <DockPanel   
+                            <DockPanel  x:Name="WinDockPanel"
                                 HorizontalAlignment="Stretch"
                                 Background="Transparent"
                                 VerticalAlignment="Stretch"
@@ -103,7 +108,7 @@
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center"
                                             Margin="4,0,0,0"
-                                            FontFamily="Segoe UI"
+                                            FontFamily="{StaticResource RobotoFont}"
                                             FontSize="12"
                                             Opacity="0.66"
                                             Text="{Binding Path=Title, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
@@ -167,7 +172,7 @@
                                         </Button>
                                     </Grid>
                                 </Border>
-                                <ContentPresenter />
+                                <ContentPresenter x:Name="ContentPresenter"/>
                             </DockPanel>
                         </Border>
                         <Line
@@ -175,7 +180,7 @@
                             x:Name="lnSizeNorth"
                             Stroke="Transparent"   
                             Cursor="SizeNS"
-                            X1="1" X2="{TemplateBinding ActualWidth}" Y1="1" Y2="1"
+                            X1="1" X2="{Binding ActualWidth, ElementName=ContentPresenter}" Y1="1" Y2="1"
                             StrokeThickness="3"
                             />
                         <Line
@@ -184,7 +189,10 @@
                             Stroke="Transparent"
                             VerticalAlignment="Bottom" 
                             Cursor="SizeNS"
-                            X1="1" X2="{TemplateBinding ActualWidth}" Y1="{TemplateBinding ActualHeight}" Y2="{TemplateBinding ActualHeight}"
+                            X1="1" 
+                            X2="{Binding ActualWidth, ElementName=ContentPresenter}" 
+                            Y1="{Binding ActualHeight, ElementName=ContentPresenter}" 
+                            Y2="{Binding ActualHeight, ElementName=ContentPresenter}"
                             StrokeThickness="3"
                             />
                         <Line
@@ -192,7 +200,10 @@
                             x:Name="lnSizeWest"
                             Stroke="Transparent"
                             Cursor="SizeWE"
-                            X1="1" X2="1" Y1="1" Y2="{TemplateBinding ActualHeight}"
+                            X1="1" 
+                            X2="1" 
+                            Y1="1" 
+                            Y2="{Binding ActualHeight, ElementName=ContentPresenter}"
                             StrokeThickness="3"
                             />
                         <Line
@@ -201,7 +212,10 @@
                             Stroke="Transparent"
                             HorizontalAlignment="Right" 
                             Cursor="SizeWE"
-                            X1="{TemplateBinding ActualWidth}" X2="{TemplateBinding ActualWidth}" Y1="1" Y2="{TemplateBinding ActualHeight}"
+                            X1="{Binding ActualWidth, ElementName=ContentPresenter}" 
+                            X2="{Binding ActualWidth, ElementName=ContentPresenter}" 
+                            Y1="1" 
+                            Y2="{Binding ActualHeight, ElementName=ContentPresenter}"
                             StrokeThickness="3"
                             />
                         <Rectangle MouseDown="OnSizeNorthWest" x:Name="rectSizeNorthWest" Cursor="SizeNWSE" Fill="Transparent" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" />
@@ -216,6 +230,13 @@
                         </Trigger>
                         <Trigger Property="IsActive" Value="False">
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{StaticResource WindowBorderBrushInactive}"/>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanMinimize">
+                            <Setter TargetName="MaxButton" Property="Visibility" Value="Hidden"></Setter>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="NoResize">
+                            <Setter TargetName="MaxButton" Property="Visibility" Value="Hidden"></Setter>
+                            <Setter TargetName="MinButton" Property="Visibility" Value="Hidden"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

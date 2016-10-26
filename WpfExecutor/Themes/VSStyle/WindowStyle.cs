@@ -51,8 +51,9 @@ namespace WpfExecutor.Themes.VSStyle
             {
                 sender.ForWindowFromTemplate(w =>
                 {
-                    if (w.WindowState == WindowState.Normal)
-                        DragSize(w.GetWindowHandle(), action);
+                    if (w.ResizeMode != ResizeMode.NoResize)
+                        if (w.WindowState == WindowState.Normal)
+                            DragSize(w.GetWindowHandle(), action);
                 });
             }
         }
@@ -82,7 +83,12 @@ namespace WpfExecutor.Themes.VSStyle
 
         void MaxButtonClick(object sender, RoutedEventArgs e)
         {
-            sender.ForWindowFromTemplate(w => w.WindowState = (w.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized);
+            sender.ForWindowFromTemplate(w =>
+            {
+                if (w.ResizeMode == ResizeMode.NoResize)
+                    return;
+                w.WindowState = (w.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+            });
         }
 
         void TitleBarMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

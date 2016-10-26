@@ -10,7 +10,8 @@
         xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance settings:CoreSettingViewModel}"
         Title="{localization:Localization CoreSettingWindow}" ResizeMode="NoResize"
-        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MinHeight="40" MinWidth="400"
+        WindowStyle="None" Style="{StaticResource WindowStyle}" MinHeight="40" MinWidth="400"
+        SizeToContent="WidthAndHeight"  WindowStartupLocation="CenterScreen"
         Icon="{StaticResource Icon}">
     <Grid Margin="5">
         <Grid.RowDefinitions>
