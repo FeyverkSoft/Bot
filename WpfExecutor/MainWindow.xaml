@@ -12,6 +12,8 @@
         xmlns:core="clr-namespace:Core.Core;assembly=Core"
         xmlns:content="clr-namespace:WpfExecutor.Views.Content"
         xmlns:behaviors="clr-namespace:WpfConverters.Behaviors;assembly=WpfConverters"
+        AllowsTransparency="true"
+        WindowStyle="None" Style="{StaticResource WindowStyle}"
         mc:Ignorable="d" Title="{localization:Localization Title_MainWin}" 
         Icon="{StaticResource Icon2}"
         d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF"
@@ -93,7 +95,8 @@
                             <MenuItem d:DataContext="{d:DesignInstance Type=globalization:CultureInfo}"
                                       CommandParameter="{Binding Converter={common:ValueConverter}}" IsCheckable="True"
                                       Header="{localization:Localization KeyBinding={Binding ThreeLetterISOLanguageName}, KeyFormat='Language_{0}'}"
-                                      Command="{Binding Source={x:Static localization:LocalizationManager.Instance}, Path=ChangeCultureCommand}">
+                                      Command="{Binding Source={x:Static localization:LocalizationManager.Instance}, Path=ChangeCultureCommand}"
+                                      Padding="5, 0">
                                 <MenuItem.IsChecked>
                                     <MultiBinding Converter="{common:EqualsConverter}" Mode="OneWay">
                                         <Binding Source="{x:Static localization:LocalizationManager.Instance}" Path="CurrentCulture" />
@@ -109,7 +112,7 @@
                 </MenuItem>
             </Menu>
         </Grid>
-        
+
         <!--Шапка-->
         <Grid Grid.Row="1" x:Name="HeaderGrid" Background="{StaticResource Static.MenueBackground}">
             <Grid.ColumnDefinitions>
@@ -117,7 +120,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="ControllStackPanel" Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
-               
+
                 <!--Выполнить-->
                 <Button Background="Transparent" Padding="2" Margin="0,2" BorderThickness="0" Command="{Binding RunCommand}">
                     <StackPanel Orientation="Horizontal">
@@ -167,13 +170,13 @@
                 </Button>
 
             </StackPanel>
-            <StackPanel  Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel  Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                 <!--Параметры-->
-                <Button Background="Transparent" Padding="2" Margin="0,2" BorderThickness="0" Command="{Binding SettingsCommand}" HorizontalAlignment="Right">
+                <Button Background="Transparent" Padding="2" Margin="5,0,0,2" BorderThickness="0" Command="{Binding SettingsCommand}" HorizontalAlignment="Right" Height="25" VerticalAlignment="Bottom">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{StaticResource Settings}" Height="21" Width="21" Stretch="Fill"/>
                         <!--Параметры-->
-                        <TextBlock VerticalAlignment="Center" Margin="0,0,0,1" Text="{localization:Localization Key=Text_Settings}" />
+                        <TextBlock VerticalAlignment="Center" Margin="4,0,6,1" Text="{localization:Localization Key=Text_Settings}" />
                     </StackPanel>
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">

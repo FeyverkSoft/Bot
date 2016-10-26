@@ -14,6 +14,7 @@
         <ResourceDictionary Source="pack://application:,,,/Themes/Font.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/ShadowEffect.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/Icons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/VSStyle/WindowStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <SolidColorBrush x:Key="Static.Background" Color="#FFFFFFFF" />
@@ -109,12 +110,6 @@
         </Setter>
     </Style>
 
-
-    <!-- MenuItem -->
-    <Style TargetType="{x:Type MenuItem}">
-        <Setter Property="Padding" Value="10 5 10 5"></Setter>
-        <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"/>
-    </Style>
 
     <!-- Image -->
     <Style TargetType="Image">
@@ -285,6 +280,8 @@
         <StackPanel IsItemsHost="True"/>
     </ItemsPanelTemplate>
     <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
+
+    <!-- TreeViewStyle -->
     <Style x:Key="TreeViewStyle" TargetType="{x:Type TreeView}">
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
