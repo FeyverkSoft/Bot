@@ -108,6 +108,7 @@
     <!-- Image -->
     <Style TargetType="Image">
         <Setter Property="Opacity" Value="1"></Setter>
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"></Setter>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.5"></Setter>
