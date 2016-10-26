@@ -238,6 +238,7 @@ namespace Core.Core
             {
                 Status = CoreStatus.Stop;
                 Log.WriteLine(ex, LogLevel.Error);
+                Print(ex);
                 throw;
             }
         }
