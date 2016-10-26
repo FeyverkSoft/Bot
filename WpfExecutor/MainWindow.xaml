@@ -38,6 +38,9 @@
             <Menu x:Name="Menu" Grid.Row="0" Background="Transparent">
                 <MenuItem Header="{localization:Localization Key=Text_Actions}" Height="{Binding ActualHeight, ElementName=Menu, Mode=OneWay}" Width="auto" 
                           Template="{StaticResource MenuItemControlTemplate}">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource MenuIcon}" />
+                    </MenuItem.Icon>
                     <!--Открыть-->
                     <MenuItem Header="{localization:Localization Text_Open}" Command="{Binding OpenCommand}">
                         <MenuItem.Icon>
@@ -66,6 +69,9 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Template="{StaticResource MenuItemControlTemplate}" Header="{localization:Localization Key=Text_Help}">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource HelpIcon}" />
+                    </MenuItem.Icon>
                     <!--Справка-->
                     <MenuItem Header="{localization:Localization Text_Help}" Command="{Binding HelpCommand}">
                         <MenuItem.Icon>
@@ -176,7 +182,7 @@
                 <!--Параметры-->
                 <Button Background="Transparent" Padding="2" Margin="5,0,0,2" BorderThickness="0" Command="{Binding SettingsCommand}" HorizontalAlignment="Right" Height="25" VerticalAlignment="Bottom">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{StaticResource Settings}" Height="21" Width="21" Stretch="Fill"/>
+                        <Image Source="{StaticResource SettingsIcon}" Height="21" Width="21" Stretch="Fill"/>
                         <!--Параметры-->
                         <TextBlock VerticalAlignment="Center" Margin="4,0,6,1" Text="{localization:Localization Key=Text_Settings}" />
                     </StackPanel>
@@ -233,7 +239,7 @@
                          BorderThickness="0"></TextBox>
             </TabItem>
         </TabControl>
-        <StatusBar Grid.Row="5">
+        <StatusBar Grid.Row="5" BorderThickness="0">
             <TextBlock Text="{Binding Status}"></TextBlock>
             <StatusBar.Style>
                 <Style TargetType="StatusBar" BasedOn="{StaticResource StatusBar}">
