@@ -237,6 +237,14 @@
                         <Trigger Property="ResizeMode" Value="NoResize">
                             <Setter TargetName="MaxButton" Property="Visibility" Value="Hidden"></Setter>
                             <Setter TargetName="MinButton" Property="Visibility" Value="Hidden"></Setter>
+                            <Setter TargetName="lnSizeNorth" Property="Cursor" Value="Arrow"></Setter>
+                            <Setter TargetName="lnSizeSouth" Property="Cursor" Value="Arrow"></Setter>
+                            <Setter TargetName="lnSizeWest" Property="Cursor" Value="Arrow"></Setter>
+                            <Setter TargetName="lnSizeEast" Property="Cursor" Value="Arrow"></Setter>
+                            <Setter TargetName="rectSizeNorthWest" Property="Cursor" Value="Arrow"></Setter>
+                            <Setter TargetName="rectSizeNorthEast" Property="Cursor" Value="Arrow"></Setter>
+                            <Setter TargetName="rectSizeSouthWest" Property="Cursor" Value="Arrow"></Setter>
+                            <Setter TargetName="rectSizeSouthEast" Property="Cursor" Value="Arrow"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
