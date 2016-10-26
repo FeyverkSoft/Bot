@@ -45,14 +45,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
-                    <!--
-                    7 is a magic number. By default Windows fits a maximized window with Margin
-                    7 7 7 7 to fill entire screen (WPF .Net 4.5). Larger numbers produce a gap
-                    between maximized window and screen edges; smaller numbers show parts of
-                    the window outside of the current monitor on multi-display computers.
-                    -->
-                    <Grid
-                        Margin="7"
+                    <Grid x:Name="MainWinGrid"
+                        Margin="0"
                         TextOptions.TextRenderingMode="ClearType"
                         TextOptions.TextFormattingMode="Display">
                         <Border
@@ -95,10 +89,12 @@
                                         <Image
                                             x:Name="Icon"
                                             Grid.Column="0"
+                                            
                                             Source="{Binding Path=Icon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 
                                             HorizontalAlignment="Right"
                                             Width="32"
                                             Height="32"
+                                            RenderOptions.BitmapScalingMode="HighQuality"
                                             MouseLeftButtonDown="IconMouseLeftButtonDown"
                                             />
                                         <TextBlock
@@ -216,6 +212,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_MaxButton_Path" Property="Data" Value="M0,3 H5 V8 H0 V3 M0,4 H5 M3,0 H8 V5 H7 M3,1 H8"/>
+                            <Setter TargetName="MainWinGrid" Property="Margin" Value="7"></Setter>
                         </Trigger>
                         <Trigger Property="IsActive" Value="False">
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{StaticResource WindowBorderBrushInactive}"/>

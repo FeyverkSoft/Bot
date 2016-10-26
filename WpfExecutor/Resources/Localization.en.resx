@@ -146,11 +146,17 @@ Third-party Fonts:
   <data name="CoreSettingWindow" xml:space="preserve">
     <value>Core settings</value>
   </data>
+  <data name="CoreSettingWindow_CoreSettings" xml:space="preserve">
+    <value>Core settings</value>
+  </data>
   <data name="CoreSettingWindow_DefaultCore" xml:space="preserve">
     <value>Use the default kernel</value>
   </data>
   <data name="CoreSettingWindow_LoadPlugin" xml:space="preserve">
     <value>Load plug-ins</value>
+  </data>
+  <data name="CoreSettingWindow_NotificationChannelSettings" xml:space="preserve">
+    <value>Notification channel settings</value>
   </data>
   <data name="CoreSettingWindow_SmtpHost" xml:space="preserve">
     <value>Smtp host</value>

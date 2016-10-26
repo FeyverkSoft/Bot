@@ -146,11 +146,17 @@
   <data name="CoreSettingWindow" xml:space="preserve">
     <value>Параметры ядра</value>
   </data>
+  <data name="CoreSettingWindow_CoreSettings" xml:space="preserve">
+    <value>Настройки ядра</value>
+  </data>
   <data name="CoreSettingWindow_DefaultCore" xml:space="preserve">
     <value>Использовать базовое ядро</value>
   </data>
   <data name="CoreSettingWindow_LoadPlugin" xml:space="preserve">
     <value>Загружать плагины</value>
+  </data>
+  <data name="CoreSettingWindow_NotificationChannelSettings" xml:space="preserve">
+    <value>Настройки каналов уведомлений</value>
   </data>
   <data name="CoreSettingWindow_SmtpHost" xml:space="preserve">
     <value>Smtp хост</value>

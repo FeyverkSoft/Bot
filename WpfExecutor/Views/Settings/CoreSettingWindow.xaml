@@ -10,49 +10,68 @@
         xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance settings:CoreSettingViewModel}"
         Title="{localization:Localization CoreSettingWindow}" ResizeMode="NoResize"
-        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MinHeight="150" MinWidth="400"
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MinHeight="40" MinWidth="400"
         Icon="{StaticResource Icon}">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <!-- Настройки каналов уведомлений -->
+        <Expander Grid.Row="0" Header="{localization:Localization Key=CoreSettingWindow_NotificationChannelSettings}" Margin="0,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <!-- SmtpPort -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPort}"></TextBlock>
+                <impl:Int32UpDown Grid.Row="0" Grid.Column="1" Margin="2" Padding="0, 1" Value="{Binding SmtpPort}"></impl:Int32UpDown>
 
-        <!-- SmtpPort -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPort}"></TextBlock>
-        <impl:Int32UpDown Grid.Row="0" Grid.Column="1" Margin="2" Padding="0, 1" Value="{Binding SmtpPort}"></impl:Int32UpDown>
+                <!-- SmtpHost -->
+                <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpHost}"></TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpHost}"/>
 
-        <!-- SmtpHost -->
-        <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpHost}"></TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpHost}"/>
+                <!-- SmtpLogin -->
+                <TextBlock Grid.Row="2" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpLogin}"></TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpLogin}"></TextBox>
 
-        <!-- SmtpLogin -->
-        <TextBlock Grid.Row="2" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpLogin}"></TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpLogin}"></TextBox>
+                <!-- SmtpPassword -->
+                <TextBlock Grid.Row="3" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPassword}"></TextBlock>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpPassword}"/>
+            </Grid>
+        </Expander>
 
-        <!-- SmtpPassword -->
-        <TextBlock Grid.Row="3" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPassword}"></TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpPassword}"/>
+        <!-- Настройки плагинов и ядра -->
+        <Expander Grid.Row="1" Header="{localization:Localization Key=CoreSettingWindow_CoreSettings}" Margin="0,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-        <!-- DefaultCore -->
-        <TextBlock Grid.Row="4" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_DefaultCore}"></TextBlock>
-        <CheckBox Grid.Row="4" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding DefaultCore}" IsEnabled="False" VerticalAlignment="Center"></CheckBox>
+                <!-- DefaultCore -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_DefaultCore}"></TextBlock>
+                <CheckBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding DefaultCore}" IsEnabled="False" VerticalAlignment="Center"></CheckBox>
 
-        <!-- LoadPlugin -->
-        <TextBlock Grid.Row="5" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_LoadPlugin}"></TextBlock>
-        <CheckBox Grid.Row="5" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding LoadPlugin}" VerticalAlignment="Center"></CheckBox>
+                <!-- LoadPlugin -->
+                <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_LoadPlugin}"></TextBlock>
+                <CheckBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding LoadPlugin}" VerticalAlignment="Center"></CheckBox>
+            </Grid>
+        </Expander>
 
-
-        <Button Grid.Row="6" Grid.ColumnSpan="2" Command="{Binding SaveCommand}" Margin="0, 2">
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding SaveCommand}" Margin="0, 2">
             <TextBlock Text="{localization:Localization Key=Text_Save}"></TextBlock>
         </Button>
     </Grid>

@@ -138,6 +138,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Настройки ядра.
+        /// </summary>
+        internal static string CoreSettingWindow_CoreSettings {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_CoreSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Использовать базовое ядро.
         /// </summary>
         internal static string CoreSettingWindow_DefaultCore {
@@ -152,6 +161,15 @@ namespace WpfExecutor.Resources {
         internal static string CoreSettingWindow_LoadPlugin {
             get {
                 return ResourceManager.GetString("CoreSettingWindow_LoadPlugin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Настройки каналов уведомлений.
+        /// </summary>
+        internal static string CoreSettingWindow_NotificationChannelSettings {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_NotificationChannelSettings", resourceCulture);
             }
         }
         

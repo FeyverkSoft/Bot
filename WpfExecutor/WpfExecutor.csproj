@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\DevConverter.cs" />
     <Compile Include="Converter\IfActionConverter.cs" />
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
@@ -93,6 +94,10 @@
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Themes\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Color.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -128,6 +128,7 @@
     <Compile Include="Converters\Format\FormatTimeSpanConverter.cs" />
     <Compile Include="Converters\Format\HorzontalLineConverter.cs" />
     <Compile Include="Converters\Format\InlineStringConverter.cs" />
+    <Compile Include="Converters\Format\TreeViewLineConverter.cs" />
     <Compile Include="Converters\Format\VerticalLineConverter.cs" />
     <Compile Include="Extensions\Commands\CommandManagerHelper.cs" />
     <Compile Include="Extensions\Commands\DelegateCommand.cs" />
