@@ -235,6 +235,7 @@
         <TabControl Grid.Row="4" TabStripPlacement="Bottom" Margin="0,0,0, 5">
             <TabItem Header="{localization:Localization Key=Text_Logs}">
                 <TextBox Text="{Binding TextLog, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
+                         HorizontalScrollBarVisibility="Auto"
                          IsReadOnly="True" FontSize="7pt" VerticalContentAlignment="Top"
                          BorderThickness="0"></TextBox>
             </TabItem>

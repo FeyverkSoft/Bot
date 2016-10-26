@@ -216,9 +216,12 @@ namespace Core.Core
                                 var ifRes = executor.Invoke(action.SubActions, ref _isAbort, res);
                                 if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
                                 {
-                                    return InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult
-                                        ? (action as IfAction).Actions
-                                        : (action as IfAction).FailActions, res);
+                                    foreach (var subAct in action.SubActions.Cast<IfAction>())
+                                    {
+                                        res = InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult ?
+                                            subAct.Actions : subAct.FailActions, res);
+                                    }
+                                    return res;
                                 }
                                 IsAbort = true;
                                 throw new Exception("Incorrect If>BooleanExecutorResult!");
