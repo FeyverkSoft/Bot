@@ -55,10 +55,6 @@ namespace WpfExecutor
         private void CurrentDomain_FirstChanceException(object sender, FirstChanceExceptionEventArgs e)
         {
             Log.WriteLine(e.Exception, LogLevel.Error);
-            Dispatcher.Invoke(() =>
-            {
-                ExWindow.ShowDialog(new ExceptionViewModel(e.Exception, e.Exception?.Message));
-            });
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
