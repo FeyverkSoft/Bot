@@ -6,13 +6,22 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Input;
 using Core.ConfigEntity;
+using WpfConverters.Extensions.Commands;
 using WpfExecutor.Extensions.Localization;
 
 namespace WpfExecutor.Model.Content
 {
     public sealed class GenCanvasModel : BaseViewModel
     {
+        public object SelectedObject { get; set; }
+
+        /// <summary>
+        /// Команда добавить
+        /// </summary>
+        private ICommand _addCommand;
+
         /// <summary>
         /// Список комманд бота
         /// </summary>
@@ -54,6 +63,22 @@ namespace WpfExecutor.Model.Content
             if (propertyChangedEventArgs.PropertyName == nameof(Document.Instance))
             {
                 CommandConfig = CollectionViewSource.GetDefaultView(Document.Instance.DocumentItems.Actions);
+            }
+        }
+
+        /// <summary>
+        /// Комманда добавить
+        /// </summary>
+        public ICommand AddCommand => _addCommand ?? (_addCommand = new DelegateCommand<Object>(AddCommandMethod));
+        /// <summary>
+        /// Имплементация метода добавления комманды боту
+        /// </summary>
+        void AddCommandMethod(Object o)
+        {
+            var temp = o ?? SelectedObject;
+            if (temp != null)
+            {
+                
             }
         }
     }

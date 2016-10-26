@@ -209,6 +209,9 @@ Third-party Fonts:
   <data name="Text_Actions" xml:space="preserve">
     <value>Actions</value>
   </data>
+  <data name="Text_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="Text_Exit" xml:space="preserve">
     <value>Exit</value>
   </data>

@@ -13,6 +13,8 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
              xmlns:behaviors="clr-namespace:WpfConverters.Behaviors;assembly=WpfConverters"
+             xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
+             xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type={x:Type content:GenCanvasModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -24,11 +26,12 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="{Binding ConfigVersion}"></Label>
 
-            <TreeView ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+            <impl:CustomTreeView ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                   ScrollViewer.VerticalScrollBarVisibility="Disabled"   behaviors:ScrollViewer.AttachScroll="True"
                   ItemContainerStyle="{StaticResource GTreeView}" Grid.Row="1" ItemsSource="{Binding CommandConfig}"
-                  ItemsPanel="{DynamicResource ItemsPanelTemplate}" Style="{DynamicResource TreeViewStyle}">
-                <TreeView.Resources>
+                  ItemsPanel="{DynamicResource ItemsPanelTemplate}" Style="{DynamicResource TreeViewStyle}"
+                  x:Name="CustomTreeView" SelectedObject="{Binding SelectedObject, Mode=Default}">
+                <impl:CustomTreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type configEntity:Config}" ItemsSource="{Binding Actions}">
                         <TextBlock Text="{localization:Localization KeyBinding={Binding Path=Actions}}" />
                     </HierarchicalDataTemplate>
@@ -66,8 +69,21 @@
                     <HierarchicalDataTemplate DataType="{x:Type actionObjects:BaseActionObject}" ItemsSource="{Binding}">
                         <TextBlock Text="{localization:Localization KeyBinding={Binding}, IgnoreLoc=True}" />
                     </HierarchicalDataTemplate>
-                </TreeView.Resources>
-            </TreeView>
+                </impl:CustomTreeView.Resources>
+                <TreeView.ContextMenu>
+                    <ContextMenu HasDropShadow="True">
+                        <ContextMenu.Items>
+                            <!--Добабить комманду к исполнению боту -->
+                            <MenuItem Header="{localization:Localization Key=Text_Add}" Command="{Binding AddCommand}"
+                                      CommandParameter="{Binding SelectedObject, ElementName=CustomTreeView, Converter={common:ValueConverter}}">
+                                <MenuItem.Icon>
+                                    <Image Source="{StaticResource AddIcon}" Width="16" Height="16" Stretch="Fill" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </ContextMenu.Items>
+                    </ContextMenu>
+                </TreeView.ContextMenu>
+            </impl:CustomTreeView>
         </Grid>
     </Border>
 </UserControl>
