@@ -7,6 +7,7 @@
     <SolidColorBrush x:Key="Static.Background" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="Static.MenueBackground" Color="WhiteSmoke" />
     <SolidColorBrush x:Key="MouseOver.Background" Color="#3300A2FF" />
+    <SolidColorBrush x:Key="MouseOver.FullBackground" Color="#FF00A2FF" />
     <SolidColorBrush x:Key="Static.Foreground" Color="#FF121212" />
     <SolidColorBrush x:Key="Static.Border" Color="#FFABADB3" />
     <SolidColorBrush x:Key="MouseOver.Border" Color="#FF7EB4EA" />
