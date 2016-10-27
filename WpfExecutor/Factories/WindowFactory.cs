@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.ConfigEntity;
 using WpfExecutor.Model.About;
+using WpfExecutor.Model.Add;
 using WpfExecutor.Model.Settings;
 using WpfExecutor.Views.About;
+using WpfExecutor.Views.Add;
 using WpfExecutor.Views.Settings;
 
 namespace WpfExecutor.Factories
@@ -31,6 +28,17 @@ namespace WpfExecutor.Factories
         {
             var viewModel = new CoreSettingViewModel();
             var window = new CoreSettingWindow(viewModel);
+            return window;
+        }
+
+        /// <summary>
+        /// Окно добавления действия
+        /// </summary>
+        /// <returns></returns>
+        public static AddActionWindow CreateAddActionWindow()
+        {
+            var viewModel = new AddActionViewModel();
+            var window = new AddActionWindow(viewModel);
             return window;
         }
     }

@@ -65,6 +65,7 @@
     <Compile Include="Converter\IfActionConverter.cs" />
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="Model\Add\AddActionViewModel.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
     <Compile Include="Model\Settings\CoreSettingViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -84,6 +85,9 @@
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Error\ExceptionViewModel.cs" />
+    <Compile Include="Views\Add\AddActionWindow.xaml.cs">
+      <DependentUpon>AddActionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Content\GenCanvas.xaml.cs">
       <DependentUpon>GenCanvas.xaml</DependentUpon>
     </Compile>
@@ -151,6 +155,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\About\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Add\AddActionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
