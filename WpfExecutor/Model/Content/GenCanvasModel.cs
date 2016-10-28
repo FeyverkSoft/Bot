@@ -27,30 +27,11 @@ namespace WpfExecutor.Model.Content
         /// </summary>
         private ICollectionView _commandConfig;
 
-        /// <summary>
-        /// Отфильтрованное предстваление
-        /// </summary>
-        public ICollectionView CommandConfig
-        {
-            get { return _commandConfig; }
-            set
-            {
-                if (Equals(value, _commandConfig)) return;
-                _commandConfig = value;
-                /*if (_commandConfig != null)
-                    _commandConfig.Filter =;*/
-                OnPropertyChanged();
-            }
-        }
-        /// <summary>
-        /// Версия файла конфигурации
-        /// </summary>
-        public String ConfigVersion => $"{LocalizationManager.GetString("ConfigVersion")}: {Document.Instance.DocumentItems.BotVer}";
+        public Config[] CommandConfig => new[] { Document.Instance.DocumentItems };
 
         public GenCanvasModel()
         {
             StaticPropertyChanged += OnPropertyChanged;
-            CommandConfig = CollectionViewSource.GetDefaultView(Document.Instance.DocumentItems.Actions);
         }
 
         /// <summary>
@@ -62,8 +43,7 @@ namespace WpfExecutor.Model.Content
         {
             if (propertyChangedEventArgs.PropertyName == nameof(Document.Instance))
             {
-                CommandConfig = CollectionViewSource.GetDefaultView(Document.Instance.DocumentItems.Actions);
-                OnPropertyChanged(nameof(ConfigVersion));
+                OnPropertyChanged(nameof(CommandConfig));
             }
         }
 
@@ -79,7 +59,7 @@ namespace WpfExecutor.Model.Content
             var temp = o ?? SelectedObject;
             if (temp != null)
             {
-                
+
             }
         }
     }

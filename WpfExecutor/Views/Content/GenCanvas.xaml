@@ -21,20 +21,24 @@
     <Border BorderThickness="0.5" BorderBrush="Gray">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="{Binding ConfigVersion}"></Label>
 
             <impl:CustomTreeView ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                   ScrollViewer.VerticalScrollBarVisibility="Disabled"   behaviors:ScrollViewer.AttachScroll="True"
-                  ItemContainerStyle="{StaticResource GTreeView}" Grid.Row="1" ItemsSource="{Binding CommandConfig}"
+                  ItemContainerStyle="{StaticResource GTreeView}" ItemsSource="{Binding CommandConfig}"
                   ItemsPanel="{DynamicResource ItemsPanelTemplate}" Style="{DynamicResource TreeViewStyle}"
                   x:Name="CustomTreeView" SelectedObject="{Binding SelectedObject, Mode=Default}">
                 <impl:CustomTreeView.Resources>
-                    <HierarchicalDataTemplate DataType="{x:Type configEntity:Config}" ItemsSource="{Binding Actions}">
-                        <TextBlock Text="{localization:Localization KeyBinding={Binding Path=Actions}}" />
+
+                    <HierarchicalDataTemplate DataType="{x:Type configEntity:Config}" ItemsSource="{Binding Actions, Converter={common:ValueConverter}}">
+                        <TextBlock>
+                            <TextBlock Text="{localization:Localization Key=ConfigVersion}"/>
+                            <TextBlock Text=": "/>
+                            <TextBlock Text="{Binding BotVer}"/>
+                        </TextBlock>
                     </HierarchicalDataTemplate>
+
                     <HierarchicalDataTemplate DataType="{x:Type configEntity:BotAction}" ItemsSource="{Binding SubActions}">
                         <HierarchicalDataTemplate.ItemContainerStyle>
                             <Style TargetType="TreeViewItem" BasedOn="{StaticResource GTreeView}">
@@ -47,6 +51,7 @@
                         </HierarchicalDataTemplate.ItemContainerStyle>
                         <TextBlock Text="{localization:Localization KeyBinding={Binding Path=ActionType}}"/>
                     </HierarchicalDataTemplate>
+
                     <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
                         <TextBlock Text="{localization:Localization KeyBinding={Binding}}" />
                     </HierarchicalDataTemplate>
