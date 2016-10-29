@@ -6,6 +6,7 @@ using Core;
 using Core.ConfigEntity;
 using Core.Core;
 using LogWrapper;
+using LogWrapper.Helpers;
 using Microsoft.Win32;
 using WpfConverters.Extensions;
 using WpfConverters.Extensions.Commands;
@@ -63,6 +64,9 @@ namespace WpfExecutor.Model
 
         public CoreStatus Status => _core.Status;
 
+        /// <summary>
+        /// Логи бота
+        /// </summary>
         public String TextLog
         {
             get { return _textLog; }
@@ -73,6 +77,8 @@ namespace WpfExecutor.Model
             }
         }
 
+        public String Json => Document.Instance.DocumentItems.ToJson(typeName: true);
+
         public ICommand AboutCommand => _aboutCommand ?? (_aboutCommand = new DelegateCommand(About));
 
         public MainWindowModel(String[] args)
@@ -80,11 +86,19 @@ namespace WpfExecutor.Model
             Document.CreateInstance(new Config());
             _core = AppContext.Get<IExecutiveCore>();
             _core.OnPrintMessageEvent += (message) => TextLog += $"{Environment.NewLine}{message}";
-            _core.PropertyChanged +=(sender, e) => OnPropertyChanged(e?.PropertyName);
+            _core.PropertyChanged += (sender, e) => OnPropertyChanged(e?.PropertyName);
             if (args?.Length == 1 && File.Exists(args[0]))
             {
                 Document.CreateInstance(ConfigReaderFactory.Get<Config>().Load(args[0]), args[0]);
             }
+
+            StaticPropertyChanged += (sender, eventArgs) =>
+            {
+                if (eventArgs.PropertyName == nameof(Document.Instance))
+                {
+                    OnPropertyChanged(nameof(Json));
+                }
+            };
         }
 
         private void About()
@@ -195,6 +209,6 @@ namespace WpfExecutor.Model
             window.ShowDialog();
         }
 
-        public ICommand HelpCommand => _helpCommand ?? (_helpCommand = new DelegateCommand(()=> {throw new NotImplementedException("Справка еще не реализована");}));
+        public ICommand HelpCommand => _helpCommand ?? (_helpCommand = new DelegateCommand(() => { throw new NotImplementedException("Справка еще не реализована"); }));
     }
 }

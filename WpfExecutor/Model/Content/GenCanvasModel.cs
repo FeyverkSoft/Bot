@@ -59,7 +59,16 @@ namespace WpfExecutor.Model.Content
             var temp = o ?? SelectedObject;
             if (temp != null)
             {
-
+                switch (temp.GetType().Name)
+                {
+                    case nameof(Config):
+                        //отображаем окно для добавления IBotAction в корень, последним элементом
+                        //потом надо будет придумать как сделать выбор места
+                        break;
+                    case nameof(BotAction):
+                        //Добавляем поддействие IAction в действие
+                        break;
+                }
             }
         }
     }

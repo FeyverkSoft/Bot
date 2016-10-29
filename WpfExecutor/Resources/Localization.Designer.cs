@@ -354,6 +354,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Json.
+        /// </summary>
+        internal static string Text_Json {
+            get {
+                return ResourceManager.GetString("Text_Json", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Логи.
         /// </summary>
         internal static string Text_Logs {

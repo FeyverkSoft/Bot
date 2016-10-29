@@ -218,6 +218,9 @@ Third-party Fonts:
   <data name="Text_Help" xml:space="preserve">
     <value>Help</value>
   </data>
+  <data name="Text_Json" xml:space="preserve">
+    <value>Json</value>
+  </data>
   <data name="Text_Logs" xml:space="preserve">
     <value>Log</value>
   </data>

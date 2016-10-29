@@ -239,6 +239,12 @@
                          IsReadOnly="True" FontSize="7pt" VerticalContentAlignment="Top"
                          BorderThickness="0"></TextBox>
             </TabItem>
+            <TabItem Header="{localization:Localization Key=Text_Json}">
+                <TextBox Text="{Binding Json, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
+                         HorizontalScrollBarVisibility="Auto"
+                         IsReadOnly="True" FontSize="9pt" VerticalContentAlignment="Top"
+                         BorderThickness="0"></TextBox>
+            </TabItem>
         </TabControl>
         <StatusBar Grid.Row="5" BorderThickness="0">
             <TextBlock Text="{Binding Status}"></TextBlock>
