@@ -10,6 +10,7 @@ using System.Windows.Input;
 using Core.ConfigEntity;
 using WpfConverters.Extensions.Commands;
 using WpfExecutor.Extensions.Localization;
+using WpfExecutor.Factories;
 
 namespace WpfExecutor.Model.Content
 {
@@ -21,11 +22,6 @@ namespace WpfExecutor.Model.Content
         /// Команда добавить
         /// </summary>
         private ICommand _addCommand;
-
-        /// <summary>
-        /// Список комманд бота
-        /// </summary>
-        private ICollectionView _commandConfig;
 
         public Config[] CommandConfig => new[] { Document.Instance.DocumentItems };
 
@@ -67,6 +63,8 @@ namespace WpfExecutor.Model.Content
                         break;
                     case nameof(BotAction):
                         //Добавляем поддействие IAction в действие
+                        var winF = WindowFactory.CreateAddActionWindow();
+                        var res = winF.ShowDialog();
                         break;
                 }
             }

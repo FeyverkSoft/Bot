@@ -128,6 +128,12 @@
 Сторонние Шрифты:
 	Roboto (Apache License 2.0) / https://github.com/google/roboto</value>
   </data>
+  <data name="AddActionWindow" xml:space="preserve">
+    <value>Создать действие</value>
+  </data>
+  <data name="AddActionWindow_ActionType" xml:space="preserve">
+    <value>Тип действия</value>
+  </data>
   <data name="CloseMessage" xml:space="preserve">
     <value>Вы действительно хотите выйти из программы?</value>
   </data>

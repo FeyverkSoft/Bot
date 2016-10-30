@@ -40,35 +40,26 @@
                     </HierarchicalDataTemplate>
 
                     <HierarchicalDataTemplate DataType="{x:Type configEntity:BotAction}" ItemsSource="{Binding SubActions}">
-                        <HierarchicalDataTemplate.ItemContainerStyle>
-                            <Style TargetType="TreeViewItem" BasedOn="{StaticResource GTreeView}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsCurrent}" Value="True">
-                                        <Setter Property="Background" Value="{StaticResource Focus.Border}"></Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </HierarchicalDataTemplate.ItemContainerStyle>
-                        <TextBlock Text="{localization:Localization KeyBinding={Binding Path=ActionType}}"/>
+                        <TextBlock Text="{localization:Localization KeyBinding={Binding Path=ActionType}}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                                            <Setter Property="Foreground" Value="{StaticResource Run}"></Setter>
+                                            <Setter Property="FontWeight" Value="Bold"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
                     </HierarchicalDataTemplate>
 
                     <HierarchicalDataTemplate DataType="{x:Type actionObjects:LoopAct}" ItemsSource="{Binding Actions}">
                         <TextBlock Text="{localization:Localization KeyBinding={Binding}}" />
                     </HierarchicalDataTemplate>
 
-                    <HierarchicalDataTemplate DataType="{x:Type actionObjects:IfAction}">
-                        <HierarchicalDataTemplate.ItemsSource>
-                            <Binding Converter="{converter:IfActionConverter}"></Binding>
-                        </HierarchicalDataTemplate.ItemsSource>
-                        <TextBlock Text="{Binding}" />
-                    </HierarchicalDataTemplate>
-
                     <HierarchicalDataTemplate DataType="{x:Type configEntity:ListBotAction}" ItemsSource="{Binding}">
                         <TextBlock Text="{Binding}" />
-                    </HierarchicalDataTemplate>
-
-                    <HierarchicalDataTemplate DataType="{x:Type converter:IfList}" ItemsSource="{Binding List}">
-                        <TextBlock Text="{Binding ListName}" />
                     </HierarchicalDataTemplate>
 
                     <HierarchicalDataTemplate DataType="{x:Type actionObjects:BaseActionObject}" ItemsSource="{Binding}">

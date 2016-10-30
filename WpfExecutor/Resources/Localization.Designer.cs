@@ -84,6 +84,24 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Создать действие.
+        /// </summary>
+        internal static string AddActionWindow {
+            get {
+                return ResourceManager.GetString("AddActionWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип действия.
+        /// </summary>
+        internal static string AddActionWindow_ActionType {
+            get {
+                return ResourceManager.GetString("AddActionWindow_ActionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите выйти из программы?.
         /// </summary>
         internal static string CloseMessage {
