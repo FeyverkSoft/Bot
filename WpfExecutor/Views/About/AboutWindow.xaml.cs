@@ -11,6 +11,11 @@ namespace WpfExecutor.Views.About
         public AboutWindow(AboutViewModel model)
         {
             InitializeComponent();
+            model.Close += (sender, b) =>
+            {
+                DialogResult = b;
+                Close();
+            };
             DataContext = model;
         }
     }

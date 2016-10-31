@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using WpfConverters.Extensions.Commands;
 
 namespace WpfExecutor.Model
 {
@@ -15,6 +17,15 @@ namespace WpfExecutor.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             StaticPropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event EventHandler<Boolean?> Close;
+        private ICommand _closeCommand;
+        public ICommand CloseCommand => _closeCommand ?? (_closeCommand = new DelegateCommand<Boolean?>(OnClose));
+
+        private void OnClose(Boolean? b)
+        {
+            Close?.Invoke(this, b);
         }
     }
 }

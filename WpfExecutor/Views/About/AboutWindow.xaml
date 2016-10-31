@@ -79,7 +79,7 @@
             <Expander Grid.Row="3" Margin="13, 5" Header="{localization:Localization AboutWindow_AdditionalInfo}" Foreground="DimGray">
                 <TextBox IsReadOnly="True" Text="{Binding AboutWindowPackages, Mode=OneWay}" Background="{StaticResource Static.Background}" Foreground="DimGray" BorderThickness="0"></TextBox>
             </Expander>
-            <Button Grid.Row="4" Content="{localization:Localization Close}" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsCancel="True" IsDefault="True" Command="Close" />
+            <Button Grid.Row="4" Content="{localization:Localization Text_Close}" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsCancel="True" IsDefault="True" Command="{Binding CloseCommand}" />
         </Grid>
     </Grid>
 </Window>

@@ -23,6 +23,11 @@ namespace WpfExecutor.Views.Add
         public AddActionWindow(AddActionViewModel model)
         {
             InitializeComponent();
+            model.Close += (sender, b) =>
+             {
+                 DialogResult = b;
+                 Close();
+             };
             DataContext = model;
         }
     }
