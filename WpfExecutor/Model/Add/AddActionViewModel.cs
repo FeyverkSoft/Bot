@@ -21,20 +21,28 @@ namespace WpfExecutor.Model.Add
         /// </summary>
         private static readonly Dictionary<Type, List<PropertyInfo>> Props = new Dictionary<Type, List<PropertyInfo>>();
 
-        private Tuple<String, Object> _currentType;
         private List<PropModel> _propsList;
+
+        public Boolean IsSupported
+        {
+            get { return _isSupported; }
+            set
+            {
+                _isSupported = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Текущий выбранный тип действия
         /// </summary>
-        public Tuple<String, Object> CurrentType
+        private ActionType CurrentActionType { get; set; }
+
+        public AddActionViewModel(ActionType actionType)
         {
-            get { return _currentType; }
-            set
-            {
-                _currentType = value;
-                Refresh();
-            }
+            IsSupported = true;
+            CurrentActionType = actionType;
+            Refresh();
         }
 
         public List<PropModel> PropsList
@@ -49,9 +57,10 @@ namespace WpfExecutor.Model.Add
 
         private void Refresh()
         {
-            var currentAct = ActionFactory.Get((ActionType)CurrentType.Item2);
+            var currentAct = ActionFactory.Get(CurrentActionType);
             if (currentAct != null)
             {
+                IsSupported = true;
                 var type = currentAct.GetType();
                 if (!Props.ContainsKey(type))
                 {
@@ -74,6 +83,7 @@ namespace WpfExecutor.Model.Add
             }
             else
             {
+                IsSupported = false;
                 PropsList = new List<PropModel>();
             }
         }
@@ -82,13 +92,15 @@ namespace WpfExecutor.Model.Add
         /// Комманда добавить
         /// </summary>
         private ICommand _addCommand;
+
+        private bool _isSupported;
         public ICommand AddCommand => _addCommand ?? (_addCommand = new DelegateCommand(AddCommandMethod));
         /// <summary>
         /// Реализация комманды добавить
         /// </summary>
         private void AddCommandMethod()
         {
-
+            CloseCommand?.Execute(true);
         }
     }
 }

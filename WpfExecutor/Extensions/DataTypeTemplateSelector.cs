@@ -13,7 +13,7 @@ namespace WpfExecutor.Extensions
 {
     public class DataTypeTemplateSelector : DataTemplateSelector
     {
-        private IEnumerable<Type> _dataTypeControls;
+        private static IEnumerable<Type> _dataTypeControls;
 
         private IEnumerable<Type> DataTypeControls
         {

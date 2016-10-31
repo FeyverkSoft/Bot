@@ -110,7 +110,7 @@ namespace WpfExecutor.Model
         /// <summary>
         /// Команда закрытия
         /// </summary>
-        public ICommand CloseCommand => _closeCommand ?? (_closeCommand = new DelegateCommand(CloseCommandMethod));
+        public new ICommand CloseCommand => _closeCommand ?? (_closeCommand = new DelegateCommand(CloseCommandMethod));
 
         private void CloseCommandMethod()
         {

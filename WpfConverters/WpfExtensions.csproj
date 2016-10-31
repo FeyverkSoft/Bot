@@ -95,6 +95,7 @@
     <Compile Include="Converters\Common\ListOfConverter.cs" />
     <Compile Include="Converters\Common\LogicalAndConverter.cs" />
     <Compile Include="Converters\Common\LogicalOrConverter.cs" />
+    <Compile Include="Converters\Common\TupleConverter.cs" />
     <Compile Include="Converters\Common\LowerCaseConverter.cs" />
     <Compile Include="Converters\Common\MoreOrEqualConverter.cs" />
     <Compile Include="Converters\Common\MoreThenConverter.cs" />

@@ -291,6 +291,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Не поддерживается.
+        /// </summary>
+        internal static string NotSupported {
+            get {
+                return ResourceManager.GetString("NotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите сохранить изменения?.
         /// </summary>
         internal static string SaveCommandMessage {

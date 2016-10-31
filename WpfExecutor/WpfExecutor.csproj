@@ -65,6 +65,12 @@
     <Compile Include="Control\Int32Control.xaml.cs">
       <DependentUpon>Int32Control.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ESearchParamControl.xaml.cs">
+      <DependentUpon>ESearchParamControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\KeyCodeControl.xaml.cs">
+      <DependentUpon>KeyCodeControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\Int64Control.xaml.cs">
       <DependentUpon>Int64Control.xaml</DependentUpon>
     </Compile>
@@ -79,6 +85,7 @@
     <Compile Include="Extensions\DataTypeTemplateSelector.cs" />
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="Model\Add\AddBotActionModel.cs" />
     <Compile Include="Model\Add\AddActionViewModel.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
     <Compile Include="Model\PropModel.cs" />
@@ -100,6 +107,9 @@
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Error\ExceptionViewModel.cs" />
+    <Compile Include="Views\Add\AddBotActionWindow.xaml.cs">
+      <DependentUpon>AddBotActionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Add\AddActionWindow.xaml.cs">
       <DependentUpon>AddActionWindow.xaml</DependentUpon>
     </Compile>
@@ -113,6 +123,14 @@
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Control\Int32Control.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ESearchParamControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\KeyCodeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -192,6 +210,10 @@
     <Page Include="Views\About\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Add\AddBotActionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Add\AddActionWindow.xaml">
       <SubType>Designer</SubType>

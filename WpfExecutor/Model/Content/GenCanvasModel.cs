@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Data;
 using System.Windows.Input;
 using Core.ConfigEntity;
 using WpfConverters.Extensions.Commands;
-using WpfExecutor.Extensions.Localization;
 using WpfExecutor.Factories;
+using WpfExecutor.Model.Add;
 
 namespace WpfExecutor.Model.Content
 {
@@ -58,13 +52,27 @@ namespace WpfExecutor.Model.Content
                 switch (temp.GetType().Name)
                 {
                     case nameof(Config):
-                        //отображаем окно для добавления IBotAction в корень, последним элементом
-                        //потом надо будет придумать как сделать выбор места
+                        {
+                            //отображаем окно для добавления IBotAction в корень, последним элементом
+                            //потом надо будет придумать как сделать выбор места
+                            var winF = WindowFactory.CreateAddBotActionWindow();
+                            if (winF.ShowDialog() == true)
+                            {
+                                var mod = winF.DataContext as AddBotActionModel;
+                                mod = mod;
+                            }
+                        }
                         break;
                     case nameof(BotAction):
-                        //Добавляем поддействие IAction в действие
-                        var winF = WindowFactory.CreateAddActionWindow();
-                        var res = winF.ShowDialog();
+                        {
+                            //Добавляем поддействие IAction в действие
+                            var winF = WindowFactory.CreateAddActionWindow(((BotAction)temp).ActionType);
+                            if (winF.ShowDialog() == true)
+                            {
+                                var mod = winF.DataContext as AddActionViewModel;
+                                mod = mod;
+                            }
+                        }
                         break;
                 }
             }

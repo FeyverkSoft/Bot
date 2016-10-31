@@ -21,27 +21,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{localization:Localization Key=AddActionWindow_ActionType}" Margin="0,0,5, 0"/>
-        <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                  ItemsSource="{Binding Source={x:Type configEntity:ActionType}, Converter={converter:EnumConverter}}"
-                  SelectedValue="{Binding CurrentType}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Item1}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-
-        <DataGrid Margin="-4, 10,0,0" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" HeadersVisibility="None" 
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{localization:Localization Key=NotSupported}"
+                   Visibility="{Binding IsSupported, Converter={common:InverseBooleanToVisibilityConverter}}"
+                   FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
+        
+        
+        <DataGrid Margin="-4, 10,0,0" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" HeadersVisibility="None" 
                   AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="Cell"
-                  Background="Transparent" BorderThickness="0" ColumnWidth="auto" MaxColumnWidth="250"
+                  Background="Transparent" BorderThickness="0" ColumnWidth="auto" MaxColumnWidth="250" MinColumnWidth="150"
                   ItemsSource="{Binding PropsList}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" 
                   HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
             <DataGrid.Columns>
@@ -67,12 +60,13 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AddCommand}" Margin="0,0,5,0">
+            <Button x:Name="AddButton" Grid.Row="0" Grid.Column="0" Command="{Binding AddCommand}" Margin="0,0,5,0"
+                    Visibility="{Binding IsSupported, Converter={common:BooleanToVisibilityConverter}}">
                 <TextBlock Text="{localization:Localization Key=Text_Add}"></TextBlock>
             </Button>
             <Button Grid.Row="0" Grid.Column="1" Command="{Binding CloseCommand}" Margin="5,0,0,0">

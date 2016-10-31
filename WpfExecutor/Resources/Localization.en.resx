@@ -197,6 +197,9 @@ Third-party Fonts:
   <data name="NewDocMessageTitle" xml:space="preserve">
     <value>New document</value>
   </data>
+  <data name="NotSupported" xml:space="preserve">
+    <value>Not supported</value>
+  </data>
   <data name="SaveCommandMessage" xml:space="preserve">
     <value>Are you sure you want to save changes?</value>
   </data>
