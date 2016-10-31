@@ -24,24 +24,18 @@ namespace Executor
             core.Run(args?.Length == 0 ? DnConf() : DnConf(args[0]));
 #else
             var cr = ConfigReaderFactory.Get<Config>();
-            var list = new ListBotAction()
+            var list = new ListBotAction
             {
-                new BotAction(ActionType.SendMessage, new SendMessageAct("@gmail.com", "Привет мир!!")),
-                new BotAction(ActionType.PluginInvoke, new PluginInvokeAct("TestPlugin", new BotAction(ActionType.PluginAct, new TestAct("Test")))),
                 new BotAction(ActionType.GetMousePos),
+                new BotAction(ActionType.Label, new LabelAct("test")),
                 new BotAction(ActionType.GetObject, new GetObjectAct()),
-                new BotAction(ActionType.GetScreenshot, new ScreenShotAct(true)),
-                new BotAction(ActionType.If, new IfAction(nameof(BaseExecutorResult), "sd",new ListBotAction
-                {
-                    new BotAction(ActionType.GetObject, new GetObjectAct()),
-                }, new ListBotAction
-                {
-                    new BotAction(ActionType.GetMousePos),
-                }))
+                new BotAction(ActionType.Sleep, new SleepAct(2500)),
+                new BotAction(ActionType.GOTO, new GoToAct("test")),
+                new BotAction(ActionType.If, new IfAction(nameof(BaseExecutorResult), "sd","xxxx","yyyy"))
             };
             var conf = new Config(list);
-            cr.Save(conf, "test1.jsn");
-            var d = cr.Load("test1.jsn");
+            cr.Save(conf, "test22.jsn");
+            var d = cr.Load("test22.jsn");
             d = d;
             Thread.Sleep(4000);
             core.Run(conf);

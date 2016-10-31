@@ -35,5 +35,7 @@ namespace Core.ConfigEntity.ActionObjects
             Key = key;
             Time = time;
         }
+
+        public KeyBoardAct() { }
     }
 }

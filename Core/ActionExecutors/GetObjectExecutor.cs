@@ -103,7 +103,8 @@ namespace Core.ActionExecutors
                                 throw new Exception("Ошибка относительного позиционирования, ObjectExecutorResult не валиден");
                             var currentPos = mousePos.ExecutorResult.Pos;
                             var info = _windowsProc.GetObjectFromPoint(currentPos);
-                            _windowsProc.ShowWindow(info.Descriptor);
+                            if (info != null)
+                                _windowsProc.ShowWindow(info.Descriptor);
                             res = new ObjectExecutorResult(info);
                         }
                         break;

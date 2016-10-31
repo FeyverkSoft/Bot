@@ -106,7 +106,7 @@ namespace Core.ConfigEntity
                             flag = subAction is KeyBoardAct;
                             break;
                         case ActionType.Sleep:
-                            flag = subAction is SleepAct;
+                            flag = subAction is SleepAct && SubActions.Count <= 1;
                             break;
                         case ActionType.Loop:
                             flag = subAction is LoopAct;
@@ -115,10 +115,10 @@ namespace Core.ConfigEntity
                             flag = subAction is ExpectWindowAct;
                             break;
                         case ActionType.If:
-                            flag = subAction is IfAction;
+                            flag = subAction is IfAction && SubActions.Count <= 1;
                             break;
                         case ActionType.GetObject:
-                            flag = subAction is GetObjectAct;
+                            flag = subAction is GetObjectAct && SubActions.Count <= 1;
                             break;
                         case ActionType.PluginInvoke:
                             flag = subAction is PluginInvokeAct;
@@ -127,7 +127,13 @@ namespace Core.ConfigEntity
                             flag = subAction is ScreenShotAct;
                             break;
                         case ActionType.SendMessage:
-                            flag = subAction is SendMessageAct;
+                            flag = subAction is SendMessageAct && SubActions.Count <= 1;
+                            break;
+                        case ActionType.GOTO:
+                            flag = subAction is GoToAct && SubActions.Count <= 1;
+                            break;
+                        case ActionType.Label:
+                            flag = subAction is LabelAct && SubActions.Count <= 1;
                             break;
                         case ActionType.PluginAct:
                             flag = true;

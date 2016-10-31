@@ -218,8 +218,14 @@ Third-party Fonts:
   <data name="Text_Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="Text_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Text_Exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="Text_False" xml:space="preserve">
+    <value>Off</value>
   </data>
   <data name="Text_Help" xml:space="preserve">
     <value>Help</value>
@@ -233,6 +239,9 @@ Third-party Fonts:
   <data name="Text_New" xml:space="preserve">
     <value>New</value>
   </data>
+  <data name="Text_Null" xml:space="preserve">
+    <value>Default</value>
+  </data>
   <data name="Text_Open" xml:space="preserve">
     <value>Open</value>
   </data>
@@ -244,6 +253,9 @@ Third-party Fonts:
   </data>
   <data name="Text_Settings" xml:space="preserve">
     <value>Core settings</value>
+  </data>
+  <data name="Text_True" xml:space="preserve">
+    <value>On</value>
   </data>
   <data name="Title_AboutWin" xml:space="preserve">
     <value>About: Management Console for the bot</value>

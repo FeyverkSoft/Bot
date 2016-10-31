@@ -8,7 +8,9 @@ using Core.ConfigEntity.ActionObjects;
 using Core.Events;
 using Core.Helpers;
 using System.Threading.Tasks;
+using Core.ActionExecutors;
 using Core.ActionExecutors.ExecutorResult;
+using Core.Exceptions;
 using Core.Resources;
 using LogWrapper;
 
@@ -120,7 +122,7 @@ namespace Core.Core
         {
             if (action == null)
                 throw new NullReferenceException(nameof(action));
-            return InternalActRun(action, null);
+            return CoreV2(new ListBotAction { action }, null);
         }
 
 
@@ -129,7 +131,18 @@ namespace Core.Core
         /// </summary>
         public void Abort()
         {
-            Print(new { Status = EStatus.Abort, Message = $"{nameof(DefaultExecutiveCore)}.Abort()", Date = DateTime.Now });
+            Abort(null);
+        }
+
+        private void Abort(IBotAction act)
+        {
+            Print(new
+            {
+                Status = EStatus.Abort,
+                Message = $"{nameof(DefaultExecutiveCore)}.Abort()",
+                Date = DateTime.Now,
+                Reason = act != null ? String.Format(CoreText.IncorrectAction, act.ActionType) : String.Empty
+            });
             IsAbort = true;
             Status = CoreStatus.Stop;
         }
@@ -144,97 +157,75 @@ namespace Core.Core
         {
             Status = CoreStatus.Run;
             IsAbort = false;
-            //Если процес находится в процессе отмены, то прирываем итерации
-            if (IsAbort || res.State == EResultState.Error)
-            {
-                Status = CoreStatus.Stop;
-                return null;
-            }
             foreach (var action in actions)
             {
                 action.IsCurrent = false;
             }
-            return actions.Aggregate(res, (current, act) =>
-            {
-                act.IsCurrent = true;
-                var temp = InternalActRun(act, current);
-                act.IsCurrent = false;
-                return temp;
-            });
+            return CoreV2(actions, res);
         }
 
-        ///  <summary>
-        ///  Выполнить одно действие бота
-        ///  </summary>
-        ///  <param name="action">Действие к исполнению ботом</param>
-        /// <param name="res"></param>
-        /// <return>Возвращает результат действия</return>
-        private IExecutorResult InternalActRun(IBotAction action, IExecutorResult res)
+
+        private IExecutorResult CoreV2(ListBotAction actions, IExecutorResult res)
         {
             try
             {
-                if (!action.IsValid)
+                for (var i = 0; i < actions.Count; i++)
                 {
-                    Print(new
-                    {
-                        Message = String.Format(CoreText.IncorrectAction, action.ActionType, Environment.NewLine),
-                        Date = DateTime.Now,
-                        Status = EStatus.Abort
-                    });
-                    IsAbort = true;
-                }
-                if (IsAbort)
-                    return null;
+                    if (IsAbort)
+                        return null;
+                    var currentAction = actions[i];
+                    currentAction.IsCurrent = true;
+                    if (!currentAction.IsValid)
+                        Abort(currentAction);
+                    var executor = _actionFactory.GetExecutorAction(currentAction.ActionType);
+                    executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
 
-                var executor = _actionFactory.GetExecutorAction(action.ActionType);
-                switch (action.ActionType)//Логика для особых, не фабричных действий
-                {
-                    case ActionType.Loop:
-                        {
-                            foreach (var subAct in action.SubActions.Cast<LoopAct>())
+                    switch (currentAction.ActionType) //Логика для особых, не фабричных действий
+                    {
+                        case ActionType.GOTO:
                             {
-                                for (var i = subAct.IterationCount; i > 0; i--)
-                                {
-                                    if (IsAbort || res?.State == EResultState.Error)
-                                        return null;
-                                    Print(
-                                        new
-                                        {
-                                            Message = $"Input loop; iterationCount:{subAct.IterationCount}",
-                                            Status = EStatus.Info
-                                        });
-                                    res = InternalIterator(subAct.Actions, res); // Рекурсия :)
-                                }
+                                var label = currentAction.SubActions.Cast<GoToAct>().FirstOrDefault()?.LabelName;
+                                i = FindLabel(actions, label);
                             }
-                            return res;
-                        }
-                    case ActionType.If: // пока что нет идей что и как можно проверять
-                        {
-                            if (action.SubActions.Count > 0)
+                            break;
+                        case ActionType.Loop:
                             {
-                                executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
-                                var ifRes = executor.Invoke(action.SubActions, ref _isAbort, res);
-                                if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
+                                foreach (var subAct in currentAction.SubActions.Cast<LoopAct>())
                                 {
-                                    foreach (var subAct in action.SubActions.Cast<IfAction>())
+                                    for (var j = subAct.IterationCount; j > 0; j--)
                                     {
-                                        res = InternalIterator(((BooleanExecutorResult)ifRes).ExecutorResult ?
-                                            subAct.Actions : subAct.FailActions, res);
+                                        res = CoreV2(subAct.Actions, res); // Рекурсия :)
                                     }
-                                    return res;
                                 }
-                                IsAbort = true;
-                                throw new Exception("Incorrect If>BooleanExecutorResult!");
                             }
-                            return res;
-                        }
-                    default:
-                        {
-                            executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
-                            return action.SubActions != null && action.SubActions.Count > 0
-                                ? executor.Invoke(action.SubActions, ref _isAbort, res)
+                            break;
+                        case ActionType.If: // пока что нет идей что и как можно проверять
+                            {
+                                if (currentAction.SubActions.Count > 0)
+                                {
+                                    executor.OnPrintMessageEvent += OnPrintMessageEvent;
+                                    //Подписываем и исполнителя на выхлоп
+                                    var ifRes = executor.Invoke(currentAction.SubActions, ref _isAbort, res);
+                                    if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
+                                    {
+                                        var subAct = currentAction.SubActions.Cast<IfAction>().First();
+
+                                        var label = ((BooleanExecutorResult)ifRes).ExecutorResult
+                                            ? subAct.SuccessLabel
+                                            : subAct.FailLabel;
+                                        // поиск метки с таким название в нутри области видимости
+                                        i = FindLabel(actions, label);
+                                    }
+                                }
+                                break;
+                            }
+                        default:
+                            res = currentAction.SubActions != null && currentAction.SubActions.Count > 0
+                                ? executor.Invoke(currentAction.SubActions, ref _isAbort, res)
                                 : executor.Invoke(ref _isAbort, res);
-                        }
+                            break;
+                    }
+                    currentAction.IsCurrent = false;
                 }
             }
             catch (Exception ex)
@@ -244,6 +235,23 @@ namespace Core.Core
                 Print(ex);
                 throw;
             }
+            return res;
+        }
+
+        private Int32 FindLabel(ListBotAction actions, String label)
+        {
+            for (var k = 0; k < actions.Count; k++)
+            {
+                if (actions[k].ActionType == ActionType.Label)
+                {
+                    if (label.Equals(((LabelAct)actions[k].SubActions.FirstOrDefault())?.LabelName,
+                        StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        return k;
+                    }
+                }
+            }
+            throw new BotBaseException("Label not found!");
         }
     }
 }

@@ -354,11 +354,29 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Отмена.
+        /// </summary>
+        internal static string Text_Cancel {
+            get {
+                return ResourceManager.GetString("Text_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выход.
         /// </summary>
         internal static string Text_Exit {
             get {
                 return ResourceManager.GetString("Text_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отключено.
+        /// </summary>
+        internal static string Text_False {
+            get {
+                return ResourceManager.GetString("Text_False", resourceCulture);
             }
         }
         
@@ -399,6 +417,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на По умолчанию.
+        /// </summary>
+        internal static string Text_Null {
+            get {
+                return ResourceManager.GetString("Text_Null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Открыть.
         /// </summary>
         internal static string Text_Open {
@@ -431,6 +458,15 @@ namespace WpfExecutor.Resources {
         internal static string Text_Settings {
             get {
                 return ResourceManager.GetString("Text_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Включено.
+        /// </summary>
+        internal static string Text_True {
+            get {
+                return ResourceManager.GetString("Text_True", resourceCulture);
             }
         }
         

@@ -9,6 +9,9 @@
         xmlns:configEntity="clr-namespace:Core.ConfigEntity;assembly=Core"
         xmlns:extensions="clr-namespace:WpfExecutor.Extensions"
         xmlns:converter="clr-namespace:WpfExecutor.Converter"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:model="clr-namespace:WpfExecutor.Model"
+        xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance add:AddActionViewModel}"
         Title="{localization:Localization AddActionWindow}" ResizeMode="NoResize"
         WindowStyle="None" Style="{StaticResource WindowStyle}" MinHeight="40" MinWidth="400"
@@ -18,10 +21,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{localization:Localization Key=AddActionWindow_ActionType}" Margin="0,0,5, 0"/>
@@ -35,5 +39,45 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
+        <DataGrid Margin="-4, 10,0,0" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" HeadersVisibility="None" 
+                  AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="Cell"
+                  Background="Transparent" BorderThickness="0" ColumnWidth="auto"
+                  ItemsSource="{Binding PropsList}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" 
+                  HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="{x:Type model:PropModel}">
+                            <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Background="Transparent"
+                            VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="5,4">
+                                <TextBlock.ToolTip>
+                                    <ToolTip Visibility="{Binding RelativeSource={RelativeSource Self}, Path=PlacementTarget, Converter={common:TrimmedTextVisibilityConverter}}">
+                                        <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                             </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplateSelector >
+                        <extensions:DataTypeTemplateSelector />
+                    </DataGridTemplateColumn.CellTemplateSelector>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AddCommand}" Margin="0,0,5,0">
+                <TextBlock Text="{localization:Localization Key=Text_Add}"></TextBlock>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding CancelCommand}" Margin="5,0,0,0">
+                <TextBlock Text="{localization:Localization Key=Text_Cancel}"></TextBlock>
+            </Button>
+        </Grid>
     </Grid>
 </Window>

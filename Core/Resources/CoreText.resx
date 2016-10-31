@@ -132,6 +132,9 @@
   <data name="ActionType_GetScreenshot" xml:space="preserve">
     <value>Получить скриншот (эксперементально)</value>
   </data>
+  <data name="ActionType_GOTO" xml:space="preserve">
+    <value>GOTO</value>
+  </data>
   <data name="ActionType_If" xml:space="preserve">
     <value>Особый оператор условного ветвления (эксперементально)</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="ActionType_KeyBoardKeys" xml:space="preserve">
     <value>Нажми сочитание клавиш</value>
+  </data>
+  <data name="ActionType_Label" xml:space="preserve">
+    <value>Метка</value>
   </data>
   <data name="ActionType_Loop" xml:space="preserve">
     <value>Выполнить в цикле</value>
@@ -227,12 +233,6 @@
   </data>
   <data name="IfAction" xml:space="preserve">
     <value>Условия</value>
-  </data>
-  <data name="IfAction_Actions" xml:space="preserve">
-    <value>Действия при успешном исходе</value>
-  </data>
-  <data name="IfAction_FailActions" xml:space="preserve">
-    <value>Действия при не успешном</value>
   </data>
   <data name="IfAction_PrevResType" xml:space="preserve">
     <value>Проверка на тип предыдущего</value>
@@ -350,5 +350,23 @@
   </data>
   <data name="SleepAct_MaxRandDelay" xml:space="preserve">
     <value>Максимальное время случайной задержки</value>
+  </data>
+  <data name="IfAction_FailLabel" xml:space="preserve">
+    <value>В случае не успеха перейти к метке</value>
+  </data>
+  <data name="IfAction_SuccessLabel" xml:space="preserve">
+    <value>В случае успеха перейти к метке</value>
+  </data>
+  <data name="LabelAct" xml:space="preserve">
+    <value>Метка</value>
+  </data>
+  <data name="LabelAct_LabelName" xml:space="preserve">
+    <value>Название метки</value>
+  </data>
+  <data name="GoToAct" xml:space="preserve">
+    <value>GOTO</value>
+  </data>
+  <data name="GoToAct_LabelName" xml:space="preserve">
+    <value>Название ярлычка для перехода</value>
   </data>
 </root>

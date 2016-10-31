@@ -18,15 +18,15 @@ namespace Core.ConfigEntity.ActionObjects
         /// Список действий которые необходимо выполнить при успешном выполнении условия
         /// </summary>
         [DataMember]
-        [LocDescription("IfAction_Actions")]
-        public ListBotAction Actions { get; private set; } = new ListBotAction();
+        [LocDescription("IfAction_SuccessLabel")]
+        public String SuccessLabel { get; private set; }
 
         /// <summary>
         /// Список действий которые необходимо выполнить при НЕ успешном выполнении условия
         /// </summary>
         [DataMember]
-        [LocDescription("IfAction_FailActions")]
-        public ListBotAction FailActions { get; private set; } = new ListBotAction();
+        [LocDescription("IfAction_FailLabel")]
+        public String FailLabel { get; private set; }
 
         /// <summary>
         /// Проверка на тип предыдущего результата 
@@ -43,19 +43,21 @@ namespace Core.ConfigEntity.ActionObjects
         public String Сonditions { get; private set; }
 
         [JsonConstructor]
-        public IfAction(String prevResType, String сonditions, ListBotAction actions, ListBotAction failActions)
+        public IfAction(String prevResType, String сonditions, String successLabel, String failLabel)
         {
             if(String.IsNullOrEmpty(prevResType))
                 throw new ArgumentNullException(nameof(prevResType));
             PrevResType = prevResType;
             Сonditions = сonditions;
-            Log.WriteLine($"{GetType().Name}.ctor->(actions: {actions?.Count ?? -1}; failActions: {failActions?.Count ?? -1})");
-            if (actions != null)
-                Actions = actions;
-            if (failActions != null)
-                FailActions = failActions;
+            Log.WriteLine($"{GetType().Name}.ctor->(successLabel: {successLabel}; failLabel: {failLabel})");
+            if (successLabel != null)
+                SuccessLabel = successLabel;
+            if (failLabel != null)
+                FailLabel = failLabel;
             if (сonditions == null)
                 throw new ArgumentNullException(nameof(сonditions));
         }
+
+        public IfAction() { }
     }
 }

@@ -132,6 +132,9 @@
   <data name="ActionType_GetScreenshot" xml:space="preserve">
     <value>Get a screenshot.</value>
   </data>
+  <data name="ActionType_GOTO" xml:space="preserve">
+    <value>GOTO</value>
+  </data>
   <data name="ActionType_If" xml:space="preserve">
     <value>If</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="ActionType_KeyBoardKeys" xml:space="preserve">
     <value>Press the key combination!</value>
+  </data>
+  <data name="ActionType_Label" xml:space="preserve">
+    <value>Label</value>
   </data>
   <data name="ActionType_Loop" xml:space="preserve">
     <value>Loop</value>
@@ -222,14 +228,14 @@
   <data name="IfAction" xml:space="preserve">
     <value>Condition operator</value>
   </data>
-  <data name="IfAction_Actions" xml:space="preserve">
-    <value>Success actions</value>
-  </data>
-  <data name="IfAction_FailActions" xml:space="preserve">
-    <value>Fail actions</value>
+  <data name="IfAction_FailLabel" xml:space="preserve">
+    <value>If failed, go to the label.</value>
   </data>
   <data name="IfAction_PrevResType" xml:space="preserve">
     <value>Prev Res Type</value>
+  </data>
+  <data name="IfAction_SuccessLabel" xml:space="preserve">
+    <value>If successful, go to the label</value>
   </data>
   <data name="IfAction_Сonditions" xml:space="preserve">
     <value>Conditions</value>
@@ -347,5 +353,17 @@
   </data>
   <data name="SleepAct_MaxRandDelay" xml:space="preserve">
     <value>Maximum value for random delay</value>
+  </data>
+  <data name="LabelAct" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="LabelAct_LabelName" xml:space="preserve">
+    <value>Label Name</value>
+  </data>
+  <data name="GoToAct" xml:space="preserve">
+    <value>GOTO</value>
+  </data>
+  <data name="GoToAct_LabelName" xml:space="preserve">
+    <value>The label name to jump</value>
   </data>
 </root>

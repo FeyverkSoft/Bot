@@ -61,12 +61,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\ICustomControl.cs" />
+    <Compile Include="Control\Int32Control.xaml.cs">
+      <DependentUpon>Int32Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Int64Control.xaml.cs">
+      <DependentUpon>Int64Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\BooleanControl.xaml.cs">
+      <DependentUpon>BooleanControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\StringControl.xaml.cs">
+      <DependentUpon>StringControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converter\EnumConverter.cs" />
     <Compile Include="Converter\DevConverter.cs" />
+    <Compile Include="Extensions\DataTypeTemplateSelector.cs" />
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Model\Add\AddActionViewModel.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
+    <Compile Include="Model\PropModel.cs" />
     <Compile Include="Model\Settings\CoreSettingViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="AppContext.cs" />
@@ -97,7 +112,27 @@
     <Compile Include="Views\Settings\CoreSettingWindow.xaml.cs">
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\Int32Control.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\Int64Control.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\BooleanControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\StringControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -263,9 +298,7 @@
   <ItemGroup>
     <Resource Include="Resources\icons\Error.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Control\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Logo_2.ico" />
   </ItemGroup>

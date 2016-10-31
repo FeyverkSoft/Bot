@@ -47,5 +47,6 @@ namespace Core.ConfigEntity.ActionObjects
             Body = body;
             IncludePrevRes = includePrevRes;
         }
+        public SendMessageAct() { }
     }
 }

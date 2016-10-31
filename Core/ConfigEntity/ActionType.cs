@@ -114,6 +114,16 @@ namespace Core.ConfigEntity
         /// Отправить сообщение на указанный канал связи
         /// </summary>
         [LocDescription("ActionType_SendMessage")]
-        SendMessage
+        SendMessage,
+        /// <summary>
+        /// Метка для GOTO
+        /// </summary>
+        [LocDescription("ActionType_Label")]
+        Label,
+        /// <summary>
+        /// Метка для GOTO
+        /// </summary>
+        [LocDescription("ActionType_GOTO")]
+        GOTO
     }
 }

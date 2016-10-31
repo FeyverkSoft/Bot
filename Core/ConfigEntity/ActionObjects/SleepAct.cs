@@ -38,5 +38,7 @@ namespace Core.ConfigEntity.ActionObjects
             Delay = delay;
             MaxRandDelay = randDelay;
         }
+
+        public SleepAct() { }
     }
 }

@@ -48,5 +48,7 @@ namespace Core.ConfigEntity.ActionObjects
             Log.WriteLine($"{GetType().Name}.ctor->(winTitle:{winTitle}; SetFocus:{setFocus}); SearchParam: {searchParam}");
             SearchParam = searchParam;
         }
+
+        public ExpectWindowAct() { }
     }
 }

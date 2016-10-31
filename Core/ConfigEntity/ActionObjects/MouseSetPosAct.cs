@@ -67,5 +67,6 @@ namespace Core.ConfigEntity.ActionObjects
             RelativelyWindowName = relativelyWindowName;
             Relatively = relatively;
         }
+        public MouseSetPosAct() { }
     }
 }

@@ -10,6 +10,7 @@
     xmlns:control="clr-namespace:WpfExecutor.Control"
     xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
     xmlns:converter="clr-namespace:WpfExecutor.Converter"
+    xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
     mc:Ignorable="d">
 
     <ResourceDictionary.MergedDictionaries>
@@ -20,6 +21,7 @@
         <ResourceDictionary Source="pack://application:,,,/Themes/VSStyle/WindowStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/Expander.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/TabItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/DataGrid.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <system:Boolean x:Key="True">True</system:Boolean>
@@ -120,7 +122,7 @@
 
     <!-- BUTTON -->
     <Style TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}"/>
+        <Setter Property="Background" Value="{StaticResource Static.Background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -143,7 +145,7 @@
                             <Grid>
                                 <Border CornerRadius="2" BorderThickness="{TemplateBinding BorderThickness}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
-                                    x:Name="_border" Background="{StaticResource Static.Background}"/>
+                                    x:Name="_border" Background="{TemplateBinding Background}"/>
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
                             </Grid>
                         </AdornerDecorator>
@@ -376,5 +378,7 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
+
 
 </ResourceDictionary>

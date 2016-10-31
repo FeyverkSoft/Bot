@@ -32,7 +32,7 @@ namespace Core
         /// <summary>
         /// Загрузка плагинов и их типов
         /// </summary>
-        public static void LoadPlugins()
+        internal static void LoadPlugins()
         {
             //Если выбран путь игнорирования плагинов
             if (!AppConfig.Instance.LoadPlugin)
@@ -71,5 +71,9 @@ namespace Core
                 }
             }
         }
+
+        //надо подумать, нужно ли оно....
+        //
+        //public static List<Type>
     }
 }

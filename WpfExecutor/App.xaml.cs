@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using LogWrapper;
 using WpfExecutor.Extensions.Localization;
+using WpfExecutor.Factories;
 using WpfExecutor.Model;
 using WpfExecutor.Model.Error;
 using WpfExecutor.Properties;
@@ -41,8 +42,9 @@ namespace WpfExecutor
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Dispatcher.UnhandledException += Dispatcher_UnhandledException;
 
-            var window = new MainWindow(new MainWindowModel(e.Args));
-            window.Show();
+            WindowFactory.CreateAddActionWindow().ShowDialog();
+
+            WindowFactory.CreateMainWindow(e.Args).Show();
         }
 
 

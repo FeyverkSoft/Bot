@@ -1,4 +1,5 @@
 ﻿using System;
+using WpfExecutor.Model;
 using WpfExecutor.Model.About;
 using WpfExecutor.Model.Add;
 using WpfExecutor.Model.Settings;
@@ -10,6 +11,15 @@ namespace WpfExecutor.Factories
 {
     internal static class WindowFactory
     {
+        /// <summary>
+        /// Создаёт главное окно
+        /// </summary>
+        /// <returns></returns>
+        public static MainWindow CreateMainWindow(String[] args)
+        {
+            var window = new MainWindow(new MainWindowModel(args));
+            return window;
+        }
         /// <summary>
         /// Создаёт окно о программе
         /// </summary>

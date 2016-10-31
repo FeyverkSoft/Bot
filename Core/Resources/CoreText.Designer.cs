@@ -106,6 +106,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на GOTO.
+        /// </summary>
+        internal static string ActionType_GOTO {
+            get {
+                return ResourceManager.GetString("ActionType_GOTO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Особый оператор условного ветвления (эксперементально).
         /// </summary>
         internal static string ActionType_If {
@@ -129,6 +138,15 @@ namespace Core.Resources {
         internal static string ActionType_KeyBoardKeys {
             get {
                 return ResourceManager.GetString("ActionType_KeyBoardKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Метка.
+        /// </summary>
+        internal static string ActionType_Label {
+            get {
+                return ResourceManager.GetString("ActionType_Label", resourceCulture);
             }
         }
         
@@ -385,6 +403,24 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на GOTO.
+        /// </summary>
+        internal static string GoToAct {
+            get {
+                return ResourceManager.GetString("GoToAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название ярлычка для перехода.
+        /// </summary>
+        internal static string GoToAct_LabelName {
+            get {
+                return ResourceManager.GetString("GoToAct_LabelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Условия.
         /// </summary>
         internal static string IfAction {
@@ -394,20 +430,11 @@ namespace Core.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Действия при успешном исходе.
+        ///   Ищет локализованную строку, похожую на В случае не успеха перейти к метке.
         /// </summary>
-        internal static string IfAction_Actions {
+        internal static string IfAction_FailLabel {
             get {
-                return ResourceManager.GetString("IfAction_Actions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Действия при не успешном.
-        /// </summary>
-        internal static string IfAction_FailActions {
-            get {
-                return ResourceManager.GetString("IfAction_FailActions", resourceCulture);
+                return ResourceManager.GetString("IfAction_FailLabel", resourceCulture);
             }
         }
         
@@ -417,6 +444,15 @@ namespace Core.Resources {
         internal static string IfAction_PrevResType {
             get {
                 return ResourceManager.GetString("IfAction_PrevResType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на В случае успеха перейти к метке.
+        /// </summary>
+        internal static string IfAction_SuccessLabel {
+            get {
+                return ResourceManager.GetString("IfAction_SuccessLabel", resourceCulture);
             }
         }
         
@@ -462,6 +498,24 @@ namespace Core.Resources {
         internal static string KeyBoardAct_Time {
             get {
                 return ResourceManager.GetString("KeyBoardAct_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Метка.
+        /// </summary>
+        internal static string LabelAct {
+            get {
+                return ResourceManager.GetString("LabelAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название метки.
+        /// </summary>
+        internal static string LabelAct_LabelName {
+            get {
+                return ResourceManager.GetString("LabelAct_LabelName", resourceCulture);
             }
         }
         

@@ -37,7 +37,7 @@ namespace Core.ConfigEntity.ActionObjects
             if (actions != null)
                 Actions = actions;
         }
-        public LoopAct(Int32 iterationCount, ListBotAction actions)
+        public LoopAct(Int32 iterationCount = 0, ListBotAction actions = null)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(iterationCount:{iterationCount}; actions: {actions?.Count ?? -1})");
             if (iterationCount < 0)

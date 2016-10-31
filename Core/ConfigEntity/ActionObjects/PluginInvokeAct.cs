@@ -23,12 +23,13 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("PluginInvokeAct_Actions")]
-        public BotAction Actions { get; set; }
+        public BotAction Actions { get; set; } = new BotAction(ActionType.PluginAct);
 
         public PluginInvokeAct(String pluginName, BotAction actions)
         {
             PluginName = pluginName;
             Actions = actions;
         }
+        public PluginInvokeAct() { }
     }
 }
