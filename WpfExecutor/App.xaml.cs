@@ -43,7 +43,9 @@ namespace WpfExecutor
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Dispatcher.UnhandledException += Dispatcher_UnhandledException;
 
+#if DEBUG
             WindowFactory.CreateAddActionWindow(ActionType.GetScreenshot).ShowDialog();
+#endif
 
             WindowFactory.CreateMainWindow(e.Args).Show();
         }
