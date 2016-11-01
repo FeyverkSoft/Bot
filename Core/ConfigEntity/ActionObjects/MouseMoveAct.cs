@@ -18,19 +18,19 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [LocDescription("MouseMoveAct_Dx")]
         [DataMember]
-        public Int32 Dx { get; protected set; } = 0;
+        public Int32 Dx { get; set; } = 0;
         /// <summary>
         /// Смещение по оси Y
         /// </summary>
         [DataMember]
         [LocDescription("MouseMoveAct_Dy")]
-        public Int32 Dy { get; protected set; } = 0;
+        public Int32 Dy { get; set; } = 0;
         /// <summary>
         /// Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно
         /// </summary>
         [DataMember]
         [LocDescription("MouseMoveAct_ToObject")]
-        public Boolean ToObject { get; protected set; }
+        public Boolean ToObject { get; set; }
 
         public MouseMoveAct(Boolean toObject = true)
         {

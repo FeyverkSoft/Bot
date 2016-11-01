@@ -18,13 +18,13 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("SleepAct_Delay")]
-        public Int32 Delay { get; private set; } = 2;
+        public Int32 Delay { get; set; } = 2;
         /// <summary>
         /// Верхняя граница дополнительной, случайно задержки
         /// </summary>
         [DataMember]
         [LocDescription("SleepAct_MaxRandDelay")]
-        public Int32 MaxRandDelay { get; private set; } = 0;
+        public Int32 MaxRandDelay { get; set; } = 0;
         [JsonConstructor]
         public SleepAct(Int32 delay, Int32 randDelay = 0)
         {

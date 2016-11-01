@@ -50,9 +50,9 @@ namespace WpfExecutor.Model.Add
         /// <summary>
         /// Параметры действия
         /// </summary>
-        public IAction Action{ get; private set; }
+        public IAction Action { get; private set; }
 
-    public AddActionViewModel(ActionType actionType)
+        public AddActionViewModel(ActionType actionType)
         {
             IsSupported = true;
             CurrentActionType = actionType;

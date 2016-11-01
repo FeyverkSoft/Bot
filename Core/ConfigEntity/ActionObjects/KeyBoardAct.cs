@@ -19,13 +19,13 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("KeyBoardAct_Key")]
-        public KeyCode Key { get; private set; }
+        public KeyCode Key { get; set; }
         /// <summary>
         /// Время удержания клавиши
         /// </summary>
         [DataMember]
         [LocDescription("KeyBoardAct_Time")]
-        public UInt32 Time { get; private set; }
+        public UInt32 Time { get; set; }
 
         [JsonConstructor]
         public KeyBoardAct(KeyCode key, UInt32 time = 0)

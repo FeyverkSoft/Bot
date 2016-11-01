@@ -24,7 +24,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("GetObjectAct_SetFocus")]
-        public Boolean SetFocus { get; }
+        public Boolean SetFocus { get; set; }
 
         ///// <summary>
         ///// Наименование объекта
@@ -36,7 +36,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("GetObjectAct_ObjectPos")]
-        public Point ObjectPos { get; private set; }
+        public Point ObjectPos { get; set; }
         /// <summary>
         /// Тип ожидаемого объекта
         /// </summary>

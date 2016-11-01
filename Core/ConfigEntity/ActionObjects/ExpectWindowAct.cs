@@ -19,18 +19,18 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("ExpectWindowAct_WinTitle")]
-        public String WinTitle { get; private set; }
+        public String WinTitle { get; set; }
         /// <summary>
         /// Указывает, на то что после того как окно найденно, ему необходимо передать фокус
         /// </summary>
         [DataMember]
         [LocDescription("ExpectWindowAct_SetFocus")]
-        public Boolean SetFocus { get; private set; }
+        public Boolean SetFocus { get; set; }
         /// <summary>
         /// Параметр поиска, указавающий как и где искать. в начале, конце или просто содержание
         /// </summary>
         [LocDescription("ExpectWindowAct_SearchParam")]
-        public ESearchParam SearchParam { get; private set; } = ESearchParam.Contained;
+        public ESearchParam SearchParam { get; set; } = ESearchParam.Contained;
         [JsonConstructor]
         public ExpectWindowAct(String winTitle, Boolean setFocus = true)
         {

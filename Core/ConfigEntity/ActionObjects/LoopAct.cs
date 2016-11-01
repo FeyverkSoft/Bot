@@ -19,7 +19,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("LoopAct_IterationCount")]
-        public Int32 IterationCount { get; private set; } = 1;
+        public Int32 IterationCount { get; set; } = 1;
         /// <summary>
         /// Список действий которые необходимо выполнить в цикле
         /// </summary>

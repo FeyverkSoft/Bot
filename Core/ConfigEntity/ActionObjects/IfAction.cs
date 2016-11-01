@@ -18,28 +18,28 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("IfAction_SuccessLabel")]
-        public String SuccessLabel { get; private set; }
+        public String SuccessLabel { get; set; }
 
         /// <summary>
         /// Список действий которые необходимо выполнить при НЕ успешном выполнении условия
         /// </summary>
         [DataMember]
         [LocDescription("IfAction_FailLabel")]
-        public String FailLabel { get; private set; }
+        public String FailLabel { get; set; }
 
         /// <summary>
         /// Проверка на тип предыдущего результата 
         /// </summary>
         [LocDescription("IfAction_PrevResType")]
         [DataMember]
-        public String PrevResType { get; private set; }
+        public String PrevResType { get; set; }
 
         /// <summary>
         /// Список условий, которые необходимо проверить над предыдущим объектом
         /// </summary>
         [DataMember]
         [LocDescription("IfAction_Сonditions")]
-        public String Сonditions { get; private set; }
+        public String Сonditions { get; set; }
 
         [JsonConstructor]
         public IfAction(String prevResType, String сonditions, String successLabel, String failLabel)

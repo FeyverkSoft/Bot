@@ -22,7 +22,7 @@ namespace Core.ConfigEntity.ActionObjects
         public Int32 X
         {
             get { return _x; }
-            private set
+            set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(X));
@@ -37,7 +37,7 @@ namespace Core.ConfigEntity.ActionObjects
         public Int32 Y
         {
             get { return _y; }
-            private set
+            set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(Y));
@@ -49,14 +49,14 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("MouseSetPosAct_RelativelyWindowName")]
-        public String RelativelyWindowName { get; private set; }
+        public String RelativelyWindowName { get; set; }
 
         /// <summary>
         /// Использовать относительную позицию или нет
         /// </summary>
         [DataMember]
         [LocDescription("MouseSetPosAct_Relatively")]
-        public Boolean Relatively { get; private set; }
+        public Boolean Relatively { get; set; }
         [JsonConstructor]
         public MouseSetPosAct(Int32 x, Int32 y, Boolean relatively = false, String relativelyWindowName = null)
         {

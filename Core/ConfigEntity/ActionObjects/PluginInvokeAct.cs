@@ -15,7 +15,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [LocDescription("PluginInvokeAct_PluginName")]
         [DataMember]
-        public String PluginName { get; private set; }
+        public String PluginName { get; set; }
 
         /// <summary>
         /// Список действий которые необходимо передать плагину

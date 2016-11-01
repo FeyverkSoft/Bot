@@ -17,25 +17,25 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("SendMessageAct_MessageType")]
-        public EMessageType MessageType { get; }
+        public EMessageType MessageType { get; set; }
         /// <summary>
         /// Тело сообщения
         /// </summary>
         [DataMember]
         [LocDescription("SendMessageAct_Body")]
-        public String Body { get; }
+        public String Body { get; set; }
         /// <summary>
         /// Получатель сообщения
         /// </summary>
         [DataMember]
         [LocDescription("SendMessageAct_Recipient")]
-        public String Recipient { get; }
+        public String Recipient { get; set; }
         /// <summary>
         /// Включить предыдущий результат после тела сообщения
         /// </summary>
         [DataMember]
         [LocDescription("SendMessageAct_IncludePrevRes")]
-        public Boolean IncludePrevRes { get; }
+        public Boolean IncludePrevRes { get; set; }
 
         public SendMessageAct(String recipient, String body, EMessageType messageType = EMessageType.Email, Boolean includePrevRes = true)
         {
