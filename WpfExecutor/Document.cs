@@ -34,5 +34,10 @@ namespace WpfExecutor
             DocumentItems = config;
             Path = path;
         }
+
+        public static void OnChanged()
+        {
+            Instance?.OnPropertyChanged(nameof(DocumentItems));
+        }
     }
 }

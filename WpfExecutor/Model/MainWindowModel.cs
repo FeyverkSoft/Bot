@@ -93,7 +93,7 @@ namespace WpfExecutor.Model
 
             StaticPropertyChanged += (sender, eventArgs) =>
             {
-                if (eventArgs.PropertyName == nameof(Document.Instance))
+                if (eventArgs.PropertyName == nameof(Document.DocumentItems))
                 {
                     OnPropertyChanged(nameof(Json));
                 }

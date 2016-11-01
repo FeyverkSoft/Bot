@@ -85,6 +85,7 @@ namespace WpfExecutor.Model.Content
                         }
                     }
                 }
+                Document.OnChanged();
             }
         }
     }
