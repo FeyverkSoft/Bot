@@ -156,13 +156,19 @@ namespace Core.Core
         {
             Status = CoreStatus.Run;
             IsAbort = false;
+            var errorList = ConfigValidator.GetErrorList(actions);
+            if (errorList.Count > 0)
+            {
+                Print(errorList);
+                Abort();
+                return null;
+            }
             foreach (var action in actions)
             {
                 action.IsCurrent = false;
             }
             return CoreV2(actions, res);
         }
-
 
         private IExecutorResult CoreV2(ListBotAction actions, IExecutorResult res)
         {

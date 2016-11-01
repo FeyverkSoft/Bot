@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Reflection;
+using Core.ConfigEntity.ActionObjects;
 using LogWrapper;
 
 namespace Core.ConfigEntity
 {
     [DataContract]
-    public sealed class Config: IBotActionContainer
+    public sealed class Config : IBotActionContainer
     {
         /// <summary>
         /// Версия бота для этого конфига
@@ -38,5 +41,6 @@ namespace Core.ConfigEntity
         public Config(String botVer, ListBotAction actions = null) : this(actions, new FileVersion(botVer))
         {
         }
+
     }
 }

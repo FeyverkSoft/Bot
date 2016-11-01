@@ -89,6 +89,7 @@
     <Compile Include="ConfigEntity\ActionObjects\BaseActionObject.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GoToAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LabelAct.cs" />
+    <Compile Include="Core\ConfigValidator.cs" />
     <Compile Include="ConfigEntity\IContainer.cs" />
     <Compile Include="Core\ActionFactory.cs" />
     <Compile Include="Helpers\ActionHelper.cs" />

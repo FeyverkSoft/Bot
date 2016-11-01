@@ -89,6 +89,9 @@ namespace Core.ConfigEntity
         {
             get
             {
+                if (!IsMultiAct && SubActions.Count > 1)
+                    return false;
+
                 var flag = true; //пустое валидно!
                 foreach (var subAction in SubActions)
                 {
@@ -106,7 +109,7 @@ namespace Core.ConfigEntity
                             flag = subAction is KeyBoardAct;
                             break;
                         case ActionType.Sleep:
-                            flag = subAction is SleepAct && SubActions.Count <= 1;
+                            flag = subAction is SleepAct;
                             break;
                         case ActionType.Loop:
                             flag = subAction is LoopAct;
@@ -115,10 +118,10 @@ namespace Core.ConfigEntity
                             flag = subAction is ExpectWindowAct;
                             break;
                         case ActionType.If:
-                            flag = subAction is IfAction && SubActions.Count <= 1;
+                            flag = subAction is IfAction;
                             break;
                         case ActionType.GetObject:
-                            flag = subAction is GetObjectAct && SubActions.Count <= 1;
+                            flag = subAction is GetObjectAct;
                             break;
                         case ActionType.PluginInvoke:
                             flag = subAction is PluginInvokeAct;
@@ -127,13 +130,13 @@ namespace Core.ConfigEntity
                             flag = subAction is ScreenShotAct;
                             break;
                         case ActionType.SendMessage:
-                            flag = subAction is SendMessageAct && SubActions.Count <= 1;
+                            flag = subAction is SendMessageAct;
                             break;
                         case ActionType.GOTO:
-                            flag = subAction is GoToAct && SubActions.Count <= 1;
+                            flag = subAction is GoToAct;
                             break;
                         case ActionType.Label:
-                            flag = subAction is LabelAct && SubActions.Count <= 1;
+                            flag = subAction is LabelAct;
                             break;
                         case ActionType.PluginAct:
                             flag = true;
@@ -195,15 +198,15 @@ namespace Core.ConfigEntity
             }
         }
 
-    /// <summary>
-    /// Возвращает строку, представляющую текущий объект.
-    /// </summary>
-    /// <returns>
-    /// Строка, представляющая текущий объект.
-    /// </returns>
-    public override String ToString()
-    {
-        return $"{ActionType}::\t{base.ToString()}";
+        /// <summary>
+        /// Возвращает строку, представляющую текущий объект.
+        /// </summary>
+        /// <returns>
+        /// Строка, представляющая текущий объект.
+        /// </returns>
+        public override String ToString()
+        {
+            return $"{ActionType}::\t{base.ToString()}";
+        }
     }
-}
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -75,8 +77,14 @@ namespace WpfExecutor.Model
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Json представление, пока что readonly
+        /// </summary>
         public String Json => Document.Instance.DocumentItems.ToJson(typeName: true);
+        /// <summary>
+        /// Список ошибок в документе
+        /// </summary>
+        public List<String> ErrList => ConfigValidator.GetErrorList(Document.Instance.DocumentItems.Actions);
 
         public ICommand AboutCommand => _aboutCommand ?? (_aboutCommand = new DelegateCommand(About));
 
@@ -84,20 +92,28 @@ namespace WpfExecutor.Model
         {
             Document.CreateInstance(new Config());
             _core = AppContext.Get<IExecutiveCore>();
-            _core.OnPrintMessageEvent += (message) => TextLog += $"{Environment.NewLine}{message}";
             _core.PropertyChanged += (sender, e) => OnPropertyChanged(e?.PropertyName);
+            _core.OnPrintMessageEvent += (message) => TextLog += $"{Environment.NewLine}{message}";
             if (args?.Length == 1 && File.Exists(args[0]))
             {
                 Document.CreateInstance(ConfigReaderFactory.Get<Config>().Load(args[0]), args[0]);
             }
 
-            StaticPropertyChanged += (sender, eventArgs) =>
+            StaticPropertyChanged += OnStaticPropertyChanged;
+        }
+
+        /// <summary>
+        /// Событие изменения какого либо свойства в документе.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+        private void OnStaticPropertyChanged(object sender, PropertyChangedEventArgs eventArgs)
+        {
+            if (eventArgs.PropertyName == nameof(Document.DocumentItems))
             {
-                if (eventArgs.PropertyName == nameof(Document.DocumentItems))
-                {
-                    OnPropertyChanged(nameof(Json));
-                }
-            };
+                OnPropertyChanged(nameof(Json));
+                OnPropertyChanged(nameof(ErrList));
+            }
         }
 
         private void About()

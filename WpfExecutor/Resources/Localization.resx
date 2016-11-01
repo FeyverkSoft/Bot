@@ -233,6 +233,9 @@
   <data name="Text_Close" xml:space="preserve">
     <value>Закрыть</value>
   </data>
+  <data name="Text_ErrorList" xml:space="preserve">
+    <value>Список ошибок</value>
+  </data>
   <data name="Text_Exit" xml:space="preserve">
     <value>Выход</value>
   </data>

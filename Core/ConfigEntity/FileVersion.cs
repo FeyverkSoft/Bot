@@ -8,38 +8,38 @@ namespace Core.ConfigEntity
     public sealed class FileVersion
     {
         [IgnoreDataMember]
-        private Int32 major, minor, build;
+        private Int32 _major, _minor, _build;
         [DataMember]
         public Int32 Major
         {
-            get { return major; }
+            get { return _major; }
             private set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(Major));
-                major = value;
+                _major = value;
             }
         }
         [DataMember]
         public Int32 Minor
         {
-            get { return minor; }
+            get { return _minor; }
             private set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(Minor));
-                minor = value;
+                _minor = value;
             }
         }
         [DataMember]
         public Int32 Build
         {
-            get { return build; }
+            get { return _build; }
             private set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(Build));
-                build = value;
+                _build = value;
             }
         }
 
@@ -101,7 +101,7 @@ namespace Core.ConfigEntity
         /// <param name="ver"></param>
         public static implicit operator Version(FileVersion ver)
         {
-            return new Version(ver.major, ver.minor, ver.build, 0);
+            return new Version(ver._major, ver._minor, ver._build, 0);
         }
         /*
         /// <summary>

@@ -233,17 +233,32 @@
                       Background="{StaticResource Focus.Border}" Grid.IsSharedSizeScope="True"/>
 
         <TabControl Grid.Row="4" TabStripPlacement="Bottom" Margin="0,0,0, 5">
+            <!-- Logs -->
             <TabItem Header="{localization:Localization Key=Text_Logs}">
                 <TextBox Text="{Binding TextLog, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
                          HorizontalScrollBarVisibility="Auto"
                          IsReadOnly="True" FontSize="7pt" VerticalContentAlignment="Top"
                          BorderThickness="0"></TextBox>
             </TabItem>
+            <!-- JSON -->
             <TabItem Header="{localization:Localization Key=Text_Json}">
                 <TextBox Text="{Binding Json, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
                          HorizontalScrollBarVisibility="Auto"
                          IsReadOnly="True" FontSize="9pt" VerticalContentAlignment="Top"
                          BorderThickness="0"></TextBox>
+            </TabItem>
+            <!-- ERROR LIST -->
+            <TabItem Header="{localization:Localization Key=Text_ErrorList}" Background="Transparent">
+                <ListView ItemsSource="{Binding ErrList, Mode=OneWay}" BorderThickness="0" FontSize="10pt">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{StaticResource HighImportanceIcon}" Height="25" Width="25" Margin="5, 0"/>
+                                <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </TabItem>
         </TabControl>
         <StatusBar Grid.Row="5" BorderThickness="0">
