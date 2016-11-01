@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using CommonLib.Collections;
 
 namespace Core.ConfigEntity.ActionObjects
 {
-    public sealed class ListAct : List<IAction>
+    public class ListAct : NotifyList<IAction>
     {
         public static implicit operator ListAct(List<MouseMoveAct> list)
         {

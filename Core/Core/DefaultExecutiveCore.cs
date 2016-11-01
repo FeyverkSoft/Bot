@@ -141,7 +141,7 @@ namespace Core.Core
                 Status = EStatus.Abort,
                 Message = $"{nameof(DefaultExecutiveCore)}.Abort()",
                 Date = DateTime.Now,
-                Reason = act != null ? String.Format(CoreText.IncorrectAction, act.ActionType) : String.Empty
+                Reason = act != null ? String.Format(CoreText.IncorrectAction, act.ActionType, String.Empty) : String.Empty
             });
             IsAbort = true;
             Status = CoreStatus.Stop;

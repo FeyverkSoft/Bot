@@ -298,6 +298,10 @@
     <Resource Include="Resources\icons\SaveIcon-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{e9360285-7369-4e6a-b485-6318b39b1077}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{88ef1877-5e4c-4440-82d9-b64c89cd11ef}</Project>
       <Name>Core</Name>

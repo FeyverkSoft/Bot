@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Windows.Input;
 using Core.Attributes;
 using Core.ConfigEntity;
+using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using WpfConverters.Extensions.Commands;
 
@@ -22,6 +23,15 @@ namespace WpfExecutor.Model.Add
         private static readonly Dictionary<Type, List<PropertyInfo>> Props = new Dictionary<Type, List<PropertyInfo>>();
 
         private List<PropModel> _propsList;
+        public List<PropModel> PropsList
+        {
+            get { return _propsList ?? (_propsList = new List<PropModel>()); }
+            set
+            {
+                _propsList = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Boolean IsSupported
         {
@@ -37,35 +47,29 @@ namespace WpfExecutor.Model.Add
         /// Текущий выбранный тип действия
         /// </summary>
         private ActionType CurrentActionType { get; set; }
+        /// <summary>
+        /// Параметры действия
+        /// </summary>
+        public IAction Action{ get; private set; }
 
-        public AddActionViewModel(ActionType actionType)
+    public AddActionViewModel(ActionType actionType)
         {
             IsSupported = true;
             CurrentActionType = actionType;
             Refresh();
         }
 
-        public List<PropModel> PropsList
-        {
-            get { return _propsList ?? (_propsList = new List<PropModel>()); }
-            set
-            {
-                _propsList = value;
-                OnPropertyChanged();
-            }
-        }
-
         private void Refresh()
         {
-            var currentAct = ActionFactory.Get(CurrentActionType);
-            if (currentAct != null)
+            Action = ActionFactory.Get(CurrentActionType);
+            if (Action != null)
             {
                 IsSupported = true;
-                var type = currentAct.GetType();
+                var type = Action.GetType();
                 if (!Props.ContainsKey(type))
                 {
                     Props.Add(type,
-                        currentAct.GetType().GetMembers(BindingFlags.Public | BindingFlags.Instance)
+                        Action.GetType().GetMembers(BindingFlags.Public | BindingFlags.Instance)
                             .Where(x => x.MemberType == MemberTypes.Property).Cast<PropertyInfo>()
                             .Where(
                                 x =>
@@ -77,7 +81,7 @@ namespace WpfExecutor.Model.Add
                 {
                     PropName = x.Name,
                     Name = x.GetCustomAttribute<LocDescriptionAttribute>()?.Description ?? x.Name,
-                    Value = (x).GetValue(currentAct),
+                    Value = x.GetValue(Action),
                     TypeName = x.PropertyType.Name
                 }).ToList();
             }
@@ -93,13 +97,18 @@ namespace WpfExecutor.Model.Add
         /// </summary>
         private ICommand _addCommand;
 
-        private bool _isSupported;
+        private Boolean _isSupported;
         public ICommand AddCommand => _addCommand ?? (_addCommand = new DelegateCommand(AddCommandMethod));
         /// <summary>
         /// Реализация комманды добавить
         /// </summary>
         private void AddCommandMethod()
         {
+            foreach (var propModel in PropsList)
+            {
+                var prop = Props[Action.GetType()].First(x => x.Name == propModel.PropName);
+                prop.SetValue(Action, propModel.Value);
+            }
             CloseCommand?.Execute(true);
         }
     }

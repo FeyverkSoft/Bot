@@ -70,7 +70,11 @@ namespace WpfExecutor.Model.Content
                             if (winF.ShowDialog() == true)
                             {
                                 var mod = winF.DataContext as AddActionViewModel;
-                                mod = mod;
+                                if (mod != null)
+                                {
+                                    ((IBotAction) temp).SubActions.Add(mod.Action);
+                                   // OnPropertyChanged(nameof(CommandConfig));
+                                }
                             }
                         }
                         break;
