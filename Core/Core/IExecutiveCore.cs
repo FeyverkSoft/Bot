@@ -45,5 +45,10 @@ namespace Core.Core
         /// Версия ядра исполнителя
         /// </summary>
         Version Version { get; }
+
+        /// <summary>
+        /// Валидатор конфига для ядра
+        /// </summary>
+        IConfigValidator ConfigValidator { get; }
     }
 }

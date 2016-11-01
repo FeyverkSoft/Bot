@@ -21,6 +21,7 @@ namespace Core
             SingDictionary.Add(typeof(IKeyBoard), new NativeKeyBoard());
             SingDictionary.Add(typeof(IMouse), new NativeMouse());
             SingDictionary.Add(typeof(IWindowsProc), new NativeWindowsProc());
+            SingDictionary.Add(typeof(IConfigValidator), new ConfigValidator());
         }
 
         public static T Get<T>() where T : class
@@ -30,7 +31,7 @@ namespace Core
             switch (typeof(T).Name)
             {
                 case nameof(IExecutiveCore):
-                    return new DefaultExecutiveCore(new DefaultActionFactory()) as T;
+                    return new DefaultExecutiveCore(new DefaultActionFactory(), Get<IConfigValidator>()) as T;
                 case nameof(IActionFactory):
                     return new DefaultActionFactory() as T;
             }

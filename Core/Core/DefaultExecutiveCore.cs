@@ -49,6 +49,11 @@ namespace Core.Core
         /// </summary>
         private readonly IActionFactory _actionFactory;
 
+        /// <summary>
+        /// Валидатор команд
+        /// </summary>
+        public IConfigValidator ConfigValidator { get; }
+
         private CoreStatus _status = CoreStatus.Stop;
         private bool _isAbort = false;
 
@@ -73,9 +78,10 @@ namespace Core.Core
             OnPrintMessageEvent?.Invoke(o?.ToJson(true, false));
         }
 
-        public DefaultExecutiveCore(IActionFactory actionFactory)
+        public DefaultExecutiveCore(IActionFactory actionFactory, IConfigValidator validator)
         {
             _actionFactory = actionFactory;
+            ConfigValidator = validator;
             Assemblys.LoadPlugins();
         }
 

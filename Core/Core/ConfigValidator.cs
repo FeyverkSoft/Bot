@@ -6,19 +6,28 @@ using Core.ConfigEntity.ActionObjects;
 
 namespace Core.Core
 {
-    public static class ConfigValidator
+    public interface IConfigValidator
     {
         /// <summary>
         /// Получить список ошибок конфигурации
         /// </summary>
         /// <returns></returns>
-        public static List<String> GetErrorList(ListBotAction actions)
+        List<String> GetErrorList(ListBotAction actions);
+    }
+
+    public class ConfigValidator : IConfigValidator
+    {
+        /// <summary>
+        /// Получить список ошибок конфигурации
+        /// </summary>
+        /// <returns></returns>
+        public List<String> GetErrorList(ListBotAction actions)
         {
             var list = new List<String>();
             return GetErrorListInternal(actions, ref list);
         }
 
-        private static List<String> GetErrorListInternal(ListBotAction actions, ref List<String> list)
+        private List<String> GetErrorListInternal(ListBotAction actions, ref List<String> list)
         {
             foreach (var action in actions)
             {
@@ -66,7 +75,7 @@ namespace Core.Core
             return list;
         }
 
-        private static Boolean FindLabel(ListBotAction actions, String label)
+        private Boolean FindLabel(ListBotAction actions, String label)
         {
             return actions.Where(t => t.ActionType == ActionType.Label)
                 .Any(t => label.Equals(((LabelAct)t.SubActions.FirstOrDefault())?.LabelName, StringComparison.InvariantCultureIgnoreCase));

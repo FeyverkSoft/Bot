@@ -84,7 +84,7 @@ namespace WpfExecutor.Model
         /// <summary>
         /// Список ошибок в документе
         /// </summary>
-        public List<String> ErrList => ConfigValidator.GetErrorList(Document.Instance.DocumentItems.Actions);
+        public List<String> ErrList => _core.ConfigValidator.GetErrorList(Document.Instance.DocumentItems.Actions);
 
         public ICommand AboutCommand => _aboutCommand ?? (_aboutCommand = new DelegateCommand(About));
 
