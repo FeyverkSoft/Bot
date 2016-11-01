@@ -176,6 +176,12 @@ Third-party Fonts:
   <data name="CoreSettingWindow_SmtpPort" xml:space="preserve">
     <value>Smtp port</value>
   </data>
+  <data name="DeleteMessage" xml:space="preserve">
+    <value>Are you sure you want to delete the item?</value>
+  </data>
+  <data name="DeleteMessageTitle" xml:space="preserve">
+    <value>Remove?</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -234,6 +240,9 @@ Third-party Fonts:
   </data>
   <data name="Text_Close" xml:space="preserve">
     <value>Close</value>
+  </data>
+  <data name="Text_Delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
   <data name="Text_ErrorList" xml:space="preserve">
     <value>Error list</value>

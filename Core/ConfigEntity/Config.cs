@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
 using System.Runtime.Serialization;
 using System.Reflection;
-using Core.ConfigEntity.ActionObjects;
 using LogWrapper;
+using Newtonsoft.Json;
 
 namespace Core.ConfigEntity
 {
@@ -42,5 +41,10 @@ namespace Core.ConfigEntity
         {
         }
 
+        /// <summary>
+        /// перечислитель для форыча
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator GetEnumerator() => Actions.GetEnumerator();
     }
 }

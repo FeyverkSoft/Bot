@@ -228,6 +228,24 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите удалить элемент?.
+        /// </summary>
+        internal static string DeleteMessage {
+            get {
+                return ResourceManager.GetString("DeleteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Удалить?.
+        /// </summary>
+        internal static string DeleteMessageTitle {
+            get {
+                return ResourceManager.GetString("DeleteMessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Произошла ошибка.
         /// </summary>
         internal static string Error {
@@ -395,6 +413,15 @@ namespace WpfExecutor.Resources {
         internal static string Text_Close {
             get {
                 return ResourceManager.GetString("Text_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Удалить.
+        /// </summary>
+        internal static string Text_Delete {
+            get {
+                return ResourceManager.GetString("Text_Delete", resourceCulture);
             }
         }
         

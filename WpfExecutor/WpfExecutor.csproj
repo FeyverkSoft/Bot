@@ -324,7 +324,9 @@
   <ItemGroup>
     <Resource Include="Resources\icons\Error.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\icons\Delete-48.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Logo_2.ico" />
   </ItemGroup>

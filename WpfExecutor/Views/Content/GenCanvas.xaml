@@ -76,6 +76,13 @@
                                     <Image Source="{StaticResource AddIcon}" Width="16" Height="16" Stretch="Fill" />
                                 </MenuItem.Icon>
                             </MenuItem>
+                            <!-- Удалить -->
+                            <MenuItem Header="{localization:Localization Key=Text_Delete}" Command="{Binding DeleteCommand}"
+                                      CommandParameter="{Binding SelectedObject, ElementName=CustomTreeView, Converter={common:ValueConverter}}">
+                                <MenuItem.Icon>
+                                    <Image Source="{StaticResource DeleteIcon}" Width="16" Height="16" Stretch="Fill" />
+                                </MenuItem.Icon>
+                            </MenuItem>
                         </ContextMenu.Items>
                     </ContextMenu>
                 </TreeView.ContextMenu>

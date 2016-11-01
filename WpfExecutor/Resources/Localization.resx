@@ -176,6 +176,12 @@
   <data name="CoreSettingWindow_SmtpPort" xml:space="preserve">
     <value>Smtp порт</value>
   </data>
+  <data name="DeleteMessage" xml:space="preserve">
+    <value>Вы действительно хотите удалить элемент?</value>
+  </data>
+  <data name="DeleteMessageTitle" xml:space="preserve">
+    <value>Удалить?</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Произошла ошибка</value>
   </data>
@@ -232,6 +238,9 @@
   </data>
   <data name="Text_Close" xml:space="preserve">
     <value>Закрыть</value>
+  </data>
+  <data name="Text_Delete" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="Text_ErrorList" xml:space="preserve">
     <value>Список ошибок</value>

@@ -19,7 +19,10 @@ namespace WpfExecutor.Model.Content
         /// Команда добавить
         /// </summary>
         private ICommand _addCommand;
-
+        /// <summary>
+        /// Комманда удалить
+        /// </summary>
+        private ICommand _deleteCommand;
         public Config[] CommandConfig => new[] { Document.Instance.DocumentItems };
 
         public GenCanvasModel()
@@ -86,6 +89,58 @@ namespace WpfExecutor.Model.Content
                     }
                 }
                 Document.OnChanged();
+            }
+        }
+
+        /// <summary>
+        /// Комманда удалить
+        /// </summary>
+        public ICommand DeleteCommand => _deleteCommand ?? (_deleteCommand = new DelegateCommand<Object>(DeleteCommandMethod));
+        /// <summary>
+        /// Имплементация метода удаления комманды у бота
+        /// </summary>
+        void DeleteCommandMethod(Object o)
+        {
+            var temp = o ?? SelectedObject;
+            if (temp != null)
+            {
+                if (MessageBox.Show(
+                        LocalizationManager.GetString("DeleteMessage"),
+                        LocalizationManager.GetString("DeleteMessageTitle"), MessageBoxButton.YesNo)
+                    == MessageBoxResult.Yes)
+                {
+                    RecursRemove(temp, Document.Instance.DocumentItems.Actions);
+                    Document.OnChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Рекурсивная функция обхода дерева и удаления элементов
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="list"></param>
+        void RecursRemove(Object o, ListBotAction list)
+        {
+            foreach (var item in list)
+            {
+                if (item == o)
+                {
+                    list.Remove(item);
+                    break;
+                }
+                foreach (var it in item.SubActions)
+                {
+                    if (it == o)
+                    {
+                        item.SubActions.Remove(it);
+                        break;
+                    }
+                    if (it is IBotActionContainer)
+                    {
+                        RecursRemove(o, ((IBotActionContainer)it).Actions);
+                    }
+                }
             }
         }
     }
