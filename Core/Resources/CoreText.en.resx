@@ -369,4 +369,16 @@
   <data name="KeyBoardKeysAct" xml:space="preserve">
     <value>KeyBoardKeysAct</value>
   </data>
+  <data name="ConfigValidator_Invalid_action" xml:space="preserve">
+    <value>Invalid action "{0}"</value>
+  </data>
+  <data name="ConfigValidator_Invalid_action_declared_more_than_once_in_the_same_scope" xml:space="preserve">
+    <value>Invalid action "{0}", A label "{1}" should not be declared more than once in the same scope</value>
+  </data>
+  <data name="ConfigValidator_Invalid_action_Label_not_found" xml:space="preserve">
+    <value>Invalid action "{0}", Label "{1}" not found in the same scope</value>
+  </data>
+  <data name="ConfigValidator_Invalid_action_one_sub_action" xml:space="preserve">
+    <value>Invalid action "{0}"; For this action can only be one sub-action.</value>
+  </data>
 </root>

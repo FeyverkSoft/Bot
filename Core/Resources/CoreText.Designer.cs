@@ -277,6 +277,42 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка действия &quot;{0}&quot;.
+        /// </summary>
+        internal static string ConfigValidator_Invalid_action {
+            get {
+                return ResourceManager.GetString("ConfigValidator_Invalid_action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка действия &quot;{0}&quot;, Метка &quot;{1}&quot; не может быть объявленна более одного раза, в одной области видимости..
+        /// </summary>
+        internal static string ConfigValidator_Invalid_action_declared_more_than_once_in_the_same_scope {
+            get {
+                return ResourceManager.GetString("ConfigValidator_Invalid_action_declared_more_than_once_in_the_same_scope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка действия &quot;{0}&quot;, Метка &quot;{1}&quot; не найдена в текущей области видимости..
+        /// </summary>
+        internal static string ConfigValidator_Invalid_action_Label_not_found {
+            get {
+                return ResourceManager.GetString("ConfigValidator_Invalid_action_Label_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка действия &quot;{0}&quot;; Данное действие может содержать только одно под действие..
+        /// </summary>
+        internal static string ConfigValidator_Invalid_action_one_sub_action {
+            get {
+                return ResourceManager.GetString("ConfigValidator_Invalid_action_one_sub_action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Версия исполняемой конфигурации не совпадает сверсией интерпретатора! Возможны побочные эффекты..
         /// </summary>
         internal static string DifferentConfigVersions {

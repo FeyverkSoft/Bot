@@ -372,4 +372,16 @@
   <data name="KeyBoardKeysAct" xml:space="preserve">
     <value>Парметры событя одновременного нажатия нескольких клавиш</value>
   </data>
+  <data name="ConfigValidator_Invalid_action_Label_not_found" xml:space="preserve">
+    <value>Ошибка действия "{0}", Метка "{1}" не найдена в текущей области видимости.</value>
+  </data>
+  <data name="ConfigValidator_Invalid_action" xml:space="preserve">
+    <value>Ошибка действия "{0}"</value>
+  </data>
+  <data name="ConfigValidator_Invalid_action_one_sub_action" xml:space="preserve">
+    <value>Ошибка действия "{0}"; Данное действие может содержать только одно под действие.</value>
+  </data>
+  <data name="ConfigValidator_Invalid_action_declared_more_than_once_in_the_same_scope" xml:space="preserve">
+    <value>Ошибка действия "{0}", Метка "{1}" не может быть объявленна более одного раза, в одной области видимости.</value>
+  </data>
 </root>

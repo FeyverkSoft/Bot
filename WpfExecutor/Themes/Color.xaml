@@ -13,5 +13,6 @@
     <SolidColorBrush x:Key="MouseOver.Border" Color="#FF7EB4EA" />
     <SolidColorBrush x:Key="Focus.Border" Color="#FF569DE5" />
     <SolidColorBrush x:Key="Run" Color="#bb5510" />
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="#007ACC" />
 
 </ResourceDictionary>

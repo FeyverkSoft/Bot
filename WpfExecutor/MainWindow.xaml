@@ -16,12 +16,13 @@
         WindowStyle="None" Style="{StaticResource WindowStyle}"
         mc:Ignorable="d" Title="{localization:Localization Title_MainWin}" 
         Icon="{StaticResource Icon2}"
-        d:DesignHeight="300" d:DesignWidth="300" Background="#FFF6F6FF"
+        d:DesignHeight="350" d:DesignWidth="350" Background="#FFF6F6FF"
         d:DataContext="{d:DesignInstance Type=model:MainWindowModel}" Closing="MainWindow_OnClosing" 
+        MinHeight="200" MinWidth="350"
         FontFamily="{StaticResource RobotoFont}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" MaxHeight="60" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20*" />
@@ -36,7 +37,7 @@
             </Grid.ColumnDefinitions>
             <!--Меню слева-->
             <Menu x:Name="Menu" Grid.Row="0" Background="Transparent">
-                <MenuItem Header="{localization:Localization Key=Text_Actions}" Height="{Binding ActualHeight, ElementName=Menu, Mode=OneWay}" Width="auto" 
+                <MenuItem Header="{localization:Localization Key=Text_Actions}" MaxHeight="60" Width="auto" 
                           Template="{StaticResource MenuItemControlTemplate}">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource MenuIcon}" />
@@ -68,7 +69,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Template="{StaticResource MenuItemControlTemplate}" Header="{localization:Localization Key=Text_Help}">
+                <MenuItem Template="{StaticResource MenuItemControlTemplate}" MaxHeight="60" Header="{localization:Localization Key=Text_Help}">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource HelpIcon}" />
                     </MenuItem.Icon>
@@ -232,33 +233,69 @@
                       Height="5" ResizeDirection="Rows" Panel.ZIndex="5"
                       Background="{StaticResource Focus.Border}" Grid.IsSharedSizeScope="True"/>
 
-        <TabControl Grid.Row="4" TabStripPlacement="Bottom" Margin="0,0,0, 5">
+        <TabControl Grid.Row="4" TabStripPlacement="Bottom" Margin="0,0,0, 0" BorderThickness="0" Padding="0,4,0,1">
             <!-- Logs -->
             <TabItem Header="{localization:Localization Key=Text_Logs}">
-                <TextBox Text="{Binding TextLog, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                            Background="{StaticResource WindowBorderBrush}" BorderThickness="0">
+                        <TextBlock Text="{localization:Localization Key=Text_Logs}" Margin="2"
+                               Foreground="{StaticResource WindowStatusForeground}"
+                               VerticalAlignment="Top"/>
+                    </Border>
+                    <TextBox Grid.Row="1"  Text="{Binding TextLog, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
                          HorizontalScrollBarVisibility="Auto"
                          IsReadOnly="True" FontSize="7pt" VerticalContentAlignment="Top"
                          BorderThickness="0"></TextBox>
+                </Grid>
             </TabItem>
             <!-- JSON -->
             <TabItem Header="{localization:Localization Key=Text_Json}">
-                <TextBox Text="{Binding Json, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                            Background="{StaticResource WindowBorderBrush}" BorderThickness="0">
+                        <TextBlock Text="{localization:Localization Key=Text_Json}" Margin="2"
+                               Foreground="{StaticResource WindowStatusForeground}"
+                               VerticalAlignment="Top"/>
+                    </Border>
+                    <TextBox Grid.Row="1" Text="{Binding Json, Mode=OneWay}" VerticalScrollBarVisibility="Auto" 
                          HorizontalScrollBarVisibility="Auto"
                          IsReadOnly="True" FontSize="9pt" VerticalContentAlignment="Top"
                          BorderThickness="0"></TextBox>
+                </Grid>
             </TabItem>
             <!-- ERROR LIST -->
             <TabItem Header="{localization:Localization Key=Text_ErrorList}" Background="Transparent">
-                <ListView ItemsSource="{Binding ErrList, Mode=OneWay}" BorderThickness="0" FontSize="10pt">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{StaticResource HighImportanceIcon}" Height="25" Width="25" Margin="5, 0"/>
-                                <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                            Background="{StaticResource WindowBorderBrush}" BorderThickness="0">
+                        <TextBlock Text="{localization:Localization Key=Text_ErrorList}" Margin="2"
+                               Foreground="{StaticResource WindowStatusForeground}"
+                               VerticalAlignment="Top"/>
+                    </Border>
+                    <ListView Grid.Row="1"  ItemsSource="{Binding ErrList, Mode=OneWay}" BorderThickness="0" FontSize="10pt">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{StaticResource HighImportanceIcon}" Height="25" Width="25" Margin="5, 0"/>
+                                    <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
             </TabItem>
         </TabControl>
         <StatusBar Grid.Row="5" BorderThickness="0">

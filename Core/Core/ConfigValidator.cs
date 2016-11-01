@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
+using Core.Resources;
 
 namespace Core.Core
 {
@@ -33,12 +34,13 @@ namespace Core.Core
             {
                 if (!action.IsMultiAct && action.SubActions.Count > 1)
                 {
-                    list.Add($"Invalid action {action.ActionType}; For this action can only be one sub-action.");
+                    list.Add(String.Format(CoreText.ConfigValidator_Invalid_action_one_sub_action,
+                        action.ActionType));
                     continue;
                 }
                 if (!action.IsValid)
                 {
-                    list.Add($"Invalid action {action.ActionType}");
+                    list.Add(String.Format(CoreText.ConfigValidator_Invalid_action, action.ActionType));
                     continue;
                 }
                 switch (action.ActionType)
@@ -47,7 +49,22 @@ namespace Core.Core
                         {
                             var goToAct = action.SubActions.FirstOrDefault() as GoToAct;
                             if (goToAct != null && !FindLabel(actions, goToAct.LabelName))
-                                list.Add($"Invalid action {action.ActionType}, Label {goToAct.LabelName} not found");
+                                list.Add(String.Format(CoreText.ConfigValidator_Invalid_action_Label_not_found,
+                                    action.ActionType, goToAct.LabelName));
+                        }
+                        break;
+                    case ActionType.Label:
+                        {
+                            var labelAct = action.SubActions.FirstOrDefault() as LabelAct;
+                            var count =
+                                actions
+                                    .Count(x => x.ActionType == ActionType.Label &&
+                                            ((LabelAct) x.SubActions.FirstOrDefault())?.LabelName == labelAct?.LabelName);
+                            if(count>1)
+                                list.Add(
+                                    String.Format(
+                                        CoreText.ConfigValidator_Invalid_action_declared_more_than_once_in_the_same_scope,
+                                        action.ActionType, labelAct?.LabelName));
                         }
                         break;
                     case ActionType.Loop:
@@ -64,9 +81,11 @@ namespace Core.Core
                             if (ifAction != null)
                             {
                                 if (!FindLabel(actions, ifAction.SuccessLabel))
-                                    list.Add($"Invalid action {action.ActionType}, Label {ifAction.SuccessLabel} not found");
+                                    list.Add(string.Format(CoreText.ConfigValidator_Invalid_action_Label_not_found,
+                                        action.ActionType, ifAction.SuccessLabel));
                                 if (!FindLabel(actions, ifAction.FailLabel))
-                                    list.Add($"Invalid action {action.ActionType}, Label {ifAction.FailLabel} not found");
+                                    list.Add(string.Format(CoreText.ConfigValidator_Invalid_action_Label_not_found,
+                                        action.ActionType, ifAction.FailLabel));
                             }
                         }
                         break;
