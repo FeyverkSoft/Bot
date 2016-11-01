@@ -59,9 +59,18 @@ namespace WpfExecutor.Model.Add
             Refresh();
         }
 
+        public AddActionViewModel(ActionType actionType, IAction action)
+        {
+            IsSupported = true;
+            CurrentActionType = actionType;
+            Action = action;
+            Refresh();
+        }
+
+
         private void Refresh()
         {
-            Action = ActionFactory.Get(CurrentActionType);
+            Action = Action ?? ActionFactory.Get(CurrentActionType);
             if (Action != null)
             {
                 IsSupported = true;

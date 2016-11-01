@@ -71,9 +71,18 @@
                         <ContextMenu.Items>
                             <!--Добавить комманду к исполнению боту -->
                             <MenuItem Header="{localization:Localization Key=Text_Add}" Command="{Binding AddCommand}"
-                                      CommandParameter="{Binding SelectedObject, ElementName=CustomTreeView, Converter={common:ValueConverter}}">
+                                      CommandParameter="{Binding SelectedObject, ElementName=CustomTreeView, Converter={common:ValueConverter}}"
+                                      IsEnabled="{Binding AddCommandEnabled}">
                                 <MenuItem.Icon>
                                     <Image Source="{StaticResource AddIcon}" Width="16" Height="16" Stretch="Fill" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <!-- Изменить -->
+                            <MenuItem Header="{localization:Localization Key=Text_Edit}" Command="{Binding EditCommand}"
+                                      CommandParameter="{Binding SelectedObject, ElementName=CustomTreeView, Converter={common:ValueConverter}}"
+                                      IsEnabled="{Binding EditCommandEnabled}">
+                                <MenuItem.Icon>
+                                    <Image Source="{StaticResource EditIcon}" Width="16" Height="16" Stretch="Fill" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <!-- Удалить -->

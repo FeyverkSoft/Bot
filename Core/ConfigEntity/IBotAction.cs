@@ -23,12 +23,5 @@ namespace Core.ConfigEntity
         /// <returns></returns>
         [IgnoreDataMember]
         Boolean IsValid { get; }
-
-        /// <summary>
-        /// Указавает поддерживается ли множественные действия или нет
-        /// </summary>
-        /// <returns></returns>
-        [IgnoreDataMember]
-        Boolean IsMultiAct { get; }
     }
 }

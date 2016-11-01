@@ -28,5 +28,5 @@
     <BitmapImage x:Key="MenuIcon" UriSource="pack://application:,,,/Resources/icons/Menu-48.png" />
     <BitmapImage x:Key="HelpIcon" UriSource="pack://application:,,,/Resources/icons/Refs-48.png" />
     <BitmapImage x:Key="DeleteIcon" UriSource="pack://application:,,,/Resources/icons/Delete-48.png" />
-    
+    <BitmapImage x:Key="EditIcon" UriSource="pack://application:,,,/Resources/icons/Edit-48.png" />
 </ResourceDictionary>

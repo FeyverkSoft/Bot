@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using Core.ConfigEntity.ActionObjects;
 
 namespace Core.ConfigEntity
@@ -14,5 +15,11 @@ namespace Core.ConfigEntity
         /// </summary>
         [DataMember]
         ListAct SubActions { get; }
+        /// <summary>
+        /// Указавает поддерживается ли множественные действия или нет
+        /// </summary>
+        /// <returns></returns>
+        [IgnoreDataMember]
+        Boolean IsMultiAct { get; }
     }
 }

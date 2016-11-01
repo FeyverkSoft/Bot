@@ -4,7 +4,7 @@ using Core.ConfigEntity.ActionObjects;
 
 namespace Core.Core
 {
-   public static class ActionFactory
+    public static class ActionFactory
     {
         public static IAction Get(ActionType actionType)
         {
@@ -21,8 +21,9 @@ namespace Core.Core
                 case ActionType.MouseLUp:
                 case ActionType.MouseLClick:
                 case ActionType.GetMousePos:
-                    return  null;
+                    return null;
                 case ActionType.KeyBoard:
+                    return new KeyBoardKeysAct();
                 case ActionType.KeyBoardKeys:
                     return new KeyBoardAct();
                 case ActionType.Sleep:
@@ -49,6 +50,45 @@ namespace Core.Core
                     return new LabelAct();
                 case ActionType.GOTO:
                     return new GoToAct();
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public static ActionType GetType(IAction action)
+        {
+            switch (action.GetType().Name)
+            {
+                case nameof(MouseMoveAct):
+                    return ActionType.MouseMove;
+                case nameof(MouseSetPosAct):
+                    return ActionType.MouseSetPos;
+                case nameof(KeyBoardAct):
+                    return ActionType.KeyBoard;
+                case nameof(KeyBoardKeysAct):
+                    return ActionType.KeyBoardKeys;
+                case nameof(SleepAct):
+                    return ActionType.Sleep;
+                case nameof(LoopAct):
+                    return ActionType.Loop;
+                case nameof(PluginInvokeAct):
+                    return ActionType.PluginInvoke;
+                case nameof(IfAction):
+                    return ActionType.If;
+                case nameof(ExpectWindowAct):
+                    return ActionType.ExpectWindow;
+                case nameof(GetObjectAct):
+                    return ActionType.GetObject;
+                case nameof(ScreenShotAct):
+                    return ActionType.GetScreenshot;
+                case nameof(MockAction):
+                    return ActionType.Mock;
+                case nameof(SendMessageAct):
+                    return ActionType.SendMessage;
+                case nameof(LabelAct):
+                    return ActionType.Label;
+                case nameof(GoToAct):
+                    return ActionType.GOTO;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

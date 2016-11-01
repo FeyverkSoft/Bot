@@ -366,4 +366,7 @@
   <data name="GoToAct_LabelName" xml:space="preserve">
     <value>The label name to jump</value>
   </data>
+  <data name="KeyBoardKeysAct" xml:space="preserve">
+    <value>KeyBoardKeysAct</value>
+  </data>
 </root>

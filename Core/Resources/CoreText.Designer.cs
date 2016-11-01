@@ -502,6 +502,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Парметры событя одновременного нажатия нескольких клавиш.
+        /// </summary>
+        internal static string KeyBoardKeysAct {
+            get {
+                return ResourceManager.GetString("KeyBoardKeysAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Метка.
         /// </summary>
         internal static string LabelAct {

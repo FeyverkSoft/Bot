@@ -12,7 +12,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("KeyBoardAct")]
-    public sealed class KeyBoardAct : BaseActionObject
+    public class KeyBoardAct : BaseActionObject
     {
         /// <summary>
         /// Клавиша, нажатие которой надо эмулировать

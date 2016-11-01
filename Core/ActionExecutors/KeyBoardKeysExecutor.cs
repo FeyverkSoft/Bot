@@ -40,7 +40,7 @@ namespace Core.ActionExecutors
             try
             {
                 if (actions != null)
-                    KeyBoard.PressKeys(actions.SubActions.Select(x => ((KeyBoardAct)x).Key).ToList());
+                    KeyBoard.PressKeys(actions.SubActions.Select(x => ((KeyBoardKeysAct)x).Key).ToList());
             }
             catch (Exception ex)
             {

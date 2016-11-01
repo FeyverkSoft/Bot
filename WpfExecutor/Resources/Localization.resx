@@ -242,6 +242,9 @@
   <data name="Text_Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="Text_Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
   <data name="Text_ErrorList" xml:space="preserve">
     <value>Список ошибок</value>
   </data>

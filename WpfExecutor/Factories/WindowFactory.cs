@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.ConfigEntity;
+using Core.ConfigEntity.ActionObjects;
 using WpfExecutor.Model;
 using WpfExecutor.Model.About;
 using WpfExecutor.Model.Add;
@@ -46,9 +47,11 @@ namespace WpfExecutor.Factories
         /// Окно добавления действия
         /// </summary>
         /// <returns></returns>
-        public static AddActionWindow CreateAddActionWindow(ActionType actionType)
+        public static AddActionWindow CreateAddActionWindow(ActionType actionType, IAction action = null)
         {
-            var viewModel = new AddActionViewModel(actionType);
+            var viewModel = action == null
+                ? new AddActionViewModel(actionType)
+                : new AddActionViewModel(actionType, action);
             var window = new AddActionWindow(viewModel);
             return window;
         }

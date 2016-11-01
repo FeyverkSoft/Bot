@@ -426,6 +426,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Редактировать.
+        /// </summary>
+        internal static string Text_Edit {
+            get {
+                return ResourceManager.GetString("Text_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Список ошибок.
         /// </summary>
         internal static string Text_ErrorList {

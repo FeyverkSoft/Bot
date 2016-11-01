@@ -8,7 +8,7 @@ namespace WpfExecutor
     /// Текущий исполняемый документ
     /// Сингелтон
     /// </summary>
-    public class Document: BaseViewModel
+    public class Document : BaseViewModel
     {
         public static Document Instance { get; private set; }
 
@@ -35,9 +35,12 @@ namespace WpfExecutor
             Path = path;
         }
 
-        public static void OnChanged()
+        public static void OnChanged(Boolean flag = false)
         {
-            Instance?.OnPropertyChanged(nameof(DocumentItems));
+            if (flag)
+                Instance?.OnPropertyChanged(nameof(Instance));
+            else
+                Instance?.OnPropertyChanged(nameof(DocumentItems));
         }
     }
 }

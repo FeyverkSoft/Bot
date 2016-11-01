@@ -13,7 +13,7 @@ namespace Core.ConfigEntity
     /// Действие бота, который он должен сделать
     /// </summary>
     [DataContract]
-    public sealed class BotAction : IBotAction, IActionsContainer
+    public sealed class BotAction : IBotAction
     {
         private bool _isCurrent = false;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -85,6 +85,7 @@ namespace Core.ConfigEntity
         /// Провалидировать массив событий
         /// </summary>
         /// <returns></returns>
+        [IgnoreDataMember]
         public Boolean IsValid
         {
             get
@@ -155,6 +156,7 @@ namespace Core.ConfigEntity
         /// Указавает поддерживается ли множественные действия или нет
         /// </summary>
         /// <returns></returns>
+        [IgnoreDataMember]
         public Boolean IsMultiAct
         {
             get

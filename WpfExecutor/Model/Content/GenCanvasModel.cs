@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Core.ConfigEntity;
+using Core.ConfigEntity.ActionObjects;
+using Core.Core;
 using WpfConverters.Extensions.Commands;
 using WpfExecutor.Extensions.Localization;
 using WpfExecutor.Factories;
@@ -13,7 +15,39 @@ namespace WpfExecutor.Model.Content
 {
     public sealed class GenCanvasModel : BaseViewModel
     {
-        public object SelectedObject { get; set; }
+        public Object SelectedObject
+        {
+            get { return _selectedObject; }
+            set
+            {
+                _selectedObject = value;
+                MenuRefresh();
+            }
+        }
+        /// <summary>
+        /// Показывает на активность пункта меню, редактирование
+        /// </summary>
+        public Boolean EditCommandEnabled
+        {
+            get { return _editCommandEnabled; }
+            private set
+            {
+                _editCommandEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+        /// <summary>
+        /// Показывает на активность пункта меню, добавить
+        /// </summary>
+        public Boolean AddCommandEnabled
+        {
+            get { return _addCommandEnabled; }
+            private set
+            {
+                _addCommandEnabled = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Команда добавить
@@ -23,6 +57,14 @@ namespace WpfExecutor.Model.Content
         /// Комманда удалить
         /// </summary>
         private ICommand _deleteCommand;
+        /// <summary>
+        /// Комманда редактировать
+        /// </summary>
+        private ICommand _editCommand;
+
+        private object _selectedObject;
+        private bool _editCommandEnabled;
+        private bool _addCommandEnabled;
         public Config[] CommandConfig => new[] { Document.Instance.DocumentItems };
 
         public GenCanvasModel()
@@ -72,7 +114,7 @@ namespace WpfExecutor.Model.Content
                 if (temp.GetType().GetInterfaces().Contains(typeof(IActionsContainer)))
                 {  //Добавляем поддействие IAction в действие
                     var winF = WindowFactory.CreateAddActionWindow(((BotAction)temp).ActionType);
-                    if (!((BotAction)temp).IsMultiAct && ((BotAction)temp).SubActions.Count > 0)
+                    if (!((IActionsContainer)temp).IsMultiAct && ((IActionsContainer)temp).SubActions.Count > 0)
                     {
                         MessageBox.Show(
                             LocalizationManager.GetString("NotSupportedMessage"),
@@ -142,6 +184,44 @@ namespace WpfExecutor.Model.Content
                     }
                 }
             }
+        }
+
+
+        /// <summary>
+        /// Комманда редактировать
+        /// </summary>
+        public ICommand EditCommand => _editCommand ?? (_editCommand = new DelegateCommand<Object>(EditCommandMethod));
+        /// <summary>
+        /// Имплементация метода редактирования комманды боту
+        /// </summary>
+        void EditCommandMethod(Object o)
+        {
+            var temp = o ?? SelectedObject;
+            if (temp != null)
+            {
+                if (temp.GetType().GetInterfaces().Contains(typeof(IAction)))
+                {  //редактируем поддействие IAction в действии
+                    var winF = WindowFactory.CreateAddActionWindow(ActionFactory.GetType((IAction)temp), (IAction)temp);
+                    if (winF.ShowDialog() == true)
+                    {
+                        Document.OnChanged(true);
+                        SelectedObject = temp;
+                    }
+                }
+            }
+        }
+
+        private void MenuRefresh()
+        {
+            EditCommandEnabled = SelectedObject is IAction;
+            var add = SelectedObject is IBotActionContainer || SelectedObject is IActionsContainer;
+            if (SelectedObject is IActionsContainer &&
+                !((IActionsContainer) SelectedObject).IsMultiAct
+                && ((IActionsContainer) SelectedObject).SubActions.Count > 0)
+                AddCommandEnabled = false;
+            else
+                AddCommandEnabled = add;
+
         }
     }
 }

@@ -244,6 +244,9 @@ Third-party Fonts:
   <data name="Text_Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Text_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="Text_ErrorList" xml:space="preserve">
     <value>Error list</value>
   </data>

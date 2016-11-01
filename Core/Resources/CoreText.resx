@@ -369,4 +369,7 @@
   <data name="GoToAct_LabelName" xml:space="preserve">
     <value>Название ярлычка для перехода</value>
   </data>
+  <data name="KeyBoardKeysAct" xml:space="preserve">
+    <value>Парметры событя одновременного нажатия нескольких клавиш</value>
+  </data>
 </root>

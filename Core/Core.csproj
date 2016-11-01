@@ -88,6 +88,7 @@
     <Compile Include="Attributes\LocDescriptionAttribute.cs" />
     <Compile Include="ConfigEntity\ActionObjects\BaseActionObject.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GoToAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\KeyBoardKeysAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LabelAct.cs" />
     <Compile Include="Core\ConfigValidator.cs" />
     <Compile Include="ConfigEntity\IContainer.cs" />
