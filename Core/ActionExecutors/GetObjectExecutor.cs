@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
+using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Handlers;
@@ -23,7 +24,7 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат вызова предыдущего действия</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(IActionsContainer actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -37,12 +38,12 @@ namespace Core.ActionExecutors
                 Status = EStatus.Info
             }, false);
 
-            if (actions.Count > 1)
+            if (actions.SubActions.Count > 1)
                 throw new Exception("Получить можно только один объект.");
 
             ObjectExecutorResult res = null;
 
-            var objectAct = actions.Cast<GetObjectAct>().FirstOrDefault();
+            var objectAct = actions.SubActions.Cast<GetObjectAct>().FirstOrDefault();
 
             if ((objectAct == null || objectAct.ObjectPos.IsEmpty) && previousResult?.State == EResultState.Success)
                 res = (ObjectExecutorResult)Invoke(ref isAbort, previousResult);

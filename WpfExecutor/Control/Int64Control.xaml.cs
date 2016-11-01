@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using WpfConverters.Controls.Impl;
 using WpfExecutor.Model;

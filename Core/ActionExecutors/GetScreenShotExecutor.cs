@@ -3,6 +3,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 using Core.ActionExecutors.ExecutorResult;
+using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Handlers;
 using Core.Helpers;
@@ -23,13 +24,13 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(IActionsContainer actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             if (actions == null)
                 return Invoke(ref isAbort, previousResult);
-            if (actions.Count > 1)
+            if (actions.SubActions.Count > 1)
                 throw new Exception("Возможно выполнение только 1го действия");
-            var act = actions.Cast<ScreenShotAct>().First();
+            var act = actions.SubActions.Cast<ScreenShotAct>().First();
             ScreenShotExecutorResult res;
             if (!act.Size.IsEmpty)
                 res =

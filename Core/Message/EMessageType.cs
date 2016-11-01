@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Core.Attributes;
+﻿using Core.Attributes;
 
 namespace Core.Message
 {

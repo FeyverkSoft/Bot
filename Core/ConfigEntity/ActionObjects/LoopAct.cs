@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Core.Attributes;
-using Core.Helpers;
 using LogWrapper;
 using Newtonsoft.Json;
 
@@ -13,7 +12,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// </summary>
     [DataContract]
     [LocDescription("LoopAct")]
-    public class LoopAct : BaseActionObject
+    public class LoopAct : BaseActionObject, IBotActionContainer
     {
         /// <summary>
         /// Колличество выполнений цикла

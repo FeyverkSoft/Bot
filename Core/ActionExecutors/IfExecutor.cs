@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
+using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Helpers;
@@ -20,7 +21,7 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат проверки</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(IActionsContainer actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -32,20 +33,20 @@ namespace Core.ActionExecutors
                 },
                 Status = EStatus.Info
             }, false);
-            if (actions.Count == 0 && previousResult == null)
+            if (actions.SubActions.Count == 0 && previousResult == null)
                 return new BooleanExecutorResult(false);
 
-            if (actions.Count == 0 && previousResult is BooleanExecutorResult)
+            if (actions.SubActions.Count == 0 && previousResult is BooleanExecutorResult)
                 return previousResult;
 
-            if (actions.Count == 0)
+            if (actions.SubActions.Count == 0)
                 return new BooleanExecutorResult(false);
 
-            if (actions.Count > 1)
+            if (actions.SubActions.Count > 1)
                 throw new Exception("Проверка может быть только одна");
             Boolean result = true;
 
-            var action = actions.Cast<IfAction>().First();
+            var action = actions.SubActions.Cast<IfAction>().First();
 
             if (previousResult == null || !previousResult.GetType().Name.ToLower().Contains(action.PrevResType.ToLower()))
                 return new BooleanExecutorResult(false, EResultState.Success);

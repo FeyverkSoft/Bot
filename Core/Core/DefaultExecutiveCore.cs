@@ -8,7 +8,6 @@ using Core.ConfigEntity.ActionObjects;
 using Core.Events;
 using Core.Helpers;
 using System.Threading.Tasks;
-using Core.ActionExecutors;
 using Core.ActionExecutors.ExecutorResult;
 using Core.Exceptions;
 using Core.Resources;
@@ -205,7 +204,7 @@ namespace Core.Core
                                 {
                                     executor.OnPrintMessageEvent += OnPrintMessageEvent;
                                     //Подписываем и исполнителя на выхлоп
-                                    var ifRes = executor.Invoke(currentAction.SubActions, ref _isAbort, res);
+                                    var ifRes = executor.Invoke(currentAction, ref _isAbort, res);
                                     if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
                                     {
                                         var subAct = currentAction.SubActions.Cast<IfAction>().First();
@@ -221,7 +220,7 @@ namespace Core.Core
                             }
                         default:
                             res = currentAction.SubActions != null && currentAction.SubActions.Count > 0
-                                ? executor.Invoke(currentAction.SubActions, ref _isAbort, res)
+                                ? executor.Invoke(currentAction, ref _isAbort, res)
                                 : executor.Invoke(ref _isAbort, res);
                             break;
                     }

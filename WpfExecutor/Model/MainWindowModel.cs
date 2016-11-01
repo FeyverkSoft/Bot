@@ -5,7 +5,6 @@ using System.Windows.Input;
 using Core;
 using Core.ConfigEntity;
 using Core.Core;
-using LogWrapper;
 using LogWrapper.Helpers;
 using Microsoft.Win32;
 using WpfConverters.Extensions;

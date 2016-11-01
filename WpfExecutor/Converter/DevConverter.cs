@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using Core.Attributes;
-using Core.ConfigEntity;
 using WpfConverters.Converters;
 
 namespace WpfExecutor.Converter

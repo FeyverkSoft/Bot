@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Windows.Input;
-using Core.Attributes;
 using Core.ConfigEntity;
-using Core.Core;
 using WpfConverters.Extensions.Commands;
 
 namespace WpfExecutor.Model.Add
@@ -30,6 +24,10 @@ namespace WpfExecutor.Model.Add
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Действие бота
+        /// </summary>
+        public IBotAction BotAction { get; private set; }
 
         /// <summary>
         /// Комманда добавить
@@ -41,7 +39,13 @@ namespace WpfExecutor.Model.Add
         /// </summary>
         private void AddCommandMethod()
         {
-           CloseCommand?.Execute(true);
+            if (CurrentType != null)
+            {
+                BotAction = new BotAction((ActionType) CurrentType.Item2);
+                CloseCommand?.Execute(true);
+                return;
+            }
+            CloseCommand?.Execute(false);
         }
     }
 }

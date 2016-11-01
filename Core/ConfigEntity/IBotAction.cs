@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using Core.ConfigEntity.ActionObjects;
 
 namespace Core.ConfigEntity
 {
-    public interface IBotAction: INotifyPropertyChanged
+    public interface IBotAction: INotifyPropertyChanged, IActionsContainer
     {
         /// <summary>
         /// Указывает на то что в текущий момент выполняется это действие.
@@ -18,11 +17,6 @@ namespace Core.ConfigEntity
         [DataMember]
         ActionType ActionType { get; }
 
-        /// <summary>
-        /// Описание действий для данного события
-        /// </summary>
-        [DataMember]
-        ListAct SubActions { get; }
         /// <summary>
         /// Провалидировать массив событий
         /// </summary>

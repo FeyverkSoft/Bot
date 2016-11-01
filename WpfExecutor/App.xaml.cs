@@ -9,7 +9,6 @@ using Core.ConfigEntity;
 using LogWrapper;
 using WpfExecutor.Extensions.Localization;
 using WpfExecutor.Factories;
-using WpfExecutor.Model;
 using WpfExecutor.Model.Error;
 using WpfExecutor.Properties;
 using WpfExecutor.Views.Error;

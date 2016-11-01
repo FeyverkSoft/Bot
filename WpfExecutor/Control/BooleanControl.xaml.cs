@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using WpfConverters.Controls.Impl;
 using WpfExecutor.Model;
 
 namespace WpfExecutor.Control

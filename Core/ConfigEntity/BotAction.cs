@@ -13,7 +13,7 @@ namespace Core.ConfigEntity
     /// Действие бота, который он должен сделать
     /// </summary>
     [DataContract]
-    public sealed class BotAction : IBotAction
+    public sealed class BotAction : IBotAction, IActionsContainer
     {
         private bool _isCurrent = false;
         public event PropertyChangedEventHandler PropertyChanged;

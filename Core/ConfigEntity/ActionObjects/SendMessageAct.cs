@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Core.Attributes;
-using Core.Helpers;
 using Core.Message;
 
 namespace Core.ConfigEntity.ActionObjects

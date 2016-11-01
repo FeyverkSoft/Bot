@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Threading;
 using Core.ActionExecutors.ExecutorResult;
+using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Handlers;
@@ -23,7 +24,7 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(IActionsContainer actions, ref bool isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -38,8 +39,9 @@ namespace Core.ActionExecutors
             try
             {
                 if (actions != null)
-                    foreach (MouseMoveAct action in actions)
+                    foreach (var action1 in actions.SubActions)
                     {
+                        var action = (MouseMoveAct) action1;
                         if (action.ToObject && previousResult != null)
                         {
                             //выбор особых сценариев дляразных результатов

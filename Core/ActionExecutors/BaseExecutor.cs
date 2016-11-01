@@ -1,6 +1,6 @@
 ﻿using System;
 using Core.ActionExecutors.ExecutorResult;
-using Core.ConfigEntity.ActionObjects;
+using Core.ConfigEntity;
 using Core.Events;
 using Core.Helpers;
 using LogWrapper;
@@ -28,11 +28,11 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Вызвать выполнение действия у указанной фfбрики
         /// </summary>
-        /// <param name="actions">Список действи которые должен выполнить исполнитель</param>
+        /// <param name="action">Список действи которые должен выполнить исполнитель</param>
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
-        public abstract IExecutorResult Invoke(ListAct actions, ref bool isAbort, IExecutorResult previousResult = null);
+        public abstract IExecutorResult Invoke(IActionsContainer action, ref bool isAbort, IExecutorResult previousResult = null);
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики

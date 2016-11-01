@@ -8,8 +8,6 @@ using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Helpers;
 
-using TestPlugin;
-
 namespace Executor
 {
     class Program

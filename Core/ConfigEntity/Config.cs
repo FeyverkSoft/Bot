@@ -6,7 +6,7 @@ using LogWrapper;
 namespace Core.ConfigEntity
 {
     [DataContract]
-    public sealed class Config
+    public sealed class Config: IBotActionContainer
     {
         /// <summary>
         /// Версия бота для этого конфига
