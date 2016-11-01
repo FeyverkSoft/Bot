@@ -200,6 +200,14 @@ Third-party Fonts:
   <data name="NotSupported" xml:space="preserve">
     <value>Not supported</value>
   </data>
+  <data name="NotSupportedMessage" xml:space="preserve">
+    <value>NotSupported (????For this action under the multiple action is not supported.???? fix translite)</value>
+    <comment>Для данного действия множественные под действия не поддерживаются.</comment>
+  </data>
+  <data name="NotSupportedMessageTitle" xml:space="preserve">
+    <value>Not supported</value>
+    <comment>Не поддерживается</comment>
+  </data>
   <data name="SaveCommandMessage" xml:space="preserve">
     <value>Are you sure you want to save changes?</value>
   </data>

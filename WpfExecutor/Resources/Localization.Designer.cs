@@ -300,6 +300,24 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Для данного действия множественные под действия не поддерживаются..
+        /// </summary>
+        internal static string NotSupportedMessage {
+            get {
+                return ResourceManager.GetString("NotSupportedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Не поддерживается.
+        /// </summary>
+        internal static string NotSupportedMessageTitle {
+            get {
+                return ResourceManager.GetString("NotSupportedMessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите сохранить изменения?.
         /// </summary>
         internal static string SaveCommandMessage {

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 using Core.ConfigEntity;
 using WpfConverters.Extensions.Commands;
+using WpfExecutor.Extensions.Localization;
 using WpfExecutor.Factories;
 using WpfExecutor.Model.Add;
 
@@ -67,13 +69,19 @@ namespace WpfExecutor.Model.Content
                         {
                             //Добавляем поддействие IAction в действие
                             var winF = WindowFactory.CreateAddActionWindow(((BotAction)temp).ActionType);
+                            if (!((BotAction) temp).IsMultiAct && ((BotAction) temp).SubActions.Count > 0)
+                            {
+                                MessageBox.Show(
+                                    LocalizationManager.GetString("NotSupportedMessage"),
+                                    LocalizationManager.GetString("NotSupportedMessageTitle"), MessageBoxButton.OK);
+                                return;
+                            }
                             if (winF.ShowDialog() == true)
                             {
                                 var mod = winF.DataContext as AddActionViewModel;
                                 if (mod != null)
                                 {
                                     ((IBotAction) temp).SubActions.Add(mod.Action);
-                                   // OnPropertyChanged(nameof(CommandConfig));
                                 }
                             }
                         }

@@ -149,14 +149,61 @@ namespace Core.ConfigEntity
         }
 
         /// <summary>
-        /// Возвращает строку, представляющую текущий объект.
+        /// Указавает поддерживается ли множественные действия или нет
         /// </summary>
-        /// <returns>
-        /// Строка, представляющая текущий объект.
-        /// </returns>
-        public override String ToString()
+        /// <returns></returns>
+        public Boolean IsMultiAct
         {
-            return $"{ActionType}::\t{base.ToString()}";
+            get
+            {
+                switch (this.ActionType)
+                {
+                    case ActionType.MouseMove:
+                        return true;
+                    case ActionType.MouseSetPos:
+                        return true;
+                    case ActionType.KeyBoard:
+                    case ActionType.KeyBoardKeys:
+                        return true;
+                    case ActionType.Sleep:
+                        return false;
+                    case ActionType.Loop:
+                        return true;
+                    case ActionType.ExpectWindow:
+                        return true;
+                    case ActionType.If:
+                        return false;
+                    case ActionType.GetObject:
+                        return false;
+                    case ActionType.PluginInvoke:
+                        return true;
+                    case ActionType.GetScreenshot:
+                        return true;
+                    case ActionType.SendMessage:
+                        return false;
+                    case ActionType.GOTO:
+                        return false;
+                    case ActionType.Label:
+                        return false;
+                    case ActionType.PluginAct:
+                        return true;
+                    case ActionType.Mock:
+                        return true;
+                    default:
+                        return true;
+                }
+            }
         }
+
+    /// <summary>
+    /// Возвращает строку, представляющую текущий объект.
+    /// </summary>
+    /// <returns>
+    /// Строка, представляющая текущий объект.
+    /// </returns>
+    public override String ToString()
+    {
+        return $"{ActionType}::\t{base.ToString()}";
     }
+}
 }

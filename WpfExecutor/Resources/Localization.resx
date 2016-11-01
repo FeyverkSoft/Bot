@@ -200,6 +200,12 @@
   <data name="NotSupported" xml:space="preserve">
     <value>Не поддерживается</value>
   </data>
+  <data name="NotSupportedMessage" xml:space="preserve">
+    <value>Для данного действия множественные под действия не поддерживаются.</value>
+  </data>
+  <data name="NotSupportedMessageTitle" xml:space="preserve">
+    <value>Не поддерживается</value>
+  </data>
   <data name="SaveCommandMessage" xml:space="preserve">
     <value>Вы действительно хотите сохранить изменения?</value>
   </data>
