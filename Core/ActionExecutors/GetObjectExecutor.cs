@@ -45,7 +45,7 @@ namespace Core.ActionExecutors
 
             var objectAct = actions.SubActions.Cast<GetObjectAct>().FirstOrDefault();
 
-            if ((objectAct == null || objectAct.ObjectPos.IsEmpty) && previousResult?.State == EResultState.Success)
+            if ((objectAct == null || objectAct.PrevResult) && previousResult?.State == EResultState.Success)
                 res = (ObjectExecutorResult)Invoke(ref isAbort, previousResult);
 
             if (res != null && res.State == EResultState.Success)

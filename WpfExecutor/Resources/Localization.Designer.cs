@@ -246,6 +246,16 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Метка, указывает целевую точку для перехода в программе, например: goto метка.
+        ///Действие оператора GOTO состоит в том, что после его исполнения следующими будут исполняться операторы программы, идущие в тексте непосредственно после метки..
+        /// </summary>
+        internal static string Description_Label {
+            get {
+                return ResourceManager.GetString("Description_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Произошла ошибка.
         /// </summary>
         internal static string Error {
@@ -462,6 +472,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Высота: .
+        /// </summary>
+        internal static string Text_Height {
+            get {
+                return ResourceManager.GetString("Text_Height", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Справка.
         /// </summary>
         internal static string Text_Help {
@@ -557,6 +576,15 @@ namespace WpfExecutor.Resources {
         internal static string Text_True {
             get {
                 return ResourceManager.GetString("Text_True", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ширина: .
+        /// </summary>
+        internal static string Text_Width {
+            get {
+                return ResourceManager.GetString("Text_Width", resourceCulture);
             }
         }
         

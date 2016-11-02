@@ -182,6 +182,10 @@
   <data name="DeleteMessageTitle" xml:space="preserve">
     <value>Удалить?</value>
   </data>
+  <data name="Description_Label" xml:space="preserve">
+    <value>Метка, указывает целевую точку для перехода в программе, например: goto метка.
+Действие оператора GOTO состоит в том, что после его исполнения следующими будут исполняться операторы программы, идущие в тексте непосредственно после метки.</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Произошла ошибка</value>
   </data>
@@ -254,6 +258,9 @@
   <data name="Text_False" xml:space="preserve">
     <value>Отключено</value>
   </data>
+  <data name="Text_Height" xml:space="preserve">
+    <value>Высота: </value>
+  </data>
   <data name="Text_Help" xml:space="preserve">
     <value>Справка</value>
   </data>
@@ -286,6 +293,9 @@
   </data>
   <data name="Text_True" xml:space="preserve">
     <value>Включено</value>
+  </data>
+  <data name="Text_Width" xml:space="preserve">
+    <value>Ширина: </value>
   </data>
   <data name="Title_AboutWin" xml:space="preserve">
     <value>О программе: Консоль управления для бота</value>

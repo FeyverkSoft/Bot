@@ -430,6 +430,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Использовать позицию из результат предыдущего действия, если это возможно.
+        /// </summary>
+        internal static string GetObjectAct_PrevResult {
+            get {
+                return ResourceManager.GetString("GetObjectAct_PrevResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Установить фокус.
         /// </summary>
         internal static string GetObjectAct_SetFocus {

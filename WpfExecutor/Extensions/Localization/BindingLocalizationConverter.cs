@@ -33,8 +33,12 @@ namespace WpfExecutor.Extensions.Localization
 
             if (_ignore)
                 return key;
+            object value;
 
-            var value = LocDescriptionProvider.Localize(values[1]) ?? LocalizationManager.Instance.Localize(key);
+            if (String.IsNullOrEmpty(_keyFormat))
+                value = LocDescriptionProvider.Localize(values[1]) ?? LocalizationManager.Instance.Localize(key);
+            else
+                value = LocalizationManager.Instance.Localize(key);
 
             var stringValue = value as String;
             if (stringValue != null)

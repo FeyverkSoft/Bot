@@ -384,4 +384,7 @@
   <data name="ConfigValidator_Invalid_action_declared_more_than_once_in_the_same_scope" xml:space="preserve">
     <value>Ошибка действия "{0}", Метка "{1}" не может быть объявленна более одного раза, в одной области видимости.</value>
   </data>
+  <data name="GetObjectAct_PrevResult" xml:space="preserve">
+    <value>Использовать позицию из результат предыдущего действия, если это возможно</value>
+  </data>
 </root>

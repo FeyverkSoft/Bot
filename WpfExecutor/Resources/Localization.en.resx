@@ -256,6 +256,9 @@ Third-party Fonts:
   <data name="Text_False" xml:space="preserve">
     <value>Off</value>
   </data>
+  <data name="Text_Height" xml:space="preserve">
+    <value>Height: </value>
+  </data>
   <data name="Text_Help" xml:space="preserve">
     <value>Help</value>
   </data>
@@ -288,6 +291,9 @@ Third-party Fonts:
   </data>
   <data name="Text_True" xml:space="preserve">
     <value>On</value>
+  </data>
+  <data name="Text_Width" xml:space="preserve">
+    <value>Width: </value>
   </data>
   <data name="Title_AboutWin" xml:space="preserve">
     <value>About: Management Console for the bot</value>

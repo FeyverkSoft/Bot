@@ -37,6 +37,16 @@ namespace Core.ConfigEntity.ActionObjects
         [DataMember]
         [LocDescription("GetObjectAct_ObjectPos")]
         public Point ObjectPos { get; set; }
+
+
+        /// <summary>
+        /// Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно
+        /// </summary>
+        [DataMember]
+        [LocDescription("GetObjectAct_PrevResult")]
+        public Boolean PrevResult { get; set; } = false;
+
+
         /// <summary>
         /// Тип ожидаемого объекта
         /// </summary>
@@ -53,15 +63,15 @@ namespace Core.ConfigEntity.ActionObjects
         /// <summary>
         /// Тип ожидаемого объекта
         /// </summary>
-        /// <param name="objectType">Тип искомого объекта</param>
+        /// <param name="prevResult">Использовать для позиции результат предыдущего действия</param>
         /// <param name="objectPos">Позиция объекта, который необходимо захватить</param>
         /// <param name="setFocus">Передать фокус найденному объекту?</param>
         [JsonConstructor]
-        public GetObjectAct(/*EObjectType objectType,*/ Point objectPos, Boolean setFocus = true)
+        public GetObjectAct(Point objectPos, Boolean setFocus = true, Boolean prevResult = false)
         {
-            //ObjectType = objectType;
             ObjectPos = objectPos;
             SetFocus = setFocus;
+            PrevResult = prevResult;
         }
     }
 }

@@ -61,6 +61,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\SizeControl.xaml.cs">
+      <DependentUpon>SizeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PointControl.xaml.cs">
+      <DependentUpon>PointControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ICustomControl.cs" />
     <Compile Include="Control\Int32Control.xaml.cs">
       <DependentUpon>Int32Control.xaml</DependentUpon>
@@ -122,6 +128,14 @@
     <Compile Include="Views\Settings\CoreSettingWindow.xaml.cs">
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\SizeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\PointControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\Int32Control.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

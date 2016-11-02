@@ -381,4 +381,7 @@
   <data name="ConfigValidator_Invalid_action_one_sub_action" xml:space="preserve">
     <value>Invalid action "{0}"; For this action can only be one sub-action.</value>
   </data>
+  <data name="GetObjectAct_PrevResult" xml:space="preserve">
+    <value>Use result of a previous call.</value>
+  </data>
 </root>
