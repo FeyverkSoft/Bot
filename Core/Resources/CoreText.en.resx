@@ -384,4 +384,7 @@
   <data name="GetObjectAct_PrevResult" xml:space="preserve">
     <value>Use result of a previous call.</value>
   </data>
+  <data name="ScreenShotAct_PrevResult" xml:space="preserve">
+    <value>Use result of a previous call.</value>
+  </data>
 </root>

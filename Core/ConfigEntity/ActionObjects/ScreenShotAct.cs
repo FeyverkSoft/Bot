@@ -37,13 +37,22 @@ namespace Core.ConfigEntity.ActionObjects
         [LocDescription("ScreenShotAct_GrayScale")]
         public Boolean GrayScale { get; set; }
 
+
+        /// <summary>
+        /// Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно
+        /// </summary>
+        [DataMember]
+        [LocDescription("ScreenShotAct_PrevResult")]
+        public Boolean PrevResult { get; set; } = false;
+
+
         public ScreenShotAct(Boolean grayScale = false)
         {
             SaveFileParam = new SaveFileParam("ScreenShot","png");
             GrayScale = grayScale;
         }
-
-        public ScreenShotAct(SaveFileParam saveFileParam, Boolean grayScale = false)
+        /// <param name="prevResult">Использовать для позиции результат предыдущего действия</param>
+        public ScreenShotAct(SaveFileParam saveFileParam, Boolean grayScale = false, Boolean prevResult = false)
         {
             SaveFileParam = saveFileParam;
             GrayScale = grayScale;

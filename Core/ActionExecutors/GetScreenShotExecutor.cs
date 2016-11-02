@@ -32,7 +32,7 @@ namespace Core.ActionExecutors
                 throw new Exception("Возможно выполнение только 1го действия");
             var act = actions.SubActions.Cast<ScreenShotAct>().First();
             ScreenShotExecutorResult res;
-            if (!act.Size.IsEmpty)
+            if (!act.PrevResult)
                 res =
                     new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y,
                         act.Size.WidthX, act.Size.HeightY, act.GrayScale));
@@ -136,10 +136,10 @@ namespace Core.ActionExecutors
                     break;
                 case nameof(ObjectExecutorResult):
                     {
-                        var mousePos = (ObjectExecutorResult)previousResult;
-                        if (mousePos.State != EResultState.Success)
+                        var previous = (ObjectExecutorResult)previousResult;
+                        if (previous.State != EResultState.Success)
                             throw new Exception("Ошибка относительного позиционирования, ObjectExecutorResult не валиден");
-                        var currentPos = mousePos.ExecutorResult;
+                        var currentPos = previous.ExecutorResult;
                         res =
                             new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(currentPos.Pos.X,
                                 currentPos.Pos.Y, currentPos.Size.WidthX, currentPos.Size.HeightY, grayScale));

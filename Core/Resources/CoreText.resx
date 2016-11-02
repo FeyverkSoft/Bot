@@ -387,4 +387,7 @@
   <data name="GetObjectAct_PrevResult" xml:space="preserve">
     <value>Использовать позицию из результат предыдущего действия, если это возможно</value>
   </data>
+  <data name="ScreenShotAct_PrevResult" xml:space="preserve">
+    <value>Использовать позицию из результат предыдущего действия, если это возможно</value>
+  </data>
 </root>

@@ -781,6 +781,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Использовать позицию из результат предыдущего действия, если это возможно.
+        /// </summary>
+        internal static string ScreenShotAct_PrevResult {
+            get {
+                return ResourceManager.GetString("ScreenShotAct_PrevResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Опции сохранения файла.
         /// </summary>
         internal static string ScreenShotAct_SaveFileParam {
