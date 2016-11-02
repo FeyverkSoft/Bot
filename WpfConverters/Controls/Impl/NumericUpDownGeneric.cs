@@ -95,7 +95,8 @@ namespace WpfConverters.Controls.Impl
         public event DependencyPropertyChangedEventHandler ValueChanged;
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
-            nameof(Value), typeof(T?), typeof(NumericUpDownGeneric<T>), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, ValueChangedCallback, CoerceValueCallback));
+            nameof(Value), typeof(T?), typeof(NumericUpDownGeneric<T>), new FrameworkPropertyMetadata(null, 
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, ValueChangedCallback, CoerceValueCallback));
 
         public T? Value
         {

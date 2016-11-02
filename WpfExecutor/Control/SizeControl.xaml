@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfExecutor.Control.SizeControl"
+﻿<implControl:SizeUserControl x:Class="WpfExecutor.Control.SizeControl"
          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,21 +8,15 @@
          xmlns:model="clr-namespace:WpfExecutor.Model"
          xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
          xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
-         mc:Ignorable="d" d:DesignHeight="30" d:DesignWidth="300" 
-         d:DataContext="{d:DesignInstance Type=model:PropModel}"
+         xmlns:control="clr-namespace:WpfExecutor.Control"
+         xmlns:implControl="clr-namespace:WpfExecutor.Control.ImplControl"
+         mc:Ignorable="d" 
          HorizontalAlignment="Stretch" VerticalContentAlignment="Center" x:Name="Control">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition MinWidth="70"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition MinWidth="70"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" Text="{localization:Localization Key=Text_Width}" />
-        <impl:Int32UpDown Grid.Column="1" Value="{Binding Value.WidthX}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <TextBlock Margin="5,0,0,0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" Text="{localization:Localization Key=Text_Height}" />
-        <impl:Int32UpDown Grid.Column="3" Value="{Binding Value.HeightY}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+</implControl:SizeUserControl>
 
-    </Grid>
-</UserControl>
+
+
+
+
+
 

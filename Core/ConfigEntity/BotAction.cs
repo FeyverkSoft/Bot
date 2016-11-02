@@ -136,6 +136,9 @@ namespace Core.ConfigEntity
                         case ActionType.Label:
                             flag = subAction is LabelAct;
                             break;
+                        case ActionType.Stack:
+                            flag = subAction is StackAct;
+                            break;
                         case ActionType.PluginAct:
                             flag = true;
                             break;
@@ -191,6 +194,8 @@ namespace Core.ConfigEntity
                         return true;
                     case ActionType.Mock:
                         return true;
+                    case ActionType.Stack:
+                        return false;
                     default:
                         return true;
                 }

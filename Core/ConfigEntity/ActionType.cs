@@ -124,6 +124,11 @@ namespace Core.ConfigEntity
         /// Метка для GOTO
         /// </summary>
         [LocDescription("ActionType_GOTO")]
-        GOTO
+        GOTO,
+        /// <summary>
+        /// Метка для GOTO
+        /// </summary>
+        [LocDescription("ActionType_Stack")]
+        Stack,
     }
 }

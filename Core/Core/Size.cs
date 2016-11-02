@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
-using Newtonsoft.Json;
 
 namespace Core.Core
 {
     /// <summary>
     /// Точка
     /// </summary>
-    public struct Size
+    public class Size
     {
         /// <summary>
         /// пустая точка
@@ -31,7 +30,6 @@ namespace Core.Core
         /// </summary>
         public Boolean IsEmpty => WidthX == 0 && HeightY == 0;
 
-        [JsonConstructor]
         public Size(Int32 x, Int32 y)
         {
             WidthX = x;
@@ -71,5 +69,10 @@ namespace Core.Core
         }
 
         public override String ToString() => "{X=" + WidthX.ToString(CultureInfo.InvariantCulture) + ",Y=" + HeightY.ToString(CultureInfo.InvariantCulture) + "}";
+
+        public Size()
+        {
+            
+        }
     }
 }

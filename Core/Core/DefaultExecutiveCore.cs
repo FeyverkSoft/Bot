@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -55,7 +56,9 @@ namespace Core.Core
         public IConfigValidator ConfigValidator { get; }
 
         private CoreStatus _status = CoreStatus.Stop;
-        private bool _isAbort = false;
+        private Boolean _isAbort = false;
+
+        private readonly Stack<IExecutorResult> _executorResultStack = new Stack<IExecutorResult>();
 
         /// <summary>
         /// Событие вывода сообщения
@@ -125,6 +128,7 @@ namespace Core.Core
         /// <param name="action">Действие к исполнению ботом</param>
         public IExecutorResult Run(IBotAction action)
         {
+            _executorResultStack.Clear();
             if (action == null)
                 throw new NullReferenceException(nameof(action));
             return CoreV2(new ListBotAction { action }, null);
@@ -141,6 +145,7 @@ namespace Core.Core
 
         private void Abort(IBotAction act)
         {
+            _executorResultStack.Clear();
             Print(new
             {
                 Status = EStatus.Abort,
@@ -160,6 +165,7 @@ namespace Core.Core
         /// <return>Возвращает результат последнего действия</return>
         private IExecutorResult InternalIterator(ListBotAction actions, IExecutorResult res)
         {
+            _executorResultStack.Clear();
             Status = CoreStatus.Run;
             IsAbort = false;
             var errorList = ConfigValidator.GetErrorList(actions);
@@ -193,6 +199,23 @@ namespace Core.Core
 
                     switch (currentAction.ActionType) //Логика для особых, не фабричных действий
                     {
+                        case ActionType.Stack:
+                            {
+                                var action = currentAction.SubActions.Cast<StackAct>().FirstOrDefault()?.Action;
+                                switch (action)
+                                {
+                                    case EStackAction.Pop:
+                                        res = _executorResultStack.Pop();
+                                        break;
+                                    case EStackAction.Push:
+                                        _executorResultStack.Push(res);
+                                        break;
+                                    case EStackAction.Peek:
+                                        res = _executorResultStack.Peek();
+                                        break;
+                                }
+                            }
+                            break;
                         case ActionType.GOTO:
                             {
                                 var label = currentAction.SubActions.Cast<GoToAct>().FirstOrDefault()?.LabelName;

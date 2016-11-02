@@ -277,6 +277,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Работа со стеком.
+        /// </summary>
+        internal static string ActionType_Stack {
+            get {
+                return ResourceManager.GetString("ActionType_Stack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка действия &quot;{0}&quot;.
         /// </summary>
         internal static string ConfigValidator_Invalid_action {
@@ -372,6 +381,42 @@ namespace Core.Resources {
         internal static string ESearchParam_Start {
             get {
                 return ResourceManager.GetString("ESearchParam_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие со стеком.
+        /// </summary>
+        internal static string EStackAction {
+            get {
+                return ResourceManager.GetString("EStackAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Просмотреть (Peek).
+        /// </summary>
+        internal static string EStackAction_Peek {
+            get {
+                return ResourceManager.GetString("EStackAction_Peek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Извлечь.
+        /// </summary>
+        internal static string EStackAction_Pop {
+            get {
+                return ResourceManager.GetString("EStackAction_Pop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Поместить.
+        /// </summary>
+        internal static string EStackAction_Push {
+            get {
+                return ResourceManager.GetString("EStackAction_Push", resourceCulture);
             }
         }
         
@@ -876,6 +921,24 @@ namespace Core.Resources {
         internal static string SleepAct_MaxRandDelay {
             get {
                 return ResourceManager.GetString("SleepAct_MaxRandDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметры действия со стеком.
+        /// </summary>
+        internal static string StackAct {
+            get {
+                return ResourceManager.GetString("StackAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие со стеком.
+        /// </summary>
+        internal static string StackAct_Action {
+            get {
+                return ResourceManager.GetString("StackAct_Action", resourceCulture);
             }
         }
     }

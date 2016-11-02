@@ -4,6 +4,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Core;
 using LogWrapper;
 
 namespace Core.Handlers
@@ -115,7 +116,7 @@ namespace Core.Handlers
         /// Получить текущю позицию указателя
         /// </summary>
         /// <returns></returns>
-        public Core.Point GetCurrentPos()
+        public Point GetCurrentPos()
         {
             var lpPoint = new System.Drawing.Point();
             // заполняем defPnt информацией о координатах мышки

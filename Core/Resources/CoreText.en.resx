@@ -387,4 +387,25 @@
   <data name="ScreenShotAct_PrevResult" xml:space="preserve">
     <value>Use result of a previous call.</value>
   </data>
+  <data name="ActionType_Stack" xml:space="preserve">
+    <value>Stack</value>
+  </data>
+  <data name="StackAct" xml:space="preserve">
+    <value>Stack action param</value>
+  </data>
+  <data name="StackAct_Action" xml:space="preserve">
+    <value>Stack action</value>
+  </data>
+  <data name="EStackAction" xml:space="preserve">
+    <value>Stack action</value>
+  </data>
+  <data name="EStackAction_Peek" xml:space="preserve">
+    <value>Peek</value>
+  </data>
+  <data name="EStackAction_Pop" xml:space="preserve">
+    <value>Pop</value>
+  </data>
+  <data name="EStackAction_Push" xml:space="preserve">
+    <value>Push</value>
+  </data>
 </root>

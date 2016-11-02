@@ -51,11 +51,15 @@ namespace Core.ConfigEntity.ActionObjects
             SaveFileParam = new SaveFileParam("ScreenShot","png");
             GrayScale = grayScale;
         }
+
+        /// <param name="grayScale">Преобразовать в градации серого</param>
         /// <param name="prevResult">Использовать для позиции результат предыдущего действия</param>
+        /// <param name="saveFileParam">Параметры сохранения файла</param>
         public ScreenShotAct(SaveFileParam saveFileParam, Boolean grayScale = false, Boolean prevResult = false)
         {
             SaveFileParam = saveFileParam;
             GrayScale = grayScale;
+            PrevResult = prevResult;
         }
         [JsonConstructor]
         public ScreenShotAct(Point point, Size size, SaveFileParam saveFileParam, Boolean grayScale = false) :this(saveFileParam, grayScale)

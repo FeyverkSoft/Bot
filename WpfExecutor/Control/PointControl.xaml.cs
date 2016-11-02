@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using WpfExecutor.Control.ImplControl;
 using WpfExecutor.Model;
 
 namespace WpfExecutor.Control
@@ -8,7 +9,7 @@ namespace WpfExecutor.Control
     /// <summary>
     /// Логика взаимодействия для PointControl.xaml
     /// </summary>
-    public partial class PointControl : UserControl, ICustomControl
+    public partial class PointControl : PointUserControl, ICustomControl
     {
         public PointControl()
         {
@@ -19,7 +20,7 @@ namespace WpfExecutor.Control
         public static FrameworkElementFactory GetFrameworkElementFactory()
         {
             var factory = new FrameworkElementFactory(typeof(PointControl));
-            factory.SetBinding(DataContextProperty, new Binding(nameof(PropModel.Value))
+            factory.SetBinding(PointProperty, new Binding(nameof(PropModel.Value))
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged

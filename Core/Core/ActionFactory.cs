@@ -50,6 +50,8 @@ namespace Core.Core
                     return new LabelAct();
                 case ActionType.GOTO:
                     return new GoToAct();
+                case ActionType.Stack:
+                    return new StackAct();
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -89,6 +91,8 @@ namespace Core.Core
                     return ActionType.Label;
                 case nameof(GoToAct):
                     return ActionType.GOTO;
+                case nameof(StackAct):
+                    return ActionType.Stack;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

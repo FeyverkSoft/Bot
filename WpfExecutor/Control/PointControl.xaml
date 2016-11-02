@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfExecutor.Control.PointControl"
+﻿<implControl:PointUserControl x:Class="WpfExecutor.Control.PointControl"
          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,21 +8,14 @@
          xmlns:model="clr-namespace:WpfExecutor.Model"
          xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
          xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
-         mc:Ignorable="d" d:DesignHeight="30" d:DesignWidth="300" 
-         d:DataContext="{d:DesignInstance Type=model:PropModel}"
+         xmlns:implControl="clr-namespace:WpfExecutor.Control.ImplControl"
+         mc:Ignorable="d"
          HorizontalAlignment="Stretch" VerticalContentAlignment="Center" x:Name="Control">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition  Width="Auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" Text="X: " />
-        <impl:Int32UpDown  Grid.Column="1" Value="{Binding Value.X}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <TextBlock Margin="5,0,0,0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" Text="Y: "/>
-        <impl:Int32UpDown Grid.Column="3" Value="{Binding Value.Y}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+</implControl:PointUserControl>
 
-    </Grid>
-</UserControl>
+
+
+
+
+
 

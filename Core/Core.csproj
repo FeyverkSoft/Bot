@@ -89,10 +89,14 @@
     <Compile Include="ConfigEntity\ActionObjects\BaseActionObject.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GoToAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\KeyBoardKeysAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\StackAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LabelAct.cs" />
     <Compile Include="Core\ConfigValidator.cs" />
     <Compile Include="ConfigEntity\IContainer.cs" />
     <Compile Include="Core\ActionFactory.cs" />
+    <Compile Include="Core\EStackAction.cs" />
+    <Compile Include="Core\Point.cs" />
+    <Compile Include="Core\Size.cs" />
     <Compile Include="Helpers\ActionHelper.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
@@ -135,8 +139,6 @@
     <Compile Include="ActionExecutors\MouseMoveExecutor.cs" />
     <Compile Include="Core\BaseObjectInfo.cs" />
     <Compile Include="Core\ObjectInfo.cs" />
-    <Compile Include="Core\Size.cs" />
-    <Compile Include="Core\Point.cs" />
     <Compile Include="Core\WinInfo.cs" />
     <Compile Include="Core\ESearchParam.cs" />
     <Compile Include="Handlers\IKeyBoard.cs" />

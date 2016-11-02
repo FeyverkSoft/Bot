@@ -11,6 +11,8 @@
     xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
     xmlns:converter="clr-namespace:WpfExecutor.Converter"
     xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
+    xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
+    xmlns:custom="clr-namespace:WpfExecutor.Control.ImplControl"
     mc:Ignorable="d">
 
     <ResourceDictionary.MergedDictionaries>
@@ -22,6 +24,8 @@
         <ResourceDictionary Source="pack://application:,,,/Themes/Expander.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/TabItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/DataGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/PointControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/SizeControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <system:Boolean x:Key="True">True</system:Boolean>
@@ -378,7 +382,5 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-
-
 
 </ResourceDictionary>

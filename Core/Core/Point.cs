@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
-using Newtonsoft.Json;
 
 namespace Core.Core
 {
     /// <summary>
     /// Точка
     /// </summary>
-    public struct Point
+    public class Point
     {
         /// <summary>
         /// пустая точка
         /// </summary>
-        public static readonly Point Empty = new Point();
+        public static readonly Point Empty = new Point(0,0);
 
         /// <summary>
         /// Положение точки по оси X
@@ -31,7 +30,6 @@ namespace Core.Core
         /// </summary>
         public Boolean IsEmpty => X == 0 && Y == 0;
 
-        [JsonConstructor]
         public Point(Int32 x, Int32 y)
         {
             X = x;
@@ -70,6 +68,10 @@ namespace Core.Core
             return new Point(p.X, p.Y);
         }
 
+        public Point()
+        {
+            
+        }
         public override String ToString() => "{X=" + X.ToString(CultureInfo.InvariantCulture) + ",Y=" + Y.ToString(CultureInfo.InvariantCulture) + "}";
     }
 }

@@ -61,6 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\EStackActionControl.xaml.cs">
+      <DependentUpon>EStackActionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ImplControl\SizeUserControl.cs" />
+    <Compile Include="Control\ImplControl\PointUserControl.cs" />
     <Compile Include="Control\SizeControl.xaml.cs">
       <DependentUpon>SizeControl.xaml</DependentUpon>
     </Compile>
@@ -86,6 +91,7 @@
     <Compile Include="Control\StringControl.xaml.cs">
       <DependentUpon>StringControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\PointConverter.cs" />
     <Compile Include="Converter\EnumConverter.cs" />
     <Compile Include="Converter\DevConverter.cs" />
     <Compile Include="Extensions\DataTypeTemplateSelector.cs" />
@@ -128,6 +134,10 @@
     <Compile Include="Views\Settings\CoreSettingWindow.xaml.cs">
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\EStackActionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\SizeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -165,6 +175,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\SizeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\PointControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -365,6 +383,7 @@
   <ItemGroup>
     <Resource Include="Resources\icons\SaveAs-48.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
