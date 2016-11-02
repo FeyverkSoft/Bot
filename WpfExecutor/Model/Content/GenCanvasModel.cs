@@ -219,12 +219,17 @@ namespace WpfExecutor.Model.Content
             EditCommandEnabled = SelectedObject is IAction;
             var add = SelectedObject is IBotActionContainer || SelectedObject is IActionsContainer;
             if (SelectedObject is IActionsContainer &&
-                !((IActionsContainer) SelectedObject).IsMultiAct
-                && ((IActionsContainer) SelectedObject).SubActions.Count > 0)
+                !((IActionsContainer)SelectedObject).IsMultiAct
+                && ((IActionsContainer)SelectedObject).SubActions.Count > 0)
                 AddCommandEnabled = false;
             else
                 AddCommandEnabled = add;
 
+        }
+
+        ~GenCanvasModel()
+        {
+            StaticPropertyChanged -= OnPropertyChanged;
         }
     }
 }

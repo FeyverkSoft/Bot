@@ -237,7 +237,6 @@ namespace Core.Core
                             {
                                 if (currentAction.SubActions.Count > 0)
                                 {
-                                    executor.OnPrintMessageEvent += OnPrintMessageEvent;
                                     //Подписываем и исполнителя на выхлоп
                                     var ifRes = executor.Invoke(currentAction, ref _isAbort, res);
                                     if (ifRes.State == EResultState.Success && ifRes is BooleanExecutorResult)
@@ -259,6 +258,7 @@ namespace Core.Core
                                 : executor.Invoke(ref _isAbort, res);
                             break;
                     }
+                    executor.OnPrintMessageEvent -= OnPrintMessageEvent;
                     currentAction.IsCurrent = false;
                 }
             }
