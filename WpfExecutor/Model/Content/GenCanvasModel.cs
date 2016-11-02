@@ -63,9 +63,18 @@ namespace WpfExecutor.Model.Content
         /// </summary>
         private ICommand _editCommand;
 
-        private object _selectedObject;
-        private bool _editCommandEnabled;
-        private bool _addCommandEnabled;
+        /// <summary>
+        /// Поднять на позицию в верх
+        /// </summary>
+        private ICommand _upCommand;
+        /// <summary>
+        /// Опустить на позицию в низ
+        /// </summary>
+        private ICommand _downCommand;
+
+        private Object _selectedObject;
+        private Boolean _editCommandEnabled;
+        private Boolean _addCommandEnabled;
         public Config[] CommandConfig => new[] { Document.Instance.DocumentItems };
 
         public GenCanvasModel()
@@ -225,6 +234,27 @@ namespace WpfExecutor.Model.Content
             else
                 AddCommandEnabled = add;
 
+        }
+
+
+        /// <summary>
+        /// Поднять на позицию в верх
+        /// </summary>
+        public ICommand UpCommand => _upCommand ?? (_upCommand = new DelegateCommand<Object>(UpCommandMethod));
+
+        private void UpCommandMethod(Object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Опустить на позицию в низ
+        /// </summary>
+        public ICommand DownCommand => _downCommand ?? (_downCommand = new DelegateCommand<Object>(DownCommandMethod));
+
+        private void DownCommandMethod(Object obj)
+        {
+            throw new NotImplementedException();
         }
 
         ~GenCanvasModel()
