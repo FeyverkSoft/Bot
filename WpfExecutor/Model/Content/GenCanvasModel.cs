@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -204,8 +205,10 @@ namespace WpfExecutor.Model.Content
                     var winF = WindowFactory.CreateAddActionWindow(ActionFactory.GetType((IAction)temp), (IAction)temp);
                     if (winF.ShowDialog() == true)
                     {
-                        Document.OnChanged(true);
                         SelectedObject = temp;
+                        Document.OnChanged();
+                        //хак, что бы обновлять без рефреша дерева
+                        LocalizationManager.Instance.ChangeCultureCommand.Execute(CultureInfo.CurrentCulture);
                     }
                 }
             }

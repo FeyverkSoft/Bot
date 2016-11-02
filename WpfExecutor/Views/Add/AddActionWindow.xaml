@@ -67,7 +67,18 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="AddButton" Grid.Row="0" Grid.Column="0" Command="{Binding AddCommand}" Margin="0,0,5,0"
                     Visibility="{Binding IsSupported, Converter={common:BooleanToVisibilityConverter}}">
-                <TextBlock Text="{localization:Localization Key=Text_Add}"></TextBlock>
+                <TextBlock>
+                    <TextBlock.Style>
+                        <Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{localization:Localization Key=Text_Add}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsEditForm}" Value="True">
+                                    <Setter Property="Text" Value="{localization:Localization Key=Text_Edit}"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </Button>
             <Button Grid.Row="0" Grid.Column="1" Command="{Binding CloseCommand}" Margin="5,0,0,0">
                 <TextBlock Text="{localization:Localization Key=Text_Cancel}"></TextBlock>

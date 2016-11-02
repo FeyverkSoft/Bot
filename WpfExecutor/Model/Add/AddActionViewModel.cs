@@ -32,7 +32,9 @@ namespace WpfExecutor.Model.Add
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Это действие поддерживается?
+        /// </summary>
         public Boolean IsSupported
         {
             get { return _isSupported; }
@@ -51,10 +53,15 @@ namespace WpfExecutor.Model.Add
         /// Параметры действия
         /// </summary>
         public IAction Action { get; private set; }
+        /// <summary>
+        /// Это редактирование а не создание нового объекта?
+        /// </summary>
+        public Boolean IsEditForm { get; }
 
         public AddActionViewModel(ActionType actionType)
         {
             IsSupported = true;
+            IsEditForm = false;
             CurrentActionType = actionType;
             Refresh();
         }
@@ -62,6 +69,8 @@ namespace WpfExecutor.Model.Add
         public AddActionViewModel(ActionType actionType, IAction action)
         {
             IsSupported = true;
+            IsEditForm = true;
+            OnPropertyChanged(nameof(IsEditForm));
             CurrentActionType = actionType;
             Action = action;
             Refresh();
@@ -83,6 +92,7 @@ namespace WpfExecutor.Model.Add
                             .Where(
                                 x =>
                                     !x.PropertyType.IsArray &&
+                                    x.Name != "ToString" &&
                                     !x.PropertyType.GetInterfaces().Contains(typeof(ICollection))).ToList());
                 }
 

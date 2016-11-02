@@ -3,7 +3,6 @@ using System.Collections;
 using System.Runtime.Serialization;
 using System.Reflection;
 using LogWrapper;
-using Newtonsoft.Json;
 
 namespace Core.ConfigEntity
 {

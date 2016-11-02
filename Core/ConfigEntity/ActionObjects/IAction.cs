@@ -11,7 +11,6 @@ namespace Core.ConfigEntity.ActionObjects
         /// Наименование объекта класса для сериализации
         /// </summary>
         // String Class { get; }
-
         String ToString();
     }
 }

@@ -18,13 +18,10 @@ namespace Core.ConfigEntity
         private bool _isCurrent = false;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public static event PropertyChangedEventHandler StaticPropertyChanged;
-
         [NotifyPropertyChangedInvocator]
         public void OnPropertyChanged([CallerMemberName] String propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            StaticPropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>
