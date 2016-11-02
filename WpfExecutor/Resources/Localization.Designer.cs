@@ -534,6 +534,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить как.
+        /// </summary>
+        internal static string Text_SaveAs {
+            get {
+                return ResourceManager.GetString("Text_SaveAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Параметры ядра.
         /// </summary>
         internal static string Text_Settings {

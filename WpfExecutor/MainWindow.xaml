@@ -54,6 +54,12 @@
                             <Image Source="{StaticResource SaveIcon}" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <!--Сохранить как-->
+                    <MenuItem Header="{localization:Localization Text_SaveAs}" Command="{Binding SaveAsCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource SaveAsIcon}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
 
                     <!--новый-->
                     <MenuItem Header="{localization:Localization Text_New}" Command="{Binding NewCommand}">

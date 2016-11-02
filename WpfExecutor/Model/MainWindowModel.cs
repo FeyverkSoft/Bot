@@ -18,10 +18,8 @@ namespace WpfExecutor.Model
 {
     public class MainWindowModel : BaseViewModel
     {
-#warning TODO сохранить как.
-
         /// <summary>
-        /// Комманда открытия
+        /// Комманда закрытия
         /// </summary>
         private ICommand _closeCommand;
         /// <summary>
@@ -36,6 +34,10 @@ namespace WpfExecutor.Model
         /// комманда сохранения документа
         /// </summary>
         private ICommand _saveCommand;
+        /// <summary>
+        /// комманда сохранения документа
+        /// </summary>
+        private ICommand _saveAsCommand;
         /// <summary>
         /// комманды создания нового документа
         /// </summary>
@@ -206,6 +208,17 @@ namespace WpfExecutor.Model
                 ConfigReaderFactory.Get<Config>().Save(Document.Instance.DocumentItems, Document.Instance.Path);
                 return;
             }
+            SaveAsCommandMethod();
+        }
+
+
+        /// <summary>
+        /// комманда сохранить как
+        /// </summary>
+        public ICommand SaveAsCommand => _saveAsCommand ?? (_saveAsCommand = new DelegateCommand(SaveAsCommandMethod));
+
+        private void SaveAsCommandMethod()
+        {
             var sd = new SaveFileDialog { Filter = "bot command file|*.jsn" };
             if (sd.ShowDialog() == true)
             {

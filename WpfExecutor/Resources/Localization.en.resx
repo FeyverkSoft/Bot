@@ -280,6 +280,9 @@ Third-party Fonts:
   <data name="Text_Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Text_SaveAs" xml:space="preserve">
+    <value>Save as</value>
+  </data>
   <data name="Text_Settings" xml:space="preserve">
     <value>Core settings</value>
   </data>

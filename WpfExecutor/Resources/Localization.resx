@@ -278,6 +278,9 @@
   <data name="Text_Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="Text_SaveAs" xml:space="preserve">
+    <value>Сохранить как</value>
+  </data>
   <data name="Text_Settings" xml:space="preserve">
     <value>Параметры ядра</value>
   </data>
