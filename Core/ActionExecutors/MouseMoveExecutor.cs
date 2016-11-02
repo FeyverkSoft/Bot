@@ -41,7 +41,7 @@ namespace Core.ActionExecutors
                 if (actions != null)
                     foreach (var action1 in actions.SubActions)
                     {
-                        var action = (MouseMoveAct) action1;
+                        var action = (MouseMoveAct)action1;
                         if (action.ToObject && previousResult != null)
                         {
                             //выбор особых сценариев дляразных результатов
@@ -69,7 +69,7 @@ namespace Core.ActionExecutors
                                                 "Ошибка относительного позиционирования, CurrentMousePosExecutorResult не валиден");
                                         var pos = mousePos.ExecutorResult;
                                         var currentPos = Mouse.GetCurrentPos();
-                                        Int32 x = (currentPos.X - pos.X), y = (currentPos.Y - pos.Y);
+                                        Int32 x = (pos.X - currentPos.X), y = (pos.Y - currentPos.Y);
                                         Mouse.MouseMove(x + action.Dx, y + action.Dy);
                                     }
                                     break;
@@ -81,7 +81,7 @@ namespace Core.ActionExecutors
                                         var pos = mousePos.ExecutorResult.Pos;
 
                                         var currentPos = Mouse.GetCurrentPos();
-                                        Int32 x = (currentPos.X - pos.X), y = (currentPos.Y - pos.Y);
+                                        Int32 x = (pos.X - currentPos.X), y = (pos.Y - currentPos.Y);
                                         Mouse.MouseMove(x + action.Dx, y + action.Dy);
 
                                     }

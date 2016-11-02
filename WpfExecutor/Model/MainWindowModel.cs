@@ -18,6 +18,8 @@ namespace WpfExecutor.Model
 {
     public class MainWindowModel : BaseViewModel
     {
+#warning TODO сохранить как.
+
         /// <summary>
         /// Комманда открытия
         /// </summary>
