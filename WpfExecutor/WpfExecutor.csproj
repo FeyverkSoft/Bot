@@ -64,6 +64,7 @@
     <Compile Include="Control\EStackActionControl.xaml.cs">
       <DependentUpon>EStackActionControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ImplControl\SaveFileParamUserControl.cs" />
     <Compile Include="Control\ImplControl\SizeUserControl.cs" />
     <Compile Include="Control\ImplControl\PointUserControl.cs" />
     <Compile Include="Control\SizeControl.xaml.cs">
@@ -87,6 +88,9 @@
     </Compile>
     <Compile Include="Control\BooleanControl.xaml.cs">
       <DependentUpon>BooleanControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SaveFileParamControl.xaml.cs">
+      <DependentUpon>SaveFileParamControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\StringControl.xaml.cs">
       <DependentUpon>StringControl.xaml</DependentUpon>
@@ -167,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\SaveFileParamControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\StringControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +184,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\SaveFileParamUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

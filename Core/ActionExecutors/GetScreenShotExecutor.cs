@@ -73,7 +73,7 @@ namespace Core.ActionExecutors
                         break;
                 }
                 res.Bitmap.Save(
-                    $"{param.Path}/{param.Name ?? DateTime.UtcNow.ToString("O").Replace(":", "_")}.{param.Type}", imgF);
+                    $"{param.Path}/{(String.IsNullOrEmpty(param.Name) ? DateTime.UtcNow.ToString("O").Replace(":", "_") : param.Name)}.{param.Type}", imgF);
             }
             return res;
         }

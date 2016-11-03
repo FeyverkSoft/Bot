@@ -26,6 +26,7 @@
         <ResourceDictionary Source="pack://application:,,,/Themes/DataGrid.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/PointControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/SizeControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/SaveFileParamUserControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <system:Boolean x:Key="True">True</system:Boolean>

@@ -18,23 +18,27 @@ namespace Core.ConfigEntity.ActionObjects
         /// Начало прямоугольной области которой надо сделать скриншот
         /// </summary>
         [LocDescription("ScreenShotAct_Point")]
+        [DataMember]
         public Point Point { get; set; } = Point.Empty;
 
         /// <summary>
         /// Размер прямоугольной области
         /// </summary>
         [LocDescription("ScreenShotAct_Size")]
+        [DataMember]
         public Size Size { get; set; } = Point.Empty;
         /// <summary>
         /// Описание пути и параметров файла для сейва
         /// </summary>
         [LocDescription("ScreenShotAct_SaveFileParam")]
+        [DataMember]
         public SaveFileParam SaveFileParam { get; set; }
 
         /// <summary>
         /// Сделать картинку в оттенках серого?
         /// </summary>
         [LocDescription("ScreenShotAct_GrayScale")]
+        [DataMember]
         public Boolean GrayScale { get; set; }
 
 
