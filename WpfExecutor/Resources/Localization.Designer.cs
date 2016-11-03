@@ -102,6 +102,16 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ВНИМАНИЕ:
+        ///Стоит иметь в виду, что если действие не имеет собственного возвращаемого результата, то действие вернёт (пробросит) результат предыдущего действия..
+        /// </summary>
+        internal static string AddWarning {
+            get {
+                return ResourceManager.GetString("AddWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите выйти из программы?.
         /// </summary>
         internal static string CloseMessage {
@@ -246,6 +256,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Получает текущую позицию курсора, результат может быть переданн следующему вызову, или запулин в стек..
+        /// </summary>
+        internal static string Description_GetMousePos {
+            get {
+                return ResourceManager.GetString("Description_GetMousePos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Данное действие получает информацию об объекте находящемся в указанной позиции. 
         ///К такой информации относится:
         ///Type - Тип объекта
@@ -290,6 +309,25 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие нажатия одной или нескольких клавиш последовательно..
+        /// </summary>
+        internal static string Description_KeyBoard {
+            get {
+                return ResourceManager.GetString("Description_KeyBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие нажатия одновременно нескольких клавиш на клавиатуре.
+        ///Иначе говоря нажатие сочитания клавиш..
+        /// </summary>
+        internal static string Description_KeyBoardKeys {
+            get {
+                return ResourceManager.GetString("Description_KeyBoardKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Метка, указывает целевую точку для перехода в программе, например: goto метка.
         ///Действие оператора GOTO состоит в том, что после его исполнения следующими будут исполняться операторы программы, идущие в тексте непосредственно после метки..
         /// </summary>
@@ -319,12 +357,68 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Щелчёк левой кнопки мыши.
+        /// </summary>
+        internal static string Description_MouseLClick {
+            get {
+                return ResourceManager.GetString("Description_MouseLClick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие зажатия левой кнопки мыши.
+        ///Мышка не будет отжата до тех пор пока не будет вызвано соответсвующее событие.
+        ///Это может быть полезно если например надо что то перетащить..
+        /// </summary>
+        internal static string Description_MouseLPress {
+            get {
+                return ResourceManager.GetString("Description_MouseLPress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие отжатия левой кнопки мышки..
+        /// </summary>
+        internal static string Description_MouseLUp {
+            get {
+                return ResourceManager.GetString("Description_MouseLUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Действие перемещения мышки в указанную позицию.
         ///Мышка может быть перемещена как и на указанное смещение, так и к конкретному объекту, который является результатом предыдущего вызова..
         /// </summary>
         internal static string Description_MouseMove {
             get {
                 return ResourceManager.GetString("Description_MouseMove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выполнить щелчёк правой кнопкой мышки.
+        /// </summary>
+        internal static string Description_MouseRClick {
+            get {
+                return ResourceManager.GetString("Description_MouseRClick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие зажатия правой кнопки мыши.
+        /// </summary>
+        internal static string Description_MouseRPress {
+            get {
+                return ResourceManager.GetString("Description_MouseRPress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие отжатия правой кнопки мыши.
+        /// </summary>
+        internal static string Description_MouseRUp {
+            get {
+                return ResourceManager.GetString("Description_MouseRUp", resourceCulture);
             }
         }
         
@@ -348,7 +442,7 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Вызывает плагин ипередаёт ему список указанных действий. .
+        ///   Ищет локализованную строку, похожую на Вызывает плагин и передаёт ему список указанных действий. .
         /// </summary>
         internal static string Description_PluginInvoke {
             get {
@@ -363,6 +457,15 @@ namespace WpfExecutor.Resources {
         internal static string Description_SendMessage {
             get {
                 return ResourceManager.GetString("Description_SendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действия сна бота. То есть пока не закончится указанное время, бот не перейдёт к следующей комманде..
+        /// </summary>
+        internal static string Description_Sleep {
+            get {
+                return ResourceManager.GetString("Description_Sleep", resourceCulture);
             }
         }
         

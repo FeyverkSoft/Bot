@@ -134,6 +134,10 @@
   <data name="AddActionWindow_ActionType" xml:space="preserve">
     <value>Тип действия</value>
   </data>
+  <data name="AddWarning" xml:space="preserve">
+    <value>ВНИМАНИЕ:
+Стоит иметь в виду, что если действие не имеет собственного возвращаемого результата, то действие вернёт (пробросит) результат предыдущего действия.</value>
+  </data>
   <data name="CloseMessage" xml:space="preserve">
     <value>Вы действительно хотите выйти из программы?</value>
   </data>
@@ -182,6 +186,9 @@
   <data name="DeleteMessageTitle" xml:space="preserve">
     <value>Удалить?</value>
   </data>
+  <data name="Description_GetMousePos" xml:space="preserve">
+    <value>Получает текущую позицию курсора, результат может быть переданн следующему вызову, или запулин в стек.</value>
+  </data>
   <data name="Description_GetObject" xml:space="preserve">
     <value>Данное действие получает информацию об объекте находящемся в указанной позиции. 
 К такой информации относится:
@@ -202,6 +209,13 @@ Size - Размер
   <data name="Description_If" xml:space="preserve">
     <value>Оператор условного ветвления, В РАЗРАБОТКЕ</value>
   </data>
+  <data name="Description_KeyBoard" xml:space="preserve">
+    <value>Действие нажатия одной или нескольких клавиш последовательно.</value>
+  </data>
+  <data name="Description_KeyBoardKeys" xml:space="preserve">
+    <value>Действие нажатия одновременно нескольких клавиш на клавиатуре.
+Иначе говоря нажатие сочитания клавиш.</value>
+  </data>
   <data name="Description_Label" xml:space="preserve">
     <value>Метка, указывает целевую точку для перехода в программе, например: goto метка.
 Действие оператора GOTO состоит в том, что после его исполнения следующими будут исполняться операторы программы, идущие в тексте непосредственно после метки.</value>
@@ -213,9 +227,29 @@ Size - Размер
   <data name="Description_Mock" xml:space="preserve">
     <value>Нечего не делает, дебаговый объект.</value>
   </data>
+  <data name="Description_MouseLClick" xml:space="preserve">
+    <value>Щелчёк левой кнопки мыши</value>
+  </data>
+  <data name="Description_MouseLPress" xml:space="preserve">
+    <value>Действие зажатия левой кнопки мыши.
+Мышка не будет отжата до тех пор пока не будет вызвано соответсвующее событие.
+Это может быть полезно если например надо что то перетащить.</value>
+  </data>
+  <data name="Description_MouseLUp" xml:space="preserve">
+    <value>Действие отжатия левой кнопки мышки.</value>
+  </data>
   <data name="Description_MouseMove" xml:space="preserve">
     <value>Действие перемещения мышки в указанную позицию.
 Мышка может быть перемещена как и на указанное смещение, так и к конкретному объекту, который является результатом предыдущего вызова.</value>
+  </data>
+  <data name="Description_MouseRClick" xml:space="preserve">
+    <value>Выполнить щелчёк правой кнопкой мышки</value>
+  </data>
+  <data name="Description_MouseRPress" xml:space="preserve">
+    <value>Действие зажатия правой кнопки мыши</value>
+  </data>
+  <data name="Description_MouseRUp" xml:space="preserve">
+    <value>Действие отжатия правой кнопки мыши</value>
   </data>
   <data name="Description_MouseSetPos" xml:space="preserve">
     <value>Поставить курсор в указанную позицию. Позиция не может принимать отрицательные значения по оси координат. Однако может рассчитывать относительно какого либо объекта, например окна, явлющегося результатом вызова функции ExpectWindow</value>
@@ -225,11 +259,14 @@ Size - Размер
 В данный момент находится в разработке.</value>
   </data>
   <data name="Description_PluginInvoke" xml:space="preserve">
-    <value>Вызывает плагин ипередаёт ему список указанных действий. </value>
+    <value>Вызывает плагин и передаёт ему список указанных действий. </value>
   </data>
   <data name="Description_SendMessage" xml:space="preserve">
     <value>Функция инициирует отправку заданного сообщения на указанный канал связи.
 На текущий момент поддерживается только емайл.</value>
+  </data>
+  <data name="Description_Sleep" xml:space="preserve">
+    <value>Действия сна бота. То есть пока не закончится указанное время, бот не перейдёт к следующей комманде.</value>
   </data>
   <data name="Description_Stack" xml:space="preserve">
     <value>Представляет собой список результатов выполнений, организованных по принципу LIFO.</value>
