@@ -7,6 +7,19 @@ namespace CommonLib.Collections
 {
     public class NotifyList<T> : List<T>, INotifyCollectionChanged, INotifyPropertyChanged
     {
+        public new T this[Int32 i]
+        {
+            get { return base[i]; }
+            set
+            {
+                var orig = base[i];
+                base[i] = value;
+                OnPropertyChanged("Item[]");
+                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace,
+                    value, orig, i));
+            }
+        }
+
         /// <summary>
         /// Добавить объект в коллекцию
         /// </summary>
@@ -55,7 +68,7 @@ namespace CommonLib.Collections
 
         public new void Insert(Int32 i, T item)
         {
-            base.Insert(i,item);
+            base.Insert(i, item);
             OnCollectionChanged(NotifyCollectionChangedAction.Add, item, i);
         }
 

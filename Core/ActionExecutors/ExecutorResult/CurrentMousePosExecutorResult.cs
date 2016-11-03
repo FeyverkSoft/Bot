@@ -5,7 +5,7 @@ namespace Core.ActionExecutors.ExecutorResult
     /// <summary>
     /// Позация курсора мышки на момент вызова метода получения позиции
     /// </summary>
-    public class CurrentMousePosExecutorResult:BaseExecutorResult
+    public class CurrentMousePosExecutorResult : BaseExecutorResult
     {
         /// <summary>
         /// Результат выполнения

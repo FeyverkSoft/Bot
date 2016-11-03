@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using CommonLib.Collections;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
@@ -172,26 +174,22 @@ namespace WpfExecutor.Model.Content
         /// </summary>
         /// <param name="o"></param>
         /// <param name="list"></param>
-        void RecursRemove(Object o, ListBotAction list)
+        void RecursRemove<T>(Object o, NotifyList<T> list)
         {
             foreach (var item in list)
             {
-                if (item == o)
+                if (item.Equals(o))
                 {
                     list.Remove(item);
                     break;
                 }
-                foreach (var it in item.SubActions)
+                if (item is IActionsContainer)
                 {
-                    if (it == o)
-                    {
-                        item.SubActions.Remove(it);
-                        break;
-                    }
-                    if (it is IBotActionContainer)
-                    {
-                        RecursRemove(o, ((IBotActionContainer)it).Actions);
-                    }
+                    RecursRemove(o, ((IActionsContainer)item).SubActions);
+                }
+                if (item is IBotActionContainer)
+                {
+                    RecursRemove(o, ((IBotActionContainer)item).Actions);
                 }
             }
         }
@@ -244,7 +242,8 @@ namespace WpfExecutor.Model.Content
 
         private void UpCommandMethod(Object obj)
         {
-            throw new NotImplementedException();
+            RecursMove(obj, Document.Instance.DocumentItems.Actions, "UP");
+            Document.OnChanged();
         }
 
         /// <summary>
@@ -254,8 +253,49 @@ namespace WpfExecutor.Model.Content
 
         private void DownCommandMethod(Object obj)
         {
-            throw new NotImplementedException();
+            RecursMove(obj, Document.Instance.DocumentItems.Actions, "DOWN");
+            Document.OnChanged();
         }
+
+        /// <summary>
+        /// Рекурсивная функция обхода дерева и изенения позиции элемента элементов
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="list"></param>
+        void RecursMove<T>(Object o, NotifyList<T> list, String direction)
+        {
+            if (list == null)
+                return;
+            for (var i = 0; i < list.Count; i++)
+            {
+                if (list[i].Equals(o) && list.Count > 1)
+                {
+                    if (direction == "UP" && i != 0)
+                    {
+                        var temp = list[i];
+                        list[i] = list[i - 1];
+                        list[i - 1] = temp;
+                        break;
+                    }
+                    if (direction == "DOWN" && i != list.Count - 1)
+                    {
+                        var temp = list[i];
+                        list[i] = list[i + 1];
+                        list[i + 1] = temp;
+                        break;
+                    }
+                }
+                if (list[i] is IActionsContainer)
+                {
+                    RecursMove(o, ((IActionsContainer)list[i])?.SubActions, direction);
+                }
+                if (list[i] is IBotActionContainer)
+                {
+                    RecursMove(o, ((IBotActionContainer)list[i])?.Actions, direction);
+                }
+            }
+        }
+
 
         ~GenCanvasModel()
         {
