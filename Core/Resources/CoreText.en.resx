@@ -408,4 +408,7 @@
   <data name="EStackAction_Push" xml:space="preserve">
     <value>Push</value>
   </data>
+  <data name="EStackAction_Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
 </root>

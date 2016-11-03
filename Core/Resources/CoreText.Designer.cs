@@ -394,6 +394,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Очистить.
+        /// </summary>
+        internal static string EStackAction_Clear {
+            get {
+                return ResourceManager.GetString("EStackAction_Clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Просмотреть (Peek).
         /// </summary>
         internal static string EStackAction_Peek {

@@ -195,9 +195,20 @@ Size - Размер
   <data name="Description_GetScreenshot" xml:space="preserve">
     <value>Функция создаёт скриншот экрана. Данное действие может возвращать чёрный экран в DX приложениях.</value>
   </data>
+  <data name="Description_GOTO" xml:space="preserve">
+    <value>Оператор безусловного перехода к определённой точке программы, обозначенной  меткой.
+Область видимости оператора ограниченна текущим уровнем вложенности.</value>
+  </data>
+  <data name="Description_If" xml:space="preserve">
+    <value>Оператор условного ветвления, В РАЗРАБОТКЕ</value>
+  </data>
   <data name="Description_Label" xml:space="preserve">
     <value>Метка, указывает целевую точку для перехода в программе, например: goto метка.
 Действие оператора GOTO состоит в том, что после его исполнения следующими будут исполняться операторы программы, идущие в тексте непосредственно после метки.</value>
+  </data>
+  <data name="Description_Loop" xml:space="preserve">
+    <value>Оператор цикла, выполняет список указанных действий, указанное колличество раз.
+Внимание! При использовании стека в цикле следите за тем что бы он не переполнялся!</value>
   </data>
   <data name="Description_Mock" xml:space="preserve">
     <value>Нечего не делает, дебаговый объект.</value>
@@ -213,9 +224,15 @@ Size - Размер
     <value>Описание действий к исполнению для плагина.
 В данный момент находится в разработке.</value>
   </data>
+  <data name="Description_PluginInvoke" xml:space="preserve">
+    <value>Вызывает плагин ипередаёт ему список указанных действий. </value>
+  </data>
   <data name="Description_SendMessage" xml:space="preserve">
     <value>Функция инициирует отправку заданного сообщения на указанный канал связи.
 На текущий момент поддерживается только емайл.</value>
+  </data>
+  <data name="Description_Stack" xml:space="preserve">
+    <value>Представляет собой список результатов выполнений, организованных по принципу LIFO.</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Произошла ошибка</value>

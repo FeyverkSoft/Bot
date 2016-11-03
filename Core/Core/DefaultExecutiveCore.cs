@@ -213,6 +213,9 @@ namespace Core.Core
                                     case EStackAction.Peek:
                                         res = _executorResultStack.Peek();
                                         break;
+                                    case EStackAction.Clear:
+                                        _executorResultStack.Clear();
+                                        break;
                                 }
                             }
                             break;

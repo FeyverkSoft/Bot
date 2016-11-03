@@ -271,12 +271,41 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Оператор безусловного перехода к определённой точке программы, обозначенной  меткой.
+        ///Область видимости оператора ограниченна текущим уровнем вложенности..
+        /// </summary>
+        internal static string Description_GOTO {
+            get {
+                return ResourceManager.GetString("Description_GOTO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оператор условного ветвления, В РАЗРАБОТКЕ.
+        /// </summary>
+        internal static string Description_If {
+            get {
+                return ResourceManager.GetString("Description_If", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Метка, указывает целевую точку для перехода в программе, например: goto метка.
         ///Действие оператора GOTO состоит в том, что после его исполнения следующими будут исполняться операторы программы, идущие в тексте непосредственно после метки..
         /// </summary>
         internal static string Description_Label {
             get {
                 return ResourceManager.GetString("Description_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оператор цикла, выполняет список указанных действий, указанное колличество раз.
+        ///Внимание! При использовании стека в цикле следите за тем что бы он не переполнялся!.
+        /// </summary>
+        internal static string Description_Loop {
+            get {
+                return ResourceManager.GetString("Description_Loop", resourceCulture);
             }
         }
         
@@ -319,12 +348,30 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вызывает плагин ипередаёт ему список указанных действий. .
+        /// </summary>
+        internal static string Description_PluginInvoke {
+            get {
+                return ResourceManager.GetString("Description_PluginInvoke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Функция инициирует отправку заданного сообщения на указанный канал связи.
         ///На текущий момент поддерживается только емайл..
         /// </summary>
         internal static string Description_SendMessage {
             get {
                 return ResourceManager.GetString("Description_SendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Представляет собой список результатов выполнений, организованных по принципу LIFO..
+        /// </summary>
+        internal static string Description_Stack {
+            get {
+                return ResourceManager.GetString("Description_Stack", resourceCulture);
             }
         }
         

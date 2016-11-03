@@ -10,6 +10,8 @@ namespace Core.Core
         [LocDescription("EStackAction_Push")]
         Push,
         [LocDescription("EStackAction_Peek")]
-        Peek
+        Peek,
+        [LocDescription("EStackAction_Clear")]
+        Clear
     }
 }
