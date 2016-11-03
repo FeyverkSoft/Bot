@@ -94,7 +94,7 @@ namespace Core.Core
                 case nameof(StackAct):
                     return ActionType.Stack;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return ActionType.PluginAct;
             }
         }
     }

@@ -182,9 +182,40 @@
   <data name="DeleteMessageTitle" xml:space="preserve">
     <value>Удалить?</value>
   </data>
+  <data name="Description_GetObject" xml:space="preserve">
+    <value>Данное действие получает информацию об объекте находящемся в указанной позиции. 
+К такой информации относится:
+Type - Тип объекта
+Titile - Наименование
+Pos - Позиция
+Size - Размер
+И дескриптор объекта
+Результат исполнения может быть передан следующему вызову.</value>
+  </data>
+  <data name="Description_GetScreenshot" xml:space="preserve">
+    <value>Функция создаёт скриншот экрана. Данное действие может возвращать чёрный экран в DX приложениях.</value>
+  </data>
   <data name="Description_Label" xml:space="preserve">
     <value>Метка, указывает целевую точку для перехода в программе, например: goto метка.
 Действие оператора GOTO состоит в том, что после его исполнения следующими будут исполняться операторы программы, идущие в тексте непосредственно после метки.</value>
+  </data>
+  <data name="Description_Mock" xml:space="preserve">
+    <value>Нечего не делает, дебаговый объект.</value>
+  </data>
+  <data name="Description_MouseMove" xml:space="preserve">
+    <value>Действие перемещения мышки в указанную позицию.
+Мышка может быть перемещена как и на указанное смещение, так и к конкретному объекту, который является результатом предыдущего вызова.</value>
+  </data>
+  <data name="Description_MouseSetPos" xml:space="preserve">
+    <value>Поставить курсор в указанную позицию. Позиция не может принимать отрицательные значения по оси координат. Однако может рассчитывать относительно какого либо объекта, например окна, явлющегося результатом вызова функции ExpectWindow</value>
+  </data>
+  <data name="Description_PluginAct" xml:space="preserve">
+    <value>Описание действий к исполнению для плагина.
+В данный момент находится в разработке.</value>
+  </data>
+  <data name="Description_SendMessage" xml:space="preserve">
+    <value>Функция инициирует отправку заданного сообщения на указанный канал связи.
+На текущий момент поддерживается только емайл.</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Произошла ошибка</value>

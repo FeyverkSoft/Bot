@@ -246,12 +246,85 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Данное действие получает информацию об объекте находящемся в указанной позиции. 
+        ///К такой информации относится:
+        ///Type - Тип объекта
+        ///Titile - Наименование
+        ///Pos - Позиция
+        ///Size - Размер
+        ///И дескриптор объекта
+        ///Результат исполнения может быть передан следующему вызову..
+        /// </summary>
+        internal static string Description_GetObject {
+            get {
+                return ResourceManager.GetString("Description_GetObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Функция создаёт скриншот экрана. Данное действие может возвращать чёрный экран в DX приложениях..
+        /// </summary>
+        internal static string Description_GetScreenshot {
+            get {
+                return ResourceManager.GetString("Description_GetScreenshot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Метка, указывает целевую точку для перехода в программе, например: goto метка.
         ///Действие оператора GOTO состоит в том, что после его исполнения следующими будут исполняться операторы программы, идущие в тексте непосредственно после метки..
         /// </summary>
         internal static string Description_Label {
             get {
                 return ResourceManager.GetString("Description_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нечего не делает, дебаговый объект..
+        /// </summary>
+        internal static string Description_Mock {
+            get {
+                return ResourceManager.GetString("Description_Mock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Действие перемещения мышки в указанную позицию.
+        ///Мышка может быть перемещена как и на указанное смещение, так и к конкретному объекту, который является результатом предыдущего вызова..
+        /// </summary>
+        internal static string Description_MouseMove {
+            get {
+                return ResourceManager.GetString("Description_MouseMove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Поставить курсор в указанную позицию. Позиция не может принимать отрицательные значения по оси координат. Однако может рассчитывать относительно какого либо объекта, например окна, явлющегося результатом вызова функции ExpectWindow.
+        /// </summary>
+        internal static string Description_MouseSetPos {
+            get {
+                return ResourceManager.GetString("Description_MouseSetPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Описание действий к исполнению для плагина.
+        ///В данный момент находится в разработке..
+        /// </summary>
+        internal static string Description_PluginAct {
+            get {
+                return ResourceManager.GetString("Description_PluginAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Функция инициирует отправку заданного сообщения на указанный канал связи.
+        ///На текущий момент поддерживается только емайл..
+        /// </summary>
+        internal static string Description_SendMessage {
+            get {
+                return ResourceManager.GetString("Description_SendMessage", resourceCulture);
             }
         }
         
