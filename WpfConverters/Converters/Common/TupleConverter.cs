@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace WpfConverters.Converters.Common
 {
@@ -8,8 +11,18 @@ namespace WpfConverters.Converters.Common
     /// </summary>
     public class TupleConverter : BaseValueConverterExtension
     {
+        private readonly List<Tuple<String, Object>> _list;
+        public TupleConverter(List<Tuple<String, Object>> t = null)
+        {
+            _list = t;
+        }
         public override Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
         {
+                foreach (var tuple in _list)
+                {
+                    if (tuple.Item2.ToString() == value.ToString())
+                        return tuple;
+                }
             return value;
         }
 

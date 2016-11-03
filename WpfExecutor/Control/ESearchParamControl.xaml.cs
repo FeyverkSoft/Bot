@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using Core.Core;
 using WpfConverters.Converters.Common;
 using WpfExecutor.Model;
+using WpfExecutor.Converter;
+using WpfExecutor.Helpers;
 
 namespace WpfExecutor.Control
 {
@@ -20,13 +26,15 @@ namespace WpfExecutor.Control
         [UsedImplicitly]
         public static FrameworkElementFactory GetFrameworkElementFactory()
         {
+            var list = typeof(ESearchParam).GeEnumTuple();
             var factory = new FrameworkElementFactory(typeof(ESearchParamControl));
+            factory.SetValue(ItemsSourceProperty, list);
             factory.SetBinding(SelectedItemProperty, new Binding(nameof(PropModel.Value))
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
-                Converter = new TupleConverter(),
-                ConverterParameter = nameof(Tuple<String, Object>.Item2)
+                Converter = new TupleConverter(list),
+                ConverterParameter = nameof(Tuple<String, ESearchParam>.Item2),
             });
             return factory;
         }

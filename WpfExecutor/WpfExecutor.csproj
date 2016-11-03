@@ -97,6 +97,7 @@
     <Compile Include="Extensions\DataTypeTemplateSelector.cs" />
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Model\Add\AddBotActionModel.cs" />
     <Compile Include="Model\Add\AddActionViewModel.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
