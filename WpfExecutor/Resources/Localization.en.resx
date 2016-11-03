@@ -304,4 +304,7 @@ Third-party Fonts:
   <data name="Version" xml:space="preserve">
     <value>Version:</value>
   </data>
+  <data name="Добавление/Редактирование" xml:space="preserve">
+    <value>Add/Edit</value>
+  </data>
 </root>

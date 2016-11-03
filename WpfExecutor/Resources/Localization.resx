@@ -391,4 +391,7 @@ Size - Размер
   <data name="Version" xml:space="preserve">
     <value>Версия:</value>
   </data>
+  <data name="AddBotActionWindow" xml:space="preserve">
+    <value>Добавление/Редактирование</value>
+  </data>
 </root>

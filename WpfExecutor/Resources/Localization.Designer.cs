@@ -102,6 +102,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Добавление/Редактирование.
+        /// </summary>
+        internal static string AddBotActionWindow {
+            get {
+                return ResourceManager.GetString("AddBotActionWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ВНИМАНИЕ:
         ///Стоит иметь в виду, что если действие не имеет собственного возвращаемого результата, то действие вернёт (пробросит) результат предыдущего действия..
         /// </summary>
