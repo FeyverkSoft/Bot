@@ -108,7 +108,7 @@ namespace WpfExecutor.Model.Content
             var temp = o ?? SelectedObject;
             if (temp != null)
             {
-                if (temp.GetType().GetInterfaces().Contains(typeof(IBotActionContainer)))
+                if (temp is IBotActionContainer)
                 {
                     //отображаем окно для добавления IBotAction в корень, последним элементом
                     //потом надо будет придумать как сделать выбор места
@@ -122,7 +122,7 @@ namespace WpfExecutor.Model.Content
                         }
                     }
                 }
-                if (temp.GetType().GetInterfaces().Contains(typeof(IActionsContainer)))
+                if (temp is IActionsContainer)
                 {  //Добавляем поддействие IAction в действие
                     var winF = WindowFactory.CreateAddActionWindow(((BotAction)temp).ActionType);
                     if (!((IActionsContainer)temp).IsMultiAct && ((IActionsContainer)temp).SubActions.Count > 0)
@@ -138,6 +138,19 @@ namespace WpfExecutor.Model.Content
                         if (mod != null)
                         {
                             ((IActionsContainer)temp).SubActions.Add(mod.Action);
+                        }
+                    }
+                }
+                if (temp is PluginInvokeAct)
+                {
+                    //Добавляем поддействие IAction в действие
+                    var winF = WindowFactory.CreateAddActionWindow(((PluginInvokeAct)temp).Actions.ActionType);
+                    if (winF.ShowDialog() == true)
+                    {
+                        var mod = winF.DataContext as AddActionViewModel;
+                        if (mod != null)
+                        {
+                            ((PluginInvokeAct)temp).Actions.SubActions.Add(mod.Action);
                         }
                     }
                 }
@@ -223,7 +236,7 @@ namespace WpfExecutor.Model.Content
         private void MenuRefresh()
         {
             EditCommandEnabled = SelectedObject is IAction;
-            var add = SelectedObject is IBotActionContainer || SelectedObject is IActionsContainer;
+            var add = SelectedObject is IBotActionContainer || SelectedObject is IActionsContainer || SelectedObject is PluginInvokeAct;
             if (SelectedObject is IActionsContainer &&
                 !((IActionsContainer)SelectedObject).IsMultiAct
                 && ((IActionsContainer)SelectedObject).SubActions.Count > 0)

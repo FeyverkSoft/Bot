@@ -8,13 +8,25 @@ namespace Core.Core
 {
     public static class ActionFactory
     {
+        private static List<Type> _list1;
+
+        private static List<Type> List
+        {
+            get
+            {
+                if (_list1 != null)
+                    return _list1;
+                _list1 = Assemblys.TypeList.Where(x => x.GetInterfaces().Contains(typeof(IAction))).ToList();
+                _list1.AddRange(Assemblys.PluginsTypeList.Where(x => x.GetInterfaces().Contains(typeof(IAction))));
+                _list1 =_list1.Distinct().ToList();
+                return _list1;
+            }
+        }
+
         public static List<IAction> Get(ActionType actionType)
         {
-            var list = Assemblys.TypeList;
-            list.AddRange(Assemblys.PluginsTypeList);
             var actions = new List<IAction>();
-            foreach (var type in list.Where(x => x.GetInterfaces()
-            .Contains(typeof(IAction)) && x.Name != nameof(BaseActionObject)))
+            foreach (var type in List.Where(x => x.Name != nameof(BaseActionObject)))
             {
                 var propertyInfo = type.GetProperty(nameof(BaseActionObject.ActionType));
                 if (propertyInfo == null)

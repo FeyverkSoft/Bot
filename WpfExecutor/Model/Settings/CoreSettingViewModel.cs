@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using Core;
@@ -99,6 +100,8 @@ namespace WpfExecutor.Model.Settings
                 _conf.LoadPlugin = value;
             }
         }
+
+        public List<String> Priority => _conf.PrioritetList;
 
         public ICommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(SaveCommandMethod));
         /// <summary>

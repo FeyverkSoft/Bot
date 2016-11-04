@@ -18,6 +18,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!-- Настройки каналов уведомлений -->
         <Expander Grid.Row="0" Header="{localization:Localization Key=CoreSettingWindow_NotificationChannelSettings}" Margin="0,5">
@@ -72,7 +73,20 @@
             </Grid>
         </Expander>
 
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding SaveCommand}" Margin="0, 2">
+        <Expander Grid.Row="2" Header="{localization:Localization Key=CoreSettingWindow_Priority}" Margin="0,5">
+            <Grid>
+                <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Priority}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Background="Transparent" Text="{Binding}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Expander>
+
+
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding SaveCommand}" Margin="0, 2">
             <TextBlock Text="{localization:Localization Key=Text_Save}"></TextBlock>
         </Button>
     </Grid>

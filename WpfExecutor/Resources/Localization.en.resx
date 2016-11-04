@@ -167,6 +167,9 @@ Third-party Fonts:
   <data name="CoreSettingWindow_NotificationChannelSettings" xml:space="preserve">
     <value>Notification channel settings</value>
   </data>
+  <data name="CoreSettingWindow_Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
   <data name="CoreSettingWindow_SmtpHost" xml:space="preserve">
     <value>Smtp host</value>
   </data>

@@ -22,5 +22,10 @@ namespace TestPlugin
         }
         [DataMember]
         public String Test { get; private set; }
+
+        public TestAct()
+        {
+            
+        }
     }
 }

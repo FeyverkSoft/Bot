@@ -211,6 +211,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Приоритеты.
+        /// </summary>
+        internal static string CoreSettingWindow_Priority {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Smtp хост.
         /// </summary>
         internal static string CoreSettingWindow_SmtpHost {
