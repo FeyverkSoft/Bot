@@ -614,6 +614,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить файл.
+        /// </summary>
+        internal static string SaveFileParamUserControl_SaveFile {
+            get {
+                return ResourceManager.GetString("SaveFileParamUserControl_SaveFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Тип файла.
         /// </summary>
         internal static string SaveFileParamUserControl_Type {

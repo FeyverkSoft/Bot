@@ -39,24 +39,35 @@
                                         <RowDefinition/>
                                         <RowDefinition/>
                                         <RowDefinition/>
+                                        <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition MinWidth="170"/>
                                     </Grid.ColumnDefinitions>
+
                                     <TextBlock Margin="0,2,5,2" Grid.Row="0" Grid.Column="0" TextAlignment="Left" 
-                                               VerticalAlignment="Center" Text="{localization:Localization SaveFileParamUserControl_FileName}" />
-                                    <TextBox Margin="0,2" x:Name="PART_Name" Grid.Row="0"  Grid.Column="1" Text="{Binding FileName, RelativeSource={RelativeSource TemplatedParent}}" 
-                                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                               VerticalAlignment="Center" Text="{localization:Localization SaveFileParamUserControl_SaveFile}" />
+                                    <CheckBox Margin="0,2" x:Name="PART_SaveFile" Grid.Row="0"  Grid.Column="1" IsChecked="{Binding SaveFile, RelativeSource={RelativeSource TemplatedParent}}" 
+                                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
                                     <TextBlock Margin="0,2,5,2" Grid.Row="1" Grid.Column="0" TextAlignment="Left" 
-                                               VerticalAlignment="Center" Text="{localization:Localization SaveFileParamUserControl_Path}"/>
-                                    <TextBox Margin="0,2" x:Name="PART_Path" Grid.Row="1" Grid.Column="1" Text="{Binding Path, RelativeSource={RelativeSource TemplatedParent}}" 
-                                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                               VerticalAlignment="Center" Text="{localization:Localization SaveFileParamUserControl_FileName}" />
+                                    <TextBox Margin="0,2" x:Name="PART_Name" Grid.Row="1"  Grid.Column="1" 
+                                             Text="{Binding FileName, RelativeSource={RelativeSource TemplatedParent}}" 
+                                             IsEnabled="{Binding SaveFile, RelativeSource={RelativeSource TemplatedParent}}"
+                                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                     <TextBlock Margin="0,2,5,2" Grid.Row="2" Grid.Column="0" TextAlignment="Left" 
+                                               VerticalAlignment="Center" Text="{localization:Localization SaveFileParamUserControl_Path}"/>
+                                    <TextBox Margin="0,2" x:Name="PART_Path" Grid.Row="2" Grid.Column="1" Text="{Binding Path, RelativeSource={RelativeSource TemplatedParent}}" 
+                                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                             IsEnabled="{Binding SaveFile, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <TextBlock Margin="0,2,5,2" Grid.Row="3" Grid.Column="0" TextAlignment="Left" 
                                                VerticalAlignment="Center" Text="{localization:Localization SaveFileParamUserControl_Type}"/>
-                                    <control:ImageFileFormatControl Margin="0,2" x:Name="PART_Type" Grid.Row="2" Grid.Column="1" 
-                                                                    SelectedValue="{Binding Type, RelativeSource={RelativeSource TemplatedParent},
-                                        Converter={converter:TupleConverter}, ConverterParameter={x:Type core:ImageFileFormat}}" 
+                                    <control:ImageFileFormatControl Margin="0,2" x:Name="PART_Type" Grid.Row="3" Grid.Column="1" 
+                                          SelectedValue="{Binding Type, RelativeSource={RelativeSource TemplatedParent},
+                                          Converter={converter:TupleConverter}, ConverterParameter={x:Type core:ImageFileFormat}}" 
+                                          IsEnabled="{Binding SaveFile, RelativeSource={RelativeSource TemplatedParent}}"
                                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                 </Grid>
                             </Grid>

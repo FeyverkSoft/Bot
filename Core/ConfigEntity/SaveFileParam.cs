@@ -14,6 +14,12 @@ namespace Core.ConfigEntity
     public class SaveFileParam
     {
         /// <summary>
+        /// Отображает, необходимость сохранения результата в файл
+        /// </summary>
+        [DataMember]
+        [LocDescription("SaveFileParam_SaveFile")]
+        public Boolean SaveFile { get; set; }
+        /// <summary>
         /// Путь сохранения файла
         /// </summary>
         [DataMember]

@@ -50,7 +50,7 @@ namespace Core.ActionExecutors
                 }
             }
 
-            if (act.SaveFileParam != null)
+            if (act.SaveFileParam?.SaveFile == true)
             {
                 var param = act.SaveFileParam;
                 DirectoryHelper.CreateDirectory(param.Path);

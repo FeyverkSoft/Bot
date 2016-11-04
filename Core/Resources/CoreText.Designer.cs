@@ -799,6 +799,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить в файл.
+        /// </summary>
+        internal static string SaveFileParam_SaveFile {
+            get {
+                return ResourceManager.GetString("SaveFileParam_SaveFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Тип файла.
         /// </summary>
         internal static string SaveFileParam_Type {

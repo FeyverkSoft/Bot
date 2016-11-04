@@ -414,4 +414,7 @@
   <data name="EStackAction_Clear" xml:space="preserve">
     <value>Очистить</value>
   </data>
+  <data name="SaveFileParam_SaveFile" xml:space="preserve">
+    <value>Сохранить в файл</value>
+  </data>
 </root>

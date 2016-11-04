@@ -229,6 +229,9 @@ Third-party Fonts:
   <data name="SaveFileParamUserControl_Path" xml:space="preserve">
     <value>Path</value>
   </data>
+  <data name="SaveFileParamUserControl_SaveFile" xml:space="preserve">
+    <value>Save file</value>
+  </data>
   <data name="SaveFileParamUserControl_Type" xml:space="preserve">
     <value>Type</value>
   </data>

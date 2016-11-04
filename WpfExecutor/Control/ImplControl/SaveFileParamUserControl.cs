@@ -10,6 +10,7 @@ namespace WpfExecutor.Control.ImplControl
     [TemplatePart(Name = "PART_Name", Type = typeof(TextBox))]
     [TemplatePart(Name = "PART_Path", Type = typeof(TextBox))]
     [TemplatePart(Name = "PART_Type", Type = typeof(ImageFileFormatControl))]
+    [TemplatePart(Name = "PART_SaveFile", Type = typeof(CheckBox))]
     public class SaveFileParamUserControl : BaseControl
     {
         static SaveFileParamUserControl()
@@ -19,10 +20,12 @@ namespace WpfExecutor.Control.ImplControl
         }
 
         public event DependencyPropertyChangedEventHandler SaveFileParamPropChanged;
+        public event DependencyPropertyChangedEventHandler SaveFilePropChanged;
 
         private TextBox _name;
         private TextBox _path;
         private ImageFileFormatControl _type;
+        private CheckBox _saveFile;
 
         public static readonly DependencyProperty SaveFileParamProperty = DependencyProperty.Register(
 nameof(SaveFileParam), typeof(SaveFileParam), typeof(SaveFileParamUserControl), new FrameworkPropertyMetadata(default(SaveFileParam), SaveFileParamChangedCallback));
@@ -35,6 +38,10 @@ nameof(Path), typeof(String), typeof(SaveFileParamUserControl), new FrameworkPro
 
         public static readonly DependencyProperty TypeProperty = DependencyProperty.Register(
 nameof(Type), typeof(ImageFileFormat), typeof(SaveFileParamUserControl), new FrameworkPropertyMetadata(default(ImageFileFormat)));
+
+        public static readonly DependencyProperty SaveFileProperty = DependencyProperty.Register(
+nameof(SaveFile), typeof(Boolean), typeof(SaveFileParamUserControl), new FrameworkPropertyMetadata(default(Boolean), SaveFileChangedCallback));
+
 
         public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register(
 nameof(IsOpen), typeof(Boolean), typeof(SaveFileParamUserControl),
@@ -92,6 +99,12 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
             set { SaveFileParam.Path = value; }
         }
 
+        public Boolean SaveFile
+        {
+            get { return SaveFileParam.SaveFile; }
+            set { SaveFileParam.SaveFile = value; }
+        }
+
         public ImageFileFormat Type
         {
             get { return SaveFileParam.Type; }
@@ -105,6 +118,7 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
             _name = GetTemplateChild("PART_Name") as TextBox;
             _path = GetTemplateChild("PART_Path") as TextBox;
             _type = GetTemplateChild("PART_Type") as ImageFileFormatControl;
+            _saveFile = GetTemplateChild("PART_SaveFile") as CheckBox;
             if (_name != null)
             {
                 _name.Text = FileName;
@@ -120,7 +134,35 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
                 _type.SelectedValue = Type;
                 _type.SelectionChanged += TypeOnSelectionChanged;
             }
+            if (_saveFile != null)
+            {
+                _saveFile.IsChecked = SaveFile;
+            }
         }
+
+        private void _saveFile_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (_saveFile.IsChecked == SaveFile) return;
+            SaveFile = _saveFile.IsChecked.Value;
+            UpdatePrev();
+        }
+        private static void SaveFileChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+        {
+            var d = dependencyObject as SaveFileParamUserControl;
+            d?.OnSaveFileChanged(e.OldValue, e.NewValue);
+        }
+
+        private void OnSaveFileChanged(Object oldValue, Object newValue)
+        {
+            if (newValue == null)
+                newValue = false;
+            if (oldValue == newValue)
+                return;
+            SaveFile = (Boolean)newValue;
+            SaveFilePropChanged?.Invoke(this, new DependencyPropertyChangedEventArgs(SaveFileProperty, oldValue, newValue));
+            UpdatePrev();
+        }
+
 
         private void TypeOnSelectionChanged(object sender, SelectionChangedEventArgs selectionChangedEventArgs)
         {
@@ -131,7 +173,11 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
 
         private void UpdatePrev()
         {
-            TextInfo = $"{SaveFileParam?.Path ?? ""}/{(String.IsNullOrEmpty(SaveFileParam?.Name) ? "{DataTime}" : SaveFileParam.Name)}.{SaveFileParam?.Type}";
+            if (SaveFile)
+                TextInfo =
+                    $"{SaveFileParam?.Path ?? ""}/{(String.IsNullOrEmpty(SaveFileParam?.Name) ? "{DataTime}" : SaveFileParam.Name)}.{SaveFileParam?.Type}";
+            else
+                TextInfo = "NO";
         }
 
 
