@@ -21,18 +21,28 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{localization:Localization Key=NotSupported}"
+        <ComboBox ItemsSource="{Binding ActionList}"
+                  Grid.ColumnSpan="2" Visibility="{Binding IsEditForm,Converter={common:InverseBooleanToVisibilityConverter}}" 
+                  SelectedItem="{Binding SelectedItem}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={converter:ActionListComboBox}}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="{localization:Localization Key=NotSupported}"
                    Visibility="{Binding IsSupported, Converter={common:InverseBooleanToVisibilityConverter}}"
                    FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
         
         
-        <DataGrid Margin="-4, 10,0,0" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" HeadersVisibility="None" 
+        <DataGrid Margin="-4, 10,0,0" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" HeadersVisibility="None" 
                   AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="Cell"
                   Background="Transparent" BorderThickness="0" ColumnWidth="auto" MaxColumnWidth="250" MinColumnWidth="150"
                   ItemsSource="{Binding PropsList}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" 
@@ -60,7 +70,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5">
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />

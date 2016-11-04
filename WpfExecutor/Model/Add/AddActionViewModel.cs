@@ -49,6 +49,19 @@ namespace WpfExecutor.Model.Add
         /// Текущий выбранный тип действия
         /// </summary>
         private ActionType CurrentActionType { get; set; }
+
+        public List<IAction> ActionList { get; private set; }
+
+        public IAction SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                Refresh();
+            }
+        }
+
         /// <summary>
         /// Параметры действия
         /// </summary>
@@ -63,6 +76,7 @@ namespace WpfExecutor.Model.Add
             IsSupported = true;
             IsEditForm = false;
             CurrentActionType = actionType;
+            ActionList = ActionFactory.Get(actionType);
             Refresh();
         }
 
@@ -79,7 +93,8 @@ namespace WpfExecutor.Model.Add
 
         private void Refresh()
         {
-            Action = Action ?? ActionFactory.Get(CurrentActionType)[0];
+            if (!IsEditForm)
+                Action = SelectedItem;
             if (Action != null)
             {
                 IsSupported = true;
@@ -106,7 +121,7 @@ namespace WpfExecutor.Model.Add
             }
             else
             {
-                IsSupported = false;
+                IsSupported = ActionList.Count > 0;
                 PropsList = new List<PropModel>();
             }
         }
@@ -117,6 +132,7 @@ namespace WpfExecutor.Model.Add
         private ICommand _addCommand;
 
         private Boolean _isSupported;
+        private IAction _selectedItem;
         public ICommand AddCommand => _addCommand ?? (_addCommand = new DelegateCommand(AddCommandMethod));
         /// <summary>
         /// Реализация комманды добавить

@@ -9,7 +9,8 @@ namespace WpfConverters.Controls.Impl
     public class CustomTreeView : TreeView
     {
         public static readonly DependencyProperty SelectedObjectProperty =
-            DependencyProperty.Register(nameof(SelectedObject), typeof(object), typeof(CustomTreeView), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            DependencyProperty.Register(nameof(SelectedObject), typeof(object), typeof(CustomTreeView),
+                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public object SelectedObject
         {
@@ -23,7 +24,7 @@ namespace WpfConverters.Controls.Impl
 
         public Type SelectedObjectType
         {
-            get { return (Type)GetValue(SelectedObjectTypeProperty); }
+            get { return (Type) GetValue(SelectedObjectTypeProperty); }
             set { SetValue(SelectedObjectTypeProperty, value); }
         }
 
@@ -48,8 +49,12 @@ namespace WpfConverters.Controls.Impl
 
         private static TreeViewItem VisualUpwardSearch(DependencyObject source)
         {
-            while (source != null && !(source is TreeViewItem))
-                source = VisualTreeHelper.GetParent(source);
+            try
+            {
+                while (source != null && !(source is TreeViewItem))
+                    source = VisualTreeHelper.GetParent(source);
+            }
+            catch {}
 
             return source as TreeViewItem;
         }

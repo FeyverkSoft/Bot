@@ -17,7 +17,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Тип действия для внутренней фабрики
         /// </summary>
         [IgnoreDataMember]
-        public new static ActionType ActionType => ActionType.MouseMove;
+        public new static ActionType ActionType => ActionType.If;
         /// <summary>
         /// Список действий которые необходимо выполнить при успешном выполнении условия
         /// </summary>

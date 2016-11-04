@@ -98,6 +98,7 @@
     <Compile Include="Control\StringControl.xaml.cs">
       <DependentUpon>StringControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\IActionListComboBox.cs" />
     <Compile Include="Converter\PointConverter.cs" />
     <Compile Include="Converter\EnumConverter.cs" />
     <Compile Include="Converter\DevConverter.cs" />
