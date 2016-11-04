@@ -33,8 +33,8 @@ namespace WpfExecutor.Control
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
-                Converter = new TupleConverter(list),
-                ConverterParameter = nameof(Tuple<String, ESearchParam>.Item2),
+                Converter = new TupleConverter(),
+                ConverterParameter = list,
             });
             return factory;
         }

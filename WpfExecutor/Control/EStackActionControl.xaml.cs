@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using Core.Core;
 using WpfConverters.Converters.Common;
+using WpfExecutor.Converter;
 using WpfExecutor.Helpers;
 using WpfExecutor.Model;
 
@@ -29,8 +30,8 @@ namespace WpfExecutor.Control
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
-                Converter = new TupleConverter(list),
-                ConverterParameter = nameof(Tuple<String, Object>.Item2)
+                Converter = new TupleConverter(),
+                ConverterParameter = list
             });
             return factory;
         }

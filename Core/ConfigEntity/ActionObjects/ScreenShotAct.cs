@@ -52,7 +52,7 @@ namespace Core.ConfigEntity.ActionObjects
 
         public ScreenShotAct(Boolean grayScale = false)
         {
-            SaveFileParam = new SaveFileParam("ScreenShot","png");
+            SaveFileParam = new SaveFileParam("ScreenShot", ImageFileFormat.png);
             GrayScale = grayScale;
         }
 

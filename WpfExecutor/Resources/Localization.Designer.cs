@@ -596,6 +596,33 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя файла.
+        /// </summary>
+        internal static string SaveFileParamUserControl_FileName {
+            get {
+                return ResourceManager.GetString("SaveFileParamUserControl_FileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Путь.
+        /// </summary>
+        internal static string SaveFileParamUserControl_Path {
+            get {
+                return ResourceManager.GetString("SaveFileParamUserControl_Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип файла.
+        /// </summary>
+        internal static string SaveFileParamUserControl_Type {
+            get {
+                return ResourceManager.GetString("SaveFileParamUserControl_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Показать детали.
         /// </summary>
         internal static string ShowDetails {

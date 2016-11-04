@@ -134,6 +134,9 @@ Third-party Fonts:
   <data name="AddActionWindow_ActionType" xml:space="preserve">
     <value>Action type</value>
   </data>
+  <data name="AddBotActionWindow" xml:space="preserve">
+    <value>Add/Edit</value>
+  </data>
   <data name="CloseMessage" xml:space="preserve">
     <value>Are you sure you want to exit the program?</value>
   </data>
@@ -220,6 +223,15 @@ Third-party Fonts:
   <data name="SaveCommandMessageTitle" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="SaveFileParamUserControl_FileName" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="SaveFileParamUserControl_Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="SaveFileParamUserControl_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
   <data name="ShowDetails" xml:space="preserve">
     <value>Show details</value>
   </data>
@@ -303,8 +315,5 @@ Third-party Fonts:
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version:</value>
-  </data>
-  <data name="Добавление/Редактирование" xml:space="preserve">
-    <value>Add/Edit</value>
   </data>
 </root>

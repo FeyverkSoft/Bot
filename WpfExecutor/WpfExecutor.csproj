@@ -61,6 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\ImageFileFormatControl.xaml.cs">
+      <DependentUpon>ImageFileFormatControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\EStackActionControl.xaml.cs">
       <DependentUpon>EStackActionControl.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,7 @@
     <Compile Include="Converter\PointConverter.cs" />
     <Compile Include="Converter\EnumConverter.cs" />
     <Compile Include="Converter\DevConverter.cs" />
+    <Compile Include="Converter\TupleConverter.cs" />
     <Compile Include="Extensions\DataTypeTemplateSelector.cs" />
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
@@ -139,6 +143,10 @@
     <Compile Include="Views\Settings\CoreSettingWindow.xaml.cs">
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\ImageFileFormatControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\EStackActionControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

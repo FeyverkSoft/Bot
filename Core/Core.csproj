@@ -95,6 +95,7 @@
     <Compile Include="ConfigEntity\IContainer.cs" />
     <Compile Include="Core\ActionFactory.cs" />
     <Compile Include="Core\EStackAction.cs" />
+    <Compile Include="Core\ImageFileFormat.cs" />
     <Compile Include="Core\Point.cs" />
     <Compile Include="Core\Size.cs" />
     <Compile Include="Helpers\ActionHelper.cs" />

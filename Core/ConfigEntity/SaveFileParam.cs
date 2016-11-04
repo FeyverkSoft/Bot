@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Core.Attributes;
+using Core.Core;
+using Core.Helpers;
 
 namespace Core.ConfigEntity
 {
@@ -22,7 +24,7 @@ namespace Core.ConfigEntity
         /// </summary>
         [DataMember]
         [LocDescription("SaveFileParam_Type")]
-        public String Type { get; set; }
+        public ImageFileFormat Type { get; set; }
 
         /// <summary>
         /// Наименование файла
@@ -30,12 +32,10 @@ namespace Core.ConfigEntity
         [DataMember]
         [LocDescription("SaveFileParam_Name")]
         public String Name { get; set; }
-        public SaveFileParam(String path, String type, String name = null)
+        public SaveFileParam(String path, ImageFileFormat type, String name = null)
         {
             if(String.IsNullOrEmpty(path))
                 throw new ArgumentNullException(nameof(path));
-            if (String.IsNullOrEmpty(type))
-                throw new ArgumentNullException(nameof(type));
             Path = path;
             Type = type;
             Name = name;
@@ -44,6 +44,12 @@ namespace Core.ConfigEntity
         public SaveFileParam()
         {
             
+        }
+        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
+        /// <returns>Строка, представляющая текущий объект.</returns>
+        public override String ToString()
+        {
+            return ("\n" + this.GetString()).Replace("\n","\n\t");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Core.Helpers
     {
         private static readonly Dictionary<Type, PropertyInfo[]> PropertysInfo = new Dictionary<Type, PropertyInfo[]>();
         private static readonly Dictionary<String, MemberInfo> AttrInfo = new Dictionary<String, MemberInfo>();
-        public static String GetString(this IAction act)
+        public static String GetString(this Object act)
         {
             if (act == null)
                 return String.Empty;

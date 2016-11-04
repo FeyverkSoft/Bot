@@ -17,9 +17,9 @@
                             <ColumnDefinition MinWidth="70"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" Text="{localization:Localization Key=Text_Width}" />
-                        <impl:Int32UpDown x:Name="PART_X" Grid.Column="1" Value="{Binding WidthX}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <impl:Int32UpDown x:Name="PART_X" Grid.Column="1" Value="{Binding WidthX, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <TextBlock Margin="5,0,0,0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" Text="{localization:Localization Key=Text_Height}" />
-                        <impl:Int32UpDown x:Name="PART_Y" Grid.Column="3" Value="{Binding HeightY}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <impl:Int32UpDown x:Name="PART_Y" Grid.Column="3" Value="{Binding HeightY, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
                     </Grid>
                 </ControlTemplate>

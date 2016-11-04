@@ -16,10 +16,10 @@
                             <ColumnDefinition MinWidth="70"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" Text="X: " />
-                        <impl:Int32UpDown x:Name="PART_X" Grid.Column="1" Value="{Binding Value.X}" 
+                        <impl:Int32UpDown x:Name="PART_X" Grid.Column="1" Value="{Binding X, RelativeSource={RelativeSource TemplatedParent}}" 
                                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <TextBlock Margin="5,0,0,0" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" Text="Y: "/>
-                        <impl:Int32UpDown x:Name="PART_Y" Grid.Column="3" Value="{Binding Value.Y}" 
+                        <impl:Int32UpDown x:Name="PART_Y" Grid.Column="3" Value="{Binding Y, RelativeSource={RelativeSource TemplatedParent}}" 
                                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Grid>
                 </ControlTemplate>

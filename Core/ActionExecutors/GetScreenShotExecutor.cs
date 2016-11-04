@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
+using Core.Core;
 using Core.Handlers;
 using Core.Helpers;
 
@@ -54,18 +55,18 @@ namespace Core.ActionExecutors
                 var param = act.SaveFileParam;
                 DirectoryHelper.CreateDirectory(param.Path);
                 ImageFormat imgF;
-                switch (param.Type.ToLower())
+                switch (param.Type)
                 {
-                    case "tiff":
+                    case ImageFileFormat.tiff:
                         imgF = ImageFormat.Tiff;
                         break;
-                    case "bmp":
+                    case ImageFileFormat.bmp:
                         imgF = ImageFormat.Bmp;
                         break;
-                    case "jpeg":
+                    case ImageFileFormat.jpeg:
                         imgF = ImageFormat.Jpeg;
                         break;
-                    case "png":
+                    case ImageFileFormat.png:
                         imgF = ImageFormat.Png;
                         break;
                     default:

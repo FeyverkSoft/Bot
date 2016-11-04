@@ -9,7 +9,7 @@ namespace WpfExecutor.Control.ImplControl
 {
     [TemplatePart(Name = "PART_Name", Type = typeof(TextBox))]
     [TemplatePart(Name = "PART_Path", Type = typeof(TextBox))]
-    [TemplatePart(Name = "PART_Type", Type = typeof(TextBox))]
+    [TemplatePart(Name = "PART_Type", Type = typeof(ImageFileFormatControl))]
     public class SaveFileParamUserControl : BaseControl
     {
         static SaveFileParamUserControl()
@@ -22,17 +22,27 @@ namespace WpfExecutor.Control.ImplControl
 
         private TextBox _name;
         private TextBox _path;
-        private TextBox _type;
+        private ImageFileFormatControl _type;
 
         public static readonly DependencyProperty SaveFileParamProperty = DependencyProperty.Register(
-nameof(SaveFileParam), typeof(SaveFileParam), typeof(SizeUserControl), new PropertyMetadata(default(SaveFileParam), SaveFileParamChangedCallback));
+nameof(SaveFileParam), typeof(SaveFileParam), typeof(SaveFileParamUserControl), new FrameworkPropertyMetadata(default(SaveFileParam), SaveFileParamChangedCallback));
 
         public static readonly DependencyProperty FileNameProperty = DependencyProperty.Register(
-nameof(FileName), typeof(String), typeof(SizeUserControl), new PropertyMetadata(default(String)));
+nameof(FileName), typeof(String), typeof(SaveFileParamUserControl), new FrameworkPropertyMetadata(default(String)));
+
         public static readonly DependencyProperty PathProperty = DependencyProperty.Register(
-nameof(Path), typeof(String), typeof(SizeUserControl), new PropertyMetadata(default(String)));
+nameof(Path), typeof(String), typeof(SaveFileParamUserControl), new FrameworkPropertyMetadata(default(String)));
+
         public static readonly DependencyProperty TypeProperty = DependencyProperty.Register(
-nameof(Type), typeof(String), typeof(SizeUserControl), new PropertyMetadata(default(String)));
+nameof(Type), typeof(ImageFileFormat), typeof(SaveFileParamUserControl), new FrameworkPropertyMetadata(default(ImageFileFormat)));
+
+        public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register(
+nameof(IsOpen), typeof(Boolean), typeof(SaveFileParamUserControl),
+new FrameworkPropertyMetadata(default(Boolean), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
+nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new PropertyMetadata(default(String)));
 
         private static void SaveFileParamChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
@@ -53,6 +63,24 @@ nameof(Type), typeof(String), typeof(SizeUserControl), new PropertyMetadata(defa
             set { SetValue(SaveFileParamProperty, value); }
         }
 
+        public Boolean IsOpen
+        {
+            get { return (Boolean)GetValue(IsOpenProperty); }
+            set
+            {
+                SetValue(IsOpenProperty, value);
+            }
+        }
+
+        public String TextInfo
+        {
+            get { return (String)GetValue(TextProperty); }
+            set
+            {
+                SetValue(TextProperty, value);
+            }
+        }
+
         public String FileName
         {
             get { return SaveFileParam.Name; }
@@ -64,7 +92,7 @@ nameof(Type), typeof(String), typeof(SizeUserControl), new PropertyMetadata(defa
             set { SaveFileParam.Path = value; }
         }
 
-        public String Type
+        public ImageFileFormat Type
         {
             get { return SaveFileParam.Type; }
             set { SaveFileParam.Type = value; }
@@ -76,7 +104,7 @@ nameof(Type), typeof(String), typeof(SizeUserControl), new PropertyMetadata(defa
 
             _name = GetTemplateChild("PART_Name") as TextBox;
             _path = GetTemplateChild("PART_Path") as TextBox;
-            _type = GetTemplateChild("PART_Type") as TextBox;
+            _type = GetTemplateChild("PART_Type") as ImageFileFormatControl;
             if (_name != null)
             {
                 _name.Text = FileName;
@@ -89,27 +117,36 @@ nameof(Type), typeof(String), typeof(SizeUserControl), new PropertyMetadata(defa
             }
             if (_type != null)
             {
-                _type.Text = Type;
-                _type.TextChanged += TypeOnTextChanged;
+                _type.SelectedValue = Type;
+                _type.SelectionChanged += TypeOnSelectionChanged;
             }
         }
 
-        private void TypeOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        private void TypeOnSelectionChanged(object sender, SelectionChangedEventArgs selectionChangedEventArgs)
         {
-            if (_type.Text == Type) return;
-            Type = _type.Text ?? String.Empty;
+            if ((ImageFileFormat)((Tuple<String, Object>)_type.SelectedValue).Item2 == Type) return;
+            Type = (ImageFileFormat)((Tuple<String, Object>)_type.SelectedValue).Item2;
+            UpdatePrev();
         }
+
+        private void UpdatePrev()
+        {
+            TextInfo = $"{SaveFileParam?.Path ?? ""}/{(String.IsNullOrEmpty(SaveFileParam?.Name) ? "{DataTime}" : SaveFileParam.Name)}.{SaveFileParam?.Type}";
+        }
+
 
         private void NameOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
         {
             if (_name.Text == FileName) return;
             FileName = _name.Text ?? String.Empty;
+            UpdatePrev();
         }
 
         private void PathOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
         {
             if (_path.Text == Path) return;
             Path = _path.Text ?? String.Empty;
+            UpdatePrev();
         }
 
 
@@ -121,6 +158,7 @@ nameof(Type), typeof(String), typeof(SizeUserControl), new PropertyMetadata(defa
                 return;
             SaveFileParam = (SaveFileParam)newValue;
             SaveFileParamPropChanged?.Invoke(this, new DependencyPropertyChangedEventArgs(SaveFileParamProperty, oldValue, newValue));
+            UpdatePrev();
         }
     }
 }

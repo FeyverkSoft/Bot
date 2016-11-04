@@ -1,37 +1,42 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Core.Core;
 using WpfConverters.Converters.Common;
+using WpfExecutor.Model;
 using WpfExecutor.Converter;
 using WpfExecutor.Helpers;
-using WpfExecutor.Model;
 
 namespace WpfExecutor.Control
 {
     /// <summary>
-    /// Логика взаимодействия для KeyCodeControl.xaml
+    /// Логика взаимодействия для ImageFileFormatControl.xaml
     /// </summary>
-    public partial class KeyCodeControl : ComboBox, ICustomControl
+    public partial class ImageFileFormatControl : ComboBox, ICustomControl
     {
-        public KeyCodeControl()
+        public ImageFileFormatControl()
         {
             InitializeComponent();
+            var list = typeof(ImageFileFormat).GeEnumTuple();
+            ItemsSource = list;
         }
 
         [UsedImplicitly]
         public static FrameworkElementFactory GetFrameworkElementFactory()
         {
-            var list = typeof(KeyCode).GeEnumTuple();
-            var factory = new FrameworkElementFactory(typeof(KeyCodeControl));
+            var list = typeof(ImageFileFormat).GeEnumTuple();
+            var factory = new FrameworkElementFactory(typeof(ImageFileFormatControl));
             factory.SetValue(ItemsSourceProperty, list);
             factory.SetBinding(SelectedItemProperty, new Binding(nameof(PropModel.Value))
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
                 Converter = new TupleConverter(),
-                ConverterParameter = list
+                ConverterParameter = list,
             });
             return factory;
         }

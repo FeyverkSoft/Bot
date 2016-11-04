@@ -394,4 +394,13 @@ Size - Размер
   <data name="AddBotActionWindow" xml:space="preserve">
     <value>Добавление/Редактирование</value>
   </data>
+  <data name="SaveFileParamUserControl_FileName" xml:space="preserve">
+    <value>Имя файла</value>
+  </data>
+  <data name="SaveFileParamUserControl_Path" xml:space="preserve">
+    <value>Путь</value>
+  </data>
+  <data name="SaveFileParamUserControl_Type" xml:space="preserve">
+    <value>Тип файла</value>
+  </data>
 </root>
