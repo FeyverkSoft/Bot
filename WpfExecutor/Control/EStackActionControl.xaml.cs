@@ -1,9 +1,7 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Core.Core;
-using WpfConverters.Converters.Common;
 using WpfExecutor.Converter;
 using WpfExecutor.Helpers;
 using WpfExecutor.Model;

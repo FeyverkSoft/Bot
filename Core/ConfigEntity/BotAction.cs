@@ -94,59 +94,7 @@ namespace Core.ConfigEntity
                 foreach (var subAction in SubActions)
                 {
                     Log.WriteLine($"{GetType().Name}.IsValid->(ActionType:{ActionType}; subAction: {subAction.GetType().Name})");
-                    switch (ActionType)
-                    {
-                        case ActionType.MouseMove:
-                            flag = subAction is MouseMoveAct;
-                            break;
-                        case ActionType.MouseSetPos:
-                            flag = subAction is MouseSetPosAct;
-                            break;
-                        case ActionType.KeyBoard:
-                        case ActionType.KeyBoardKeys:
-                            flag = subAction is KeyBoardAct;
-                            break;
-                        case ActionType.Sleep:
-                            flag = subAction is SleepAct;
-                            break;
-                        case ActionType.Loop:
-                            flag = subAction is LoopAct;
-                            break;
-                        case ActionType.ExpectWindow:
-                            flag = subAction is ExpectWindowAct;
-                            break;
-                        case ActionType.If:
-                            flag = subAction is IfAction;
-                            break;
-                        case ActionType.GetObject:
-                            flag = subAction is GetObjectAct;
-                            break;
-                        case ActionType.PluginInvoke:
-                            flag = subAction is PluginInvokeAct;
-                            break;
-                        case ActionType.GetScreenshot:
-                            flag = subAction is ScreenShotAct;
-                            break;
-                        case ActionType.SendMessage:
-                            flag = subAction is SendMessageAct;
-                            break;
-                        case ActionType.GOTO:
-                            flag = subAction is GoToAct;
-                            break;
-                        case ActionType.Label:
-                            flag = subAction is LabelAct;
-                            break;
-                        case ActionType.Stack:
-                            flag = subAction is StackAct;
-                            break;
-                        case ActionType.PluginAct:
-                            flag = true;
-                            break;
-                        default:
-                            if (subAction is MockAction)
-                                return true;
-                            throw new Exception($"Incorrect ActionType ({ActionType})");
-                    }
+                    flag = (ActionType)subAction.GetType().GetProperty(nameof(ActionType)).GetValue(null,null) == ActionType;
                 }
                 return flag;
             }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using WpfConverters.Controls.Impl;
-using Core.Core;
 using Size = Core.Core.Size;
 
 namespace WpfExecutor.Control.ImplControl

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Core.Attributes;
-using Core.ConfigEntity.ActionObjects;
+using Core.ConfigEntity;
 
 namespace Core.Helpers
 {
@@ -26,7 +26,8 @@ namespace Core.Helpers
             {
                 var _props = actType.GetProperties().Where(y => y.GetMethod.IsPublic && !y.GetMethod.IsStatic)
                     .Where(x => !x.PropertyType.IsArray && x.Name != "ToString")
-                    .Where(y => !y.PropertyType.GetInterfaces().Contains(typeof(ICollection)))
+                    .Where(y => !y.PropertyType.GetInterfaces().Contains(typeof(ICollection)) &&
+                    !y.PropertyType.GetInterfaces().Contains(typeof(IBotAction)))
                     .ToArray();
                 PropertysInfo.Add(actType, _props);
             }
@@ -36,11 +37,11 @@ namespace Core.Helpers
             {
                 var val = props[i].GetValue(act);
                 if (val == null) continue;
-                var dsAttr = props[i].GetCustomAttribute(typeof(LocDescriptionAttribute), false) as LocDescriptionAttribute;
+                var dsAttr = props[i].GetCustomAttribute<LocDescriptionAttribute>() ?? props[i].GetCustomAttribute<DescriptionAttribute>();
                 if (i + 1 != props.Length)//избавляемся от лишнего перевода строки
-                    sb.AppendLine($"{dsAttr?.Description}: {val.Localize()}");
+                    sb.AppendLine($"{dsAttr?.Description ?? props[i].Name}: {val.Localize()}");
                 else
-                    sb.Append($"{dsAttr?.Description}: {val.Localize()}");
+                    sb.Append($"{dsAttr?.Description ?? props[i].Name}: {val.Localize()}");
             }
             return sb.ToString();
         }
@@ -56,7 +57,7 @@ namespace Core.Helpers
             if (!AttrInfo.ContainsKey(key))
                 AttrInfo.Add(key, value.GetType().GetMember(value.ToString()).FirstOrDefault());
 
-            var attr = AttrInfo[key]?.GetCustomAttribute(typeof(LocDescriptionAttribute)) as LocDescriptionAttribute ?? AttrInfo[key]?.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
+            var attr = AttrInfo[key]?.GetCustomAttribute<LocDescriptionAttribute>() ?? AttrInfo[key]?.GetCustomAttribute<DescriptionAttribute>();
 
             return attr?.Description ?? value.ToString();
         }

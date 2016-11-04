@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 using Core.Events;
