@@ -14,6 +14,13 @@ namespace Core.ConfigEntity.ActionObjects
     public class MouseMoveAct : BaseActionObject
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.MouseMove;
+
+
+        /// <summary>
         /// Смещение по оси X
         /// </summary>
         [LocDescription("MouseMoveAct_Dx")]
@@ -46,5 +53,7 @@ namespace Core.ConfigEntity.ActionObjects
             Dy = dy;
             ToObject = toObject;
         }
+
+        public MouseMoveAct(){}
     }
 }

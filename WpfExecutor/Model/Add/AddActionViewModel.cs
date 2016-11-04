@@ -79,7 +79,7 @@ namespace WpfExecutor.Model.Add
 
         private void Refresh()
         {
-            Action = Action ?? ActionFactory.Get(CurrentActionType);
+            Action = Action ?? ActionFactory.Get(CurrentActionType)[0];
             if (Action != null)
             {
                 IsSupported = true;

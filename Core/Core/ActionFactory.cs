@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 
@@ -6,55 +9,24 @@ namespace Core.Core
 {
     public static class ActionFactory
     {
-        public static IAction Get(ActionType actionType)
+        public static List<IAction> Get(ActionType actionType)
         {
-            switch (actionType)
+            var list = Assemblys.TypeList;
+            list.AddRange(Assemblys.PluginsTypeList);
+            List<IAction> actions = new List<IAction>();
+            foreach (var type in list.Where(x => x.GetInterfaces().Contains(typeof(IAction)) && x.Name != nameof(BaseActionObject)))
             {
-                case ActionType.MouseMove:
-                    return new MouseMoveAct();
-                case ActionType.MouseSetPos:
-                    return new MouseSetPosAct();
-                case ActionType.MouseRClick:
-                case ActionType.MouseRPress:
-                case ActionType.MouseRUp:
-                case ActionType.MouseLPress:
-                case ActionType.MouseLUp:
-                case ActionType.MouseLClick:
-                case ActionType.GetMousePos:
-                    return null;
-                case ActionType.KeyBoard:
-                    return new KeyBoardKeysAct();
-                case ActionType.KeyBoardKeys:
-                    return new KeyBoardAct();
-                case ActionType.Sleep:
-                    return new SleepAct();
-                case ActionType.Loop:
-                    return new LoopAct();
-                case ActionType.PluginInvoke:
-                    return new PluginInvokeAct();
-                case ActionType.If:
-                    return new IfAction();
-                case ActionType.ExpectWindow:
-                    return new ExpectWindowAct();
-                case ActionType.GetObject:
-                    return new GetObjectAct();
-                case ActionType.GetScreenshot:
-                    return new ScreenShotAct();
-                case ActionType.Mock:
-                    return new MockAction();
-                case ActionType.PluginAct:
-                    return null;
-                case ActionType.SendMessage:
-                    return new SendMessageAct();
-                case ActionType.Label:
-                    return new LabelAct();
-                case ActionType.GOTO:
-                    return new GoToAct();
-                case ActionType.Stack:
-                    return new StackAct();
-                default:
-                    throw new ArgumentOutOfRangeException();
+                var memberInfos = type.GetProperty(nameof(BaseActionObject.ActionType));
+                if (memberInfos == null)
+                    continue; ;
+                if ((ActionType)memberInfos.GetValue(null, null) == actionType)
+                {
+                    var obj = type.GetConstructor(Type.EmptyTypes)?.Invoke(null);
+                    if (obj != null)
+                        actions.Add((IAction)obj);
+                }
             }
+            return actions;
         }
 
         public static ActionType GetType(IAction action)

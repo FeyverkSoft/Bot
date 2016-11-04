@@ -13,6 +13,12 @@ namespace Core.ConfigEntity.ActionObjects
     public class SendMessageAct : BaseActionObject
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.SendMessage;
+
+        /// <summary>
         /// Тип сообщения, например сообщение на емайл
         /// </summary>
         [DataMember]

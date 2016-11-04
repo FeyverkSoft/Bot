@@ -15,6 +15,12 @@ namespace Core.ConfigEntity.ActionObjects
     {
 
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.GetScreenshot;
+
+        /// <summary>
         /// Начало прямоугольной области которой надо сделать скриншот
         /// </summary>
         [LocDescription("ScreenShotAct_Point")]
@@ -71,5 +77,7 @@ namespace Core.ConfigEntity.ActionObjects
             Point = point;
             Size = size;
         }
+
+        public ScreenShotAct(){}
     }
 }

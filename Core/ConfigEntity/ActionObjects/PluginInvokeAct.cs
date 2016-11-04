@@ -11,6 +11,12 @@ namespace Core.ConfigEntity.ActionObjects
     public class PluginInvokeAct : BaseActionObject
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.PluginInvoke;
+
+        /// <summary>
         /// Наименование плагина
         /// </summary>
         [LocDescription("PluginInvokeAct_PluginName")]

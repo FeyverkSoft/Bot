@@ -15,6 +15,11 @@ namespace Core.ConfigEntity.ActionObjects
     public class ExpectWindowAct : BaseActionObject
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.ExpectWindow;
+        /// <summary>
         /// Наименование ожидаемого окна
         /// </summary>
         [DataMember]

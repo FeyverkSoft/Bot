@@ -14,6 +14,11 @@ namespace Core.ConfigEntity.ActionObjects
     public class IfAction : BaseActionObject
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.MouseMove;
+        /// <summary>
         /// Список действий которые необходимо выполнить при успешном выполнении условия
         /// </summary>
         [DataMember]

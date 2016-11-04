@@ -15,6 +15,12 @@ namespace Core.ConfigEntity.ActionObjects
     public class LoopAct : BaseActionObject, IBotActionContainer
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.Loop;
+
+        /// <summary>
         /// Колличество выполнений цикла
         /// </summary>
         [DataMember]
@@ -44,5 +50,6 @@ namespace Core.ConfigEntity.ActionObjects
             if (actions != null)
                 Actions = actions;
         }
+        public LoopAct(){}
     }
 }

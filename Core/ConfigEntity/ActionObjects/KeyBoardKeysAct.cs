@@ -13,6 +13,12 @@ namespace Core.ConfigEntity.ActionObjects
     [LocDescription("KeyBoardKeysAct")]
     public sealed class KeyBoardKeysAct : KeyBoardAct
     {
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.KeyBoardKeys;
+
         [JsonConstructor]
         public KeyBoardKeysAct(KeyCode key, UInt32 time = 0):base(key, time)
         {

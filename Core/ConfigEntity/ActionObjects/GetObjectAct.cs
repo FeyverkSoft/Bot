@@ -12,7 +12,11 @@ namespace Core.ConfigEntity.ActionObjects
     [LocDescription("GetObjectAct")]
     public class GetObjectAct : BaseActionObject
     {
-
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.GetObject;
         ///// <summary>
         ///// Тип ожидаемого объекта
         ///// </summary>
@@ -73,5 +77,7 @@ namespace Core.ConfigEntity.ActionObjects
             SetFocus = setFocus;
             PrevResult = prevResult;
         }
+
+        public GetObjectAct(){}
     }
 }

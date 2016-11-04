@@ -13,6 +13,12 @@ namespace Core.ConfigEntity.ActionObjects
     [DataContract]
     public class MouseSetPosAct : BaseActionObject
     {
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.MouseSetPos;
+
         Int32 _x = 0, _y = 0;
         /// <summary>
         /// Положение указателя по оси X

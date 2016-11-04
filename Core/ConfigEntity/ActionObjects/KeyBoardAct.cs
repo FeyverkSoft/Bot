@@ -15,6 +15,11 @@ namespace Core.ConfigEntity.ActionObjects
     public class KeyBoardAct : BaseActionObject
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.KeyBoard;
+        /// <summary>
         /// Клавиша, нажатие которой надо эмулировать
         /// </summary>
         [DataMember]

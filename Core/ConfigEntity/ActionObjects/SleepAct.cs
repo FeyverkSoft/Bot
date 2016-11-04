@@ -14,6 +14,12 @@ namespace Core.ConfigEntity.ActionObjects
     public class SleepAct : BaseActionObject
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        [IgnoreDataMember]
+        public new static ActionType ActionType => ActionType.Sleep;
+
+        /// <summary>
         /// Время на сколько процесс должен заснуть
         /// </summary>
         [DataMember]
