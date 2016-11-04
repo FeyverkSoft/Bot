@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Core.Core;
 using LogWrapper;
+using Point = System.Drawing.Point;
 
 namespace Core.Handlers
 {
@@ -170,7 +171,7 @@ namespace Core.Handlers
         /// </summary>
         /// <param name="p">точка, которая должна содержаться в объекте</param>
         /// <returns></returns>
-        public ObjectInfo GetObjectFromPoint(Point p)
+        public ObjectInfo GetObjectFromPoint(Core.Point p)
         {
             IntPtr hWnd = WindowFromPoint(p);
             Log.Write(hWnd);
@@ -183,11 +184,11 @@ namespace Core.Handlers
                 {
                     RECT r2 = new RECT();
                     GetClientRect(hWnd1, ref r2);
-                    return new ObjectInfo(hWnd1, new Point(rr.X, rr.Y), new Size(r2.Width, r2.Height), ParseClass(GetWindowClassName(hWnd1)), GetWindowText(hWnd1));
+                    return new ObjectInfo(hWnd1, new Point(rr.X, rr.Y), new Core.Size(r2.Width, r2.Height), ParseClass(GetWindowClassName(hWnd1)), GetWindowText(hWnd1));
                 }
                 else
                 {
-                    return new ObjectInfo(hWnd, new Point(rr.X, rr.Y), new Size(r.Width, r.Height), ParseClass(GetWindowClassName(hWnd)), GetWindowText(hWnd));
+                    return new ObjectInfo(hWnd, new Point(rr.X, rr.Y), new Core.Size(r.Width, r.Height), ParseClass(GetWindowClassName(hWnd)), GetWindowText(hWnd));
                 }
             }
             return null;
