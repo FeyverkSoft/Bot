@@ -13,6 +13,11 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MouseRClickExecutor : BaseExecutor
     {
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.MouseRClick;
+
         private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
 
         /// <summary>

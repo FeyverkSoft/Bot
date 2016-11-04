@@ -24,7 +24,7 @@ namespace Core.Helpers
 
             if (!PropertysInfo.ContainsKey(actType))
             {
-                var _props = actType.GetProperties().Where(y => y.GetMethod.IsPublic)
+                var _props = actType.GetProperties().Where(y => y.GetMethod.IsPublic && !y.GetMethod.IsStatic)
                     .Where(x => !x.PropertyType.IsArray && x.Name != "ToString")
                     .Where(y => !y.PropertyType.GetInterfaces().Contains(typeof(ICollection)))
                     .ToArray();

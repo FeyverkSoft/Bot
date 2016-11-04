@@ -13,6 +13,11 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MouseLPressExecutor : BaseExecutor
     {
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.MouseLPress;
+
         private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
 
         /// <summary>

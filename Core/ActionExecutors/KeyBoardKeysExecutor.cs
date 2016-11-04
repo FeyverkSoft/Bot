@@ -16,6 +16,11 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class KeyBoardKeysExecutor : BaseExecutor
     {
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.KeyBoardKeys;
+
         private IKeyBoard KeyBoard { get; set; } = AppContext.Get<IKeyBoard>();
 
         /// <summary>

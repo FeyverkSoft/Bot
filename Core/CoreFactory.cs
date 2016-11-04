@@ -15,7 +15,7 @@ namespace Core
         {
             if (AppConfig.Instance.DefaultCore)
                 AppContext.Get<IExecutiveCore>();
-            return new DefaultExecutiveCore(new DefaultActionFactory(), AppContext.Get<IConfigValidator>());
+            return new DefaultExecutiveCore(new DefaultActionExecutorFactory(), AppContext.Get<IConfigValidator>());
         }
     }
 }

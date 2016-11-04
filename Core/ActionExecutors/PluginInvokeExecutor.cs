@@ -12,6 +12,11 @@ namespace Core.ActionExecutors
     /// </summary>
     public class PluginInvokeExecutor : BaseExecutor
     {
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.PluginInvoke;
+
         readonly IPluginFactory _pluginFactory = new DefaultPluginFactory();
 
         /// <summary>

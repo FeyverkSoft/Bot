@@ -48,7 +48,7 @@ namespace Core.Core
         /// <summary>
         /// Фабрика действий
         /// </summary>
-        private readonly IActionFactory _actionFactory;
+        private readonly IActionExecutorFactory _actionFactory;
 
         /// <summary>
         /// Валидатор команд
@@ -81,7 +81,7 @@ namespace Core.Core
             OnPrintMessageEvent?.Invoke(o?.ToJson(true, false));
         }
 
-        public DefaultExecutiveCore(IActionFactory actionFactory, IConfigValidator validator)
+        public DefaultExecutiveCore(IActionExecutorFactory actionFactory, IConfigValidator validator)
         {
             _actionFactory = actionFactory;
             ConfigValidator = validator;
@@ -195,7 +195,8 @@ namespace Core.Core
                     if (!currentAction.IsValid)
                         Abort(currentAction);
                     var executor = _actionFactory.GetExecutorAction(currentAction.ActionType);
-                    executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
+                    if (executor != null)//не для всех действий они могут и быть, например стек GOTO Loop
+                        executor.OnPrintMessageEvent += OnPrintMessageEvent; //Подписываем и исполнителя на выхлоп
 
                     switch (currentAction.ActionType) //Логика для особых, не фабричных действий
                     {
@@ -261,7 +262,8 @@ namespace Core.Core
                                 : executor.Invoke(ref _isAbort, res);
                             break;
                     }
-                    executor.OnPrintMessageEvent -= OnPrintMessageEvent;
+                    if (executor != null)
+                        executor.OnPrintMessageEvent -= OnPrintMessageEvent;
                     currentAction.IsCurrent = false;
                 }
             }

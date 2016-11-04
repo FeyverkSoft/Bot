@@ -14,6 +14,12 @@ namespace Core.ActionExecutors
     /// </summary>
     public class IfExecutor : BaseExecutor
     {
+
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.If;
+
         /// <summary>
         /// Исполняет проверку условия, и возвращает результат проверки
         /// </summary>

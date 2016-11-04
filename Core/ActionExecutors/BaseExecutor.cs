@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 using Core.Events;
@@ -9,6 +10,12 @@ namespace Core.ActionExecutors
 {
     public abstract class BaseExecutor : IExecutor
     {
+
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public static ActionType ActionType { get { throw new NotImplementedException(); } }
+
         /// <summary>
         /// Событие вывода сообщения
         /// </summary>

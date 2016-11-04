@@ -37,7 +37,7 @@ namespace Core
             //Если выбран путь игнорирования плагинов
             if (!AppConfig.Instance.LoadPlugin)
             {
-                Log.WriteLine(new {Message = "Загрузка плагинов была отключена"});
+                Log.WriteLine(new { Message = "Загрузка плагинов была отключена" });
                 return;
             }
             //При повторном вызове не загружаем всё снова
@@ -62,12 +62,22 @@ namespace Core
                         IPlugin p = (IPlugin)Activator.CreateInstance(t);
                         if (!PluginsList.Contains(p))
                         {
+                            //Добавляем плагины
+                            if (!AppConfig.Instance.PrioritetList.Contains(t.Assembly.GetName().Name))
+                                AppConfig.Instance.PrioritetList.Add(t.Assembly.GetName().Name);
                             PluginsList.Add(p);
                             PluginsTypeList.AddRange(assem.GetTypes());
                         }
                         Log.WriteLine(new { message = $"Add plagin {p.Name}" });
                     }
                     catch { }
+                }
+
+                foreach (var s in AppConfig.Instance.PrioritetList.Where(s => s != Assembly.GetExecutingAssembly().GetName().Name))
+                {
+                    if (PluginsList.Any(x => x.GetType().Assembly.GetName().Name == s))
+                        continue;
+                    AppConfig.Instance.PrioritetList.Remove(s);
                 }
             }
         }

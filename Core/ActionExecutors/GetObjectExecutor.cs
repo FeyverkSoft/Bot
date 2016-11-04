@@ -15,6 +15,12 @@ namespace Core.ActionExecutors
     /// </summary>
     public class GetObjectExecutor : BaseExecutor
     {
+
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.GetObject;
+
         readonly IWindowsProc _windowsProc = AppContext.Get<IWindowsProc>();
 
         /// <summary>

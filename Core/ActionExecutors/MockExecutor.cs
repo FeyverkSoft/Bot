@@ -12,6 +12,12 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MockExecutor : BaseExecutor
     {
+
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.Mock;
+
         /// <summary>
         /// Вызвать выполнение действия у указанной фfбрики
         /// </summary>

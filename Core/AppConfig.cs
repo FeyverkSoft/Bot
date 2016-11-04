@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Core.ConfigEntity;
 
 namespace Core
@@ -21,6 +23,11 @@ namespace Core
         }
 
         public static AppConfig Instance { get; private set; }
+
+        /// <summary>
+        /// Список приоритетов исполнителей и плагинов
+        /// </summary>
+        public List<String> PrioritetList { get; set; }
 
         /// <summary>
         /// Номер порта для доставки SmtpPort
@@ -54,6 +61,14 @@ namespace Core
         public static void LoadInstance()
         {
             Instance = AppConfigReader.Load(_path);
+            if (Instance.PrioritetList == null)
+                Instance.PrioritetList = new List<String>();
+            if (!Instance.PrioritetList.Contains(Assembly.GetExecutingAssembly().GetName().Name))
+            {
+                Instance.PrioritetList.Add(Assembly.GetExecutingAssembly().GetName().Name);
+                AppConfigReader.Save(Instance, _path);
+            }
+
         }
         public static void SaveInstance()
         {

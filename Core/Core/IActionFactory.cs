@@ -6,7 +6,7 @@ namespace Core.Core
     /// <summary>
     /// Интерфейс фабрики действий
     /// </summary>
-    public interface IActionFactory
+    public interface IActionExecutorFactory
     {
         /// <summary>
         /// Возвращает исполнителя по типу действия

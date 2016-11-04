@@ -17,7 +17,7 @@ namespace Core
 
         static AppContext()
         {
-            SingDictionary.Add(typeof(IActionFactory), new DefaultActionFactory());
+            SingDictionary.Add(typeof(IActionExecutorFactory), new DefaultActionExecutorFactory());
             SingDictionary.Add(typeof(IKeyBoard), new NativeKeyBoard());
             SingDictionary.Add(typeof(IMouse), new NativeMouse());
             SingDictionary.Add(typeof(IWindowsProc), new NativeWindowsProc());
@@ -31,9 +31,9 @@ namespace Core
             switch (typeof(T).Name)
             {
                 case nameof(IExecutiveCore):
-                    return new DefaultExecutiveCore(new DefaultActionFactory(), Get<IConfigValidator>()) as T;
-                case nameof(IActionFactory):
-                    return new DefaultActionFactory() as T;
+                    return new DefaultExecutiveCore(new DefaultActionExecutorFactory(), Get<IConfigValidator>()) as T;
+                case nameof(IActionExecutorFactory):
+                    return new DefaultActionExecutorFactory() as T;
             }
             throw new NotSupportedException(nameof(T));
         }

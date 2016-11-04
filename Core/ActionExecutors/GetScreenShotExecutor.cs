@@ -16,6 +16,12 @@ namespace Core.ActionExecutors
     /// </summary>
     public class GetScreenShotExecutor : BaseExecutor
     {
+
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.GetScreenshot;
+
         readonly IWindowsProc _win = AppContext.Get<IWindowsProc>();
 
         /// <summary>

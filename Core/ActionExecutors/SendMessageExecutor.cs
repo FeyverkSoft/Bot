@@ -17,6 +17,11 @@ namespace Core.ActionExecutors
     internal sealed class SendMessageExecutor : BaseExecutor
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.SendMessage;
+
+        /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
         /// </summary>
         /// <param name="actions">Список действи которые должен выполнить исполнитель</param>

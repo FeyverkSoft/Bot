@@ -15,6 +15,11 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MouseSetPosExecutor : BaseExecutor
     {
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.MouseSetPos;
+
         private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
         IWindowsProc WindowsProc { get; set; } = AppContext.Get<IWindowsProc>();
 

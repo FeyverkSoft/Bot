@@ -15,6 +15,11 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class MouseMoveExecutor : BaseExecutor
     {
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.MouseMove;
+
         private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
 
         /// <summary>

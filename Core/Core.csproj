@@ -129,7 +129,7 @@
       <DependentUpon>CoreText.resx</DependentUpon>
     </Compile>
     <Compile Include="Core\CoreStatus.cs" />
-    <Compile Include="Core\DefaultActionFactory.cs" />
+    <Compile Include="Core\DefaultActionExecutorFactory.cs" />
     <Compile Include="ConfigEntity\FileVersion.cs" />
     <Compile Include="Core\DefaultExecutiveCore.cs" />
     <Compile Include="Core\EObjectType.cs" />

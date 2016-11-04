@@ -17,13 +17,16 @@ namespace Core.Core
             foreach (var type in list.Where(x => x.GetInterfaces()
             .Contains(typeof(IAction)) && x.Name != nameof(BaseActionObject)))
             {
-                var memberInfos = type.GetProperty(nameof(BaseActionObject.ActionType));
-                if (memberInfos == null)
-                    continue; ;
-                if ((ActionType)memberInfos.GetValue(null, null) != actionType) continue;
-                var obj = type.GetConstructor(Type.EmptyTypes)?.Invoke(null);
-                if (obj != null)
-                    actions.Add((IAction)obj);
+                var propertyInfo = type.GetProperty(nameof(BaseActionObject.ActionType));
+                if (propertyInfo == null)
+                    continue;
+
+                if ((ActionType) propertyInfo.GetValue(null, null) == actionType)
+                {
+                    var obj = type.GetConstructor(Type.EmptyTypes)?.Invoke(null);
+                    if (obj != null)
+                        actions.Add((IAction) obj);
+                }
             }
             return actions;
         }

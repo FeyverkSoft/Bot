@@ -15,6 +15,12 @@ namespace Core.ActionExecutors
     /// </summary>
     internal sealed class SleepExecutor : BaseExecutor
     {
+
+        /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.Sleep;
+
         readonly Random _rand = new Random();
 
         /// <summary>

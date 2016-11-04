@@ -17,6 +17,11 @@ namespace Core.ActionExecutors
     internal sealed class ExpectWindowExecutor : BaseExecutor
     {
         /// <summary>
+        /// Тип действия для внутренней фабрики
+        /// </summary>
+        public new static ActionType ActionType => ActionType.ExpectWindow;
+
+        /// <summary>
         /// Функции для работы с окнами
         /// </summary>
         IWindowsProc WindowsProc { get; set; } = AppContext.Get<IWindowsProc>();
