@@ -407,7 +407,7 @@
     <Resource Include="Resources\icons\SaveAs-48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icons\GoTo-48.png" />
+    <Resource Include="Resources\icons\Goto-48.png" />
     <Resource Include="Resources\icons\If-48.png" />
     <Resource Include="Resources\icons\Keyboard-48.png" />
     <Resource Include="Resources\icons\Label-48.png" />

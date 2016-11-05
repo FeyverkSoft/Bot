@@ -32,7 +32,7 @@
     <BitmapImage x:Key="SaveAsIcon" UriSource="pack://application:,,,/Resources/icons/SaveAs-48.png" />
     
     
-    <BitmapImage x:Key="GoToIcon" UriSource="pack://application:,,,/Resources/icons/GoTo-48.png" />
+    <BitmapImage x:Key="GotoIcon" UriSource="pack://application:,,,/Resources/icons/GoTo-48.png" />
     <BitmapImage x:Key="LabelIcon" UriSource="pack://application:,,,/Resources/icons/Label-48.png" />
     <BitmapImage x:Key="IfIcon" UriSource="pack://application:,,,/Resources/icons/If-48.png" />
     <BitmapImage x:Key="KeyboardIcon" UriSource="pack://application:,,,/Resources/icons/Keyboard-48.png" />
