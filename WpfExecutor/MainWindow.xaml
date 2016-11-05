@@ -305,7 +305,14 @@
             </TabItem>
         </TabControl>
         <StatusBar Grid.Row="5" BorderThickness="0">
-            <TextBlock Text="{Binding Status}"></TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Status}" Margin="5,0"></TextBlock>
+                <TextBlock Grid.Column="1" Text="{Binding Path}" Margin="5,0" TextWrapping="Wrap"></TextBlock>
+            </Grid>
             <StatusBar.Style>
                 <Style TargetType="StatusBar" BasedOn="{StaticResource StatusBar}">
                     <Style.Triggers>

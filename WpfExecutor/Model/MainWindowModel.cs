@@ -65,9 +65,13 @@ namespace WpfExecutor.Model
         /// </summary>
         private readonly IExecutiveCore _core;
 
-        private string _textLog;
+        private String _textLog;
 
         public CoreStatus Status => _core.Status;
+        /// <summary>
+        /// 
+        /// </summary>
+        public String Path => Document.Instance.Path;
 
         /// <summary>
         /// Логи бота
@@ -156,6 +160,7 @@ namespace WpfExecutor.Model
                 var conf = ConfigReaderFactory.Get<Config>().Load(new StreamReader(od.OpenFile()));
                 _core.Abort();
                 Document.CreateInstance(conf, od.FileName);
+                OnPropertyChanged(nameof(Path));
             }
         }
 
@@ -172,6 +177,7 @@ namespace WpfExecutor.Model
                     TextLog = String.Empty;
                     _core.Abort();
                     Document.CreateInstance(new Config());
+                    OnPropertyChanged(nameof(Path));
                 }
         }
 
