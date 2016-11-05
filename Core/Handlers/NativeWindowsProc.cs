@@ -97,7 +97,7 @@ namespace Core.Handlers
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         private static extern IntPtr ChildWindowFromPoint(IntPtr hWndParent, Point point);
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         private static extern Int32 GetClassName(IntPtr hWnd, StringBuilder lpClassName, Int32 nMaxCount);
         private static String GetWindowClassName(IntPtr hWnd)
         {

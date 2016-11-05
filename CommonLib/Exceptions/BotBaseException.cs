@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Exceptions
+namespace CommonLib.Exceptions
 {
     [Serializable]
     public class BotBaseException : Exception
