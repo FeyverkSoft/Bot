@@ -98,7 +98,8 @@
     <Compile Include="Control\StringControl.xaml.cs">
       <DependentUpon>StringControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converter\IActionListComboBox.cs" />
+    <Compile Include="Converter\ActionListComboBox.cs" />
+    <Compile Include="Converter\ImageActConverter.cs" />
     <Compile Include="Converter\PointConverter.cs" />
     <Compile Include="Converter\EnumConverter.cs" />
     <Compile Include="Converter\DevConverter.cs" />
@@ -405,7 +406,26 @@
   <ItemGroup>
     <Resource Include="Resources\icons\SaveAs-48.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\icons\GoTo-48.png" />
+    <Resource Include="Resources\icons\If-48.png" />
+    <Resource Include="Resources\icons\Keyboard-48.png" />
+    <Resource Include="Resources\icons\Label-48.png" />
+    <Resource Include="Resources\icons\Loop-48.png" />
+    <Resource Include="Resources\icons\Message-48.png" />
+    <Resource Include="Resources\icons\Mouse-48.png" />
+    <Resource Include="Resources\icons\Plugin-48.png" />
+    <Resource Include="Resources\icons\Screenshot-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\Stack-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\Sleep-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\Object-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
