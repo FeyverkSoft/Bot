@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using WpfExecutor.Extensions.Provider;
 
@@ -27,8 +28,10 @@ namespace WpfExecutor.Extensions.Localization
         {
             if (values == null || values.Length < 2)
                 return null;
-            var key = System.Convert.ToString(values[1] ?? "");
-            if (!String.IsNullOrEmpty(_keyFormat))
+            var key = String.Empty;
+            if (values[1] != DependencyProperty.UnsetValue)
+                key = System.Convert.ToString(values[1] ?? "");
+            if (!String.IsNullOrEmpty(_keyFormat) && !String.IsNullOrEmpty(key))
                 key = String.Format(_keyFormat, key);
 
             if (_ignore)
@@ -38,7 +41,7 @@ namespace WpfExecutor.Extensions.Localization
             if (String.IsNullOrEmpty(_keyFormat))
                 value = LocDescriptionProvider.Localize(values[1]) ?? LocalizationManager.Instance.Localize(key);
             else
-                value = LocalizationManager.Instance.Localize(key);
+                value = !String.IsNullOrEmpty(key)? LocalizationManager.Instance.Localize(key) : String.Empty;
 
             var stringValue = value as String;
             if (stringValue != null)
