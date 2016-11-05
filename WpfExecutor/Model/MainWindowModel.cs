@@ -211,6 +211,7 @@ namespace WpfExecutor.Model
         {
             if (!String.IsNullOrEmpty(Document.Instance.Path))
             {
+                Document.Instance.DocumentItems.UpdateBotVer();
                 ConfigReaderFactory.Get<Config>().Save(Document.Instance.DocumentItems, Document.Instance.Path);
                 return;
             }
@@ -228,6 +229,7 @@ namespace WpfExecutor.Model
             var sd = new SaveFileDialog { Filter = "bot command file|*.jsn" };
             if (sd.ShowDialog() == true)
             {
+                Document.Instance.DocumentItems.UpdateBotVer();
                 var conf = ConfigReaderFactory.Get<Config>().Save(Document.Instance.DocumentItems, sd.FileName);
                 Document.CreateInstance(conf, sd.FileName);
             }

@@ -20,6 +20,11 @@ namespace Core.ConfigEntity
         [DataMember]
         public ListBotAction Actions { get; set; } = new ListBotAction();
 
+        public void UpdateBotVer()
+        {
+            BotVer = Assembly.GetExecutingAssembly().GetName().Version;
+        }
+
         public Config()
         {
             Log.WriteLine($"{GetType().Name}.ctor->()");
