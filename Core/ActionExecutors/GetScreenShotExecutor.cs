@@ -59,6 +59,8 @@ namespace Core.ActionExecutors
             if (act.SaveFileParam?.SaveFile == true)
             {
                 var param = act.SaveFileParam;
+                if (param.Path?.Length > 1 && (param.Path[0] == '/' || param.Path[0] == '\\'))
+                    param.Path = param.Path.Substring(1, param.Path.Length - 1);
                 DirectoryHelper.CreateDirectory(param.Path);
                 ImageFormat imgF;
                 switch (param.Type)
