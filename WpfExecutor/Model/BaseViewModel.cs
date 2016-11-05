@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using WpfConverters.Extensions.Commands;
@@ -27,5 +28,7 @@ namespace WpfExecutor.Model
         {
             Close?.Invoke(this, b);
         }
+
+        public Version AssemblyVersion => Assembly.GetExecutingAssembly().GetName().Version;
     }
 }

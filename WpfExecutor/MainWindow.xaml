@@ -304,15 +304,16 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <StatusBar Grid.Row="5" BorderThickness="0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="{Binding Status}" Margin="5,0"></TextBlock>
-                <TextBlock Grid.Column="1" Text="{Binding Path}" Margin="5,0" TextWrapping="Wrap"></TextBlock>
-            </Grid>
+        <StatusBar Grid.Row="5" BorderThickness="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <StatusBarItem>
+                <WrapPanel>
+                    <TextBlock Text="{Binding Status}" Margin="5,0"></TextBlock>
+                    <TextBlock  Text="{Binding Path}" Margin="5,0" TextWrapping="Wrap"></TextBlock>
+                </WrapPanel>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock TextAlignment="Right" Text="{Binding AssemblyVersion}" Margin="5,0" TextWrapping="Wrap" HorizontalAlignment="Right"/>
+            </StatusBarItem>
             <StatusBar.Style>
                 <Style TargetType="StatusBar" BasedOn="{StaticResource StatusBar}">
                     <Style.Triggers>
