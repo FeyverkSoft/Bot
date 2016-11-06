@@ -30,7 +30,7 @@ namespace Core.Helpers
                 for (var y = 0; y < imageBitmap.Height; y++)
                 {
                     Color bitmapColor = imageBitmap.GetPixel(x, y);
-                    var colorGray = (int)(bitmapColor.R * 0.299 +
+                    var colorGray = (Int32)(bitmapColor.R * 0.299 +
                                            bitmapColor.G * 0.587 + bitmapColor.B * 0.114);
                     imageBitmap.SetPixel(x, y, Color.FromArgb(colorGray, colorGray, colorGray));
                 }

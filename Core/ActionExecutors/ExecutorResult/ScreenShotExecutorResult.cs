@@ -5,7 +5,7 @@ namespace Core.ActionExecutors.ExecutorResult
     /// <summary>
     /// результат исполнения получения скриншота
     /// </summary>
-    public class ScreenShotExecutorResult : BaseExecutorResult
+    public class BitmapExecutorResult : BaseExecutorResult
     {
 
         public Bitmap Bitmap { get; private set; }
@@ -14,7 +14,7 @@ namespace Core.ActionExecutors.ExecutorResult
         /// </summary>
         /// <param name="bitmap">скринчик</param>
         /// <param name="executorState">Статус результата исполнения</param>
-        public ScreenShotExecutorResult(Bitmap bitmap, EResultState executorState = EResultState.Success) : base(executorState)
+        public BitmapExecutorResult(Bitmap bitmap, EResultState executorState = EResultState.Success) : base(executorState)
         {
             Bitmap = bitmap;
         }

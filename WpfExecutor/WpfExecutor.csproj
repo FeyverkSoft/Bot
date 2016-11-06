@@ -365,6 +365,10 @@
       <Project>{c0eedcf7-134e-43a4-b8ae-12003c6602b3}</Project>
       <Name>LogWrapper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Plugin\DNPlugin\ImgComparer.csproj">
+      <Project>{0f074cf8-4b19-454d-9065-e7d3a85921b5}</Project>
+      <Name>ImgComparer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WpfConverters\WpfExtensions.csproj">
       <Project>{e7046a14-c2e7-4b26-b54c-d2cf717adc1e}</Project>
       <Name>WpfExtensions</Name>

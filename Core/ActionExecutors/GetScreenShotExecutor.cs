@@ -38,20 +38,20 @@ namespace Core.ActionExecutors
             if (actions.SubActions.Count > 1)
                 throw new Exception("Возможно выполнение только 1го действия");
             var act = actions.SubActions.Cast<ScreenShotAct>().First();
-            ScreenShotExecutorResult res;
+            BitmapExecutorResult res;
             if (!act.PrevResult)
                 res =
-                    new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y,
+                    new BitmapExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y,
                         act.Size.WidthX, act.Size.HeightY, act.GrayScale));
             else
             {
                 if (previousResult != null)
-                    res = (ScreenShotExecutorResult)Invoke(act.GrayScale, previousResult);
+                    res = (BitmapExecutorResult)Invoke(act.GrayScale, previousResult);
                 else
                 {
                     var width = (Screen.PrimaryScreen.Bounds.Width - act.Point.X);
                     var height = (Screen.PrimaryScreen.Bounds.Height - act.Point.Y);
-                    res = new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y,
+                    res = new BitmapExecutorResult(ScreenCaptureHelper.GetScreenShot(act.Point.X, act.Point.Y,
                         width > 0 ? width : 1, height > 0 ? height : 1, act.GrayScale));
                 }
             }
@@ -108,10 +108,10 @@ namespace Core.ActionExecutors
         {
             if (previousResult == null)
                 return
-                    new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(0, 0,
+                    new BitmapExecutorResult(ScreenCaptureHelper.GetScreenShot(0, 0,
                         Screen.PrimaryScreen.Bounds.Width,
                         Screen.PrimaryScreen.Bounds.Height, grayScale));
-            ScreenShotExecutorResult res = null;
+            BitmapExecutorResult res = null;
 
             //выбор особых сценариев дляразных результатов
             //например перемещение относительно окна или еще чего то
@@ -126,7 +126,7 @@ namespace Core.ActionExecutors
                                 "Ошибка относительного позиционирования, ExpectWindowExecutorResult не валиден");
                         var currentPos = expWin.ExecutorResult;
                         res =
-                            new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(currentPos.Pos.X,
+                            new BitmapExecutorResult(ScreenCaptureHelper.GetScreenShot(currentPos.Pos.X,
                                 currentPos.Pos.Y, currentPos.Size.WidthX, currentPos.Size.HeightY, grayScale));
                     }
                     break;
@@ -139,7 +139,7 @@ namespace Core.ActionExecutors
                         var currentPos = mousePos.ExecutorResult;
                         var obj = _win.GetObjectFromPoint(currentPos);
                         res =
-                            new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(obj.Pos.X, obj.Pos.Y,
+                            new BitmapExecutorResult(ScreenCaptureHelper.GetScreenShot(obj.Pos.X, obj.Pos.Y,
                                 obj.Size.WidthX, obj.Size.HeightY, grayScale));
                     }
                     break;
@@ -150,7 +150,7 @@ namespace Core.ActionExecutors
                             throw new Exception("Ошибка относительного позиционирования, ObjectExecutorResult не валиден");
                         var currentPos = previous.ExecutorResult;
                         res =
-                            new ScreenShotExecutorResult(ScreenCaptureHelper.GetScreenShot(currentPos.Pos.X,
+                            new BitmapExecutorResult(ScreenCaptureHelper.GetScreenShot(currentPos.Pos.X,
                                 currentPos.Pos.Y, currentPos.Size.WidthX, currentPos.Size.HeightY, grayScale));
                     }
                     break;

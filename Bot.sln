@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{1A7A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLib", "CommonLib\CommonLib.csproj", "{E9360285-7369-4E6A-B485-6318B39B1077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNPlugin", "Plugin\DNPlugin\DNPlugin.csproj", "{0F074CF8-4B19-454D-9065-E7D3A85921B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgComparer", "Plugin\DNPlugin\ImgComparer.csproj", "{0F074CF8-4B19-454D-9065-E7D3A85921B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "Plugin\TestPlugin\TestPlugin.csproj", "{DA900EDD-46A2-4A02-A721-9F416649E128}"
 EndProject
