@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
@@ -50,22 +51,25 @@ namespace DNPlugin
             devRes.Chunked();
             //8) Threshold
             devRes.Threshold(4);
-            
+
             var s = devRes.GetMaxIslandSize();
-            var procent = (s*100)/(w*h);
+            var procent = (s * 100) / (w * h);
+#if DEBUG
+            devRes.ToBitmap().Save($"{Name}/debug.png", ImageFormat.Png);
+#endif
             if (procent > act.Procent)
                 return new BooleanExecutorResult(true);
             return new BooleanExecutorResult(false);
         }
 
-    /// <summary>
-    /// Вызвать выполнение действия у указанной фабрики
-    /// </summary>
-    /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
-    /// <returns></returns>
-    public IExecutorResult Invoke(IExecutorResult previousResult = null)
-    {
-        throw new NotSupportedException();
+        /// <summary>
+        /// Вызвать выполнение действия у указанной фабрики
+        /// </summary>
+        /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
+        /// <returns></returns>
+        public IExecutorResult Invoke(IExecutorResult previousResult = null)
+        {
+            throw new NotSupportedException();
+        }
     }
-}
 }

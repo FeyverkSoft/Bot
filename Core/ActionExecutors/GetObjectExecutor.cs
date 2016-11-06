@@ -115,6 +115,12 @@ namespace Core.ActionExecutors
                             res = new ObjectExecutorResult(info);
                         }
                         break;
+                    case nameof(BaseExecutorResult):
+                    {
+                      return Invoke(ref isAbort, AppContext.Get<IActionExecutorFactory>()
+                            .GetExecutorAction(ActionType.GetMousePos)
+                            .Invoke(ref isAbort, previousResult));
+                    }
                     default:
                         break;
                 }
