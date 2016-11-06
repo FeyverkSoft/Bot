@@ -28,11 +28,11 @@ namespace DNPlugin
                 throw new NotSupportedException($"{nameof(previousResult)} is not {nameof(BitmapExecutorResult)}");
             var act = actions.SubActions.Cast<PluginCompareImgAction>().First();
 
-            var img1 = ((BitmapExecutorResult)previousResult).Bitmap;
-            var img2 = (Bitmap)Image.FromFile(act.SamplePath);
+            var img1 = ((BitmapExecutorResult) previousResult).Bitmap;
+            var img2 = (Bitmap) Image.FromFile(act.SamplePath);
             //2) - resize
-            var w = (img1.Width + img2.Width) / 2;
-            var h = (img1.Height + img2.Height) / 2;
+            var w = (img1.Width + img2.Width)/2;
+            var h = (img1.Height + img2.Height)/2;
             img1 = ImgHelpers.ResizeImg(img1, w, h);
             img2 = ImgHelpers.ResizeImg(img2, w, h);
             //3) GrayScale
@@ -53,9 +53,12 @@ namespace DNPlugin
             devRes.Threshold(4);
 
             var s = devRes.GetMaxIslandSize();
-            var procent = (s * 100) / (w * h);
+            var procent = (s*100)/(w*h);
 #if DEBUG
-            devRes.ToBitmap().Save($"{Name}/debug.png", ImageFormat.Png);
+            try
+            {
+                devRes.ToBitmap().Save($"{Name}/debug.png", ImageFormat.Png);
+            }catch{}
 #endif
             if (procent > act.Procent)
                 return new BooleanExecutorResult(true);
