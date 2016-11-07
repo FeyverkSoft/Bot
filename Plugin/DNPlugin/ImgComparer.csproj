@@ -7,8 +7,8 @@
     <ProjectGuid>{0F074CF8-4B19-454D-9065-E7D3A85921B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DNPlugin</RootNamespace>
-    <AssemblyName>DNPlugin</AssemblyName>
+    <RootNamespace>ImgComparer</RootNamespace>
+    <AssemblyName>ImgComparer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

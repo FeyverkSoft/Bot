@@ -4,11 +4,11 @@ using System.Drawing.Imaging;
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
-using DNPlugin.ActionObjects;
-using DNPlugin.Helpers;
+using ImgComparer.ActionObjects;
+using ImgComparer.Helpers;
 using Plugin;
 
-namespace DNPlugin
+namespace ImgComparer
 {
     public class PluginCore : IPlugin
     {

@@ -4,7 +4,7 @@ using CommonLib.Attributes;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 
-namespace DNPlugin.ActionObjects
+namespace ImgComparer.ActionObjects
 {
     [DataContract]
     public class PluginCompareImgAction : BaseActionObject
