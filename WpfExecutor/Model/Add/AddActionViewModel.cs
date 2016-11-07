@@ -93,6 +93,7 @@ namespace WpfExecutor.Model.Add
 
         private void Refresh()
         {
+            var exceptions = new[] {"ToString", "PluginAct"};
             if (!IsEditForm)
                 Action = SelectedItem;
             if (Action != null)
@@ -107,7 +108,7 @@ namespace WpfExecutor.Model.Add
                             .Where(
                                 x =>
                                     !x.PropertyType.IsArray &&
-                                    x.Name != "ToString" &&
+                                    !exceptions.Contains(x.Name) &&
                                     !x.PropertyType.GetInterfaces().Contains(typeof(ICollection))).ToList());
                 }
 
