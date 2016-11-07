@@ -12,6 +12,7 @@
         <ResourceDictionary Source="pack://application:,,,/Themes/Color.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/Font.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/ShadowEffect.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/PathUserControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 

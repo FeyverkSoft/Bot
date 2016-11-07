@@ -27,7 +27,7 @@
         <ResourceDictionary Source="pack://application:,,,/Themes/PointControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/SizeControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Themes/SaveFileParamUserControl.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Themes/FilePathUserControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/PathUserControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <system:Boolean x:Key="True">True</system:Boolean>

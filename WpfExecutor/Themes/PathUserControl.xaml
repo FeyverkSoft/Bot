@@ -11,16 +11,13 @@
                 <ControlTemplate TargetType="{x:Type custom:FilePathUserControl}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition MinWidth="70" MaxWidth="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" Text="{localization:Localization Key=Text_Path}" Margin="0,0,5,0" 
-                                   TextWrapping="NoWrap"/>
-                        <TextBox x:Name="PART_Path" Grid.Column="1" Text="{Binding FilePath, RelativeSource={RelativeSource TemplatedParent}}"
+                        <TextBox x:Name="PART_Path" Grid.Column="0" Text="{Binding FilePath, RelativeSource={RelativeSource TemplatedParent}}"
                                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                    MaxWidth="249"/>
-                        <Button Margin="5,0,0,0" Grid.Column="2" x:Name="PART_Button" Content="..." />
+                        <Button Margin="0,0,0,0" Grid.Column="1" x:Name="PART_Button" Content="..." MinWidth="25" VerticalAlignment="Center" Height="{Binding ActualHeight, ElementName=PART_Path}"/>
 
                     </Grid>
                 </ControlTemplate>
@@ -34,16 +31,13 @@
                 <ControlTemplate TargetType="{x:Type custom:FolderPathUserControl}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition MinWidth="70" MaxWidth="250"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" Text="{localization:Localization Key=Text_Path}" Margin="0,0,5,0" 
-                                   TextWrapping="NoWrap"/>
-                        <TextBox x:Name="PART_Path" Grid.Column="1" Text="{Binding FolderPath, RelativeSource={RelativeSource TemplatedParent}}"
+                        <TextBox x:Name="PART_Path" Grid.Column="0" Text="{Binding FolderPath, RelativeSource={RelativeSource TemplatedParent}}"
                                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                    MaxWidth="249"/>
-                        <Button Margin="5,0,0,0" Grid.Column="2" x:Name="PART_Button" Content="..." />
+                        <Button Margin="0,0,0,0" VerticalAlignment="Center" Grid.Column="1" x:Name="PART_Button" Content="..." MinWidth="25" Height="{Binding ActualHeight, ElementName=PART_Path}"/>
 
                     </Grid>
                 </ControlTemplate>
