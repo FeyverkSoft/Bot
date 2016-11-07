@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Message;
 
 namespace Core.ConfigEntity.ActionObjects
@@ -9,7 +9,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// Действие отправки казанного сообщения на указанные параметры
     /// </summary>
     [DataContract]
-    [LocDescription("SendMessageAct")]
+    [LocDescription("SendMessageAct", typeof(Resources.CoreText))]
     public class SendMessageAct : BaseActionObject
     {
         /// <summary>
@@ -22,25 +22,25 @@ namespace Core.ConfigEntity.ActionObjects
         /// Тип сообщения, например сообщение на емайл
         /// </summary>
         [DataMember]
-        [LocDescription("SendMessageAct_MessageType")]
+        [LocDescription("SendMessageAct_MessageType", typeof(Resources.CoreText))]
         public EMessageType MessageType { get; set; }
         /// <summary>
         /// Тело сообщения
         /// </summary>
         [DataMember]
-        [LocDescription("SendMessageAct_Body")]
+        [LocDescription("SendMessageAct_Body", typeof(Resources.CoreText))]
         public String Body { get; set; }
         /// <summary>
         /// Получатель сообщения
         /// </summary>
         [DataMember]
-        [LocDescription("SendMessageAct_Recipient")]
+        [LocDescription("SendMessageAct_Recipient", typeof(Resources.CoreText))]
         public String Recipient { get; set; }
         /// <summary>
         /// Включить предыдущий результат после тела сообщения
         /// </summary>
         [DataMember]
-        [LocDescription("SendMessageAct_IncludePrevRes")]
+        [LocDescription("SendMessageAct_IncludePrevRes", typeof(Resources.CoreText))]
         public Boolean IncludePrevRes { get; set; }
 
         public SendMessageAct(String recipient, String body, EMessageType messageType = EMessageType.Email, Boolean includePrevRes = true)

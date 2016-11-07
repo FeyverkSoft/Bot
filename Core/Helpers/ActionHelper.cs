@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.ConfigEntity;
 
 namespace Core.Helpers

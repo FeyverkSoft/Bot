@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Core;
 using LogWrapper;
 using Newtonsoft.Json;
@@ -11,7 +11,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// Событие нажатия клавишы на клавиатуре.
     /// </summary>
     [DataContract]
-    [LocDescription("KeyBoardAct")]
+    [LocDescription("KeyBoardAct", typeof(Resources.CoreText))]
     public class KeyBoardAct : BaseActionObject
     {
         /// <summary>
@@ -23,13 +23,13 @@ namespace Core.ConfigEntity.ActionObjects
         /// Клавиша, нажатие которой надо эмулировать
         /// </summary>
         [DataMember]
-        [LocDescription("KeyBoardAct_Key")]
+        [LocDescription("KeyBoardAct_Key", typeof(Resources.CoreText))]
         public KeyCode Key { get; set; }
         /// <summary>
         /// Время удержания клавиши
         /// </summary>
         [DataMember]
-        [LocDescription("KeyBoardAct_Time")]
+        [LocDescription("KeyBoardAct_Time", typeof(Resources.CoreText))]
         public UInt32 Time { get; set; }
 
         [JsonConstructor]

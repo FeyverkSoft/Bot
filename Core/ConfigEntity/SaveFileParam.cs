@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Core;
 using Core.Helpers;
 
@@ -10,33 +10,34 @@ namespace Core.ConfigEntity
     /// Параметры сохранения файла
     /// </summary>
     [DataContract]
-    [LocDescription("SaveFileParam")]
+    [LocDescription("SaveFileParam", typeof(Resources.CoreText))]
     public class SaveFileParam
     {
         /// <summary>
         /// Отображает, необходимость сохранения результата в файл
         /// </summary>
         [DataMember]
-        [LocDescription("SaveFileParam_SaveFile")]
+        [LocDescription("SaveFileParam_SaveFile", typeof(Resources.CoreText))]
         public Boolean SaveFile { get; set; }
         /// <summary>
         /// Путь сохранения файла
         /// </summary>
         [DataMember]
-        [LocDescription("SaveFileParam_Path")]
+        [LocDescription("SaveFileParam_Path", typeof(Resources.CoreText))]
+        [ControlType("FilePath")]
         public String Path { get; set; }
         /// <summary>
         /// Тип сохраняемого файла
         /// </summary>
         [DataMember]
-        [LocDescription("SaveFileParam_Type")]
+        [LocDescription("SaveFileParam_Type", typeof(Resources.CoreText))]
         public ImageFileFormat Type { get; set; }
 
         /// <summary>
         /// Наименование файла
         /// </summary>
         [DataMember]
-        [LocDescription("SaveFileParam_Name")]
+        [LocDescription("SaveFileParam_Name", typeof(Resources.CoreText))]
         public String Name { get; set; }
         public SaveFileParam(String path, ImageFileFormat type, String name = null)
         {

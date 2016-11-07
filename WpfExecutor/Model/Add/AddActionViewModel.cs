@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;

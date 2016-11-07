@@ -85,7 +85,6 @@
     <Compile Include="ActionExecutors\MouseSetPosExecutor.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppContext.cs" />
-    <Compile Include="Attributes\LocDescriptionAttribute.cs" />
     <Compile Include="ConfigEntity\ActionObjects\BaseActionObject.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GoToAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\KeyBoardKeysAct.cs" />

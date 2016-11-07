@@ -8,7 +8,7 @@ namespace Core.ConfigEntity
     public sealed class FileVersion
     {
         [IgnoreDataMember]
-        private Int32 _major, _minor, _build;
+        private Int32 _major, _minor, _build, _rev;
         [DataMember]
         public Int32 Major
         {
@@ -42,17 +42,29 @@ namespace Core.ConfigEntity
                 _build = value;
             }
         }
+        [DataMember]
+        public Int32 Rev
+        {
+            get { return _rev; }
+            private set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(Rev));
+                _rev = value;
+            }
+        }
 
         public FileVersion()
         {
-            Major = Minor = Build = 0;
+            Major = Minor = Build = Rev =0;
         }
 
-        public FileVersion(Int32 major = 0, Int32 minor = 0, Int32 build = 0)
+        public FileVersion(Int32 major = 0, Int32 minor = 0, Int32 build = 0, Int32 rev = 0)
         {
             Major = major;
             Minor = minor;
             Build = build;
+            Rev = rev;
         }
 
         public FileVersion(Version version)
@@ -62,15 +74,18 @@ namespace Core.ConfigEntity
             Major = version.Major;
             Minor = version.Minor;
             Build = version.Build;
+            Rev = version.Revision;
         }
 
         public FileVersion(String version, Char separator = '.')
         {
             if (String.IsNullOrEmpty(version) || String.IsNullOrWhiteSpace(version))
                 throw new ArgumentOutOfRangeException(nameof(version));
-            var vmass = version.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries).Select(x => Int32.Parse(x)).ToArray();
+            var vmass = version.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
             if (vmass.Length == 0)
                 throw new Exception("Incorrect \"version\" string.");
+            if (vmass.Length >= 4)
+                Rev = vmass[3];
             if (vmass.Length >= 3)
                 Build = vmass[2];
             if (vmass.Length >= 2)
@@ -84,7 +99,7 @@ namespace Core.ConfigEntity
         /// <returns></returns>
         public override String ToString()
         {
-            return $"{Major}.{Minor}.{Build}";
+            return $"{Major}.{Minor}.{Build}.{Rev}";
         }
 
         /// <summary>
@@ -101,7 +116,7 @@ namespace Core.ConfigEntity
         /// <param name="ver"></param>
         public static implicit operator Version(FileVersion ver)
         {
-            return new Version(ver._major, ver._minor, ver._build, 0);
+            return new Version(ver._major, ver._minor, ver._build, ver._rev);
         }
         /*
         /// <summary>

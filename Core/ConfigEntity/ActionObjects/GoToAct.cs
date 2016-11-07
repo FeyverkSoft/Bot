@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Helpers;
 
 namespace Core.ConfigEntity.ActionObjects
 {
-    [LocDescription("GoToAct")]
+    [LocDescription("GoToAct", typeof(Resources.CoreText))]
     public class GoToAct : BaseActionObject
     {
         /// <summary>
@@ -14,7 +14,7 @@ namespace Core.ConfigEntity.ActionObjects
         [IgnoreDataMember]
         public new static ActionType ActionType => ActionType.GOTO;
 
-        [LocDescription("GoToAct_LabelName")]
+        [LocDescription("GoToAct_LabelName", typeof(Resources.CoreText))]
         public String LabelName { get; set; }
 
         public GoToAct(String labelName)

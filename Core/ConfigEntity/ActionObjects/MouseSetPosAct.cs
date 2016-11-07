@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using LogWrapper;
 using Newtonsoft.Json;
 
@@ -9,7 +9,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Событие установки позиции мышки в указанную точку
     /// </summary>
-    [LocDescription("MouseSetPosAct")]
+    [LocDescription("MouseSetPosAct", typeof(Resources.CoreText))]
     [DataContract]
     public class MouseSetPosAct : BaseActionObject
     {
@@ -23,7 +23,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// <summary>
         /// Положение указателя по оси X
         /// </summary>
-        [LocDescription("MouseSetPosAct_X")]
+        [LocDescription("MouseSetPosAct_X", typeof(Resources.CoreText))]
         [DataMember]
         public Int32 X
         {
@@ -39,7 +39,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Положение указателя по оси Y
         /// </summary>
         [DataMember]
-        [LocDescription("MouseSetPosAct_Y")]
+        [LocDescription("MouseSetPosAct_Y", typeof(Resources.CoreText))]
         public Int32 Y
         {
             get { return _y; }
@@ -54,14 +54,14 @@ namespace Core.ConfigEntity.ActionObjects
         /// Название окна относительно которого устанавливается позиция
         /// </summary>
         [DataMember]
-        [LocDescription("MouseSetPosAct_RelativelyWindowName")]
+        [LocDescription("MouseSetPosAct_RelativelyWindowName", typeof(Resources.CoreText))]
         public String RelativelyWindowName { get; set; }
 
         /// <summary>
         /// Использовать относительную позицию или нет
         /// </summary>
         [DataMember]
-        [LocDescription("MouseSetPosAct_Relatively")]
+        [LocDescription("MouseSetPosAct_Relatively", typeof(Resources.CoreText))]
         public Boolean Relatively { get; set; }
         [JsonConstructor]
         public MouseSetPosAct(Int32 x, Int32 y, Boolean relatively = false, String relativelyWindowName = null)

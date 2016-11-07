@@ -1,10 +1,10 @@
 ﻿using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Core;
 
 namespace Core.ConfigEntity.ActionObjects
 {
-    [LocDescription("StackAct")]
+    [LocDescription("StackAct", typeof(Resources.CoreText))]
     public class StackAct : BaseActionObject
     {
         /// <summary>
@@ -13,7 +13,7 @@ namespace Core.ConfigEntity.ActionObjects
         [IgnoreDataMember]
         public new static ActionType ActionType => ActionType.Stack;
 
-        [LocDescription("StackAct_Action")]
+        [LocDescription("StackAct_Action", typeof(Resources.CoreText))]
         public EStackAction Action { get; set; }
 
         public StackAct(EStackAction action)

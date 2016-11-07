@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using Core.Attributes;
+using CommonLib.Attributes;
+
 namespace WpfExecutor.Extensions.Provider
 {
     public static class LocDescriptionProvider

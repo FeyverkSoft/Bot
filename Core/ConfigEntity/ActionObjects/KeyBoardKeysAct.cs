@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Core;
 using Newtonsoft.Json;
 
@@ -10,7 +10,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// Событие нажатия клавишы на клавиатуре.
     /// </summary>
     [DataContract]
-    [LocDescription("KeyBoardKeysAct")]
+    [LocDescription("KeyBoardKeysAct", typeof(Resources.CoreText))]
     public sealed class KeyBoardKeysAct : KeyBoardAct
     {
         /// <summary>

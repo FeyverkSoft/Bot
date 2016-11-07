@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Core;
 using LogWrapper;
 using Newtonsoft.Json;
@@ -11,7 +11,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// Описание параметров ожидания появления окна с нужным названием.
     /// </summary>
     [DataContract]
-    [LocDescription("ExpectWindowActDescription")]
+    [LocDescription("ExpectWindowActDescription", typeof(Resources.CoreText))]
     public class ExpectWindowAct : BaseActionObject
     {
         /// <summary>
@@ -23,18 +23,18 @@ namespace Core.ConfigEntity.ActionObjects
         /// Наименование ожидаемого окна
         /// </summary>
         [DataMember]
-        [LocDescription("ExpectWindowAct_WinTitle")]
+        [LocDescription("ExpectWindowAct_WinTitle", typeof(Resources.CoreText))]
         public String WinTitle { get; set; }
         /// <summary>
         /// Указывает, на то что после того как окно найденно, ему необходимо передать фокус
         /// </summary>
         [DataMember]
-        [LocDescription("ExpectWindowAct_SetFocus")]
+        [LocDescription("ExpectWindowAct_SetFocus", typeof(Resources.CoreText))]
         public Boolean SetFocus { get; set; }
         /// <summary>
         /// Параметр поиска, указавающий как и где искать. в начале, конце или просто содержание
         /// </summary>
-        [LocDescription("ExpectWindowAct_SearchParam")]
+        [LocDescription("ExpectWindowAct_SearchParam", typeof(Resources.CoreText))]
         public ESearchParam SearchParam { get; set; } = ESearchParam.Contained;
         [JsonConstructor]
         public ExpectWindowAct(String winTitle, Boolean setFocus = true)

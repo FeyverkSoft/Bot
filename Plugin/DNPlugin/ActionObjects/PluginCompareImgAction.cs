@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using CommonLib.Attributes;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 
@@ -19,6 +20,7 @@ namespace DNPlugin.ActionObjects
             SamplePath = samplePath;
         }
         [DataMember]
+        [ControlType("FilePath")]
         public String SamplePath { get; set; }
 
         /// <summary>

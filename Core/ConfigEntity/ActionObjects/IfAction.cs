@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using LogWrapper;
 using Newtonsoft.Json;
 
@@ -10,7 +10,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// Описание условий и что необходимо выполнить
     /// </summary>
     [DataContract]
-    [LocDescription("IfAction")]
+    [LocDescription("IfAction", typeof(Resources.CoreText))]
     public class IfAction : BaseActionObject
     {
         /// <summary>
@@ -22,20 +22,20 @@ namespace Core.ConfigEntity.ActionObjects
         /// Список действий которые необходимо выполнить при успешном выполнении условия
         /// </summary>
         [DataMember]
-        [LocDescription("IfAction_SuccessLabel")]
+        [LocDescription("IfAction_SuccessLabel", typeof(Resources.CoreText))]
         public String SuccessLabel { get; set; }
 
         /// <summary>
         /// Список действий которые необходимо выполнить при НЕ успешном выполнении условия
         /// </summary>
         [DataMember]
-        [LocDescription("IfAction_FailLabel")]
+        [LocDescription("IfAction_FailLabel", typeof(Resources.CoreText))]
         public String FailLabel { get; set; }
 
         /// <summary>
         /// Проверка на тип предыдущего результата 
         /// </summary>
-        [LocDescription("IfAction_PrevResType")]
+        [LocDescription("IfAction_PrevResType", typeof(Resources.CoreText))]
         [DataMember]
         public String PrevResType { get; set; }
 
@@ -43,7 +43,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Список условий, которые необходимо проверить над предыдущим объектом
         /// </summary>
         [DataMember]
-        [LocDescription("IfAction_Сonditions")]
+        [LocDescription("IfAction_Сonditions", typeof(Resources.CoreText))]
         public String Сonditions { get; set; }
 
         [JsonConstructor]

@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 
 namespace Core.ConfigEntity.ActionObjects
 {
-    [LocDescription("MockAction")]
+    [LocDescription("MockAction", typeof(Resources.CoreText))]
     public class MockAction : BaseActionObject
     {
         /// <summary>

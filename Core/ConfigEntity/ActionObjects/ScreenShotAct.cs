@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Core;
 using Newtonsoft.Json;
 
@@ -9,7 +9,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Действие получения скриншота
     /// </summary>
-    [LocDescription("ScreenShotAct")]
+    [LocDescription("ScreenShotAct", typeof(Resources.CoreText))]
     [DataContract]
     public class ScreenShotAct : BaseActionObject
     {
@@ -23,27 +23,27 @@ namespace Core.ConfigEntity.ActionObjects
         /// <summary>
         /// Начало прямоугольной области которой надо сделать скриншот
         /// </summary>
-        [LocDescription("ScreenShotAct_Point")]
+        [LocDescription("ScreenShotAct_Point", typeof(Resources.CoreText))]
         [DataMember]
         public Point Point { get; set; } = Point.Empty;
 
         /// <summary>
         /// Размер прямоугольной области
         /// </summary>
-        [LocDescription("ScreenShotAct_Size")]
+        [LocDescription("ScreenShotAct_Size", typeof(Resources.CoreText))]
         [DataMember]
         public Size Size { get; set; } = Point.Empty;
         /// <summary>
         /// Описание пути и параметров файла для сейва
         /// </summary>
-        [LocDescription("ScreenShotAct_SaveFileParam")]
+        [LocDescription("ScreenShotAct_SaveFileParam", typeof(Resources.CoreText))]
         [DataMember]
         public SaveFileParam SaveFileParam { get; set; }
 
         /// <summary>
         /// Сделать картинку в оттенках серого?
         /// </summary>
-        [LocDescription("ScreenShotAct_GrayScale")]
+        [LocDescription("ScreenShotAct_GrayScale", typeof(Resources.CoreText))]
         [DataMember]
         public Boolean GrayScale { get; set; }
 
@@ -52,7 +52,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно
         /// </summary>
         [DataMember]
-        [LocDescription("ScreenShotAct_PrevResult")]
+        [LocDescription("ScreenShotAct_PrevResult", typeof(Resources.CoreText))]
         public Boolean PrevResult { get; set; } = false;
 
 

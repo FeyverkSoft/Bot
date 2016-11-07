@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using Core.Attributes;
+using CommonLib.Attributes;
 using WpfConverters.Converters;
 
 namespace WpfExecutor.Converter

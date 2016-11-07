@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using Core.Core;
 using Newtonsoft.Json;
 
@@ -9,7 +9,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// <summary>
     /// Информация об объекте который необходимо получить
     /// </summary>
-    [LocDescription("GetObjectAct")]
+    [LocDescription("GetObjectAct", typeof(Resources.CoreText))]
     public class GetObjectAct : BaseActionObject
     {
         /// <summary>
@@ -27,7 +27,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Указывает, на то что после того как объект найден, ему необходимо передать фокус
         /// </summary>
         [DataMember]
-        [LocDescription("GetObjectAct_SetFocus")]
+        [LocDescription("GetObjectAct_SetFocus", typeof(Resources.CoreText))]
         public Boolean SetFocus { get; set; }
 
         ///// <summary>
@@ -39,7 +39,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Позиция объекта который необходимо захватить
         /// </summary>
         [DataMember]
-        [LocDescription("GetObjectAct_ObjectPos")]
+        [LocDescription("GetObjectAct_ObjectPos", typeof(Resources.CoreText))]
         public Point ObjectPos { get; set; }
 
 
@@ -47,7 +47,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Двигать к объекту являющемуся результатом предыдущего вызова, если это возможно
         /// </summary>
         [DataMember]
-        [LocDescription("GetObjectAct_PrevResult")]
+        [LocDescription("GetObjectAct_PrevResult", typeof(Resources.CoreText))]
         public Boolean PrevResult { get; set; } = false;
 
 

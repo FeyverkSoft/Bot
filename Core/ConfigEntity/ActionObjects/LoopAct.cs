@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using Core.Attributes;
+using CommonLib.Attributes;
 using LogWrapper;
 using Newtonsoft.Json;
 
@@ -11,7 +11,7 @@ namespace Core.ConfigEntity.ActionObjects
     /// Действие цикла
     /// </summary>
     [DataContract]
-    [LocDescription("LoopAct")]
+    [LocDescription("LoopAct", typeof(Resources.CoreText))]
     public class LoopAct : BaseActionObject, IBotActionContainer
     {
         /// <summary>
@@ -24,13 +24,13 @@ namespace Core.ConfigEntity.ActionObjects
         /// Колличество выполнений цикла
         /// </summary>
         [DataMember]
-        [LocDescription("LoopAct_IterationCount")]
+        [LocDescription("LoopAct_IterationCount", typeof(Resources.CoreText))]
         public Int32 IterationCount { get; set; } = 1;
         /// <summary>
         /// Список действий которые необходимо выполнить в цикле
         /// </summary>
         [DataMember]
-        [LocDescription("LoopAct_Actions")]
+        [LocDescription("LoopAct_Actions", typeof(Resources.CoreText))]
         public ListBotAction Actions { get; set; } = new ListBotAction();
 
         [JsonConstructor]

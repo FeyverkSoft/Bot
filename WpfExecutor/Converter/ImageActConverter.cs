@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
-using Core.Attributes;
 using Core.ConfigEntity;
 using WpfConverters.Converters;
 
