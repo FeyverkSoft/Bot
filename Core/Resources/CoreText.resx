@@ -267,7 +267,7 @@
   <data name="MouseMoveAct" xml:space="preserve">
     <value>Действие перемещения мышки</value>
   </data>
-  <data name="MouseMoveAct_Dx" xml:space="preserve">
+  <data name="MouseMoveAct_Point" xml:space="preserve">
     <value>Смещение по оси X</value>
   </data>
   <data name="MouseMoveAct_Dy" xml:space="preserve">
@@ -284,12 +284,6 @@
   </data>
   <data name="MouseSetPosAct_RelativelyWindowName" xml:space="preserve">
     <value>Наименование окна относительно которого указывается положение.</value>
-  </data>
-  <data name="MouseSetPosAct_X" xml:space="preserve">
-    <value>Расположение по оси X</value>
-  </data>
-  <data name="MouseSetPosAct_Y" xml:space="preserve">
-    <value>Расположение по оси Y</value>
   </data>
   <data name="PluginInvokeAct" xml:space="preserve">
     <value>Параметры вызова плагина</value>
@@ -416,5 +410,8 @@
   </data>
   <data name="SaveFileParam_SaveFile" xml:space="preserve">
     <value>Сохранить в файл</value>
+  </data>
+  <data name="MouseSetPosAct_Point" xml:space="preserve">
+    <value>Новая позиция курсора</value>
   </data>
 </root>

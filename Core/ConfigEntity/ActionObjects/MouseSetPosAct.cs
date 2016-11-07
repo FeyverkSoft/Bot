@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using CommonLib.Attributes;
+using Core.Core;
 using LogWrapper;
 using Newtonsoft.Json;
 
@@ -19,37 +20,13 @@ namespace Core.ConfigEntity.ActionObjects
         [IgnoreDataMember]
         public new static ActionType ActionType => ActionType.MouseSetPos;
 
-        Int32 _x = 0, _y = 0;
         /// <summary>
         /// Положение указателя по оси X
         /// </summary>
-        [LocDescription("MouseSetPosAct_X", typeof(Resources.CoreText))]
+        [LocDescription("MouseSetPosAct_Point", typeof(Resources.CoreText))]
         [DataMember]
-        public Int32 X
-        {
-            get { return _x; }
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentOutOfRangeException(nameof(X));
-                _x = value;
-            }
-        }
-        /// <summary>
-        /// Положение указателя по оси Y
-        /// </summary>
-        [DataMember]
-        [LocDescription("MouseSetPosAct_Y", typeof(Resources.CoreText))]
-        public Int32 Y
-        {
-            get { return _y; }
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentOutOfRangeException(nameof(Y));
-                _y = value;
-            }
-        }
+        public Point Point { get; set; }
+
         /// <summary>
         /// Название окна относительно которого устанавливается позиция
         /// </summary>
@@ -67,8 +44,7 @@ namespace Core.ConfigEntity.ActionObjects
         public MouseSetPosAct(Int32 x, Int32 y, Boolean relatively = false, String relativelyWindowName = null)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(x:{x}; y: {y}; relativelyWindowName: {relativelyWindowName ?? ""}; relatively:{relatively};)");
-            X = x;
-            Y = y;
+            Point = new Point(x, y);
             RelativelyWindowName = relativelyWindowName;
             Relatively = relatively;
         }

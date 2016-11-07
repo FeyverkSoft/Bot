@@ -673,20 +673,20 @@ namespace Core.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Смещение по оси X.
-        /// </summary>
-        internal static string MouseMoveAct_Dx {
-            get {
-                return ResourceManager.GetString("MouseMoveAct_Dx", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Смещение по оси Y.
         /// </summary>
         internal static string MouseMoveAct_Dy {
             get {
                 return ResourceManager.GetString("MouseMoveAct_Dy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Смещение по оси X.
+        /// </summary>
+        internal static string MouseMoveAct_Point {
+            get {
+                return ResourceManager.GetString("MouseMoveAct_Point", resourceCulture);
             }
         }
         
@@ -709,6 +709,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Новая позиция курсора.
+        /// </summary>
+        internal static string MouseSetPosAct_Point {
+            get {
+                return ResourceManager.GetString("MouseSetPosAct_Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Использовать относительные координаты.
         /// </summary>
         internal static string MouseSetPosAct_Relatively {
@@ -723,24 +732,6 @@ namespace Core.Resources {
         internal static string MouseSetPosAct_RelativelyWindowName {
             get {
                 return ResourceManager.GetString("MouseSetPosAct_RelativelyWindowName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Расположение по оси X.
-        /// </summary>
-        internal static string MouseSetPosAct_X {
-            get {
-                return ResourceManager.GetString("MouseSetPosAct_X", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Расположение по оси Y.
-        /// </summary>
-        internal static string MouseSetPosAct_Y {
-            get {
-                return ResourceManager.GetString("MouseSetPosAct_Y", resourceCulture);
             }
         }
         

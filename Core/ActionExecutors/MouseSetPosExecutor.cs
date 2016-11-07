@@ -55,7 +55,7 @@ namespace Core.ActionExecutors
                         if (action.Relatively && !String.IsNullOrEmpty(action.RelativelyWindowName))
                         {
                             var winInfo = WindowsProc.GetWinInfo(action.RelativelyWindowName);
-                            Mouse.MouseSetPos(action.X + (winInfo.Pos.X > 0 ? winInfo.Pos.X : 0), action.Y + (winInfo.Pos.Y > 0 ? winInfo.Pos.Y : 0));
+                            Mouse.MouseSetPos(action.Point.X + (winInfo.Pos.X > 0 ? winInfo.Pos.X : 0), action.Point.Y + (winInfo.Pos.Y > 0 ? winInfo.Pos.Y : 0));
                         }
                         else if (action.Relatively && previousResult != null)
                         {
@@ -70,8 +70,8 @@ namespace Core.ActionExecutors
                                             throw new Exception(
                                                 "Ошибка относительного позиционирования, ExpectWindowExecutorResult не валиден");
                                         Mouse.MouseSetPos(
-                                            action.X + (expWin.ExecutorResult.Pos.X > 0 ? expWin.ExecutorResult.Pos.X : 0),
-                                            action.Y + (expWin.ExecutorResult.Pos.Y > 0 ? expWin.ExecutorResult.Pos.Y : 0));
+                                            action.Point.X + (expWin.ExecutorResult.Pos.X > 0 ? expWin.ExecutorResult.Pos.X : 0),
+                                            action.Point.Y + (expWin.ExecutorResult.Pos.Y > 0 ? expWin.ExecutorResult.Pos.Y : 0));
                                         break;
                                     }
                                 case nameof(CurrentMousePosExecutorResult):
@@ -81,7 +81,7 @@ namespace Core.ActionExecutors
                                             throw new Exception(
                                                 "Ошибка относительного позиционирования, CurrentMousePosExecutorResult не валиден");
                                         var currentPos = mousePos.ExecutorResult;
-                                        Mouse.MouseSetPos(currentPos.X + action.X, currentPos.Y + action.Y);
+                                        Mouse.MouseSetPos(currentPos.X + action.Point.X, currentPos.Y + action.Point.Y);
                                     }
                                     break;
                                 case nameof(ObjectExecutorResult):
@@ -90,7 +90,7 @@ namespace Core.ActionExecutors
                                         if (mousePos.State != EResultState.Success)
                                             throw new Exception("Ошибка относительного позиционирования, ObjectExecutorResult не валиден");
                                         var currentPos = mousePos.ExecutorResult.Pos;
-                                        Mouse.MouseMove(currentPos.X + action.X, currentPos.Y + action.Y);//Дич, аналогично тому что просто вызвать, но но, при передаче тунельемпараметра может быть эффект :)
+                                        Mouse.MouseMove(currentPos.X + action.Point.X, currentPos.Y + action.Point.Y);//Дич, аналогично тому что просто вызвать, но но, при передаче тунельемпараметра может быть эффект :)
                                     } break;
                                 default:
                                     break;
@@ -98,7 +98,7 @@ namespace Core.ActionExecutors
                         }
                         else
                         {
-                            Mouse.MouseSetPos(action.X, action.Y);
+                            Mouse.MouseSetPos(action.Point.X, action.Point.Y);
                         }
                         Thread.Sleep(150);
                     }
