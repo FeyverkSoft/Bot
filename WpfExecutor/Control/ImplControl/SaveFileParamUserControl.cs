@@ -8,7 +8,7 @@ using Core.Core;
 namespace WpfExecutor.Control.ImplControl
 {
     [TemplatePart(Name = "PART_Name", Type = typeof(TextBox))]
-    [TemplatePart(Name = "PART_Path", Type = typeof(TextBox))]
+    [TemplatePart(Name = "PART_Path", Type = typeof(FilePathUserControl))]
     [TemplatePart(Name = "PART_Type", Type = typeof(ImageFileFormatControl))]
     [TemplatePart(Name = "PART_SaveFile", Type = typeof(CheckBox))]
     public class SaveFileParamUserControl : BaseControl
@@ -23,7 +23,7 @@ namespace WpfExecutor.Control.ImplControl
         public event DependencyPropertyChangedEventHandler SaveFilePropChanged;
 
         private TextBox _name;
-        private TextBox _path;
+        private FilePathUserControl _path;
         private ImageFileFormatControl _type;
         private CheckBox _saveFile;
 
@@ -116,7 +116,7 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
             base.OnApplyTemplate();
 
             _name = GetTemplateChild("PART_Name") as TextBox;
-            _path = GetTemplateChild("PART_Path") as TextBox;
+            _path = GetTemplateChild("PART_Path") as FilePathUserControl;
             _type = GetTemplateChild("PART_Type") as ImageFileFormatControl;
             _saveFile = GetTemplateChild("PART_SaveFile") as CheckBox;
             if (_name != null)
@@ -126,8 +126,8 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
             }
             if (_path != null)
             {
-                _path.Text = Path;
-                _path.TextChanged += PathOnTextChanged;
+                _path.FilePath = Path;
+                _path.FilePathChanged += _path_FilePathChanged; ;
             }
             if (_type != null)
             {
@@ -138,6 +138,14 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
             {
                 _saveFile.IsChecked = SaveFile;
             }
+        }
+
+        private void _path_FilePathChanged(Object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var fp = sender as FilePathUserControl;
+            if (fp?.FilePath == Path) return;
+            Path = fp?.FilePath ?? String.Empty;
+            UpdatePrev();
         }
 
         private void _saveFile_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -187,14 +195,6 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
             FileName = _name.Text ?? String.Empty;
             UpdatePrev();
         }
-
-        private void PathOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
-        {
-            if (_path.Text == Path) return;
-            Path = _path.Text ?? String.Empty;
-            UpdatePrev();
-        }
-
 
         private void OnSaveFileParamChanged(Object oldValue, Object newValue)
         {

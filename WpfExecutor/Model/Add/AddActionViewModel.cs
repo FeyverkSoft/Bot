@@ -116,7 +116,7 @@ namespace WpfExecutor.Model.Add
                     PropName = x.Name,
                     Name = x.GetCustomAttribute<LocDescriptionAttribute>()?.Description ?? x.Name,
                     Value = x.GetValue(Action),
-                    TypeName = x.PropertyType.Name
+                    TypeName = x.GetCustomAttribute<ControlTypeAttribute>()?.Type ?? x.PropertyType.Name
                 }).ToList();
             }
             else

@@ -812,6 +812,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Путь.
+        /// </summary>
+        internal static string Text_Path {
+            get {
+                return ResourceManager.GetString("Text_Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Старт.
         /// </summary>
         internal static string Text_Run {

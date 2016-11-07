@@ -295,6 +295,9 @@ Third-party Fonts:
   <data name="Text_Open" xml:space="preserve">
     <value>Open</value>
   </data>
+  <data name="Text_Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
   <data name="Text_Run" xml:space="preserve">
     <value>Run</value>
   </data>

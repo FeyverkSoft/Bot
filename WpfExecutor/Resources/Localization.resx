@@ -409,4 +409,7 @@ Size - Размер
   <data name="CoreSettingWindow_Priority" xml:space="preserve">
     <value>Приоритеты</value>
   </data>
+  <data name="Text_Path" xml:space="preserve">
+    <value>Путь</value>
+  </data>
 </root>
