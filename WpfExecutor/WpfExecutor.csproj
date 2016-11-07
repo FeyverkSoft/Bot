@@ -62,6 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\EMessageTypeControl.xaml.cs">
+      <DependentUpon>EMessageTypeControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\FolderPathControl.xaml.cs">
       <DependentUpon>FolderPathControl.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
     <Compile Include="Views\Settings\CoreSettingWindow.xaml.cs">
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\EMessageTypeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\FolderPathControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
