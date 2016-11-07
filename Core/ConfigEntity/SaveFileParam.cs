@@ -24,7 +24,7 @@ namespace Core.ConfigEntity
         /// </summary>
         [DataMember]
         [LocDescription("SaveFileParam_Path", typeof(Resources.CoreText))]
-        [ControlType("FilePath")]
+        [ControlType("FolderPath")]
         public String Path { get; set; }
         /// <summary>
         /// Тип сохраняемого файла

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,12 +62,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\FolderPathControl.xaml.cs">
+      <DependentUpon>FolderPathControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\ImageFileFormatControl.xaml.cs">
       <DependentUpon>ImageFileFormatControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\EStackActionControl.xaml.cs">
       <DependentUpon>EStackActionControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ImplControl\FolderPathUserControl.cs" />
     <Compile Include="Control\ImplControl\SaveFileParamUserControl.cs" />
     <Compile Include="Control\ImplControl\FilePathUserControl.cs" />
     <Compile Include="Control\ImplControl\SizeUserControl.cs" />
@@ -149,6 +154,10 @@
     <Compile Include="Views\Settings\CoreSettingWindow.xaml.cs">
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\FolderPathControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\ImageFileFormatControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

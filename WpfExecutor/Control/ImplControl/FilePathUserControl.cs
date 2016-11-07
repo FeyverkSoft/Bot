@@ -68,10 +68,10 @@ namespace WpfExecutor.Control.ImplControl
         private static void FilePathChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
             var d = dependencyObject as FilePathUserControl;
-            d?.OnXChanged(e.OldValue, e.NewValue);
+            d?.OnFileChanged(e.OldValue, e.NewValue);
         }
 
-        private void OnXChanged(object oldValue, object newValue)
+        private void OnFileChanged(object oldValue, object newValue)
         {
             if (oldValue != newValue)
             {

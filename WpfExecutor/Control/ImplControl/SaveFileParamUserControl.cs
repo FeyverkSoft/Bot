@@ -8,7 +8,7 @@ using Core.Core;
 namespace WpfExecutor.Control.ImplControl
 {
     [TemplatePart(Name = "PART_Name", Type = typeof(TextBox))]
-    [TemplatePart(Name = "PART_Path", Type = typeof(FilePathUserControl))]
+    [TemplatePart(Name = "PART_Path", Type = typeof(FolderPathUserControl))]
     [TemplatePart(Name = "PART_Type", Type = typeof(ImageFileFormatControl))]
     [TemplatePart(Name = "PART_SaveFile", Type = typeof(CheckBox))]
     public class SaveFileParamUserControl : BaseControl
@@ -23,7 +23,7 @@ namespace WpfExecutor.Control.ImplControl
         public event DependencyPropertyChangedEventHandler SaveFilePropChanged;
 
         private TextBox _name;
-        private FilePathUserControl _path;
+        private FolderPathUserControl _path;
         private ImageFileFormatControl _type;
         private CheckBox _saveFile;
 
@@ -116,7 +116,7 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
             base.OnApplyTemplate();
 
             _name = GetTemplateChild("PART_Name") as TextBox;
-            _path = GetTemplateChild("PART_Path") as FilePathUserControl;
+            _path = GetTemplateChild("PART_Path") as FolderPathUserControl;
             _type = GetTemplateChild("PART_Type") as ImageFileFormatControl;
             _saveFile = GetTemplateChild("PART_SaveFile") as CheckBox;
             if (_name != null)
@@ -126,8 +126,8 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
             }
             if (_path != null)
             {
-                _path.FilePath = Path;
-                _path.FilePathChanged += _path_FilePathChanged; ;
+                _path.FolderPath = Path;
+                _path.FolderPathChanged += _path_FilePathChanged; ;
             }
             if (_type != null)
             {
@@ -142,9 +142,9 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
 
         private void _path_FilePathChanged(Object sender, DependencyPropertyChangedEventArgs e)
         {
-            var fp = sender as FilePathUserControl;
-            if (fp?.FilePath == Path) return;
-            Path = fp?.FilePath ?? String.Empty;
+            var fp = sender as FolderPathUserControl;
+            if (fp?.FolderPath == Path) return;
+            Path = fp?.FolderPath ?? String.Empty;
             UpdatePrev();
         }
 

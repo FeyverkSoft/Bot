@@ -59,7 +59,7 @@
                                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                     <TextBlock Margin="0,2,5,2" Grid.Row="2" Grid.Column="0" TextAlignment="Left" 
                                                VerticalAlignment="Center" Text="{localization:Localization SaveFileParamUserControl_Path}"/>
-                                    <custom:FilePathUserControl Margin="0,2" x:Name="PART_Path" Grid.Row="2" Grid.Column="1" FilePath="{Binding Path, RelativeSource={RelativeSource TemplatedParent}}" 
+                                    <custom:FolderPathUserControl Margin="0,2" x:Name="PART_Path" Grid.Row="2" Grid.Column="1" FolderPath="{Binding Path, RelativeSource={RelativeSource TemplatedParent}}" 
                                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                              IsEnabled="{Binding SaveFile, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     <TextBlock Margin="0,2,5,2" Grid.Row="3" Grid.Column="0" TextAlignment="Left" 
