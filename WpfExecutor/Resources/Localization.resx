@@ -412,4 +412,7 @@ Size - Размер
   <data name="Text_Path" xml:space="preserve">
     <value>Путь</value>
   </data>
+  <data name="Description_ExpectWindow" xml:space="preserve">
+    <value>указывает что бот должен ожидать появления окна с указанным заголовком, только после его появления будет продолжено исполнение инструкций</value>
+  </data>
 </root>

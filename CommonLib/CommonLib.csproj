@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\ControlType.cs" />
+    <Compile Include="Attributes\VisualCtorIgnorePropAttribute.cs" />
+    <Compile Include="Attributes\ControlTypeAttribute.cs" />
     <Compile Include="Attributes\LocDescriptionAttribute.cs" />
     <Compile Include="Collections\INotifyList.cs" />
     <Compile Include="Exceptions\BotBaseException.cs" />

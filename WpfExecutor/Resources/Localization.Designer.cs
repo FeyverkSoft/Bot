@@ -274,6 +274,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на указывает что бот должен ожидать появления окна с указанным заголовком, только после его появления будет продолжено исполнение инструкций.
+        /// </summary>
+        internal static string Description_ExpectWindow {
+            get {
+                return ResourceManager.GetString("Description_ExpectWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Получает текущую позицию курсора, результат может быть переданн следующему вызову, или запулин в стек..
         /// </summary>
         internal static string Description_GetMousePos {

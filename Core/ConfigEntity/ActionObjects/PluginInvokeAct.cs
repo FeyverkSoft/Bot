@@ -28,6 +28,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("PluginInvokeAct_Actions", typeof(Resources.CoreText))]
+        [VisualCtorIgnoreProp]
         public BotAction Actions { get; set; } = new BotAction(ActionType.PluginAct);
 
         public PluginInvokeAct(String pluginName, BotAction actions)
