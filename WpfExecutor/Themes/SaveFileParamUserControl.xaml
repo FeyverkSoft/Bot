@@ -18,6 +18,7 @@
 
     <!--******************** SaveFileParamUserControl ********************-->
     <Style TargetType="{x:Type custom:SaveFileParamUserControl}">
+        <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type custom:SaveFileParamUserControl}">

@@ -39,12 +39,18 @@ nameof(Point), typeof(Point), typeof(PointUserControl), new PropertyMetadata(def
         public Int32 X
         {
             get { return Point.X; }
-            set { Point.X = value; }
+            set
+            {
+                Point.X = value;
+            }
         }
         public Int32 Y
         {
             get { return Point.Y; }
-            set { Point.Y = value; }
+            set
+            {
+                Point.Y = value;
+            }
         }
 
         public Point Point
@@ -57,7 +63,10 @@ nameof(Point), typeof(Point), typeof(PointUserControl), new PropertyMetadata(def
                 Point = new Point();
                 return (Point)GetValue(PointProperty);
             }
-            set { SetValue(PointProperty, value); }
+            set
+            {
+                SetValue(PointProperty, value);
+            }
         }
 
         public override void OnApplyTemplate()

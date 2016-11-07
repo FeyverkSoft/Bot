@@ -14,7 +14,7 @@ namespace WpfExecutor.Extensions.Provider
 
         public object Localize(String key)
         {
-            return Resources.Localization.ResourceManager.GetObject(key);
+            return Resources.Localization.ResourceManager.GetObject(key)?.ToString().Trim();
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace WpfConverters.Converters.Format
             if (values.Length == 1 && values[0] == null)
                 return null;
 
-            return string.Format(format, values);
+            return String.Format(format, values);
         }
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)

@@ -183,7 +183,7 @@ nameof(TextInfo), typeof(String), typeof(SaveFileParamUserControl), new Property
         {
             if (SaveFile)
                 TextInfo =
-                    $"{SaveFileParam?.Path ?? ""}/{(String.IsNullOrEmpty(SaveFileParam?.Name) ? "{DataTime}" : SaveFileParam.Name)}.{SaveFileParam?.Type}";
+                    $"{SaveFileParam?.Path ?? ""}\\{(String.IsNullOrEmpty(SaveFileParam?.Name) ? "{DataTime}" : SaveFileParam.Name)}.{SaveFileParam?.Type}";
             else
                 TextInfo = "NO";
         }

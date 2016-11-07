@@ -19,7 +19,6 @@ namespace Core.ConfigEntity.ActionObjects
         [IgnoreDataMember]
         public new static ActionType ActionType => ActionType.MouseMove;
 
-
         /// <summary>
         /// Смещение по оси X
         /// </summary>
