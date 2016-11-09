@@ -39,7 +39,7 @@ namespace Neuro.InterfaceImpl
         {
             // инициализация начальных весов
             _perceptron.InitWeights(10);
-            var classes = images.Select(x => x.Class);
+            var classes = images.Select(x => x.Class).Distinct();
             // получение пиксельных массивов каждого изображения
             // и обучение n раз каждой выборке
             while (n-- > 0)
