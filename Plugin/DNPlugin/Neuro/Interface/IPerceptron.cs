@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Neuro.Interface
+namespace ImgComparer.Neuro.Interface
 {
     public interface IPerceptron
     {

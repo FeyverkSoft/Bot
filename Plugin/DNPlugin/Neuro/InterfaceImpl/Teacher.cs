@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Neuro.Domain;
-using Neuro.Interface;
+using ImgComparer.Neuro.Domain;
+using ImgComparer.Neuro.Interface;
 
-namespace Neuro.InterfaceImpl
+namespace ImgComparer.Neuro.InterfaceImpl
 {
 
     /// <summary>

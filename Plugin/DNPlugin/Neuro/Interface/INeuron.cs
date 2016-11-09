@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Neuro.Interface
+﻿namespace ImgComparer.Neuro.Interface
 {
     internal interface INeuron
     {

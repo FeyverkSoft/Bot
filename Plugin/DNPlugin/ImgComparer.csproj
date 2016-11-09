@@ -44,6 +44,13 @@
   <ItemGroup>
     <Compile Include="ActionObjects\PluginCompareImgAction.cs" />
     <Compile Include="Helpers\ImgHelpers.cs" />
+    <Compile Include="Neuro\Domain\ImageData.cs" />
+    <Compile Include="Neuro\InterfaceImpl\Neuron.cs" />
+    <Compile Include="Neuro\InterfaceImpl\Perceptron.cs" />
+    <Compile Include="Neuro\InterfaceImpl\Teacher.cs" />
+    <Compile Include="Neuro\Interface\INeuron.cs" />
+    <Compile Include="Neuro\Interface\IPerceptron.cs" />
+    <Compile Include="Neuro\Interface\ITeacher.cs" />
     <Compile Include="PluginCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Neuro.Interface;
+using ImgComparer.Neuro.Interface;
 
-namespace Neuro.InterfaceImpl
+namespace ImgComparer.Neuro.InterfaceImpl
 {
 
     /// <summary>
@@ -17,7 +16,7 @@ namespace Neuro.InterfaceImpl
         readonly List<Dictionary<String, INeuron>> _neurons; // слои нейронов
         readonly Int32 _neuronCount;
         readonly Int32 _m;
-        readonly String[] _classes;
+        readonly IEnumerable<String> _classes;
 
         /// <summary>
         /// Конструктор
@@ -25,19 +24,15 @@ namespace Neuro.InterfaceImpl
         /// <param name="classes"> число нейронов</param>
         /// <param name="m">число входов каждого нейрона скрытого слоя</param>
         /// <param name="l"></param>
-        public Perceptron(String[] classes, Int32 m, Int32 l = 4)
+        public Perceptron(IEnumerable<String> classes, Int32 m, Int32 l = 4)
         {
             _classes = classes;
-            _neuronCount = classes.Length;
+            _neuronCount = classes.Count();
             _m = m;
             _neurons = new List<Dictionary<String, INeuron>>();
             for (var i = 0; i < l; i++)
             {
-                var dict = new Dictionary<String, INeuron>();
-                foreach (var t in classes)
-                {
-                    dict.Add(t, new Neuron(m));
-                }
+                var dict = classes.ToDictionary<string, string, INeuron>(t => t, t => new Neuron(m));
                 _neurons.Add(dict);
             }
         }
@@ -116,7 +111,7 @@ namespace Neuro.InterfaceImpl
         private Boolean VectorEqual(Dictionary<String, float> a, Dictionary<String, float> b)
         {
             if (a.Count != b.Count) return false;
-            return !a.Where((t, i) => Math.Abs(t.Value - b[t.Key]) > 0.001).Any();
+            return !a.Any(t => Math.Abs(t.Value - b[t.Key]) > 0.001);
         }
 
         /// <summary>

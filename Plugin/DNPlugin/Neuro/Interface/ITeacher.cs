@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Neuro.Domain;
+using ImgComparer.Neuro.Domain;
 
-namespace Neuro.Interface
+namespace ImgComparer.Neuro.Interface
 {
     public interface ITeacher
     {

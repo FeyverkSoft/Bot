@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Neuro.Domain
+namespace ImgComparer.Neuro.Domain
 {
     /// <summary>
     /// Образ которым обучаем распознавать нейрон класс образа

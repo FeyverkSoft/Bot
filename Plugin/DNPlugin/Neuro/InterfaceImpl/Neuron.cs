@@ -1,7 +1,7 @@
 ﻿using System;
-using Neuro.Interface;
+using ImgComparer.Neuro.Interface;
 
-namespace Neuro.InterfaceImpl
+namespace ImgComparer.Neuro.InterfaceImpl
 {
     [Serializable]
     internal class Neuron : INeuron
