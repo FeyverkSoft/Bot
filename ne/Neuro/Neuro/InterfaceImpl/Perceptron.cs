@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Neuro.Interface;
 
 namespace Neuro.InterfaceImpl
@@ -21,6 +23,7 @@ namespace Neuro.InterfaceImpl
         /// </summary>
         /// <param name="neuronCount"> число нейронов</param>
         /// <param name="m">число входов каждого нейрона скрытого слоя</param>
+        /// <param name="l"></param>
         public Perceptron(Int32 neuronCount, Int32 m, Int32 l = 4)
         {
             _neuronCount = neuronCount;
@@ -45,14 +48,14 @@ namespace Neuro.InterfaceImpl
         public float[][] Recognize(float[][] x)
         {
             var y = new float[_neurons.Count][];
-            for (var i = 0; i < y.Length; i++)
-            {
-                y[i] = new float[_neurons[i].Length];
-                for (var j = 0; j < y[i].Length; j++)
-                {
-                    y[i][j] += _neurons[i][j].Transfer(x[i]);
-                }
-            }
+              Parallel.For(0, y.Length, (i) =>
+              {
+                  y[i] = new float[_neurons[i].Length];
+                  for (var j = 0; j < y[i].Length; j++)
+                  {
+                      y[i][j] += _neurons[i][j].Transfer(x[i]);
+                  }
+              });
             return y;
         }
 
@@ -85,13 +88,16 @@ namespace Neuro.InterfaceImpl
                 f = true;
                 for (var i = 0; i < _neurons.Count; i++)
                     f &= VectorEqual(t[i], y[i]);
+
                 // подстройка весов каждого нейрона
-                for (var i = 0; i < _neurons.Count; i++)
-                    for (var j = 0; j < _neurons[i].Length; j++)
-                    {
-                        var d = y[i][j] - t[i][j];
-                        _neurons[i][j].ChangeWeights(v, d, x[i]);
-                    }
+                Parallel.For(0, _neurons.Count, (i) =>
+                 {
+                     for (var j = 0; j < _neurons[i].Length; j++)
+                     {
+                         var d = y[i][j] - t[i][j];
+                         _neurons[i][j].ChangeWeights(v, d, x[i]);
+                     }
+                 });
             } while (!f);
         }
 

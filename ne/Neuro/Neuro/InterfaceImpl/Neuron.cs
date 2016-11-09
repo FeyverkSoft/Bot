@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Threading.Tasks;
 using Neuro.Interface;
 
 namespace Neuro.InterfaceImpl
@@ -52,21 +50,10 @@ namespace Neuro.InterfaceImpl
         /// <param name="x"> - входной вектор</param>
         public void ChangeWeights(float v, float d, float[] x)
         {
-            /*
             for (var i = 0; i < _w.Length; i++)
             {
                 _w[i] += v * d * x[i];
             }
-            */
-            var rangePartitioner = Partitioner.Create(0, _w.Length,
-                          _w.Length / Environment.ProcessorCount);
-            Parallel.ForEach(rangePartitioner, (range, loopState) =>
-            {
-                for (var i = range.Item1; i < range.Item2; i++)
-                {
-                    _w[i] += v * d * x[i];
-                }
-            });
         }
 
 

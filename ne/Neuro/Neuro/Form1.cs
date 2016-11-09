@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading.Tasks;
 using Neuro.Interface;
 using Neuro.InterfaceImpl;
 using Neuro.Properties;
@@ -19,8 +21,8 @@ namespace Neuro
         private readonly Thread _formThread;//поток который перерисовывает форму
 
         private Int32 _neuronCount = 2; //колличество нейронов в персептроне
-        private Int32 _imageWidth = 1366;
-        private Int32 _imageHeight = 768;
+        private Int32 _imageWidth = 1920;
+        private Int32 _imageHeight = 1080;
 
         private IPerceptron _perceptron;
         private ITeacher _teacher;
@@ -96,11 +98,11 @@ namespace Neuro
                 {
                     _teachThread = new Thread(() =>
                     {
-                        _teacher.Teach(LoadImage(label4.Text, 1), (Int32) numericUpDown1.Value);
-                        Application.Exit();
+                        _teacher.Teach(LoadImage(label4.Text, 1), (Int32)numericUpDown1.Value);
+                        //  Application.Exit();
                     });
                     _teachThread.Start();
-                    
+
                 }
             }
             catch (Exception ex)
@@ -120,16 +122,21 @@ namespace Neuro
             // загрузка всех тестовых изображений в массив bitmaps[]
             var list = Directory.GetFiles(path, "*.jpg").ToList();
             list.AddRange(Directory.GetFiles(path, "*.png"));
-            var images = new ImageData[list.Count];
-            for (var s = 0; s < list.Count; s++)
+            var images = new List<ImageData>();
+            Parallel.ForEach(list, (item) =>
             {
-                images[s] = new ImageData
+                using (var map = new Bitmap(item))
                 {
-                    Data = ImageToArray(new Bitmap(list[s])),
-                    Class = Convert.ToInt32((Path.GetFileNameWithoutExtension(list[s]).Substring(0, count)))
-                };
-            }
-            return images;
+                    var img = new ImageData
+                    {
+                        Data = ImageToArray(map),
+                        Class = Convert.ToInt32((Path.GetFileNameWithoutExtension(item).Substring(0, count)))
+                    };
+                    lock (images)
+                        images.Add(img);
+                }
+            });
+            return images.ToArray();
         }
 
         /// <summary>
@@ -141,7 +148,7 @@ namespace Neuro
         {
             try
             {
-                var output = _perceptron.Recognize(ImageToArray(new Bitmap(pictureBox1.Image)));
+                var output = _perceptron.Recognize(ImageToArray((Bitmap)pictureBox1.Image));
                 var res = new float[_perceptron.GetNeuronCount];
                 foreach (var t in output)
                 {
@@ -160,6 +167,21 @@ namespace Neuro
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+
+        byte[] ConvertBitmapToArray(Bitmap img)
+        {
+            Rectangle rect = new Rectangle(0, 0, img.Width, img.Height);
+            System.Drawing.Imaging.BitmapData tempData =
+                  img.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite,
+                  img.PixelFormat);
+            IntPtr ptr = tempData.Scan0;
+            int bytes = img.Width * img.Height * 3;
+            byte[] rgbValues = new byte[bytes];
+            System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, bytes);
+            img.UnlockBits(tempData);
+            return rgbValues;
         }
 
         /// <summary>
@@ -184,7 +206,7 @@ namespace Neuro
                     pixel[3][k] = Step(color);
                     k++;
                 }
-            }
+           }
             return pixel;
         }
 

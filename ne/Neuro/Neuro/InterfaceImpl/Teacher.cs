@@ -12,6 +12,8 @@ namespace Neuro.InterfaceImpl
     /// </summary>
     public class Teacher : ITeacher
     {
+        private readonly Dictionary<Int32, float[][]> _dic = new Dictionary<Int32, float[][]>();
+
         /// <summary>
         /// Персептрон
         /// </summary>
@@ -36,6 +38,7 @@ namespace Neuro.InterfaceImpl
         {
             // инициализация начальных весов
             _perceptron.InitWeights(10);
+
             // получение пиксельных массивов каждого изображения
             // и обучение n раз каждой выборке
             while (n-- > 0)
@@ -57,6 +60,8 @@ namespace Neuro.InterfaceImpl
         /// <returns>вектор для входа перцептрона</returns>
         private float[][] GetOutVector(Int32 n)
         {
+            if (_dic.ContainsKey(n))
+                return _dic[n];
             var y = new float[4][];
             for (var i = 0; i < y.Length; i++)
             {
@@ -64,6 +69,7 @@ namespace Neuro.InterfaceImpl
                 if (_perceptron.GetNeuronCount > n)
                     y[i][n] = 1;
             }
+            _dic.Add(n, y);
             return y;
         }
     }
