@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Neuro.Interface
 {
@@ -16,7 +17,7 @@ namespace Neuro.Interface
         /// </summary>
         /// <param name="x">входной вектор</param>
         /// <param name="y">правильный выходной вектор</param>
-        void Teach(float[][] x, float[][] y);
+        void Teach(float[][] x, Dictionary<String, float>[] y);
 
         /// <summary>
         ///  число нейронов
@@ -33,6 +34,11 @@ namespace Neuro.Interface
         /// </summary>
         /// <param name="x">входной вектор</param>
         /// <returns> выходной образ</returns>
-        float[][] Recognize(float[][] x);
+        Dictionary<String, float>[] Recognize(float[][] x);
+
+        /// <summary>
+        /// Число слабосвязанных слоёв
+        /// </summary>
+        Int32 LCount { get; }
     }
 }

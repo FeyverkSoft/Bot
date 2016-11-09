@@ -14,29 +14,31 @@ namespace Neuro.InterfaceImpl
     [Serializable]
     public class Perceptron : IPerceptron
     {
-        readonly List<INeuron[]> _neurons; // слои нейронов
+        readonly List<Dictionary<String, INeuron>> _neurons; // слои нейронов
         readonly Int32 _neuronCount;
         readonly Int32 _m;
+        readonly String[] _classes;
 
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="neuronCount"> число нейронов</param>
+        /// <param name="classes"> число нейронов</param>
         /// <param name="m">число входов каждого нейрона скрытого слоя</param>
         /// <param name="l"></param>
-        public Perceptron(Int32 neuronCount, Int32 m, Int32 l = 4)
+        public Perceptron(String[] classes, Int32 m, Int32 l = 4)
         {
-            _neuronCount = neuronCount;
+            _classes = classes;
+            _neuronCount = classes.Length;
             _m = m;
-            _neurons = new List<INeuron[]>();
+            _neurons = new List<Dictionary<String, INeuron>>();
             for (var i = 0; i < l; i++)
             {
-                var nList = new INeuron[neuronCount];
-                for (var j = 0; j < neuronCount; j++)
+                var dict = new Dictionary<String, INeuron>();
+                foreach (var t in classes)
                 {
-                    nList[j] = new Neuron(m);
+                    dict.Add(t, new Neuron(m));
                 }
-                _neurons.Add(nList);
+                _neurons.Add(dict);
             }
         }
 
@@ -45,18 +47,21 @@ namespace Neuro.InterfaceImpl
         /// </summary>
         /// <param name="x">входной вектор</param>
         /// <returns> выходной образ</returns>
-        public float[][] Recognize(float[][] x)
+        public Dictionary<String, float>[] Recognize(float[][] x)
         {
-            var y = new float[_neurons.Count][];
-              Parallel.For(0, y.Length, (i) =>
-              {
-                  y[i] = new float[_neurons[i].Length];
-                  for (var j = 0; j < y[i].Length; j++)
-                  {
-                      y[i][j] += _neurons[i][j].Transfer(x[i]);
-                  }
-              });
-            return y;
+            var yList = new Dictionary<String, float>[_neurons.Count];
+            for (var i = 0; i < _neurons.Count; i++)
+            {
+                yList[i] = _classes.ToDictionary(@class => @class, @class => 0f);
+            }
+            Parallel.For(0, _neurons.Count, (i) =>
+            {
+                foreach (var neuron in _neurons[i])
+                {
+                    yList[i][neuron.Key] += neuron.Value.Transfer(x[i]);
+                }
+            });
+            return yList;
         }
 
         /// <summary>
@@ -69,7 +74,7 @@ namespace Neuro.InterfaceImpl
             foreach (var t in _neurons)
                 foreach (var neuron in t)
                 {
-                    neuron.InitWeights(max);
+                    neuron.Value.InitWeights(max);
                 }
         }
 
@@ -78,7 +83,7 @@ namespace Neuro.InterfaceImpl
         /// </summary>
         /// <param name="x">входной вектор</param>
         /// <param name="y">правильный выходной вектор</param>
-        public void Teach(float[][] x, float[][] y)
+        public void Teach(float[][] x, Dictionary<String, float>[] y)
         {
             const float v = 0.5f; // скорость обучения
             Boolean f;
@@ -90,27 +95,28 @@ namespace Neuro.InterfaceImpl
                     f &= VectorEqual(t[i], y[i]);
 
                 // подстройка весов каждого нейрона
-                Parallel.For(0, _neurons.Count, (i) =>
-                 {
-                     for (var j = 0; j < _neurons[i].Length; j++)
-                     {
-                         var d = y[i][j] - t[i][j];
-                         _neurons[i][j].ChangeWeights(v, d, x[i]);
-                     }
-                 });
+                Parallel.For(0, _neurons.Count, (layer) =>
+                {
+                    foreach (var classes in _neurons[layer].Keys)
+                    {
+                        var d = y[layer][classes] - t[layer][classes];
+                        _neurons[layer][classes].ChangeWeights(v, d, x[layer]);
+                    }
+                });
+
             } while (!f);
         }
 
         /// <summary>
-        /// Сравнивание двух векторов
+        /// Сравнивание двух результатов
         /// </summary>
         /// <param name="a">первый вектор</param>
         /// <param name="b">второй вектор</param>
         /// <returns>boolean</returns>
-        private Boolean VectorEqual(float[] a, float[] b)
+        private Boolean VectorEqual(Dictionary<String, float> a, Dictionary<String, float> b)
         {
-            if (a.Length != b.Length) return false;
-            return !a.Where((t, i) => Math.Abs(t - b[i]) > 0.001).Any();
+            if (a.Count != b.Count) return false;
+            return !a.Where((t, i) => Math.Abs(t.Value - b[t.Key]) > 0.001).Any();
         }
 
         /// <summary>
@@ -122,5 +128,10 @@ namespace Neuro.InterfaceImpl
         /// число входов каждого нейрона скрытого слоя
         /// </summary>
         public Int32 GetM => _m;
+
+        /// <summary>
+        /// Число слабосвязанных слоёв
+        /// </summary>
+        public Int32 LCount => _neurons.Count;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Neuro.Domain;
 using Neuro.Interface;
 
@@ -12,7 +13,7 @@ namespace Neuro.InterfaceImpl
     /// </summary>
     public class Teacher : ITeacher
     {
-        private readonly Dictionary<Int32, float[][]> _dic = new Dictionary<Int32, float[][]>();
+        private readonly Dictionary<String, Dictionary<String, float>[]> _dic = new Dictionary<String, Dictionary<String, float>[]>();
 
         /// <summary>
         /// Персептрон
@@ -38,14 +39,14 @@ namespace Neuro.InterfaceImpl
         {
             // инициализация начальных весов
             _perceptron.InitWeights(10);
-
+            var classes = images.Select(x => x.Class);
             // получение пиксельных массивов каждого изображения
             // и обучение n раз каждой выборке
             while (n-- > 0)
             {
                 foreach (var item in images)
                 {
-                    var y = GetOutVector(Convert.ToInt32(item.Class));
+                    var y = GetOutVector(item.Class, classes);
                     _perceptron.Teach(item.Data, y);
                 }
             }
@@ -58,19 +59,18 @@ namespace Neuro.InterfaceImpl
         ///  нужно построить вектор, другими словами:
         ///  на каком месте должна быть 1, остальные 0</param>
         /// <returns>вектор для входа перцептрона</returns>
-        private float[][] GetOutVector(Int32 n)
+        private Dictionary<String, float>[] GetOutVector(String n, IEnumerable<String> classes)
         {
             if (_dic.ContainsKey(n))
                 return _dic[n];
-            var y = new float[4][];
-            for (var i = 0; i < y.Length; i++)
+            var la = new Dictionary<String, float>[_perceptron.GetM];
+            for (var i = 0; i < _perceptron.LCount; i++)
             {
-                y[i] = new float[_perceptron.GetNeuronCount];
-                if (_perceptron.GetNeuronCount > n)
-                    y[i][n] = 1;
+                var dict = classes.ToDictionary<string, string, float>(@class => @class, @class => n == @class ? 1 : 0);
+                la[i] = dict;
             }
-            _dic.Add(n, y);
-            return y;
+            _dic.Add(n, la);
+            return la;
         }
     }
 }

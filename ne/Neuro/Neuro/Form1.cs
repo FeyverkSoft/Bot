@@ -20,7 +20,6 @@ namespace Neuro
         private Thread _teachThread; //поток в котором происходит обучение
         private readonly Thread _formThread;//поток который перерисовывает форму
 
-        private Int32 _neuronCount = 2; //колличество нейронов в персептроне
         private Int32 _imageWidth = 1920;
         private Int32 _imageHeight = 1080;
 
@@ -32,7 +31,7 @@ namespace Neuro
             //Первая цифра колличество нейронов.
             //Вторая цифра колличество элементов векторном представлении картинки
             //Для размера картинки 64x64 будет произведение
-            _perceptron = new Perceptron(_neuronCount, _imageWidth * _imageHeight);
+            _perceptron = new Perceptron(new [] {"0","1"}, _imageWidth * _imageHeight);
             _teacher = new Teacher(_perceptron);
             pictureBox1.Image = new Bitmap(_imageWidth, _imageHeight);
             _formThread = new Thread(UpdateForm);
@@ -130,7 +129,7 @@ namespace Neuro
                     var img = new ImageData
                     {
                         Data = ImageToArray(map),
-                        Class = Convert.ToInt32((Path.GetFileNameWithoutExtension(item).Substring(0, count)))
+                        Class = Path.GetFileNameWithoutExtension(item)?.Split('_')[0]
                     };
                     lock (images)
                         images.Add(img);
@@ -150,18 +149,19 @@ namespace Neuro
             {
                 var output = _perceptron.Recognize(ImageToArray((Bitmap)pictureBox1.Image));
                 var res = new float[_perceptron.GetNeuronCount];
-                foreach (var t in output)
-                {
-                    for (var j = 0; j < res.Length; j++)
-                        res[j] += t[j] / output.Length;
-                }
-                var max = res.Max();
-                for (var i = 0; i < res.Length; i++)
-                {
-                    if (!(Math.Abs(res[i] - max) < 0.0009)) continue;
-                    label2.Text = i.ToString(CultureInfo.InvariantCulture);
-                    break;
-                }
+                res = res;
+                //foreach (var t in output)
+                //{
+                //    for (var j = 0; j < res.Length; j++)
+                //        res[j] += t[j] / output.Length;
+                //}
+                //var max = res.Max();
+                //for (var i = 0; i < res.Length; i++)
+                //{
+                //    if (!(Math.Abs(res[i] - max) < 0.0009)) continue;
+                //    label2.Text = i.ToString(CultureInfo.InvariantCulture);
+                //    break;
+                //}
             }
             catch (Exception ex)
             {
@@ -206,7 +206,7 @@ namespace Neuro
                     pixel[3][k] = Step(color);
                     k++;
                 }
-           }
+            }
             return pixel;
         }
 
@@ -257,8 +257,7 @@ namespace Neuro
                             {
                                 Perceptron = _perceptron,
                                 ImageHeight = _imageHeight,
-                                ImageWidth = _imageWidth,
-                                NeuronCount = _neuronCount
+                                ImageWidth = _imageWidth
                             });
                         }
                     }
@@ -286,7 +285,6 @@ namespace Neuro
                             _teacher = new Teacher(_perceptron);
                             _imageHeight = temp.ImageHeight;
                             _imageWidth = temp.ImageWidth;
-                            _neuronCount = temp.NeuronCount;
                         }
                     }
                 }
@@ -297,19 +295,6 @@ namespace Neuro
             }
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var sett = new settingsForm(_neuronCount, _imageWidth, _imageHeight);
-            sett.ShowDialog();
-            if (!sett.ItsClosed)
-            {
-                _imageHeight = sett.GetImageHeight;
-                _imageWidth = sett.GetImageWidth;
-                _neuronCount = sett.GetNeuronCount;
-                _perceptron = new Perceptron(_neuronCount, _imageWidth * _imageHeight);
-                _teacher = new Teacher(_perceptron);
-            }
-        }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {

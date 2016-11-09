@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Neuro.Domain
 {
@@ -14,8 +13,8 @@ namespace Neuro.Domain
         public float[][] Data { get; set; }
 
         /// <summary>
-        /// Номер Класса к которому принадлежит образ
+        /// Класс к которому принадлежит образ
         /// </summary>
-        public Int32 Class { get; set; }
+        public String Class { get; set; }
     }
 }
