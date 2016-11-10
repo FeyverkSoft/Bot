@@ -58,6 +58,24 @@ namespace ImgComparer.Helpers
             return arr;
         }
 
+        public static float[,] Thresholds(this float[,] img, Int32 p = 15)
+        {
+            var arr = (float[,])img.Clone();
+            var th = 255;
+            while (th > 0)
+            {
+                for (var i = 0; i < arr.GetLength(0) - 3; i++)
+                    for (var j = 0; j < arr.GetLength(1) - 3; j++)
+                    {
+                        arr[i, j] = (byte)(arr[i, j] < th &&
+                                           arr[i, j] > th - 255 / p
+                            ? th : arr[i, j]);
+                    }
+                th -= 255 / p;
+            }
+            return arr;
+        }
+
         public static Bitmap ToBitmap(this float[,] img)
         {
             var imageBitmap = new Bitmap(img.GetLength(0), img.GetLength(1));
