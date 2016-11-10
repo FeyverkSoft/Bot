@@ -17,7 +17,7 @@ namespace ImgComparer.Neuro.Interface
         /// </summary>
         /// <param name="x">входной вектор</param>
         /// <param name="y">правильный выходной вектор</param>
-        void Teach(float[][] x, Dictionary<String, float>[] y);
+        void Teach(IList<float[]> x, Dictionary<String, float>[] y);
 
 
         /// <summary>

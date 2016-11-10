@@ -114,7 +114,7 @@ namespace ImgComparer.Neuro.InterfaceImpl
         /// </summary>
         /// <param name="x">входной вектор</param>
         /// <param name="y">правильный выходной вектор</param>
-        public void Teach(float[][] x, Dictionary<String, float>[] y)
+        public void Teach(IList<float[]> x, Dictionary<String, float>[] y)
         {
             const float v = 0.5f; // скорость обучения
             Boolean f;
@@ -122,8 +122,8 @@ namespace ImgComparer.Neuro.InterfaceImpl
             {
                 var t = Recognize(x);
                 f = true;
-                for (var i = 0; i < Neurons.Count; i++)
-                    f &= VectorEqual(t[i], y[i]);
+                for (var layer = 0; layer < Neurons.Count; layer++)
+                    f &= VectorEqual(t[layer], y[layer]);
 
                 // подстройка весов каждого нейрона
                 Parallel.For(0, Neurons.Count, (layer) =>
