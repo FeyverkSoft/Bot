@@ -29,10 +29,8 @@ namespace Core.Core
             foreach (var type in List.Where(x => x.Name != nameof(BaseActionObject)))
             {
                 var propertyInfo = type.GetProperty(nameof(BaseActionObject.ActionType));
-                if (propertyInfo == null)
-                    continue;
 
-                if ((ActionType) propertyInfo.GetValue(null, null) == actionType)
+                if ((ActionType?) propertyInfo?.GetValue(null, null) == actionType)
                 {
                     var obj = type.GetConstructor(Type.EmptyTypes)?.Invoke(null);
                     if (obj != null)

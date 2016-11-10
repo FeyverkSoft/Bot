@@ -1,0 +1,80 @@
+﻿<Window x:Class="WpfExecutor.Views.ConditionalEditor.ConditionalEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfExecutor.Views.Add"
+        xmlns:localization="clr-namespace:WpfExecutor.Extensions.Localization"
+        xmlns:add="clr-namespace:WpfExecutor.Model.Add"
+        xmlns:configEntity="clr-namespace:Core.ConfigEntity;assembly=Core"
+        xmlns:extensions="clr-namespace:WpfExecutor.Extensions"
+        xmlns:converter="clr-namespace:WpfExecutor.Converter"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:model="clr-namespace:WpfExecutor.Model"
+        xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
+        xmlns:conditionalEditor="clr-namespace:WpfExecutor.Model.ConditionalEditor"
+        mc:Ignorable="d" d:DataContext="{d:DesignInstance conditionalEditor:ConditionalEditorViewModel}"
+        Title="{localization:Localization ConditionalEditorWindow}" ResizeMode="NoResize"
+        WindowStyle="None" Style="{StaticResource WindowStyle}" MinHeight="40" MinWidth="400"
+        SizeToContent="WidthAndHeight"  WindowStartupLocation="CenterScreen"
+        Icon="{StaticResource Icon}" d:DesignHeight="300">
+    <Grid Margin="8,12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox ItemsSource="{Binding ExecutorResultList}"
+                  Grid.ColumnSpan="2"
+                  SelectedItem="{Binding SelectedItem}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={converter:ExecutorResultListComboBox}}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+      
+        <DataGrid Margin="-4, 10,0,0" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" HeadersVisibility="None" 
+                  AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="Cell"
+                  Background="Transparent" BorderThickness="0" ColumnWidth="auto" MaxColumnWidth="250" MinColumnWidth="150"
+                  ItemsSource="{Binding PropsList}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" 
+                  HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="{x:Type model:PropModel}">
+                            <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Background="Transparent"
+                            VerticalAlignment="Center" TextTrimming="None" TextWrapping="WrapWithOverflow" Margin="5,4">
+                                <TextBlock.ToolTip>
+                                    <ToolTip Visibility="{Binding RelativeSource={RelativeSource Self}, Path=PlacementTarget, Converter={common:TrimmedTextVisibilityConverter}}">
+                                        <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                             </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplateSelector >
+                        <extensions:DataTypeTemplateSelector />
+                    </DataGridTemplateColumn.CellTemplateSelector>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="EditButton" Grid.Row="0" Grid.Column="0" Command="{Binding EditCommand}" Content="{localization:Localization Key=Text_Edit}"  Margin="0,0,5,0"/>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding CloseCommand}" Margin="5,0,0,0">
+                <TextBlock Text="{localization:Localization Key=Text_Cancel}"></TextBlock>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

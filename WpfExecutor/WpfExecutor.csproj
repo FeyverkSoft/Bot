@@ -122,6 +122,7 @@
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Model\Add\AddBotActionModel.cs" />
     <Compile Include="Model\Add\AddActionViewModel.cs" />
+    <Compile Include="Model\ConditionalEditor\ConditionalEditorViewModel.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
     <Compile Include="Model\PropModel.cs" />
     <Compile Include="Model\Settings\CoreSettingViewModel.cs" />
@@ -147,6 +148,9 @@
     </Compile>
     <Compile Include="Views\Add\AddActionWindow.xaml.cs">
       <DependentUpon>AddActionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConditionalEditor\ConditionalEditorWindow.xaml.cs">
+      <DependentUpon>ConditionalEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Content\GenCanvas.xaml.cs">
       <DependentUpon>GenCanvas.xaml</DependentUpon>
@@ -301,6 +305,10 @@
     <Page Include="Views\Add\AddActionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConditionalEditor\ConditionalEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Content\GenCanvas.xaml">
       <SubType>Designer</SubType>
@@ -458,6 +466,7 @@
   <ItemGroup>
     <Resource Include="Resources\icons\Object-48.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
