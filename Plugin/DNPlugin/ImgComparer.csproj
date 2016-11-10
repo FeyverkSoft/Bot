@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="ActionObjects\PluginCompareImgAction.cs" />
     <Compile Include="Helpers\ImgHelpers.cs" />
+    <Compile Include="IRecogn.cs" />
     <Compile Include="Neuro\Domain\ImageData.cs" />
+    <Compile Include="Neuro\Domain\SaveInfo.cs" />
     <Compile Include="Neuro\InterfaceImpl\Neuron.cs" />
     <Compile Include="Neuro\InterfaceImpl\Perceptron.cs" />
     <Compile Include="Neuro\InterfaceImpl\Teacher.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="Neuro\Interface\ITeacher.cs" />
     <Compile Include="PluginCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recogn.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CommonLib\CommonLib.csproj">

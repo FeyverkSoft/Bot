@@ -1,7 +1,13 @@
-﻿namespace ImgComparer.Neuro.Interface
+﻿using System;
+
+namespace ImgComparer.Neuro.Interface
 {
-    internal interface INeuron
+    public interface INeuron
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        Int32 Size { get; }
         /// <summary>
         /// Передаточная функция
         /// </summary>

@@ -23,14 +23,5 @@ namespace ImgComparer.ActionObjects
         [ControlType("FilePath")]
         public String SamplePath { get; set; }
 
-        /// <summary>
-        /// Процен после которого происходит срабатывание 
-        /// </summary>
-        [DataMember]
-        public Int32 Procent { get; set; }
-        public PluginCompareImgAction()
-        {
-            
-        }
     }
 }

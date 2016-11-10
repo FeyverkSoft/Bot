@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
+using ImgComparer.Neuro.Domain;
 using ImgComparer.Neuro.Interface;
 
 namespace ImgComparer.Neuro.InterfaceImpl
@@ -13,10 +16,10 @@ namespace ImgComparer.Neuro.InterfaceImpl
     [Serializable]
     public class Perceptron : IPerceptron
     {
-        readonly List<Dictionary<String, INeuron>> _neurons; // слои нейронов
-        readonly Int32 _neuronCount;
-        readonly Int32 _m;
-        readonly IEnumerable<String> _classes;
+        private List<Dictionary<String, INeuron>> _neurons; // слои нейронов
+        private Int32 _neuronCount;
+        private Int32 _m;
+        private IEnumerable<String> _classes;
 
         /// <summary>
         /// Конструктор
@@ -26,14 +29,44 @@ namespace ImgComparer.Neuro.InterfaceImpl
         /// <param name="l"></param>
         public Perceptron(IEnumerable<String> classes, Int32 m, Int32 l = 4)
         {
-            _classes = classes;
-            _neuronCount = classes.Count();
-            _m = m;
-            _neurons = new List<Dictionary<String, INeuron>>();
+            Classes = classes;
+            NeuronCount = classes.Count();
+            M = m;
+            Neurons = new List<Dictionary<String, INeuron>>();
             for (var i = 0; i < l; i++)
             {
                 var dict = classes.ToDictionary<string, string, INeuron>(t => t, t => new Neuron(m));
-                _neurons.Add(dict);
+                Neurons.Add(dict);
+            }
+        }
+
+        public Perceptron(String file)
+        {
+            var formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate))
+            {
+                Neurons = (List<Dictionary<String, INeuron>>)formatter.Deserialize(fs);
+            }
+            if (Neurons == null)
+                throw new NullReferenceException(nameof(Neurons));
+            Classes = Neurons.FirstOrDefault()?.Keys.ToArray() ?? new string[0];
+            NeuronCount = Neurons.FirstOrDefault()?.Keys.Count ?? 0;
+            M = Neurons.FirstOrDefault()?.Values.FirstOrDefault()?.Size ?? 0;
+        }
+
+        public void Save(String path, Int32 x, Int32 y)
+        {
+            if (x * y != M)
+                throw new Exception("Текущее количество нейронов не соответсвует заданому размеру");
+            var formatter = new BinaryFormatter();
+            using (var fs = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, new SaveInfo
+                {
+                    Neurons = Neurons,
+                    X = x,
+                    Y = y
+                });
             }
         }
 
@@ -44,14 +77,14 @@ namespace ImgComparer.Neuro.InterfaceImpl
         /// <returns> выходной образ</returns>
         public Dictionary<String, float>[] Recognize(float[][] x)
         {
-            var yList = new Dictionary<String, float>[_neurons.Count];
-            for (var i = 0; i < _neurons.Count; i++)
+            var yList = new Dictionary<String, float>[Neurons.Count];
+            for (var i = 0; i < Neurons.Count; i++)
             {
-                yList[i] = _classes.ToDictionary(@class => @class, @class => 0f);
+                yList[i] = Classes.ToDictionary(@class => @class, @class => 0f);
             }
-            Parallel.For(0, _neurons.Count, (i) =>
+            Parallel.For(0, Neurons.Count, (i) =>
             {
-                foreach (var neuron in _neurons[i])
+                foreach (var neuron in Neurons[i])
                 {
                     yList[i][neuron.Key] += neuron.Value.Transfer(x[i]);
                 }
@@ -66,7 +99,7 @@ namespace ImgComparer.Neuro.InterfaceImpl
         /// <param name="max">Максимальное значение начальных весов</param>
         public void InitWeights(float max)
         {
-            foreach (var t in _neurons)
+            foreach (var t in Neurons)
                 foreach (var neuron in t)
                 {
                     neuron.Value.InitWeights(max);
@@ -86,16 +119,16 @@ namespace ImgComparer.Neuro.InterfaceImpl
             {
                 var t = Recognize(x);
                 f = true;
-                for (var i = 0; i < _neurons.Count; i++)
+                for (var i = 0; i < Neurons.Count; i++)
                     f &= VectorEqual(t[i], y[i]);
 
                 // подстройка весов каждого нейрона
-                Parallel.For(0, _neurons.Count, (layer) =>
+                Parallel.For(0, Neurons.Count, (layer) =>
                 {
-                    foreach (var classes in _neurons[layer].Keys)
+                    foreach (var classes in Neurons[layer].Keys)
                     {
                         var d = y[layer][classes] - t[layer][classes];
-                        _neurons[layer][classes].ChangeWeights(v, d, x[layer]);
+                        Neurons[layer][classes].ChangeWeights(v, d, x[layer]);
                     }
                 });
 
@@ -114,19 +147,37 @@ namespace ImgComparer.Neuro.InterfaceImpl
             return !a.Any(t => Math.Abs(t.Value - b[t.Key]) > 0.001);
         }
 
-        /// <summary>
-        ///  число нейронов
-        /// </summary>
-        public Int32 GetNeuronCount => _neuronCount;
-
-        /// <summary>
-        /// число входов каждого нейрона скрытого слоя
-        /// </summary>
-        public Int32 GetM => _m;
 
         /// <summary>
         /// Число слабосвязанных слоёв
         /// </summary>
-        public Int32 LCount => _neurons.Count;
+        public Int32 LCount => Neurons.Count;
+
+        /// <summary>
+        ///  число нейронов
+        /// </summary>
+        public Int32 NeuronCount
+        {
+            get { return _neuronCount; }
+            private set { _neuronCount = value; }
+        }
+
+        public IEnumerable<String> Classes
+        {
+            get { return _classes; }
+            private set { _classes = value; }
+        }
+
+        private List<Dictionary<String, INeuron>> Neurons
+        {
+            get { return _neurons; }
+            set { _neurons = value; }
+        }
+
+        public Int32 M
+        {
+            get { return _m; }
+            private set { _m = value; }
+        }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 using ImgComparer.ActionObjects;
-using ImgComparer.Helpers;
 using Plugin;
 
 namespace ImgComparer
@@ -28,40 +26,11 @@ namespace ImgComparer
                 throw new NotSupportedException($"{nameof(previousResult)} is not {nameof(BitmapExecutorResult)}");
             var act = actions.SubActions.Cast<PluginCompareImgAction>().First();
 
-            var img1 = ((BitmapExecutorResult) previousResult).Bitmap;
-            var img2 = (Bitmap) Image.FromFile(act.SamplePath);
-            //2) - resize
-            var w = (img1.Width + img2.Width)/2;
-            var h = (img1.Height + img2.Height)/2;
-            img1 = ImgHelpers.ResizeImg(img1, w, h);
-            img2 = ImgHelpers.ResizeImg(img2, w, h);
-            //3) GrayScale
-            var byteImg1 = img1.GrayScale();
-            var byteImg2 = img2.GrayScale();
-            img1.Dispose();
-            img2.Dispose();
-            //4) Сhunked
-            byteImg1.Chunked(6);
-            byteImg2.Chunked(6);
-            //5) Dev
-            var devRes = ImgHelpers.Dev(byteImg1, byteImg2);
-            //6) Threshold
-            devRes.Threshold();
-            //7) Сhunked
-            devRes.Chunked();
-            //8) Threshold
-            devRes.Threshold(4);
+            var img1 = ((BitmapExecutorResult)previousResult).Bitmap;
 
-            var s = devRes.GetMaxIslandSize();
-            var procent = (s*100)/(w*h);
-#if DEBUG
-            try
-            {
-                devRes.ToBitmap().Save($"{Name}/debug.png", ImageFormat.Png);
-            }catch{}
-#endif
-            if (procent > act.Procent)
-                return new BooleanExecutorResult(true);
+            IRecogn recogn = new Recogn();
+
+            return new BooleanExecutorResult(true);
             return new BooleanExecutorResult(false);
         }
 
@@ -74,5 +43,6 @@ namespace ImgComparer
         {
             throw new NotSupportedException();
         }
+
     }
 }

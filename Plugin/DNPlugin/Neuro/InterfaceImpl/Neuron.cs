@@ -83,5 +83,7 @@ namespace ImgComparer.Neuro.InterfaceImpl
             return (float)(1 / (1 - Math.Pow(Math.E, -nec)));
             //return nec >= S ? 1 : 0;
         }
+
+        public Int32 Size => _w?.Length ?? 0;
     }
 }

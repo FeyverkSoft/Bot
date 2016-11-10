@@ -63,7 +63,7 @@ namespace ImgComparer.Neuro.InterfaceImpl
         {
             if (_dic.ContainsKey(n))
                 return _dic[n];
-            var la = new Dictionary<String, float>[_perceptron.GetM];
+            var la = new Dictionary<String, float>[_perceptron.M];
             for (var i = 0; i < _perceptron.LCount; i++)
             {
                 var dict = classes.ToDictionary<string, string, float>(@class => @class, @class => n == @class ? 1 : 0);

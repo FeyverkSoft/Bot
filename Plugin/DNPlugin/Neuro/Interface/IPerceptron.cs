@@ -19,15 +19,16 @@ namespace ImgComparer.Neuro.Interface
         /// <param name="y">правильный выходной вектор</param>
         void Teach(float[][] x, Dictionary<String, float>[] y);
 
-        /// <summary>
-        ///  число нейронов
-        /// </summary>
-        Int32 GetNeuronCount { get; }
 
         /// <summary>
         /// число входов каждого нейрона скрытого слоя
         /// </summary>
-        Int32 GetM { get; }
+        Int32 M { get; }
+        /// <summary>
+        /// колличество классов
+        /// </summary>
+        IEnumerable<String> Classes { get; }
+        Int32 NeuronCount { get; }
 
         /// <summary>
         /// Распознавание образа
@@ -40,5 +41,7 @@ namespace ImgComparer.Neuro.Interface
         /// Число слабосвязанных слоёв
         /// </summary>
         Int32 LCount { get; }
+
+        void Save(String path, Int32 x, Int32 y);
     }
 }
