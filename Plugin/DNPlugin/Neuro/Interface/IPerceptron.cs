@@ -42,6 +42,8 @@ namespace ImgComparer.Neuro.Interface
         /// </summary>
         Int32 LCount { get; }
 
-        void Save(String path, Int32 x, Int32 y);
+        void Save(String path);
+        Int32 X { get; }
+        Int32 Y { get; }
     }
 }

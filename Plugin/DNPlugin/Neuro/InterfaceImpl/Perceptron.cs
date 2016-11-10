@@ -25,17 +25,18 @@ namespace ImgComparer.Neuro.InterfaceImpl
         /// Конструктор
         /// </summary>
         /// <param name="classes"> число нейронов</param>
-        /// <param name="m">число входов каждого нейрона скрытого слоя</param>
         /// <param name="l"></param>
-        public Perceptron(IEnumerable<String> classes, Int32 m, Int32 l = 4)
+        public Perceptron(IEnumerable<String> classes, Int32 x, Int32 y, Int32 l = 4)
         {
             Classes = classes;
             NeuronCount = classes.Count();
-            M = m;
+            M = x * y;
+            X = x;
+            Y = y;
             Neurons = new List<Dictionary<String, INeuron>>();
             for (var i = 0; i < l; i++)
             {
-                var dict = classes.ToDictionary<string, string, INeuron>(t => t, t => new Neuron(m));
+                var dict = classes.ToDictionary<string, string, INeuron>(t => t, t => new Neuron(_m));
                 Neurons.Add(dict);
             }
         }
@@ -43,29 +44,31 @@ namespace ImgComparer.Neuro.InterfaceImpl
         public Perceptron(String file)
         {
             var formatter = new BinaryFormatter();
+            SaveInfo saveInfo;
             using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate))
             {
-                Neurons = (List<Dictionary<String, INeuron>>)formatter.Deserialize(fs);
+                saveInfo = (SaveInfo)formatter.Deserialize(fs);
             }
+            Neurons = saveInfo.Neurons;
             if (Neurons == null)
                 throw new NullReferenceException(nameof(Neurons));
             Classes = Neurons.FirstOrDefault()?.Keys.ToArray() ?? new string[0];
             NeuronCount = Neurons.FirstOrDefault()?.Keys.Count ?? 0;
             M = Neurons.FirstOrDefault()?.Values.FirstOrDefault()?.Size ?? 0;
+            X = saveInfo.X;
+            Y = saveInfo.Y;
         }
 
-        public void Save(String path, Int32 x, Int32 y)
+        public void Save(String path)
         {
-            if (x * y != M)
-                throw new Exception("Текущее количество нейронов не соответсвует заданому размеру");
             var formatter = new BinaryFormatter();
             using (var fs = new FileStream(path, FileMode.OpenOrCreate))
             {
                 formatter.Serialize(fs, new SaveInfo
                 {
                     Neurons = Neurons,
-                    X = x,
-                    Y = y
+                    X = X,
+                    Y = Y
                 });
             }
         }
@@ -179,5 +182,8 @@ namespace ImgComparer.Neuro.InterfaceImpl
             get { return _m; }
             private set { _m = value; }
         }
+
+        public Int32 X { get; }
+        public Int32 Y { get; }
     }
 }
