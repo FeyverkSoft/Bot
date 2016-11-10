@@ -414,4 +414,7 @@
   <data name="MouseSetPosAct_Point" xml:space="preserve">
     <value>Новая позиция курсора</value>
   </data>
+  <data name="ConfigValidator_GetErrorListInternal_Error_EmptyLabelName" xml:space="preserve">
+    <value>Название метки не может быть пустым</value>
+  </data>
 </root>

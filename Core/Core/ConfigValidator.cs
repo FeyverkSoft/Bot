@@ -51,6 +51,8 @@ namespace Core.Core
                             if (goToAct != null && !FindLabel(actions, goToAct.LabelName))
                                 list.Add(String.Format(CoreText.ConfigValidator_Invalid_action_Label_not_found,
                                     action.ActionType, goToAct.LabelName));
+                            if (String.IsNullOrEmpty(goToAct?.LabelName))
+                                list.Add("GOTO: " + CoreText.ConfigValidator_GetErrorListInternal_Error_EmptyLabelName);
                         }
                         break;
                     case ActionType.Label:
@@ -59,12 +61,14 @@ namespace Core.Core
                             var count =
                                 actions
                                     .Count(x => x.ActionType == ActionType.Label &&
-                                            ((LabelAct) x.SubActions.FirstOrDefault())?.LabelName == labelAct?.LabelName);
-                            if(count>1)
+                                            ((LabelAct)x.SubActions.FirstOrDefault())?.LabelName == labelAct?.LabelName);
+                            if (count > 1)
                                 list.Add(
                                     String.Format(
                                         CoreText.ConfigValidator_Invalid_action_declared_more_than_once_in_the_same_scope,
                                         action.ActionType, labelAct?.LabelName));
+                            if (String.IsNullOrEmpty(labelAct?.LabelName))
+                                list.Add("Label: " + CoreText.ConfigValidator_GetErrorListInternal_Error_EmptyLabelName);
                         }
                         break;
                     case ActionType.Loop:

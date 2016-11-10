@@ -286,6 +286,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Название метки не может быть пустым.
+        /// </summary>
+        internal static string ConfigValidator_GetErrorListInternal_Error_EmptyLabelName {
+            get {
+                return ResourceManager.GetString("ConfigValidator_GetErrorListInternal_Error_EmptyLabelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка действия &quot;{0}&quot;.
         /// </summary>
         internal static string ConfigValidator_Invalid_action {
