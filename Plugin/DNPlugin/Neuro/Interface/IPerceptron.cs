@@ -35,7 +35,7 @@ namespace ImgComparer.Neuro.Interface
         /// </summary>
         /// <param name="x">входной вектор</param>
         /// <returns> выходной образ</returns>
-        Dictionary<String, float>[] Recognize(float[][] x);
+        Dictionary<String, float>[] Recognize(IList<float[]> x);
 
         /// <summary>
         /// Число слабосвязанных слоёв

@@ -7,7 +7,7 @@ namespace ImgComparer.Helpers
 {
     public static class ImgHelpers
     {
-       public static byte[,] Dev(byte[,] image1, byte[,] image2)
+        public static byte[,] Dev(byte[,] image1, byte[,] image2)
         {
             var img = new byte[image1.GetLength(0), image1.GetLength(1)];
             for (var i = 0; i < img.GetLength(0); i++)
@@ -32,70 +32,85 @@ namespace ImgComparer.Helpers
             return newImage;
         }
 
-        public static byte[,] GrayScale(this Bitmap imageBitmap)
+        public static float[,] GrayScale(this Color[,] imageBitmap)
         {
-            var arr = new byte[imageBitmap.Width, imageBitmap.Height];
-            for (var x = 0; x < imageBitmap.Width; x++)
+            var arr = new float[imageBitmap.GetLength(0), imageBitmap.GetLength(1)];
+            for (var x = 0; x < imageBitmap.GetLength(0); x++)
             {
-                for (var y = 0; y < imageBitmap.Height; y++)
+                for (var y = 0; y < imageBitmap.GetLength(1); y++)
                 {
-                    var bitmapColor = imageBitmap.GetPixel(x, y);
-                    var colorGray = (bitmapColor.R * 0.299 +bitmapColor.G * 0.587 + bitmapColor.B * 0.114);
-                    arr[x, y] = (byte)colorGray;
+                    arr[x, y] = imageBitmap[x, y].R * 0.299f + imageBitmap[x, y].G * 0.587f + imageBitmap[x, y].B * 0.114f;
                 }
             }
             return arr;
         }
 
-        public static Bitmap ToBitmap(this byte[,] img)
+        public static float[] ToLine(this float[,] img)
+        {
+            var z = 0;
+            var arr = new float[img.GetLength(0)*img.GetLength(1)];
+            for (var i = 0; i < 10; i++)
+                for (var j = 0; j < 10; j++)
+                {
+                    arr[z] = img[i, j];
+                    z++;
+                }
+            return arr;
+        }
+
+        public static Bitmap ToBitmap(this float[,] img)
         {
             var imageBitmap = new Bitmap(img.GetLength(0), img.GetLength(1));
             for (var x = 0; x < imageBitmap.Width; x++)
             {
                 for (var y = 0; y < imageBitmap.Height; y++)
                 {
-                    imageBitmap.SetPixel(x, y, Color.FromArgb(img[x, y], img[x, y], img[x, y]));
+                    imageBitmap.SetPixel(x, y, Color.FromArgb((byte)img[x, y], (byte)img[x, y], (byte)img[x, y]));
                 }
             }
             return imageBitmap;
         }
 
-        public static void Chunked(this byte[,] img, Int32 m = 2)
+        public static float[,] Chunked(this float[,] img, Int32 m = 2)
         {
-            for (var i = 0; i < img.GetLength(0) - m; i += m)
-                for (var j = 0; j < img.GetLength(1) - m; j += m)
+            var arr = (float[,])img.Clone();
+            for (var i = 0; i < arr.GetLength(0) - m; i += m)
+                for (var j = 0; j < arr.GetLength(1) - m; j += m)
                 {
-                    var color = 0;
+                    var color = 0f;
                     for (var ik = 0; ik < m; ik++)
                         for (var jk = 0; jk < m; jk++)
-                            color += img[i + ik, j + jk];
+                            color += arr[i + ik, j + jk];
                     color /= (m * m);
                     for (var ik = 0; ik < m; ik++)
                         for (var jk = 0; jk < m; jk++)
-                            img[i + ik, j + jk] = (byte)color;
+                            arr[i + ik, j + jk] = (byte)color;
                 }
+            return arr;
         }
 
-        public static void Threshold(this byte[,] img, Int32 p = 15)
+        public static float[,] Threshold(this float[,] img, Int32 p = 15)
         {
-            for (var i = 0; i < img.GetLength(0); i++)
-                for (var j = 0; j < img.GetLength(1); j++)
+            var arr = (float[,])img.Clone();
+            for (var i = 0; i < arr.GetLength(0); i++)
+                for (var j = 0; j < arr.GetLength(1); j++)
                 {
-                    img[i, j] = (byte)(img[i, j] > p ? 255 : img[i, j] / 2);
+                    arr[i, j] = (arr[i, j] > p ? 255f : arr[i, j] / 2f);
                 }
+            return arr;
         }
 
 
-        private static Boolean IsValidPoint(Int32 i, Int32 j, byte[,] map)
+        private static Boolean IsValidPoint(Int32 i, Int32 j, float[,] map)
         {
             return ((i >= 0) && (i < map.GetLength(0)) &&
                     (j >= 0) && (j < map.GetLength(1)) &&
-                    map[i, j] > 128);
+                    map[i, j] > 128f);
         }
 
-        public static Int32 GetMaxIslandSize(this byte[,] map)
+        public static Int32 GetMaxIslandSize(this float[,] map)
         {
-            var mapCopy = (byte[,])map.Clone();
+            var mapCopy = (float[,])map.Clone();
             var maxSize = 0;
 
             var points = new Stack<Point>();

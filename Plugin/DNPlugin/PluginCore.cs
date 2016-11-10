@@ -30,8 +30,7 @@ namespace ImgComparer
 
             IRecogn recogn = new Recogn();
 
-            return new BooleanExecutorResult(true);
-            return new BooleanExecutorResult(false);
+            return new BooleanExecutorResult(recogn.ImgRecogn(img1, act.SamplePath));
         }
 
         /// <summary>

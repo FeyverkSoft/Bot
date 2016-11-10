@@ -78,7 +78,7 @@ namespace ImgComparer.Neuro.InterfaceImpl
         /// </summary>
         /// <param name="x">входной вектор</param>
         /// <returns> выходной образ</returns>
-        public Dictionary<String, float>[] Recognize(float[][] x)
+        public Dictionary<String, float>[] Recognize(IList<float[]> x)
         {
             var yList = new Dictionary<String, float>[Neurons.Count];
             for (var i = 0; i < Neurons.Count; i++)
