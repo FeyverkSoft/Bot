@@ -43,7 +43,8 @@ namespace WpfExecutor
             Dispatcher.UnhandledException += Dispatcher_UnhandledException;
 
 #if DEBUG
-            WindowFactory.CreateAddActionWindow(ActionType.GetScreenshot).ShowDialog();
+            WindowFactory.CreateConditionalEditorWindow().ShowDialog();
+            //WindowFactory.CreateAddActionWindow(ActionType.GetScreenshot).ShowDialog();
 #endif
 
             WindowFactory.CreateMainWindow(e.Args).Show();

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using CommonLib.Attributes;
 using WpfConverters.Converters;
+using CommonLib.Helpers;
 
 namespace WpfExecutor.Converter
 {
@@ -12,9 +13,7 @@ namespace WpfExecutor.Converter
         public override Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
         {
            var t= value?.GetType();
-          var name =  (t?.GetCustomAttribute<LocDescriptionAttribute>() ?? t?.GetCustomAttribute<DescriptionAttribute>())?
-                .Description ?? t?.Name;
-            return $"{name} : {t?.Assembly.GetName().Name}";
+            return $"{t.GetLocalName()} : {t?.Assembly.GetName().Name}";
         }
     }
 }

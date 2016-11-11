@@ -4,9 +4,11 @@ using Core.ConfigEntity.ActionObjects;
 using WpfExecutor.Model;
 using WpfExecutor.Model.About;
 using WpfExecutor.Model.Add;
+using WpfExecutor.Model.ConditionalEditor;
 using WpfExecutor.Model.Settings;
 using WpfExecutor.Views.About;
 using WpfExecutor.Views.Add;
+using WpfExecutor.Views.ConditionalEditor;
 using WpfExecutor.Views.Settings;
 
 namespace WpfExecutor.Factories
@@ -64,6 +66,13 @@ namespace WpfExecutor.Factories
         {
             var viewModel = new AddBotActionModel();
             var window = new AddBotActionWindow(viewModel);
+            return window;
+        }
+
+        public static ConditionalEditorWindow CreateConditionalEditorWindow()
+        {
+            var viewModel = new ConditionalEditorViewModel();
+            var window = new ConditionalEditorWindow(viewModel);
             return window;
         }
     }

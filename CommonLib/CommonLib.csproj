@@ -46,6 +46,7 @@
     <Compile Include="Attributes\LocDescriptionAttribute.cs" />
     <Compile Include="Collections\INotifyList.cs" />
     <Compile Include="Exceptions\BotBaseException.cs" />
+    <Compile Include="Helpers\LocalHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

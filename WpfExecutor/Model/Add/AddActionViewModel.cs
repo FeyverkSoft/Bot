@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
 using CommonLib.Attributes;
+using CommonLib.Helpers;
 using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
@@ -114,7 +115,7 @@ namespace WpfExecutor.Model.Add
                 PropsList = Props[type].Select(x => new PropModel
                 {
                     PropName = x.Name,
-                    Name = x.GetCustomAttribute<LocDescriptionAttribute>()?.Description ?? x.Name,
+                    Name = x.GetLocalName(),
                     Value = x.GetValue(Action),
                     TypeName = x.GetCustomAttribute<ControlTypeAttribute>()?.Type ?? x.PropertyType.Name
                 }).ToList();

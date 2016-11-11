@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using CommonLib.Attributes;
+using CommonLib.Helpers;
 
 namespace WpfExecutor.Extensions.Provider
 {
@@ -22,9 +21,7 @@ namespace WpfExecutor.Extensions.Provider
             if (!AttrInfo.ContainsKey(key))
                 AttrInfo.Add(key, value.GetType().GetMember(value.ToString()).FirstOrDefault());
 
-            var attr = AttrInfo[key]?.GetCustomAttribute(typeof(LocDescriptionAttribute)) as LocDescriptionAttribute ?? AttrInfo[key]?.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
-
-            return attr?.Description;
+            return AttrInfo[key]?.GetLocalName();
         }
     }
 }

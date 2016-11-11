@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonLib.Helpers;
 using Core.ActionExecutors.ExecutorResult;
+using Core.Core;
 
 namespace WpfExecutor.Model.ConditionalEditor
 {
@@ -16,14 +18,18 @@ namespace WpfExecutor.Model.ConditionalEditor
             set
             {
                 _selectedItem = value;
-                Refresh();
+                //Refresh();
             }
         }
 
-        public List<Tuple<String, Type>> ExecutorResultList { get; private set; }
-        
+        public List<Tuple<String, Type>> ExecutorResultList { get; } = new List<Tuple<string, Type>>();
+
         public ConditionalEditorViewModel()
         {
+            foreach (var typ in ActionFactory.ExResultTypes)
+            {
+                ExecutorResultList.Add(new Tuple<String, Type>(typ.GetLocalName(), typ));
+            }
         }
     }
 }

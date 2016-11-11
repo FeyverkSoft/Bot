@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using CommonLib.Attributes;
+using CommonLib.Helpers;
 using Core.ConfigEntity;
 
 namespace Core.Helpers
@@ -37,11 +38,11 @@ namespace Core.Helpers
             {
                 var val = props[i].GetValue(act);
                 if (val == null) continue;
-                var dsAttr = props[i].GetCustomAttribute<LocDescriptionAttribute>() ?? props[i].GetCustomAttribute<DescriptionAttribute>();
+                var name = props[i].GetLocalName();
                 if (i + 1 != props.Length)//избавляемся от лишнего перевода строки
-                    sb.AppendLine($"{dsAttr?.Description ?? props[i].Name}: {val.Localize()}");
+                    sb.AppendLine($"{name}: {val.Localize()}");
                 else
-                    sb.Append($"{dsAttr?.Description ?? props[i].Name}: {val.Localize()}");
+                    sb.Append($"{name}: {val.Localize()}");
             }
             return sb.ToString();
         }
@@ -57,9 +58,7 @@ namespace Core.Helpers
             if (!AttrInfo.ContainsKey(key))
                 AttrInfo.Add(key, value.GetType().GetMember(value.ToString()).FirstOrDefault());
 
-            var attr = AttrInfo[key]?.GetCustomAttribute<LocDescriptionAttribute>() ?? AttrInfo[key]?.GetCustomAttribute<DescriptionAttribute>();
-
-            return attr?.Description ?? value.ToString();
+            return AttrInfo[key]?.GetLocalName() ?? value.ToString();
         }
     }
 }
