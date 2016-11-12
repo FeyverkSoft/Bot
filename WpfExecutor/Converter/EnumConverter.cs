@@ -15,7 +15,7 @@ namespace WpfExecutor.Converter
             if (t != null)
             {
                 return t.GetMembers().Where(x => x.MemberType == MemberTypes.Field)
-                    .Cast<FieldInfo>()
+                    .Cast<FieldInfo>().Where(x=>!x.IsSpecialName)
                     .Select(memberInfo => new Tuple<String, Object>(
                         memberInfo.GetLocalName(),
                         memberInfo.GetValue(memberInfo)
