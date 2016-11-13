@@ -45,9 +45,10 @@ namespace WpfExecutor
 #if DEBUG
             WindowFactory.CreateConditionalEditorWindow().ShowDialog();
             //WindowFactory.CreateAddActionWindow(ActionType.GetScreenshot).ShowDialog();
-#endif
-
+            Application.Current.Shutdown();
+#else
             WindowFactory.CreateMainWindow(e.Args).Show();
+#endif
         }
 
 

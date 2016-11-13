@@ -47,7 +47,7 @@ namespace Core.Handlers
         static extern Int32 GetWindowTextLength(IntPtr hWnd);
         string GetWindowText(IntPtr hWnd)
         {
-            int len = GetWindowTextLength(hWnd) + 1;
+            var len = GetWindowTextLength(hWnd) + 1;
             StringBuilder sb = new StringBuilder(len);
             len = GetWindowText(hWnd, sb, len);
             return sb.ToString(0, len);
