@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
+using CommonLib.Collections;
 using CommonLib.Helpers;
 using Core.Core;
 using Core.Helpers;
@@ -14,6 +15,7 @@ namespace WpfExecutor.Model.ConditionalEditor
         public static readonly Dictionary<Type, IEnumerable<PropertyInfo>> Props = new Dictionary<Type, IEnumerable<PropertyInfo>>();
 
         Tuple<String, Type> _selectedItem;
+
         public Tuple<String, Type> SelectedItem
         {
             get { return _selectedItem; }
@@ -24,7 +26,7 @@ namespace WpfExecutor.Model.ConditionalEditor
             }
         }
 
-        public List<Tuple<String, Type>> ExecutorResultList { get; } = new List<Tuple<string, Type>>();
+        public List<Tuple<String, Type>> ExecutorResultList { get; private set; } = new List<Tuple<string, Type>>();
 
         public ConditionalEditorViewModel()
         {
@@ -34,6 +36,8 @@ namespace WpfExecutor.Model.ConditionalEditor
             }
         }
 
+
+        public NotifyList<ConditionalModel> ConditionalsList = new NotifyList<ConditionalModel>();
 
         private static readonly Type[] WriteTypes = {
         typeof(string), typeof(DateTime), typeof(Enum),
@@ -49,7 +53,7 @@ namespace WpfExecutor.Model.ConditionalEditor
             return type.IsPrimitive || WriteTypes.Contains(type) || type.IsEnum || type.IsValueType;
         }
 
-        private void GetPropList(Type item, ref List<Tuple<String, Type>> list, String path, Int32 deep)
+        private void GetPropList(Type item, ref List<ConditionalModel> list, String path, Int32 deep)
         {
             if (deep > 8)
                 return;
@@ -71,10 +75,35 @@ namespace WpfExecutor.Model.ConditionalEditor
 
         public void Refresh(Type item)
         {
-            var refList = new List<Tuple<String, Type>>();
+            var refList = new List<ConditionalModel>();
             GetPropList(item, ref refList, null, 0);
-            refList = refList;
-
+            ConditionalsList = (NotifyList<ConditionalModel>)refList;
         }
+    }
+
+
+    public class ConditionalModel
+    {
+        /// <summary>
+        /// Название поля
+        /// </summary>
+        public String Name { get; set; }
+        /// <summary>
+        /// Тип поля
+        /// </summary>
+        public Type Type { get; set; }
+        /// <summary>
+        /// Значение для сравнения
+        /// </summary>
+        public Object ConditionalValue { get; set; }
+        /// <summary>
+        /// Условный оператор, ==, !=, итд
+        /// </summary>
+        public Conditional Conditional { get; set; }
+    }
+
+    public enum Conditional
+    {
+
     }
 }
