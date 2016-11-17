@@ -62,9 +62,13 @@ namespace WpfExecutor.Model.ConditionalEditor
             {
                 if (IsSimpleType(propertyInfo.PropertyType))
                 {
-                    list.Add(new Tuple<String, Type>(
-                        String.IsNullOrEmpty(path) ? propertyInfo.Name : $"{path}.{propertyInfo.Name}",
-                        propertyInfo.PropertyType));
+                    list.Add(
+                        new ConditionalModel
+                        {
+                            Name = String.IsNullOrEmpty(path) ? propertyInfo.Name : $"{path}.{propertyInfo.Name}",
+                            Type = propertyInfo.PropertyType,
+
+                        });
                 }
                 else
                 {
