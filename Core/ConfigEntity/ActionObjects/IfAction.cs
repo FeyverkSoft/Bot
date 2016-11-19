@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using CommonLib.Attributes;
 using LogWrapper;
@@ -43,11 +44,12 @@ namespace Core.ConfigEntity.ActionObjects
         /// Список условий, которые необходимо проверить над предыдущим объектом
         /// </summary>
         [DataMember]
+        [ControlType("ConditionsList")]
         [LocDescription("IfAction_Сonditions", typeof(Resources.CoreText))]
-        public String Сonditions { get; set; }
+        public ConditionalsParam Сonditions { get; set; }
 
         [JsonConstructor]
-        public IfAction(String prevResType, String сonditions, String successLabel, String failLabel)
+        public IfAction(String prevResType, ConditionalsParam сonditions, String successLabel, String failLabel)
         {
             if(String.IsNullOrEmpty(prevResType))
                 throw new ArgumentNullException(nameof(prevResType));

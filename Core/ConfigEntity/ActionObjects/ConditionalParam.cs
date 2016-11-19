@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Core.ConfigEntity.ActionObjects
 {
@@ -17,5 +18,11 @@ namespace Core.ConfigEntity.ActionObjects
         /// Условный оператор, ==, !=, итд
         /// </summary>
         public Conditional Conditional { get; set; }
+    }
+
+    public class ConditionalsParam
+    {
+        public List<ConditionalParam> Params { get; set; }
+        public String Type { get; set; }
     }
 }

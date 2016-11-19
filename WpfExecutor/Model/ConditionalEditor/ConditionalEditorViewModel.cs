@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Resources;
 using System.Windows.Input;
 using CommonLib.Attributes;
 using CommonLib.Collections;
 using CommonLib.Helpers;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
-using Core.Helpers;
 using WpfConverters.Extensions.Commands;
-using WpfExecutor.Model.Add;
 
 namespace WpfExecutor.Model.ConditionalEditor
 {
@@ -45,13 +42,30 @@ namespace WpfExecutor.Model.ConditionalEditor
             }
         }
 
+        public List<ConditionalParam> ConditionaParamlsList { get; private set; } = new List<ConditionalParam>();
+
         public List<Tuple<String, Type>> ExecutorResultList { get; private set; } = new List<Tuple<string, Type>>();
 
-        public ConditionalEditorViewModel()
+        public ConditionalEditorViewModel(ConditionalsParam param)
         {
             foreach (var typ in ActionFactory.ExResultTypes)
             {
                 ExecutorResultList.Add(new Tuple<String, Type>(typ.GetLocalName(), typ));
+            }
+            if (param?.Params != null)
+            {
+                SelectedItem = ExecutorResultList.First(x => x.Item1 == param.Type);
+                foreach (var conditionalParam in param.Params)
+                {
+                    ConditionaParamlsList.Add(conditionalParam);
+                    ConditionalsList.Add(new ConditionalParamModel
+                    {
+                        Conditional = conditionalParam.Conditional,
+                        Name = conditionalParam.Name,
+                        Value = conditionalParam.ConditionalValue,
+                        ValueType = conditionalParam.ConditionalValue?.GetType()
+                    });
+                }
             }
         }
 
@@ -122,6 +136,35 @@ namespace WpfExecutor.Model.ConditionalEditor
                     ValueType = SelectedProp.Item2
                 });
             }
+        }
+
+        private ICommand _deleteCommand;
+        public ICommand DeleteCommand => _deleteCommand ?? (_deleteCommand = new DelegateCommand<Object>(DeleteCommandMethod));
+
+        private void DeleteCommandMethod(Object item)
+        {
+            if (item != null)
+            {
+                ConditionalsList.Remove((ConditionalParamModel)item);
+            }
+        }
+
+        private ICommand _editCommand;
+        public ICommand EditCommand => _editCommand ?? (_editCommand = new DelegateCommand(EditCommandMethod));
+
+        private void EditCommandMethod()
+        {
+            ConditionaParamlsList.Clear();
+            foreach (var conditionalParamModel in ConditionalsList)
+            {
+                ConditionaParamlsList.Add(new ConditionalParam
+                {
+                    ConditionalValue = conditionalParamModel.Value,
+                    Conditional = conditionalParamModel.Conditional,
+                    Name = conditionalParamModel.Name
+                });
+            }
+            CloseCommand?.Execute(true);
         }
     }
 }

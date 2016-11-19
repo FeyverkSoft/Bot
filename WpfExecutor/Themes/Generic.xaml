@@ -448,4 +448,19 @@
         </Setter>
     </Style>
 
+
+    <Style TargetType="{x:Type custom:ConditionListUserControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type custom:ConditionListUserControl}">
+                    <Grid>
+                        <Button Margin="0,0,0,0"
+                                x:Name="PART_Button" Content="....."
+                                MinWidth="25" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

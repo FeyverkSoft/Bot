@@ -77,11 +77,15 @@
     <Compile Include="Control\EStackActionControl.xaml.cs">
       <DependentUpon>EStackActionControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\ImplControl\ConditionListUserControl.cs" />
     <Compile Include="Control\ImplControl\FolderPathUserControl.cs" />
     <Compile Include="Control\ImplControl\SaveFileParamUserControl.cs" />
     <Compile Include="Control\ImplControl\FilePathUserControl.cs" />
     <Compile Include="Control\ImplControl\SizeUserControl.cs" />
     <Compile Include="Control\ImplControl\PointUserControl.cs" />
+    <Compile Include="Control\ConditionsListControl.xaml.cs">
+      <DependentUpon>ConditionsListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SizeControl.xaml.cs">
       <DependentUpon>SizeControl.xaml</DependentUpon>
     </Compile>
@@ -126,7 +130,7 @@
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Model\Add\AddBotActionModel.cs" />
     <Compile Include="Model\Add\AddActionViewModel.cs" />
-    <Compile Include="Model\Add\ConditionalParamModel.cs" />
+    <Compile Include="Model\ConditionalEditor\ConditionalParamModel.cs" />
     <Compile Include="Model\ConditionalEditor\ConditionalEditorViewModel.cs" />
     <Compile Include="Model\Content\GenCanvasModel.cs" />
     <Compile Include="Model\PropModel.cs" />
@@ -183,6 +187,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\EStackActionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\ConditionsListControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

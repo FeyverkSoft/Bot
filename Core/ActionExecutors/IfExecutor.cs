@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
@@ -58,7 +59,7 @@ namespace Core.ActionExecutors
                 return new BooleanExecutorResult(false, EResultState.Success);
 
 
-            var conditions = СonditionsParse(action.Сonditions);
+             result = СonditionsParse(action.Сonditions?.Params);
 
             return new BooleanExecutorResult(result);
         }
@@ -75,13 +76,13 @@ namespace Core.ActionExecutors
         }
 
         /// <summary>
-        /// Разбор условия на лексемы, пока что заглушка
+        /// Разбор условия на лексемы и проверка, пока что заглушка
         /// </summary>
         /// <param name="conditions"></param>
         /// <returns></returns>
-        private String СonditionsParse(String conditions)
+        private Boolean СonditionsParse(List<ConditionalParam> conditions)
         {
-            return conditions;
+            return true;
         }
     }
 }

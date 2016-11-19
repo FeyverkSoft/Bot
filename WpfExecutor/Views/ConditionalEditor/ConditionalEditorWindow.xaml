@@ -32,7 +32,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="35"/>
         </Grid.ColumnDefinitions>
-        
+
         <ComboBox ItemsSource="{Binding ExecutorResultList}"
                   Grid.ColumnSpan="3"
                   SelectedItem="{Binding SelectedItem}">
@@ -60,8 +60,8 @@
                 <Image VerticalAlignment="Center" Source="{StaticResource AddIcon}" Height="21" Width="21" Stretch="Fill"/>
             </StackPanel>
         </Button>
-        
-        <DataGrid Margin="-4, 10,0,0" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" HeadersVisibility="None" 
+
+        <DataGrid x:Name="dataGrid" Margin="-4, 10,0,0" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" HeadersVisibility="None" 
                   AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="Cell"
                   Background="Transparent" BorderThickness="0" ColumnWidth="auto" MaxColumnWidth="250" MinColumnWidth="150"
                   ItemsSource="{Binding ConditionalsList}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" 
@@ -88,11 +88,23 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplateSelector>
                         <extensions:DataTypeConditionalTemplateSelector />
                     </DataGridTemplateColumn.CellTemplateSelector>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn MaxWidth="28">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="{x:Type actionObjects:ConditionalParam}">
+                            <Button Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Height="22px" BorderThickness="0" Padding="0" Margin="0"
+                                Background="{StaticResource Window.Background}"
+                                Command="{Binding DeleteCommand, RelativeSource={RelativeSource PreviousData}}" CommandParameter="{Binding CurrentItem, ElementName=dataGrid, Mode=OneWay}">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Image VerticalAlignment="Center" Source="{StaticResource DeleteIcon}" Height="21" Width="21" Stretch="Fill"/>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>

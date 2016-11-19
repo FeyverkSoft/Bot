@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.ConfigEntity.ActionObjects;
 
-namespace WpfExecutor.Model.Add
+namespace WpfExecutor.Model.ConditionalEditor
 {
    public class ConditionalParamModel
     {

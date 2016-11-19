@@ -69,9 +69,9 @@ namespace WpfExecutor.Factories
             return window;
         }
 
-        public static ConditionalEditorWindow CreateConditionalEditorWindow()
+        public static ConditionalEditorWindow CreateConditionalEditorWindow(ConditionalsParam param = null)
         {
-            var viewModel = new ConditionalEditorViewModel();
+            var viewModel = new ConditionalEditorViewModel(param);
             var window = new ConditionalEditorWindow(viewModel);
             return window;
         }

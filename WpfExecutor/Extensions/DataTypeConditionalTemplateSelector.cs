@@ -5,11 +5,12 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using WpfExecutor.Control;
-using WpfExecutor.Model;
+using WpfExecutor.Model.Add;
+using WpfExecutor.Model.ConditionalEditor;
 
 namespace WpfExecutor.Extensions
 {
-    public class DataTypeTemplateSelector : DataTemplateSelector
+    public class DataTypeConditionalTemplateSelector : DataTemplateSelector
     {
         private static IEnumerable<Type> _dataTypeControls;
 
@@ -24,13 +25,12 @@ namespace WpfExecutor.Extensions
                                .Where(t => t.GetInterfaces().Contains(typeof(ICustomControl))));
             }
         }
-
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var param = item as PropModel;
+            var param = item as ConditionalParamModel;
             if (param == null)
                 return null;
-            var controlTypeName = String.IsNullOrEmpty(param.TypeName) ? null : param.TypeName.Replace("_", "");
+            var controlTypeName = String.IsNullOrEmpty(param.ValueType.Name) ? null : param.ValueType.Name.Replace("_", "");
             var controlType =
                 DataTypeControls.FirstOrDefault(
                     t =>
@@ -43,7 +43,7 @@ namespace WpfExecutor.Extensions
                         BindingFlags.Public | BindingFlags.Static)?.Invoke(null, null);
             factory?.SetValue(FrameworkElement.DataContextProperty, param);
             factory?.SetValue(FrameworkElement.MinHeightProperty, 24d);
-            var template = new DataTemplate(typeof(PropModel))
+            var template = new DataTemplate(typeof(ConditionalParamModel))
             {
                 VisualTree = factory
             };

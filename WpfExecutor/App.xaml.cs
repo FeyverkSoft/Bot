@@ -5,7 +5,6 @@ using System.Runtime.ExceptionServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using Core.ConfigEntity;
 using LogWrapper;
 using WpfExecutor.Extensions.Localization;
 using WpfExecutor.Factories;
@@ -44,8 +43,8 @@ namespace WpfExecutor
 
 #if DEBUG
             WindowFactory.CreateConditionalEditorWindow().ShowDialog();
-            //WindowFactory.CreateAddActionWindow(ActionType.GetScreenshot).ShowDialog();
-            Application.Current.Shutdown();
+            WindowFactory.CreateMainWindow(e.Args).Show();
+            //Application.Current.Shutdown();
 #else
             WindowFactory.CreateMainWindow(e.Args).Show();
 #endif
