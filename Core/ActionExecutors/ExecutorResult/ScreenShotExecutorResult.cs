@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using CommonLib.Attributes;
 
 namespace Core.ActionExecutors.ExecutorResult
 {
@@ -8,6 +9,7 @@ namespace Core.ActionExecutors.ExecutorResult
     public class BitmapExecutorResult : BaseExecutorResult
     {
 
+        [VisualCtorIgnoreChildProp]
         public Bitmap Bitmap { get; private set; }
         /// <summary>
         /// 

@@ -14,5 +14,6 @@
     <SolidColorBrush x:Key="Focus.Border" Color="#FF569DE5" />
     <SolidColorBrush x:Key="Run" Color="#bb5510" />
     <SolidColorBrush x:Key="WindowBorderBrush" Color="#007ACC" />
+    <SolidColorBrush x:Key="Window.Background" Color="#EFEFF2" />
 
 </ResourceDictionary>

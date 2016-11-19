@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
+using System.Windows.Input;
+using CommonLib.Attributes;
 using CommonLib.Collections;
 using CommonLib.Helpers;
+using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Helpers;
+using WpfConverters.Extensions.Commands;
 
 namespace WpfExecutor.Model.ConditionalEditor
 {
@@ -15,6 +19,8 @@ namespace WpfExecutor.Model.ConditionalEditor
         public static readonly Dictionary<Type, IEnumerable<PropertyInfo>> Props = new Dictionary<Type, IEnumerable<PropertyInfo>>();
 
         Tuple<String, Type> _selectedItem;
+        private NotifyList<ConditionalParam> _conditionalsList = new NotifyList<ConditionalParam>();
+        private List<Tuple<String, Type>> _paramsList;
 
         public Tuple<String, Type> SelectedItem
         {
@@ -23,6 +29,18 @@ namespace WpfExecutor.Model.ConditionalEditor
             {
                 _selectedItem = value;
                 Refresh(value.Item2);
+            }
+        }
+
+        public Tuple<String, Type> SelectedProp { get; set; }
+
+        public NotifyList<ConditionalParam> ConditionalsList
+        {
+            get { return _conditionalsList; }
+            set
+            {
+                _conditionalsList = value;
+                OnPropertyChanged();
             }
         }
 
@@ -36,8 +54,15 @@ namespace WpfExecutor.Model.ConditionalEditor
             }
         }
 
-
-        public NotifyList<ConditionalModel> ConditionalsList = new NotifyList<ConditionalModel>();
+        public List<Tuple<String, Type>> ParamsList
+        {
+            get { return _paramsList; }
+            set
+            {
+                _paramsList = value;
+                OnPropertyChanged();
+            }
+        }
 
         private static readonly Type[] WriteTypes = {
         typeof(string), typeof(DateTime), typeof(Enum),
@@ -53,22 +78,20 @@ namespace WpfExecutor.Model.ConditionalEditor
             return type.IsPrimitive || WriteTypes.Contains(type) || type.IsEnum || type.IsValueType;
         }
 
-        private void GetPropList(Type item, ref List<ConditionalModel> list, String path, Int32 deep)
+        private void GetPropList(Type item, ref NotifyList<Tuple<String, Type>> list, String path, Int32 deep)
         {
             if (deep > 8)
                 return;
             var props = item.GetProperties(BindingFlags.Instance | BindingFlags.Public);
             foreach (var propertyInfo in props)
             {
-                if (IsSimpleType(propertyInfo.PropertyType))
+                if (IsSimpleType(propertyInfo.PropertyType) || propertyInfo.GetCustomAttribute<VisualCtorIgnoreChildProp>() != null)
                 {
-                    list.Add(
-                        new ConditionalModel
-                        {
-                            Name = String.IsNullOrEmpty(path) ? propertyInfo.Name : $"{path}.{propertyInfo.Name}",
-                            Type = propertyInfo.PropertyType,
-
-                        });
+                    list.Add(new Tuple<String, Type>
+                        (
+                        String.IsNullOrEmpty(path) ? propertyInfo.Name : $"{path}.{propertyInfo.Name}",
+                          propertyInfo.PropertyType
+                        ));
                 }
                 else
                 {
@@ -79,35 +102,21 @@ namespace WpfExecutor.Model.ConditionalEditor
 
         public void Refresh(Type item)
         {
-            var refList = new List<ConditionalModel>();
+            var refList = new NotifyList<Tuple<String, Type>>();
             GetPropList(item, ref refList, null, 0);
-            ConditionalsList = (NotifyList<ConditionalModel>)refList;
+            ParamsList = refList;
+            ConditionalsList = new NotifyList<ConditionalParam>();
         }
-    }
 
+        private ICommand _addCommand;
+        public ICommand AddCommand => _addCommand ?? (_addCommand = new DelegateCommand(AddCommandMethod));
 
-    public class ConditionalModel
-    {
-        /// <summary>
-        /// Название поля
-        /// </summary>
-        public String Name { get; set; }
-        /// <summary>
-        /// Тип поля
-        /// </summary>
-        public Type Type { get; set; }
-        /// <summary>
-        /// Значение для сравнения
-        /// </summary>
-        public Object ConditionalValue { get; set; }
-        /// <summary>
-        /// Условный оператор, ==, !=, итд
-        /// </summary>
-        public Conditional Conditional { get; set; }
-    }
-
-    public enum Conditional
-    {
-
+        private void AddCommandMethod()
+        {
+            if (SelectedProp != null)
+            {
+                
+            }
+        }
     }
 }

@@ -108,7 +108,7 @@ namespace WpfExecutor.Model.Add
                             .Where(
                                 x =>
                                     !x.PropertyType.IsArray &&
-                                     x.GetCustomAttribute<VisualCtorIgnoreProp>() == null &&
+                                     x.GetCustomAttribute<VisualCtorIgnoreChildProp>() == null &&
                                     !x.PropertyType.GetInterfaces().Contains(typeof(ICollection))).ToList());
                 }
 

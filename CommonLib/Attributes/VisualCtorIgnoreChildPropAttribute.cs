@@ -6,9 +6,9 @@ namespace CommonLib.Attributes
     /// аттрибут указывает что данное свойство необходимо игнорировать при построении визуальной модели
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
-    public class VisualCtorIgnoreProp : Attribute
+    public class VisualCtorIgnoreChildProp : Attribute
     {
-        public VisualCtorIgnoreProp()
+        public VisualCtorIgnoreChildProp()
         {
         }
     }

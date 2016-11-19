@@ -13,6 +13,7 @@
         xmlns:model="clr-namespace:WpfExecutor.Model"
         xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
         xmlns:conditionalEditor="clr-namespace:WpfExecutor.Model.ConditionalEditor"
+        xmlns:actionObjects="clr-namespace:Core.ConfigEntity.ActionObjects;assembly=Core"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance conditionalEditor:ConditionalEditorViewModel}"
         Title="{localization:Localization ConditionalEditorWindow}" ResizeMode="NoResize"
         WindowStyle="None" Style="{StaticResource WindowStyle}" MinHeight="40" MinWidth="400"
@@ -23,13 +24,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="35"/>
         </Grid.ColumnDefinitions>
+        
         <ComboBox ItemsSource="{Binding ExecutorResultList}"
-                  Grid.ColumnSpan="2"
+                  Grid.ColumnSpan="3"
                   SelectedItem="{Binding SelectedItem}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -37,16 +41,34 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-      
-        <DataGrid Margin="-4, 10,0,0" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" HeadersVisibility="None" 
+
+        <ComboBox Grid.Row="1" ItemsSource="{Binding ParamsList}"
+                  Grid.ColumnSpan="2" Margin="0,8"
+                  SelectedItem="{Binding SelectedProp}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Item1}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Button Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Height="22px" BorderThickness="0" Padding="0" Margin="0"
+                Background="{StaticResource Window.Background}"
+                Command="{Binding AddCommand}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Image VerticalAlignment="Center" Source="{StaticResource AddIcon}" Height="21" Width="21" Stretch="Fill"/>
+            </StackPanel>
+        </Button>
+        
+        <DataGrid Margin="-4, 10,0,0" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" HeadersVisibility="None" 
                   AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="Cell"
                   Background="Transparent" BorderThickness="0" ColumnWidth="auto" MaxColumnWidth="250" MinColumnWidth="150"
-                  ItemsSource="{Binding PropsList}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" 
+                  ItemsSource="{Binding ConditionalsList}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" 
                   HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate DataType="{x:Type model:PropModel}">
+                        <DataTemplate DataType="{x:Type actionObjects:ConditionalParam}">
                             <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Background="Transparent"
                             VerticalAlignment="Center" TextTrimming="None" TextWrapping="WrapWithOverflow" Margin="5,4">
                                 <TextBlock.ToolTip>
@@ -66,7 +88,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5">
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Margin="0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />

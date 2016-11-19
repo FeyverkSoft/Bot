@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\VisualCtorIgnorePropAttribute.cs" />
+    <Compile Include="Attributes\VisualCtorIgnoreChildPropAttribute.cs" />
     <Compile Include="Attributes\ControlTypeAttribute.cs" />
     <Compile Include="Attributes\LocDescriptionAttribute.cs" />
     <Compile Include="Collections\INotifyList.cs" />

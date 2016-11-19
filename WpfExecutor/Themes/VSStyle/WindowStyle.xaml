@@ -8,7 +8,6 @@
         <ResourceDictionary Source="pack://application:,,,/Themes/Font.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <SolidColorBrush x:Key="TitleBarBackgroundBrush" Color="#EFEFF2" />
     <SolidColorBrush x:Key="WindowBorderBrushInactive" Color="#999999" />
     <SolidColorBrush x:Key="WindowStatusForeground" Color="#FFFFFF" />
     <SolidColorBrush x:Key="WindowStatusForegroundInactive" Color="#DDDDDD" />
@@ -87,7 +86,7 @@
                             x:Name="PART_Border"
                             Width="Auto"
                             Height="Auto"
-                            Background="{StaticResource TitleBarBackgroundBrush}"
+                            Background="{StaticResource Window.Background}"
                             BorderBrush="{StaticResource WindowBorderBrush}"
                             BorderThickness="1"
                             Padding="0">
@@ -107,7 +106,7 @@
                                 <Border
                                     x:Name="TitleBar"
                                     DockPanel.Dock="Top"
-                                    Background="{StaticResource TitleBarBackgroundBrush}"
+                                    Background="{StaticResource Window.Background}"
                                     BorderThickness="0"
                                     MouseLeftButtonDown="TitleBarMouseLeftButtonDown"
                                     MouseMove="TitleBarMouseMove"

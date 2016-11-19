@@ -86,6 +86,8 @@
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppContext.cs" />
     <Compile Include="ConfigEntity\ActionObjects\BaseActionObject.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\Conditional.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\ConditionalParam.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GoToAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\KeyBoardKeysAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\StackAct.cs" />
