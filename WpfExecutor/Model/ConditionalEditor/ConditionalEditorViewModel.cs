@@ -11,6 +11,7 @@ using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Helpers;
 using WpfConverters.Extensions.Commands;
+using WpfExecutor.Model.Add;
 
 namespace WpfExecutor.Model.ConditionalEditor
 {
@@ -19,7 +20,7 @@ namespace WpfExecutor.Model.ConditionalEditor
         public static readonly Dictionary<Type, IEnumerable<PropertyInfo>> Props = new Dictionary<Type, IEnumerable<PropertyInfo>>();
 
         Tuple<String, Type> _selectedItem;
-        private NotifyList<ConditionalParam> _conditionalsList = new NotifyList<ConditionalParam>();
+        private NotifyList<ConditionalParamModel> _conditionalsList = new NotifyList<ConditionalParamModel>();
         private List<Tuple<String, Type>> _paramsList;
 
         public Tuple<String, Type> SelectedItem
@@ -34,7 +35,7 @@ namespace WpfExecutor.Model.ConditionalEditor
 
         public Tuple<String, Type> SelectedProp { get; set; }
 
-        public NotifyList<ConditionalParam> ConditionalsList
+        public NotifyList<ConditionalParamModel> ConditionalsList
         {
             get { return _conditionalsList; }
             set
@@ -105,7 +106,7 @@ namespace WpfExecutor.Model.ConditionalEditor
             var refList = new NotifyList<Tuple<String, Type>>();
             GetPropList(item, ref refList, null, 0);
             ParamsList = refList;
-            ConditionalsList = new NotifyList<ConditionalParam>();
+            ConditionalsList = new NotifyList<ConditionalParamModel>();
         }
 
         private ICommand _addCommand;
@@ -115,7 +116,11 @@ namespace WpfExecutor.Model.ConditionalEditor
         {
             if (SelectedProp != null)
             {
-                
+                ConditionalsList.Add(new ConditionalParamModel
+                {
+                    Name = SelectedProp.Item1,
+                    ValueType = SelectedProp.Item2
+                });
             }
         }
     }

@@ -14,6 +14,7 @@
         xmlns:common="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
         xmlns:conditionalEditor="clr-namespace:WpfExecutor.Model.ConditionalEditor"
         xmlns:actionObjects="clr-namespace:Core.ConfigEntity.ActionObjects;assembly=Core"
+        xmlns:control="clr-namespace:WpfExecutor.Control"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance conditionalEditor:ConditionalEditorViewModel}"
         Title="{localization:Localization ConditionalEditorWindow}" ResizeMode="NoResize"
         WindowStyle="None" Style="{StaticResource WindowStyle}" MinHeight="40" MinWidth="400"
@@ -80,9 +81,17 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="{x:Type actionObjects:ConditionalParam}">
+                            <control:EConditionalControll SelectedValue="{Binding Conditional, UpdateSourceTrigger=PropertyChanged, Converter={converter:TupleConverter}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTemplateColumn Width="auto">
-                    <DataGridTemplateColumn.CellTemplateSelector >
-                        <extensions:DataTypeTemplateSelector />
+                    <DataGridTemplateColumn.CellTemplateSelector>
+                        <extensions:DataTypeConditionalTemplateSelector />
                     </DataGridTemplateColumn.CellTemplateSelector>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>

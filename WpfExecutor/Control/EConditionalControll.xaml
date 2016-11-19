@@ -1,0 +1,22 @@
+﻿<ComboBox x:Class="WpfExecutor.Control.EConditionalControll"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:common1="clr-namespace:WpfConverters.Converters.Common;assembly=WpfConverters"
+         xmlns:system="clr-namespace:System;assembly=mscorlib"
+         xmlns:model="clr-namespace:WpfExecutor.Model"
+         xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
+         xmlns:configEntity="clr-namespace:Core.ConfigEntity;assembly=Core"
+         xmlns:converter="clr-namespace:WpfExecutor.Converter"
+         xmlns:core="clr-namespace:Core.Core;assembly=Core"
+         mc:Ignorable="d" d:DesignHeight="30" d:DesignWidth="300" 
+         d:DataContext="{d:DesignInstance Type=model:PropModel}"
+         HorizontalAlignment="Stretch" VerticalContentAlignment="Center">
+    <ComboBox.ItemTemplate>
+        <DataTemplate>
+            <TextBlock Text="{Binding Item1}"/>
+        </DataTemplate>
+    </ComboBox.ItemTemplate>
+</ComboBox>
+

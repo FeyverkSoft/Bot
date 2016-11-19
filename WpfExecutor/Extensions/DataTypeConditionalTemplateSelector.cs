@@ -6,11 +6,10 @@ using System.Windows;
 using System.Windows.Controls;
 using WpfExecutor.Control;
 using WpfExecutor.Model;
-using WpfExecutor.Model.Add;
 
 namespace WpfExecutor.Extensions
 {
-    public class DataTypeConditionalTemplateSelector : DataTemplateSelector
+    public class DataTypeTemplateSelector : DataTemplateSelector
     {
         private static IEnumerable<Type> _dataTypeControls;
 
@@ -28,10 +27,10 @@ namespace WpfExecutor.Extensions
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var param = item as ConditionalParamModel;
+            var param = item as PropModel;
             if (param == null)
                 return null;
-            var controlTypeName = String.IsNullOrEmpty(param.ValueType.Name) ? null : param.ValueType.Name.Replace("_", "");
+            var controlTypeName = String.IsNullOrEmpty(param.TypeName) ? null : param.TypeName.Replace("_", "");
             var controlType =
                 DataTypeControls.FirstOrDefault(
                     t =>
@@ -44,7 +43,7 @@ namespace WpfExecutor.Extensions
                         BindingFlags.Public | BindingFlags.Static)?.Invoke(null, null);
             factory?.SetValue(FrameworkElement.DataContextProperty, param);
             factory?.SetValue(FrameworkElement.MinHeightProperty, 24d);
-            var template = new DataTemplate(typeof(ConditionalParamModel))
+            var template = new DataTemplate(typeof(PropModel))
             {
                 VisualTree = factory
             };
