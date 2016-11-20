@@ -1,6 +1,6 @@
 ﻿namespace Core.ConfigEntity.ActionObjects
 {
-    public enum Conditional
+    public enum EConditional
     {
         /// <summary>
         /// Равно

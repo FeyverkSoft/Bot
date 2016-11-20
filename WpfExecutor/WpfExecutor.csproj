@@ -62,8 +62,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Control\EConditionalControll.xaml.cs">
-      <DependentUpon>EConditionalControll.xaml</DependentUpon>
+    <Compile Include="Control\EConditionalControl.xaml.cs">
+      <DependentUpon>EConditionalControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\EMessageTypeControl.xaml.cs">
       <DependentUpon>EMessageTypeControl.xaml</DependentUpon>
@@ -124,6 +124,7 @@
     <Compile Include="Converter\DevConverter.cs" />
     <Compile Include="Converter\TupleConverter.cs" />
     <Compile Include="Extensions\DataTypeConditionalTemplateSelector.cs" />
+    <Compile Include="Extensions\DataTypeCondSelector.cs" />
     <Compile Include="Extensions\DataTypeTemplateSelector.cs" />
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
@@ -170,7 +171,7 @@
     <Compile Include="Views\Settings\CoreSettingWindow.xaml.cs">
       <DependentUpon>CoreSettingWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Control\EConditionalControll.xaml">
+    <Page Include="Control\EConditionalControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

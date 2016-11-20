@@ -7,27 +7,32 @@ using Core.Message;
 using WpfExecutor.Converter;
 using WpfExecutor.Helpers;
 using WpfExecutor.Model;
+using WpfExecutor.Model.ConditionalEditor;
 
 namespace WpfExecutor.Control
 {
     /// <summary>
     /// Логика взаимодействия для EConditionalControll.xaml
     /// </summary>
-    public partial class EConditionalControll : ComboBox, ICustomControl
+    /// 
+    /// Это костыль!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    /// В падлу было искать нормальное решение всего из-за одого контролла
+    /// Если таких будет 2, буду думать
+    /// 
+    public partial class EConditionalControl : ComboBox, ICustomControl
     {
-        public EConditionalControll()
+        public EConditionalControl()
         {
             InitializeComponent();
-            ItemsSource = typeof(Conditional).GeEnumTuple();
         }
 
         [UsedImplicitly]
         public static FrameworkElementFactory GetFrameworkElementFactory()
         {
-            var list = typeof(Conditional).GeEnumTuple();
-            var factory = new FrameworkElementFactory(typeof(EConditionalControll));
+            var list = typeof(EConditional).GeEnumTuple();
+            var factory = new FrameworkElementFactory(typeof(EConditionalControl));
             factory.SetValue(ItemsSourceProperty, list);
-            factory.SetBinding(SelectedItemProperty, new Binding(nameof(PropModel.Value))
+            factory.SetBinding(SelectedItemProperty, new Binding(nameof(ConditionalParamModel.Conditional))
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,

@@ -43,11 +43,6 @@ namespace Core.ActionExecutors
             if (actions.SubActions.Count == 0 && previousResult == null)
                 return new BooleanExecutorResult(false);
 
-            if (actions.SubActions.Count == 0 && previousResult is BooleanExecutorResult)
-                return previousResult;
-
-            if (actions.SubActions.Count == 0)
-                return new BooleanExecutorResult(false);
 
             if (actions.SubActions.Count > 1)
                 throw new Exception("Проверка может быть только одна");
@@ -59,7 +54,7 @@ namespace Core.ActionExecutors
                 return new BooleanExecutorResult(false, EResultState.Success);
 
 
-             result = СonditionsParse(action.Сonditions?.Params);
+             result = СonditionsParse(action.Сonditions?.Params, previousResult);
 
             return new BooleanExecutorResult(result);
         }
@@ -80,9 +75,15 @@ namespace Core.ActionExecutors
         /// </summary>
         /// <param name="conditions"></param>
         /// <returns></returns>
-        private Boolean СonditionsParse(List<ConditionalParam> conditions)
+        private Boolean СonditionsParse(List<ConditionalParam> conditions, IExecutorResult previousResult)
         {
-            return true;
+            var result = true;
+            var type = previousResult.GetType();
+            foreach (var conditionalParam in conditions)
+            {
+                //conditionalParam.Name
+            }
+            return result;
         }
     }
 }

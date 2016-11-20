@@ -17,7 +17,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// <summary>
         /// Условный оператор, ==, !=, итд
         /// </summary>
-        public Conditional Conditional { get; set; }
+        public EConditional Conditional { get; set; }
     }
 
     public class ConditionalsParam

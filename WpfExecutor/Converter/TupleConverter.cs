@@ -22,7 +22,7 @@ namespace WpfExecutor.Converter
             if (enumerable != null)
                 foreach (var tuple in enumerable)
                 {
-                    if (tuple.Item2.ToString() == value.ToString())
+                    if (tuple.Item2.ToString() == value?.ToString())
                         return tuple;
                 }
             return value;

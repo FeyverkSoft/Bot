@@ -17,7 +17,7 @@ namespace WpfExecutor.Model.ConditionalEditor
         /// <summary>
         /// Условный оператор, ==, !=, итд
         /// </summary>
-        public Conditional Conditional { get; set; }
+        public EConditional Conditional { get; set; }
         /// <summary>
         /// Тип значения
         /// </summary>

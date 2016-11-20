@@ -82,11 +82,9 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate DataType="{x:Type actionObjects:ConditionalParam}">
-                            <control:EConditionalControll SelectedValue="{Binding Conditional, UpdateSourceTrigger=PropertyChanged, Converter={converter:TupleConverter}}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellTemplateSelector>
+                        <extensions:DataTypeCondSelector />
+                    </DataGridTemplateColumn.CellTemplateSelector>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplateSelector>
