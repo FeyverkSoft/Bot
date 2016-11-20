@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using WpfExecutor.Control.ImplControl;
+using WpfExecutor.Extensions;
 using WpfExecutor.Model;
 
 namespace WpfExecutor.Control
@@ -20,7 +20,7 @@ namespace WpfExecutor.Control
         public static FrameworkElementFactory GetFrameworkElementFactory()
         {
             var factory = new FrameworkElementFactory(typeof(FilePathControl));
-            factory.SetBinding(FilePathProperty, new Binding(nameof(PropModel.Value))
+            factory.SetBinding(FilePathProperty, new Binding(nameof(IPropModel.Value))
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged

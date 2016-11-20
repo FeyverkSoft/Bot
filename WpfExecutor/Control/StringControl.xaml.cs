@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using WpfExecutor.Extensions;
 using WpfExecutor.Model;
 
 namespace WpfExecutor.Control
@@ -19,7 +20,7 @@ namespace WpfExecutor.Control
         public static FrameworkElementFactory GetFrameworkElementFactory()
         {
             var factory = new FrameworkElementFactory(typeof(StringControl));
-            factory.SetBinding(TextProperty, new Binding(nameof(PropModel.Value))
+            factory.SetBinding(TextProperty, new Binding(nameof(IPropModel.Value))
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged

@@ -2,11 +2,8 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using Core.ConfigEntity.ActionObjects;
-using Core.Core;
-using Core.Message;
 using WpfExecutor.Converter;
 using WpfExecutor.Helpers;
-using WpfExecutor.Model;
 using WpfExecutor.Model.ConditionalEditor;
 
 namespace WpfExecutor.Control

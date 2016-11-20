@@ -1,8 +1,9 @@
 ﻿using System;
+using WpfExecutor.Extensions;
 
 namespace WpfExecutor.Model
 {
-    public class PropModel : BaseViewModel
+    public class PropModel : BaseViewModel, IPropModel
     {
         private Object _value;
 

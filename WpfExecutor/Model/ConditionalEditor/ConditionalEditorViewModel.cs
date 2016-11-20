@@ -63,7 +63,7 @@ namespace WpfExecutor.Model.ConditionalEditor
                         Conditional = conditionalParam.Conditional,
                         Name = conditionalParam.Name,
                         Value = conditionalParam.ConditionalValue,
-                        ValueType = conditionalParam.ConditionalValue?.GetType()
+                        TypeName = conditionalParam.ConditionalValue?.GetType().Name
                     });
                 }
             }
@@ -133,7 +133,7 @@ namespace WpfExecutor.Model.ConditionalEditor
                 ConditionalsList.Add(new ConditionalParamModel
                 {
                     Name = SelectedProp.Item1,
-                    ValueType = SelectedProp.Item2
+                    TypeName = SelectedProp.Item2.Name
                 });
             }
         }

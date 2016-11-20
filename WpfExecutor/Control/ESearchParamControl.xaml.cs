@@ -2,9 +2,10 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using Core.Core;
-using WpfExecutor.Model;
 using WpfExecutor.Converter;
+using WpfExecutor.Extensions;
 using WpfExecutor.Helpers;
+using WpfExecutor.Model;
 
 namespace WpfExecutor.Control
 {
@@ -24,7 +25,7 @@ namespace WpfExecutor.Control
             var list = typeof(ESearchParam).GeEnumTuple();
             var factory = new FrameworkElementFactory(typeof(ESearchParamControl));
             factory.SetValue(ItemsSourceProperty, list);
-            factory.SetBinding(SelectedItemProperty, new Binding(nameof(PropModel.Value))
+            factory.SetBinding(SelectedItemProperty, new Binding(nameof(IPropModel.Value))
             {
                 Mode = BindingMode.TwoWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,

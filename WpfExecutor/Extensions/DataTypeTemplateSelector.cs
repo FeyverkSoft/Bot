@@ -26,7 +26,7 @@ namespace WpfExecutor.Extensions
         }
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var param = item as PropModel;
+            var param = item as IPropModel;
             if (param == null)
                 return null;
             var controlTypeName = String.IsNullOrEmpty(param.TypeName) ? null : param.TypeName.Replace("_", "");

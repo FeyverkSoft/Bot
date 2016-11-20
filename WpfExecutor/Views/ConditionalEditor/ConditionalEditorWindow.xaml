@@ -88,7 +88,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplateSelector>
-                        <extensions:DataTypeConditionalTemplateSelector />
+                        <extensions:DataTypeTemplateSelector />
                     </DataGridTemplateColumn.CellTemplateSelector>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn MaxWidth="28">

@@ -123,9 +123,9 @@
     <Compile Include="Converter\EnumConverter.cs" />
     <Compile Include="Converter\DevConverter.cs" />
     <Compile Include="Converter\TupleConverter.cs" />
-    <Compile Include="Extensions\DataTypeConditionalTemplateSelector.cs" />
     <Compile Include="Extensions\DataTypeCondSelector.cs" />
     <Compile Include="Extensions\DataTypeTemplateSelector.cs" />
+    <Compile Include="Model\IPropModel.cs" />
     <Compile Include="Extensions\Provider\LocDescriptionProvider.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
