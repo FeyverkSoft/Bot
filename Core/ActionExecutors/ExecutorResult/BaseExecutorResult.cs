@@ -1,4 +1,6 @@
-﻿namespace Core.ActionExecutors.ExecutorResult
+﻿using CommonLib.Attributes;
+
+namespace Core.ActionExecutors.ExecutorResult
 {
     /// <summary>
     /// Базовый метод для возвращения результата
@@ -8,6 +10,7 @@
         /// <summary>
         /// Результат выполнения действия, успех/не успех, ошибка
         /// </summary>
+        [VisualCtorIgnoreProp]
         public EResultState State { get; private set; }
         /// <summary>
         /// 

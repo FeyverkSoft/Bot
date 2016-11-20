@@ -135,7 +135,6 @@ namespace Core.ActionExecutors
                 default:
                     throw new ArgumentOutOfRangeException(nameof(cond), cond, null);
             }
-            return true;
         }
     }
 }

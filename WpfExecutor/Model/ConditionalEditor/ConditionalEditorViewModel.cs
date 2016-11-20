@@ -93,6 +93,13 @@ namespace WpfExecutor.Model.ConditionalEditor
             return type.IsPrimitive || WriteTypes.Contains(type) || type.IsEnum || type.IsValueType;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="list"></param>
+        /// <param name="path"></param>
+        /// <param name="deep"></param>
         private void GetPropList(Type item, ref NotifyList<Tuple<String, Type>> list, String path, Int32 deep)
         {
             if (deep > 8)
@@ -110,7 +117,8 @@ namespace WpfExecutor.Model.ConditionalEditor
                 }
                 else
                 {
-                    GetPropList(propertyInfo.PropertyType, ref list, String.IsNullOrEmpty(path) ? propertyInfo.Name : $"{path}.{propertyInfo.Name}", deep + 1);
+                    if (propertyInfo.GetCustomAttribute<VisualCtorIgnoreProp>() == null)
+                        GetPropList(propertyInfo.PropertyType, ref list, String.IsNullOrEmpty(path) ? propertyInfo.Name : $"{path}.{propertyInfo.Name}", deep + 1);
                 }
             }
         }
