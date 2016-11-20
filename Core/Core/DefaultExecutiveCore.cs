@@ -220,6 +220,8 @@ namespace Core.Core
                                 }
                             }
                             break;
+                        case ActionType.Label:
+                            break;
                         case ActionType.GOTO:
                             {
                                 var label = currentAction.SubActions.Cast<GoToAct>().FirstOrDefault()?.LabelName;

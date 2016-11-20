@@ -50,11 +50,11 @@ namespace Core.ActionExecutors
 
             var action = actions.SubActions.Cast<IfAction>().First();
 
-            if (previousResult == null || !previousResult.GetType().Name.ToLower().Contains(action.PrevResType.ToLower()))
+            /*if (previousResult == null || !previousResult.GetType().Name.ToLower().Contains(action.PrevResType.ToLower()))
                 return new BooleanExecutorResult(false, EResultState.Success);
+                */
 
-
-             result = СonditionsParse(action.Сonditions?.Params, previousResult);
+            result = СonditionsParse(action.Сonditions?.Params, previousResult);
 
             return new BooleanExecutorResult(result);
         }
@@ -81,9 +81,24 @@ namespace Core.ActionExecutors
             var type = previousResult.GetType();
             foreach (var conditionalParam in conditions)
             {
-                //conditionalParam.Name
+                var val = getValue(conditionalParam.Name, previousResult, 0);
+                val = val;
             }
             return result;
+        }
+
+        private Object getValue(String propName, object previousResult, Int32 deep)
+        {
+            var type = previousResult.GetType();
+            var path = propName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+            if (deep < path.Length)
+            {
+                if (deep == path.Length - 1)
+                    return type.GetProperty(path[deep]).GetValue(previousResult);
+                else
+                    return getValue(propName, type.GetProperty(path[deep]).GetValue(previousResult), deep + 1);
+            }
+            return null;
         }
     }
 }
