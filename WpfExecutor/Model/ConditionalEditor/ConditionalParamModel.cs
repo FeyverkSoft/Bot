@@ -1,6 +1,5 @@
 ﻿using System;
 using Core.ConfigEntity.ActionObjects;
-using WpfExecutor.Extensions;
 
 namespace WpfExecutor.Model.ConditionalEditor
 {

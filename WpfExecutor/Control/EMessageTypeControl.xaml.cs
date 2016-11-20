@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using Core.Message;
 using WpfExecutor.Converter;
-using WpfExecutor.Extensions;
 using WpfExecutor.Helpers;
 using WpfExecutor.Model;
 

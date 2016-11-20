@@ -139,6 +139,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Редактор условий.
+        /// </summary>
+        internal static string ConditionalEditorWindow {
+            get {
+                return ResourceManager.GetString("ConditionalEditorWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Версия конфигурации.
         /// </summary>
         internal static string ConfigVersion {

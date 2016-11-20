@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using WpfExecutor.Extensions;
 using WpfExecutor.Model;
 
 namespace WpfExecutor.Control

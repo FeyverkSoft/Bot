@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing.Imaging;
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;

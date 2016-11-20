@@ -417,4 +417,22 @@
   <data name="MouseSetPosAct_Point" xml:space="preserve">
     <value>The new position of the cursor</value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Equal</value>
+  </data>
+  <data name="IsGreaterThan" xml:space="preserve">
+    <value>Is greater than</value>
+  </data>
+  <data name="IsGreaterThanOrEqual" xml:space="preserve">
+    <value>Is greater than or equal</value>
+  </data>
+  <data name="IsLessThan" xml:space="preserve">
+    <value>Is less than</value>
+  </data>
+  <data name="IsLessThanOrEqual" xml:space="preserve">
+    <value>Is less than or equal</value>
+  </data>
+  <data name="NotEqual" xml:space="preserve">
+    <value>Not equal</value>
+  </data>
 </root>

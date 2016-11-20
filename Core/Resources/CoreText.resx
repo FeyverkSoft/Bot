@@ -417,4 +417,22 @@
   <data name="ConfigValidator_GetErrorListInternal_Error_EmptyLabelName" xml:space="preserve">
     <value>Название метки не может быть пустым</value>
   </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Равно</value>
+  </data>
+  <data name="IsGreaterThan" xml:space="preserve">
+    <value>Больше</value>
+  </data>
+  <data name="IsGreaterThanOrEqual" xml:space="preserve">
+    <value>Больше или равно</value>
+  </data>
+  <data name="IsLessThan" xml:space="preserve">
+    <value>Меньше</value>
+  </data>
+  <data name="IsLessThanOrEqual" xml:space="preserve">
+    <value>Меньше или равно</value>
+  </data>
+  <data name="NotEqual" xml:space="preserve">
+    <value>Не равно</value>
+  </data>
 </root>

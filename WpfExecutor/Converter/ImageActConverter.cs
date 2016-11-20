@@ -1,8 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Reflection;
 using System.Windows;
 using Core.ConfigEntity;
 using WpfConverters.Converters;

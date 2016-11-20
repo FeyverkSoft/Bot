@@ -143,6 +143,9 @@ Third-party Fonts:
   <data name="CloseMessageTitle" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="ConditionalEditorWindow" xml:space="preserve">
+    <value>Conditional editor</value>
+  </data>
   <data name="ConfigVersion" xml:space="preserve">
     <value>Config version</value>
   </data>

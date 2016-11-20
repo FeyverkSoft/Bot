@@ -358,6 +358,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Равно.
+        /// </summary>
+        internal static string Equal {
+            get {
+                return ResourceManager.GetString("Equal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Параметр поиска.
         /// </summary>
         internal static string ESearchParam {
@@ -583,6 +592,42 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Больше.
+        /// </summary>
+        internal static string IsGreaterThan {
+            get {
+                return ResourceManager.GetString("IsGreaterThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Больше или равно.
+        /// </summary>
+        internal static string IsGreaterThanOrEqual {
+            get {
+                return ResourceManager.GetString("IsGreaterThanOrEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меньше.
+        /// </summary>
+        internal static string IsLessThan {
+            get {
+                return ResourceManager.GetString("IsLessThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меньше или равно.
+        /// </summary>
+        internal static string IsLessThanOrEqual {
+            get {
+                return ResourceManager.GetString("IsLessThanOrEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Параметр нажатия клавиши.
         /// </summary>
         internal static string KeyBoardAct {
@@ -741,6 +786,15 @@ namespace Core.Resources {
         internal static string MouseSetPosAct_RelativelyWindowName {
             get {
                 return ResourceManager.GetString("MouseSetPosAct_RelativelyWindowName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Не равно.
+        /// </summary>
+        internal static string NotEqual {
+            get {
+                return ResourceManager.GetString("NotEqual", resourceCulture);
             }
         }
         

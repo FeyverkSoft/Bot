@@ -50,10 +50,6 @@ namespace Core.ActionExecutors
 
             var action = actions.SubActions.Cast<IfAction>().First();
 
-            /*if (previousResult == null || !previousResult.GetType().Name.ToLower().Contains(action.PrevResType.ToLower()))
-                return new BooleanExecutorResult(false, EResultState.Success);
-                */
-
             result = СonditionsParse(action.Сonditions?.Params, previousResult);
 
             return new BooleanExecutorResult(result);
@@ -78,16 +74,15 @@ namespace Core.ActionExecutors
         private Boolean СonditionsParse(List<ConditionalParam> conditions, IExecutorResult previousResult)
         {
             var result = true;
-            var type = previousResult.GetType();
             foreach (var conditionalParam in conditions)
             {
-                var val = getValue(conditionalParam.Name, previousResult, 0);
-                val = val;
+                var val = GetValue(conditionalParam.Name, previousResult, 0);
+                result &= TestValue(val, conditionalParam.ConditionalValue, conditionalParam.Conditional);
             }
             return result;
         }
 
-        private Object getValue(String propName, object previousResult, Int32 deep)
+        private Object GetValue(String propName, object previousResult, Int32 deep)
         {
             var type = previousResult.GetType();
             var path = propName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
@@ -96,9 +91,51 @@ namespace Core.ActionExecutors
                 if (deep == path.Length - 1)
                     return type.GetProperty(path[deep]).GetValue(previousResult);
                 else
-                    return getValue(propName, type.GetProperty(path[deep]).GetValue(previousResult), deep + 1);
+                    return GetValue(propName, type.GetProperty(path[deep]).GetValue(previousResult), deep + 1);
             }
             return null;
+        }
+
+        /// <summary>
+        /// Дичь, надо будет переписать, после того как пойму, как это должно вообще работать......
+        /// В том числе вообще как этоот оператор должен работать
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="condValue"></param>
+        /// <param name="cond"></param>
+        /// <returns></returns>
+        private Boolean TestValue(Object value, Object condValue, EConditional cond)
+        {
+            switch (cond)
+            {
+                case EConditional.Equal:
+                    if (condValue?.ToString().ToLower() == "null")
+                        return value == null;
+                    return value == condValue;
+                case EConditional.NotEqual:
+                    if (condValue?.ToString().ToLower() == "null")
+                        return value != null;
+                    return value != condValue;
+                case EConditional.IsGreaterThan:
+                    if (value is String)
+                        return (value as String).CompareTo(condValue) == 1;
+                    return Decimal.Parse(value.ToString()).CompareTo(Decimal.Parse(condValue.ToString())) == 1;
+                case EConditional.IsLessThan:
+                    if (value is String)
+                        return (value as String).CompareTo(condValue) < 0;
+                    return Decimal.Parse(value.ToString()).CompareTo(Decimal.Parse(condValue.ToString())) < 0;
+                case EConditional.IsLessThanOrEqual:
+                    if (value is String)
+                        return (value as String).CompareTo(condValue) <= 0;
+                    return Decimal.Parse(value.ToString()).CompareTo(Decimal.Parse(condValue.ToString())) <= 0;
+                case EConditional.IsGreaterThanOrEqual:
+                    if (value is String)
+                        return (value as String).CompareTo(condValue) >= 0;
+                    return Decimal.Parse(value.ToString()).CompareTo(Decimal.Parse(condValue.ToString())) >= 0;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(cond), cond, null);
+            }
+            return true;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using WpfExecutor.Extensions;
 
 namespace WpfExecutor.Model
 {

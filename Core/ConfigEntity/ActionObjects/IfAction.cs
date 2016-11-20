@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using CommonLib.Attributes;
 using LogWrapper;
@@ -33,12 +32,6 @@ namespace Core.ConfigEntity.ActionObjects
         [LocDescription("IfAction_FailLabel", typeof(Resources.CoreText))]
         public String FailLabel { get; set; }
 
-        /// <summary>
-        /// Проверка на тип предыдущего результата 
-        /// </summary>
-        [LocDescription("IfAction_PrevResType", typeof(Resources.CoreText))]
-        [DataMember]
-        public String PrevResType { get; set; }
 
         /// <summary>
         /// Список условий, которые необходимо проверить над предыдущим объектом
@@ -53,7 +46,6 @@ namespace Core.ConfigEntity.ActionObjects
         {
             if(String.IsNullOrEmpty(prevResType))
                 throw new ArgumentNullException(nameof(prevResType));
-            PrevResType = prevResType;
             Сonditions = сonditions;
             Log.WriteLine($"{GetType().Name}.ctor->(successLabel: {successLabel}; failLabel: {failLabel})");
             if (successLabel != null)

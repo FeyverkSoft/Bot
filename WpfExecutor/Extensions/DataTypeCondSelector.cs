@@ -5,7 +5,6 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using WpfExecutor.Control;
-using WpfExecutor.Model;
 using WpfExecutor.Model.ConditionalEditor;
 
 namespace WpfExecutor.Extensions

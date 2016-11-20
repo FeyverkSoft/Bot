@@ -415,4 +415,7 @@ Size - Размер
   <data name="Description_ExpectWindow" xml:space="preserve">
     <value>указывает что бот должен ожидать появления окна с указанным заголовком, только после его появления будет продолжено исполнение инструкций</value>
   </data>
+  <data name="ConditionalEditorWindow" xml:space="preserve">
+    <value>Редактор условий</value>
+  </data>
 </root>
