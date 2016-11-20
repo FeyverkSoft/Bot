@@ -57,6 +57,10 @@ namespace Core
         /// Загружать плагины?
         /// </summary>
         public Boolean LoadPlugin { get; set; } = true;
+        /// <summary>
+        /// эмулировать некую случайную неточность при движении указателя мышки?
+        /// </summary>
+        public Boolean RandomMouse { get; set; } = false;
 
         public static void LoadInstance()
         {

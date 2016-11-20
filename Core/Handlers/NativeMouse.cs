@@ -56,7 +56,10 @@ namespace Core.Handlers
 
             for (var i = 0; i < x.Length; i++)
             {
-                mouse_event(MouseFlags.Move, (Int32)(x[i] + Rand.Next(0, 2)), (Int32)(y[i] + Rand.Next(0, 2)), 0, UIntPtr.Zero);
+                if (AppConfig.Instance.RandomMouse)
+                    mouse_event(MouseFlags.Move, (Int32)(x[i] + Rand.Next(0, 2)), (Int32)(y[i] + Rand.Next(0, 2)), 0, UIntPtr.Zero);
+                else
+                    mouse_event(MouseFlags.Move, (Int32)(x[i]), (Int32)(y[i]), 0, UIntPtr.Zero);
                 var xd = Rand.Next(0, 5);//уличная магия
                 Thread.Sleep(8 + xd + (xd % 3 > 0 ? i : 0));//при преближении к кнопке эмулируется некоторое торможение движения указателя, так как это делает человек :D
             }
