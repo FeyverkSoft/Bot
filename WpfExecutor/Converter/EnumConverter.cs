@@ -11,11 +11,12 @@ namespace WpfExecutor.Converter
     {
         public override Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
         {
-            var t = (value as Type);
+
+            var t = (value as Type) ?? (value.GetType().IsEnum ? value.GetType() : null);
             if (t != null)
             {
                 return t.GetMembers().Where(x => x.MemberType == MemberTypes.Field)
-                    .Cast<FieldInfo>().Where(x=>!x.IsSpecialName)
+                    .Cast<FieldInfo>().Where(x => !x.IsSpecialName)
                     .Select(memberInfo => new Tuple<String, Object>(
                         memberInfo.GetLocalName(),
                         memberInfo.GetValue(memberInfo)

@@ -10,6 +10,9 @@ using WpfExecutor.Model.ConditionalEditor;
 
 namespace WpfExecutor.Extensions
 {
+    /// <summary>
+    /// Костыль
+    /// </summary>
     public class DataTypeCondSelector : DataTemplateSelector
     {
         private static IEnumerable<Type> _dataTypeControls;
