@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
 using Core.Core;
 using LogWrapper;
 
@@ -11,8 +13,6 @@ namespace Core.Handlers
     /// </summary>
     public class NativeKeyBoard : IKeyBoard
     {
-        const Int32 KeyeventfExtendedkey = 0x1;
-        const Int32 KeyeventfKeyup = 0x2;
 
         [DllImport("user32.dll")]
         static extern void keybd_event(Byte bVk, byte bScan, uint dwFlags, IntPtr dwExtraInfo);
@@ -21,9 +21,9 @@ namespace Core.Handlers
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeyInternal)}");
             Log.WriteLine($"--> press: 0x{keyCode:X2}, ");
-            keybd_event(keyCode, 0x45, KeyeventfExtendedkey | 0, (IntPtr)0);
+            keybd_event(keyCode, 0x45, (uint)KeyboardFlag.Extendedkey | 0, (IntPtr)0);
             //Thread.Sleep((Int32)pressTime);
-            keybd_event(keyCode, 0x45, KeyeventfExtendedkey | KeyeventfKeyup, (IntPtr)0);
+            keybd_event(keyCode, 0x45, (uint)(KeyboardFlag.Extendedkey | KeyboardFlag.Keyup), (IntPtr)0);
             Log.WriteLine($"--> up: 0x{keyCode:X2}");
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeyInternal)}");
         }
@@ -52,7 +52,7 @@ namespace Core.Handlers
             foreach (var k in list) //Выполняем событие последовательного отпускания несколькоих клавиш
             {
                 Log.Write($"--> up: 0x{((Int32)k):X2}, ");
-                keybd_event((Byte)k, 0, KeyeventfKeyup, (IntPtr)0);
+                keybd_event((Byte)k, 0, (uint)KeyboardFlag.Keyup, (IntPtr)0);
             }
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
         }

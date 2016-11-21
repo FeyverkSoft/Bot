@@ -101,6 +101,13 @@
     <Compile Include="Core\Size.cs" />
     <Compile Include="Handlers\Factory\KeyBoardHandlFactory.cs" />
     <Compile Include="Handlers\Factory\KeyBoardType.cs" />
+    <Compile Include="Handlers\HARDWAREINPUT.cs" />
+    <Compile Include="Handlers\INPUT.cs" />
+    <Compile Include="Handlers\KEYBDINPUT.cs" />
+    <Compile Include="Handlers\KeyboardFlag.cs" />
+    <Compile Include="Handlers\MOUSEINPUT.cs" />
+    <Compile Include="Handlers\MOUSEKEYBDHARDWAREINPUT.cs" />
+    <Compile Include="Handlers\SendInputKeyBoard.cs" />
     <Compile Include="Helpers\ActionHelper.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />

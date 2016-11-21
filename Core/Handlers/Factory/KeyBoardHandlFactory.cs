@@ -23,7 +23,9 @@ namespace Core.Handlers.Factory
                 case KeyBoardType.DxInput:
                     throw new NotImplementedException();
                 case KeyBoardType.SendInput:
-                    throw new NotImplementedException();
+                    if (!Kb.ContainsKey(t))
+                        Kb.Add(t, new SendInputKeyBoard());
+                    return Kb[t];
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
