@@ -202,6 +202,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Метод ввода с клавы.
+        /// </summary>
+        internal static string CoreSettingWindow_KeyBoardInputMethod {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_KeyBoardInputMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Загружать плагины.
         /// </summary>
         internal static string CoreSettingWindow_LoadPlugin {

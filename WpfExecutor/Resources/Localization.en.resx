@@ -164,6 +164,9 @@ Third-party Fonts:
   <data name="CoreSettingWindow_DefaultCore" xml:space="preserve">
     <value>Use the default kernel</value>
   </data>
+  <data name="CoreSettingWindow_KeyBoardInputMethod" xml:space="preserve">
+    <value>Keyboard input method</value>
+  </data>
   <data name="CoreSettingWindow_LoadPlugin" xml:space="preserve">
     <value>Load plug-ins</value>
   </data>

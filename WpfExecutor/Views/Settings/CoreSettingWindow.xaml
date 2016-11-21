@@ -8,6 +8,9 @@
         xmlns:settings="clr-namespace:WpfExecutor.Model.Settings"
         xmlns:controls="clr-namespace:WpfConverters.Controls;assembly=WpfConverters"
         xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
+        xmlns:configEntity="clr-namespace:Core.ConfigEntity;assembly=Core"
+        xmlns:converter="clr-namespace:WpfExecutor.Converter"
+        xmlns:factory="clr-namespace:Core.Handlers.Factory;assembly=Core"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance settings:CoreSettingViewModel}"
         Title="{localization:Localization CoreSettingWindow}" ResizeMode="NoResize"
         WindowStyle="None" Style="{StaticResource WindowStyle}" MinHeight="40" MinWidth="400"
@@ -57,6 +60,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -70,6 +74,18 @@
                 <!-- LoadPlugin -->
                 <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_LoadPlugin}"></TextBlock>
                 <CheckBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding LoadPlugin}" VerticalAlignment="Center"></CheckBox>
+
+                <!-- KeyBoard Input Method -->
+                <TextBlock Grid.Row="2" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_KeyBoardInputMethod}"></TextBlock>
+                <ComboBox  Grid.Row="2" Grid.Column="1" 
+                           SelectedValue="{Binding KeyBoardType, Converter={converter:TupleConverter}, ConverterParameter={x:Type factory:KeyBoardType}}" 
+                           ItemsSource="{Binding Source={x:Type factory:KeyBoardType}, Converter={converter:EnumConverter}}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Item1}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </Grid>
         </Expander>
 
