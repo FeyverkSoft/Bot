@@ -6,6 +6,7 @@ using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Handlers;
+using Core.Handlers.Factory;
 using Core.Helpers;
 
 namespace Core.ActionExecutors
@@ -20,8 +21,6 @@ namespace Core.ActionExecutors
         /// Тип действия для внутренней фабрики
         /// </summary>
         public new static ActionType ActionType => ActionType.KeyBoardKeys;
-
-        private IKeyBoard KeyBoard { get; set; } = AppContext.Get<IKeyBoard>();
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
@@ -44,8 +43,9 @@ namespace Core.ActionExecutors
             }, false);
             try
             {
+                var keyBoard = KeyBoardHandlFactory.GetKeyBoard();
                 if (actions != null)
-                    KeyBoard.PressKeys(actions.SubActions.Select(x => ((KeyBoardKeysAct)x).Key).ToList());
+                    keyBoard.PressKeys(actions.SubActions.Select(x => ((KeyBoardKeysAct)x).Key).ToList());
             }
             catch (Exception ex)
             {

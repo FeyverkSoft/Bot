@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Core.Core;
 using Core.Handlers;
+using Core.Handlers.Factory;
 
 namespace Core
 {
@@ -18,7 +19,6 @@ namespace Core
         static AppContext()
         {
             SingDictionary.Add(typeof(IActionExecutorFactory), new DefaultActionExecutorFactory());
-            SingDictionary.Add(typeof(IKeyBoard), new NativeKeyBoard());
             SingDictionary.Add(typeof(IMouse), new NativeMouse());
             SingDictionary.Add(typeof(IWindowsProc), new NativeWindowsProc());
             SingDictionary.Add(typeof(IConfigValidator), new ConfigValidator());
