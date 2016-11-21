@@ -250,7 +250,7 @@
     <value>Клавиша, нажатие которой надо эмулировать</value>
   </data>
   <data name="KeyBoardAct_Time" xml:space="preserve">
-    <value>Время удерживания</value>
+    <value>Время удерживания (DxInput only)</value>
   </data>
   <data name="LoopAct" xml:space="preserve">
     <value>Действие цикла</value>

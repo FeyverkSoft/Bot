@@ -646,7 +646,7 @@ namespace Core.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Время удерживания.
+        ///   Ищет локализованную строку, похожую на Время удерживания (DxInput only).
         /// </summary>
         internal static string KeyBoardAct_Time {
             get {

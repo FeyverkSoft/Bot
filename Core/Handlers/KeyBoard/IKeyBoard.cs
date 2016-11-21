@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Core.Core;
 
-namespace Core.Handlers
+namespace Core.Handlers.KeyBoard
 {
     /// <summary>
     /// Интерфейс Класса для эмуляции клавиатуры

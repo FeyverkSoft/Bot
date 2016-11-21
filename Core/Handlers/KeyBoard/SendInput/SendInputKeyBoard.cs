@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using Core.Core;
 using LogWrapper;
 
-namespace Core.Handlers
+namespace Core.Handlers.KeyBoard.SendInput
 {
     public class SendInputKeyBoard : IKeyBoard
     {
@@ -71,9 +71,9 @@ namespace Core.Handlers
                     Keyboard = new KEYBDINPUT
                     {
                         Vk = (UInt16) keyCode,
-                        Scan = 0,
+                        Scan =  0,
                         Flags = 0,
-                        Time = 0,
+                        Time = 200,
                         ExtraInfo = IntPtr.Zero
                     }
                 }
@@ -87,7 +87,7 @@ namespace Core.Handlers
                     Keyboard = new KEYBDINPUT
                     {
                         Vk = (UInt16) keyCode,
-                        Scan = 0,
+                        Scan =  0,
                         Flags = (UInt32) KeyboardFlag.Keyup,
                         Time = 0,
                         ExtraInfo = IntPtr.Zero

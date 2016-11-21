@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using WindowsInput;
 
-namespace Core.Handlers
+namespace Core.Handlers.KeyBoard.SendInput
 {
 #pragma warning disable 649
     /// <summary>

@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Handlers.KeyBoard;
+using Core.Handlers.KeyBoard.DxInput;
+using Core.Handlers.KeyBoard.Native;
+using Core.Handlers.KeyBoard.SendInput;
 
 namespace Core.Handlers.Factory
 {
@@ -21,7 +25,9 @@ namespace Core.Handlers.Factory
                         Kb.Add(t, new NativeKeyBoard());
                     return Kb[t];
                 case KeyBoardType.DxInput:
-                    throw new NotImplementedException();
+                    if (!Kb.ContainsKey(t))
+                        Kb.Add(t, new DxInputKeyBoard());
+                    return Kb[t];
                 case KeyBoardType.SendInput:
                     if (!Kb.ContainsKey(t))
                         Kb.Add(t, new SendInputKeyBoard());

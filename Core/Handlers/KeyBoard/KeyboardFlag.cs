@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Handlers
+namespace Core.Handlers.KeyBoard
 {
     /// <summary>
     /// Определяет различные аспекты нажатия клавиши.

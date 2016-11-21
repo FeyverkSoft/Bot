@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Handlers
+namespace Core.Handlers.KeyBoard.SendInput
 {
 #pragma warning disable 649
     /// <summary>

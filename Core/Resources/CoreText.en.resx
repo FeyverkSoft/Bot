@@ -250,7 +250,7 @@
     <value>Key</value>
   </data>
   <data name="KeyBoardAct_Time" xml:space="preserve">
-    <value>Time</value>
+    <value>Time  (DxInput only)</value>
   </data>
   <data name="LoopAct" xml:space="preserve">
     <value>Loop</value>

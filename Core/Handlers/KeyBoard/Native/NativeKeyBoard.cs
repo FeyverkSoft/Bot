@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
 using Core.Core;
+using Core.Handlers.KeyBoard.SendInput;
 using LogWrapper;
 
-namespace Core.Handlers
+namespace Core.Handlers.KeyBoard.Native
 {
     /// <summary>
     /// Класс для эмуляции клавиатуры
