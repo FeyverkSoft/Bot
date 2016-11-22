@@ -13,7 +13,7 @@ namespace Core.Handlers.KeyBoard.Native
     {
 
         [DllImport("user32.dll")]
-        static extern void keybd_event(Int16 bVk, Byte bScan, uint dwFlags, IntPtr dwExtraInfo);
+        static extern void keybd_event(UInt16 bVk, Byte bScan, uint dwFlags, IntPtr dwExtraInfo);
 
         private void PressKeyInternal(KeyName keyCode, UInt32 pressTime = 0)
         {
