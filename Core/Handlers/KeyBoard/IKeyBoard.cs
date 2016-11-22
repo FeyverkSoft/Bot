@@ -14,11 +14,11 @@ namespace Core.Handlers.KeyBoard
         /// </summary>
         /// <param name="key"></param>
         /// <param name="pressTime"></param>
-        void PressKey(KeyCode key, UInt32 pressTime = 0);
+        void PressKey(KeyName key, UInt32 pressTime = 0);
 
         /// <summary>
         /// Эмулирует нажатие нескольких клавиш
         /// </summary>
-        void PressKeys(List<KeyCode> list);
+        void PressKeys(List<KeyName> list);
     }
 }

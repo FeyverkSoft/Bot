@@ -20,7 +20,7 @@ namespace Core.ConfigEntity.ActionObjects
         public new static ActionType ActionType => ActionType.KeyBoardKeys;
 
         [JsonConstructor]
-        public KeyBoardKeysAct(KeyCode key, UInt32 time = 0):base(key, time)
+        public KeyBoardKeysAct(KeyName key, UInt32 time = 0):base(key, time)
         {
         }
 

@@ -24,7 +24,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [DataMember]
         [LocDescription("KeyBoardAct_Key", typeof(Resources.CoreText))]
-        public KeyCode Key { get; set; }
+        public KeyName Key { get; set; }
         /// <summary>
         /// Время удержания клавиши
         /// </summary>
@@ -33,7 +33,7 @@ namespace Core.ConfigEntity.ActionObjects
         public UInt32 Time { get; set; }
 
         [JsonConstructor]
-        public KeyBoardAct(KeyCode key, UInt32 time = 0)
+        public KeyBoardAct(KeyName key, UInt32 time = 0)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(key:{key};)");
             Key = key;

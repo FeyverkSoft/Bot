@@ -11,7 +11,7 @@ namespace Core.Handlers.KeyBoard.SendInput
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         static extern UInt32 SendInput(UInt32 numberOfInputs, INPUT[] inputs, Int32 sizeOfInputStructure);
 
-        private void SimulateKeyDown(KeyCode keyCode)
+        private void SimulateKeyDown(KeyName keyCode)
         {
             var down = new INPUT
             {
@@ -36,7 +36,7 @@ namespace Core.Handlers.KeyBoard.SendInput
                 $"The key down simulation for {keyCode} was not successful.");
         }
 
-        private void SimulateKeyUp(KeyCode keyCode)
+        private void SimulateKeyUp(KeyName keyCode)
         {
             var up = new INPUT
             {
@@ -61,7 +61,7 @@ namespace Core.Handlers.KeyBoard.SendInput
                 $"The key up simulation for {keyCode} was not successful.");
         }
 
-        private void SimulateKeyPress(KeyCode keyCode)
+        private void SimulateKeyPress(KeyName keyCode)
         {
             var down = new INPUT
             {
@@ -108,7 +108,7 @@ namespace Core.Handlers.KeyBoard.SendInput
         /// </summary>
         /// <param name="key"></param>
         /// <param name="pressTime"></param>
-        public void PressKey(KeyCode key, UInt32 pressTime = 0)
+        public void PressKey(KeyName key, UInt32 pressTime = 0)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
             SimulateKeyPress(key);
@@ -118,7 +118,7 @@ namespace Core.Handlers.KeyBoard.SendInput
         /// <summary>
         /// Эмулирует нажатие нескольких клавиш
         /// </summary>
-        public void PressKeys(List<KeyCode> list)
+        public void PressKeys(List<KeyName> list)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
             foreach (var k in list) //Выполняем событие последовательного нажатия несколькоих клавиш

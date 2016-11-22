@@ -9,21 +9,26 @@ namespace Core.Handlers.KeyBoard.DxInput
 {
     public class DxInputKeyBoard : IKeyBoard
     {
-        Random r = new Random();
+        readonly Random _rand = new Random();
         [DllImport("user32.dll")]
         static extern UInt32 SendInput(UInt32 nInputs, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)] INPUT[] pInputs, Int32 cbSize);
 
-
-        public void Send_Key(Int16 Keycode, Int32 KeyUporDown)
+        private void SendKey(Int16 keycode, Int32 keyUporDown)
         {
-            INPUT[] inputData = new INPUT[1];
-
-            inputData[0].type = 1;
-            inputData[0].ki.wScan = Keycode;
-            inputData[0].ki.dwFlags = KeyUporDown;
-            inputData[0].ki.time = 100;
-            inputData[0].ki.dwExtraInfo = IntPtr.Zero;
-
+            var inputData = new INPUT[]
+            {
+                new INPUT
+                {
+                    type = 1,
+                    ki = new KEYBDINPUT
+                    {
+                        wScan = keycode,
+                        dwFlags = keyUporDown,
+                        time = 50,
+                        dwExtraInfo = IntPtr.Zero
+                    }
+                }
+            };
             SendInput(1, inputData, Marshal.SizeOf(typeof(INPUT)));
         }
 
@@ -33,29 +38,29 @@ namespace Core.Handlers.KeyBoard.DxInput
         /// </summary>
         /// <param name="key"></param>
         /// <param name="pressTime"></param>
-        public void PressKey(KeyCode key, UInt32 pressTime = 0)
+        public void PressKey(KeyName key, UInt32 pressTime = 0)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
-            Send_Key(0x11, (Int32)KeyboardFlag.Scancode);
-            Thread.Sleep((Int32)pressTime + r.Next(50));
-            Send_Key(0x11, (Int32)(KeyboardFlag.Keyup | KeyboardFlag.Scancode));
+            SendKey((Int16)key, (Int32)KeyboardFlag.Scancode);
+            Thread.Sleep((Int32)pressTime + _rand.Next(25));
+            SendKey((Int16)key, (Int32)(KeyboardFlag.Keyup | KeyboardFlag.Scancode));
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
         }
 
         /// <summary>
         /// Эмулирует нажатие нескольких клавиш
         /// </summary>
-        public void PressKeys(List<KeyCode> list)
+        public void PressKeys(List<KeyName> list)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
-            /* foreach (var k in list) //Выполняем событие последовательного нажатия несколькоих клавиш
-             {
-                 SimulateKeyDown(k);
-             }
-             foreach (var k in list) //Выполняем событие последовательного отпускания несколькоих клавиш
-             {
-                 SimulateKeyUp(k);
-             }*/
+            foreach (var k in list) //Выполняем событие последовательного нажатия несколькоих клавиш
+            {
+                SendKey((Int16)k, (Int32)KeyboardFlag.Scancode);
+            }
+            foreach (var k in list) //Выполняем событие последовательного отпускания несколькоих клавиш
+            {
+                SendKey((Int16)k, (Int32)(KeyboardFlag.Keyup | KeyboardFlag.Scancode));
+            }
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
         }
     }

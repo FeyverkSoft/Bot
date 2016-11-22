@@ -7,7 +7,7 @@ namespace Core.Core
     /// Коды клавиш, честно спи с MSDN
     /// </summary>
     [Description("Коды клавиш")]
-    public enum KeyCode : Byte
+    public enum KeyName : Byte
     {
         [Description("A")]
         A = 0x41,

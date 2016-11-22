@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Core.Core;
-using Core.Handlers.KeyBoard.SendInput;
 using LogWrapper;
 
 namespace Core.Handlers.KeyBoard.Native
@@ -32,7 +31,7 @@ namespace Core.Handlers.KeyBoard.Native
         /// </summary>
         /// <param name="key"></param>
         /// <param name="pressTime"></param>
-        public void PressKey(KeyCode key, UInt32 pressTime = 0)
+        public void PressKey(KeyName key, UInt32 pressTime = 0)
         {
             PressKeyInternal((Byte)key, pressTime);
         }
@@ -40,7 +39,7 @@ namespace Core.Handlers.KeyBoard.Native
         /// <summary>
         /// Эмулирует нажатие нескольких клавиш
         /// </summary>
-        public void PressKeys(List<KeyCode> list)
+        public void PressKeys(List<KeyName> list)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
             foreach (var k in list) //Выполняем событие последовательного нажатия несколькоих клавиш

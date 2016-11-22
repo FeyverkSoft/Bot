@@ -21,7 +21,7 @@ namespace WpfExecutor.Control
         [UsedImplicitly]
         public static FrameworkElementFactory GetFrameworkElementFactory()
         {
-            var list = typeof(KeyCode).GeEnumTuple();
+            var list = typeof(KeyName).GeEnumTuple();
             var factory = new FrameworkElementFactory(typeof(KeyCodeControl));
             factory.SetValue(ItemsSourceProperty, list);
             factory.SetBinding(SelectedItemProperty, new Binding(nameof(IPropModel.Value))
