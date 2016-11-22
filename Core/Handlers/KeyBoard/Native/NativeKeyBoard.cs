@@ -18,11 +18,11 @@ namespace Core.Handlers.KeyBoard.Native
         private void PressKeyInternal(KeyName keyCode, UInt32 pressTime = 0)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeyInternal)}");
-            Log.WriteLine($"--> press: 0x{keyCode:X2}, ");
-            keybd_event(keyCode.GetVKeyCode(), 0x45, (uint)KeyboardFlag.Extendedkey | 0, (IntPtr)0);
+            Log.WriteLine($"--> press: 0x{keyCode}, ");
+            keybd_event(keyCode.GetVKeyCode(), 0x45, (UInt32)KeyboardFlag.Extendedkey | 0, (IntPtr)0);
             //Thread.Sleep((Int32)pressTime);
-            keybd_event(keyCode.GetVKeyCode(), 0x45, (uint)(KeyboardFlag.Extendedkey | KeyboardFlag.Keyup), (IntPtr)0);
-            Log.WriteLine($"--> up: 0x{keyCode:X2}");
+            keybd_event(keyCode.GetVKeyCode(), 0x45, (UInt32)(KeyboardFlag.Extendedkey | KeyboardFlag.Keyup), (IntPtr)0);
+            Log.WriteLine($"--> up: 0x{keyCode}");
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeyInternal)}");
         }
 
@@ -44,13 +44,13 @@ namespace Core.Handlers.KeyBoard.Native
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
             foreach (var k in list) //Выполняем событие последовательного нажатия несколькоих клавиш
             {
-                Log.Write($"--> press: 0x{((Int32)k):X2}, ");
+                Log.Write($"--> press: {k}, ");
                 keybd_event(k.GetVKeyCode(), 0, 0, (IntPtr)0);
             }
             foreach (var k in list) //Выполняем событие последовательного отпускания несколькоих клавиш
             {
-                Log.Write($"--> up: 0x{((Int32)k):X2}, ");
-                keybd_event(k.GetVKeyCode(), 0, (uint)KeyboardFlag.Keyup, (IntPtr)0);
+                Log.Write($"--> up: {k}, ");
+                keybd_event(k.GetVKeyCode(), 0, (UInt32)KeyboardFlag.Keyup, (IntPtr)0);
             }
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
         }

@@ -11,9 +11,9 @@ namespace WpfExecutor.Control
     /// <summary>
     /// Логика взаимодействия для KeyCodeControl.xaml
     /// </summary>
-    public partial class KeyCodeControl : ComboBox, ICustomControl
+    public partial class KeyNameControl : ComboBox, ICustomControl
     {
-        public KeyCodeControl()
+        public KeyNameControl()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace WpfExecutor.Control
         public static FrameworkElementFactory GetFrameworkElementFactory()
         {
             var list = typeof(KeyName).GeEnumTuple();
-            var factory = new FrameworkElementFactory(typeof(KeyCodeControl));
+            var factory = new FrameworkElementFactory(typeof(KeyNameControl));
             factory.SetValue(ItemsSourceProperty, list);
             factory.SetBinding(SelectedItemProperty, new Binding(nameof(IPropModel.Value))
             {
