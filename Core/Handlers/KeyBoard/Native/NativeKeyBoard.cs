@@ -18,11 +18,11 @@ namespace Core.Handlers.KeyBoard.Native
         private void PressKeyInternal(KeyName keyCode, UInt32 pressTime = 0)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeyInternal)}");
-            Log.WriteLine($"--> press: 0x{keyCode}, ");
+            Log.WriteLine($"--> press: {keyCode}, ");
             keybd_event(keyCode.GetVKeyCode(), 0x45, (UInt32)KeyboardFlag.Extendedkey | 0, (IntPtr)0);
             //Thread.Sleep((Int32)pressTime);
             keybd_event(keyCode.GetVKeyCode(), 0x45, (UInt32)(KeyboardFlag.Extendedkey | KeyboardFlag.Keyup), (IntPtr)0);
-            Log.WriteLine($"--> up: 0x{keyCode}");
+            Log.WriteLine($"--> up: {keyCode}");
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeyInternal)}");
         }
 
