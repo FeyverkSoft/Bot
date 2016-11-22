@@ -61,6 +61,15 @@ namespace Core.Handlers.KeyBoard
                 {KeyName.B, new Key(KeyName.B, 0x42, 0x30) },
                 {KeyName.N, new Key(KeyName.N, 0x4e, 0x31) },
                 {KeyName.M, new Key(KeyName.M, 0x4d, 0x32) },
+                {KeyName.Comma, new Key(KeyName.Comma, 0xBC, 0x33) },
+                {KeyName.Dot, new Key(KeyName.Dot, 0xBE, 0x34) },
+                {KeyName.Slash, new Key(KeyName.Slash, 0xBF, 0x35) },
+                {KeyName.RShift, new Key(KeyName.RShift, 0xA1, 0x36) },
+                {KeyName.Multiply, new Key(KeyName.Multiply, 0x6A, 0x37) },
+                {KeyName.LAlt, new Key(KeyName.LAlt, 0xA4, 0x38) },
+                {KeyName.Space, new Key(KeyName.Space, 0x20, 0x39) },
+                {KeyName.CapsLock, new Key(KeyName.CapsLock, 0x14, 0x3A) },
+                {KeyName.F1, new Key(KeyName.F1, 0x70, 0x3B) },
             };
         }
     }
