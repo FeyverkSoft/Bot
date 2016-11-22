@@ -13,15 +13,15 @@ namespace Core.Handlers.KeyBoard.Native
     {
 
         [DllImport("user32.dll")]
-        static extern void keybd_event(Byte bVk, byte bScan, uint dwFlags, IntPtr dwExtraInfo);
+        static extern void keybd_event(Int16 bVk, Byte bScan, uint dwFlags, IntPtr dwExtraInfo);
 
-        private void PressKeyInternal(Byte keyCode, UInt32 pressTime = 0)
+        private void PressKeyInternal(KeyName keyCode, UInt32 pressTime = 0)
         {
             Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeyInternal)}");
             Log.WriteLine($"--> press: 0x{keyCode:X2}, ");
-            keybd_event(keyCode, 0x45, (uint)KeyboardFlag.Extendedkey | 0, (IntPtr)0);
+            keybd_event(keyCode.GetVKeyCode(), 0x45, (uint)KeyboardFlag.Extendedkey | 0, (IntPtr)0);
             //Thread.Sleep((Int32)pressTime);
-            keybd_event(keyCode, 0x45, (uint)(KeyboardFlag.Extendedkey | KeyboardFlag.Keyup), (IntPtr)0);
+            keybd_event(keyCode.GetVKeyCode(), 0x45, (uint)(KeyboardFlag.Extendedkey | KeyboardFlag.Keyup), (IntPtr)0);
             Log.WriteLine($"--> up: 0x{keyCode:X2}");
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeyInternal)}");
         }
@@ -33,7 +33,7 @@ namespace Core.Handlers.KeyBoard.Native
         /// <param name="pressTime"></param>
         public void PressKey(KeyName key, UInt32 pressTime = 0)
         {
-            PressKeyInternal((Byte)key, pressTime);
+            PressKeyInternal(key, pressTime);
         }
 
         /// <summary>
@@ -45,12 +45,12 @@ namespace Core.Handlers.KeyBoard.Native
             foreach (var k in list) //Выполняем событие последовательного нажатия несколькоих клавиш
             {
                 Log.Write($"--> press: 0x{((Int32)k):X2}, ");
-                keybd_event((Byte)k, 0, 0, (IntPtr)0);
+                keybd_event(k.GetVKeyCode(), 0, 0, (IntPtr)0);
             }
             foreach (var k in list) //Выполняем событие последовательного отпускания несколькоих клавиш
             {
                 Log.Write($"--> up: 0x{((Int32)k):X2}, ");
-                keybd_event((Byte)k, 0, (uint)KeyboardFlag.Keyup, (IntPtr)0);
+                keybd_event(k.GetVKeyCode(), 0, (uint)KeyboardFlag.Keyup, (IntPtr)0);
             }
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
         }

@@ -107,7 +107,7 @@
     <Compile Include="Handlers\KeyBoard\DxInput\KEYBDINPUT.cs" />
     <Compile Include="Handlers\KeyBoard\DxInput\MOUSEINPUT.cs" />
     <Compile Include="Handlers\KeyBoard\Key.cs" />
-    <Compile Include="Handlers\KeyBoard\KeyCodeFactory.cs" />
+    <Compile Include="Handlers\KeyBoard\KeyCodeHelper.cs" />
     <Compile Include="Handlers\KeyBoard\SendInput\INPUT.cs" />
     <Compile Include="Handlers\KeyBoard\SendInput\KEYBDINPUT.cs" />
     <Compile Include="Handlers\KeyBoard\KeyboardFlag.cs" />

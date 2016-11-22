@@ -20,7 +20,7 @@ namespace Core.Handlers.KeyBoard.SendInput
                 {
                     Keyboard = new KEYBDINPUT
                     {
-                        Vk = (UInt16) keyCode,
+                        Vk =  keyCode.GetVKeyCode(),
                         Scan = 0,
                         Flags = 0,
                         Time = 0,
@@ -45,7 +45,7 @@ namespace Core.Handlers.KeyBoard.SendInput
                 {
                     Keyboard = new KEYBDINPUT
                     {
-                        Vk = (UInt16) keyCode,
+                        Vk = keyCode.GetVKeyCode(),
                         Scan = 0,
                         Flags = (UInt32) KeyboardFlag.Keyup,
                         Time = 0,
@@ -70,7 +70,7 @@ namespace Core.Handlers.KeyBoard.SendInput
                 {
                     Keyboard = new KEYBDINPUT
                     {
-                        Vk = (UInt16) keyCode,
+                        Vk = keyCode.GetVKeyCode(),
                         Scan =  0,
                         Flags = 0,
                         Time = 200,
@@ -86,7 +86,7 @@ namespace Core.Handlers.KeyBoard.SendInput
                 {
                     Keyboard = new KEYBDINPUT
                     {
-                        Vk = (UInt16) keyCode,
+                        Vk =  keyCode.GetVKeyCode(),
                         Scan =  0,
                         Flags = (UInt32) KeyboardFlag.Keyup,
                         Time = 0,
