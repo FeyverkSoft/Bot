@@ -85,7 +85,7 @@
 
                         <!-- KeyBoard Input Method -->
                         <TextBlock Grid.Row="2" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_KeyBoardInputMethod}"></TextBlock>
-                        <ComboBox  Grid.Row="2" Grid.Column="1" 
+                        <ComboBox  Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center"
                            SelectedValue="{Binding KeyBoardType, Converter={converter:TupleConverter}, ConverterParameter={x:Type factory:KeyBoardType}}" 
                            ItemsSource="{Binding Source={x:Type factory:KeyBoardType}, Converter={converter:EnumConverter}}">
                             <ComboBox.ItemTemplate>
