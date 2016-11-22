@@ -3,6 +3,9 @@ using Core.Core;
 
 namespace Core.Handlers.KeyBoard
 {
+    /// <summary>
+    /// Коды клавиш, честно спи с MSDN
+    /// </summary>
     public static class KeyCodeFactory
     {
         private static readonly Dictionary<KeyName, Key> KeyArray;
@@ -22,8 +25,8 @@ namespace Core.Handlers.KeyBoard
                 {KeyName.D8, new Key(KeyName.D8, 0x38, 0x09) },
                 {KeyName.D9, new Key(KeyName.D9, 0x39, 0x0A) },
                 {KeyName.D0, new Key(KeyName.D0, 0x30, 0x0B) },
-                {KeyName.Minus, new Key(KeyName.OemMinus, 0xbd, 0x0C) },
-                {KeyName.EQUALS, new Key(KeyName.EQUALS, 0xBB, 0x0D) },
+                {KeyName.Minus, new Key(KeyName.Minus, 0xbd, 0x0C) },
+                {KeyName.Equals, new Key(KeyName.Equals, 0xBB, 0x0D) },
                 {KeyName.Plus, new Key(KeyName.Plus, 0xBB, 0x0D) },
                 {KeyName.BackSpace, new Key(KeyName.BackSpace, 0x8, 0x0E) },
                 {KeyName.Tab, new Key(KeyName.Tab, 0x9, 0x0F) },
@@ -37,8 +40,8 @@ namespace Core.Handlers.KeyBoard
                 {KeyName.I, new Key(KeyName.I, 0x49, 0x17) },
                 {KeyName.O, new Key(KeyName.O, 0x4f, 0x18) },
                 {KeyName.P, new Key(KeyName.P, 0x50, 0x19) },
-                {KeyName.LBRACKET, new Key(KeyName.LBRACKET, 0xDB, 0x1A) },
-                {KeyName.RBRACKET, new Key(KeyName.RBRACKET, 0xDD, 0x1B) },
+                {KeyName.Lbracket, new Key(KeyName.Lbracket, 0xDB, 0x1A) },
+                {KeyName.Rbracket, new Key(KeyName.Rbracket, 0xDD, 0x1B) },
                 {KeyName.Enter, new Key(KeyName.Enter, 0xD, 0x1C) },
                 {KeyName.LControl, new Key(KeyName.LControl, 0xA2, 0x1D) },
                 {KeyName.A, new Key(KeyName.A, 0x41, 0x1E) },
@@ -51,8 +54,8 @@ namespace Core.Handlers.KeyBoard
                 {KeyName.K, new Key(KeyName.K, 0x4b, 0x25) },
                 {KeyName.L, new Key(KeyName.L, 0x4c, 0x26) },
                 {KeyName.Semicolon, new Key(KeyName.Semicolon, 0xba, 0x27) },
-                {KeyName.APOSTROPHE, new Key(KeyName.APOSTROPHE, 0xDE, 0x28) },
-                {KeyName.Tilde, new Key(KeyName.APOSTROPHE, 0xC0, 0x29) },
+                {KeyName.Apostrophe, new Key(KeyName.Apostrophe, 0xDE, 0x28) },
+                {KeyName.Tilde, new Key(KeyName.Apostrophe, 0xC0, 0x29) },
                 {KeyName.LShift, new Key(KeyName.LShift, 0xA0, 0x2A) },
                 {KeyName.Backslash, new Key(KeyName.Backslash, 0xE2, 0x2B) },
                 {KeyName.Z, new Key(KeyName.Z, 0x5A, 0x2C) },
@@ -94,7 +97,7 @@ namespace Core.Handlers.KeyBoard
                 {KeyName.NumPad2, new Key(KeyName.NumPad2, 0x62, 0x50) },
                 {KeyName.NumPad3, new Key(KeyName.NumPad3, 0x63, 0x51) },
                 {KeyName.NumPad0, new Key(KeyName.NumPad0, 0x60, 0x52) },
-                {KeyName.NumPadDECIMAL, new Key(KeyName.NumPadDECIMAL, 0x6E, 0x53) },
+                {KeyName.NumPadDecimal, new Key(KeyName.NumPadDecimal, 0x6E, 0x53) },
                 {KeyName.F11, new Key(KeyName.F11, 0x7a, 0x57) },
                 {KeyName.F12, new Key(KeyName.F12, 0x7b, 0x58) },
                 {KeyName.F13, new Key(KeyName.F13, 0x7c, 0x64) },
@@ -102,7 +105,7 @@ namespace Core.Handlers.KeyBoard
                 {KeyName.F15, new Key(KeyName.F15, 0x7e, 0x66) },
                 {KeyName.NumPadEnter, new Key(KeyName.NumPadEnter, 0x0D, 0x9C) },
                 {KeyName.RControl, new Key(KeyName.RControl, 0xA3, 0x9D) },
-                {KeyName.NumPadDIVIDE, new Key(KeyName.NumPadDIVIDE, 0x6F, 0xB5) },
+                {KeyName.NumPadDivide, new Key(KeyName.NumPadDivide, 0x6F, 0xB5) },
                 {KeyName.PrintScreen, new Key(KeyName.PrintScreen, 0x2C, 0xB7) },
                 {KeyName.RAlt, new Key(KeyName.RAlt, 0xA5, 0xB8) },
                 {KeyName.Pause, new Key(KeyName.Pause, 0x13, 0xC5) },
