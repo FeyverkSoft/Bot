@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Core;
 using Core.ConfigEntity;
@@ -78,7 +80,7 @@ namespace WpfExecutor.Model
         /// <summary>
         /// Меню предоставляемые плагинами
         /// </summary>
-        public List<PluginMenuItemModel> PluginMenu { get; }
+        public List<MenuItem> PluginMenu { get; }
 
         /// <summary>
         /// Логи бота
@@ -115,12 +117,42 @@ namespace WpfExecutor.Model
             }
 
             StaticPropertyChanged += OnStaticPropertyChanged;
-            PluginMenu = new List<PluginMenuItemModel>();
+            PluginMenu = new List<MenuItem>();
             foreach (var plugin in Assemblys.PluginsList.Distinct())
             {
+
                 if (plugin.ShowMenue)
-                    PluginMenu.Add(plugin.Menu);
+                {
+                    var item = new MenuItem
+                    {
+                        Header = plugin.Name
+                    };
+                    item.Items.Add(new MenuItem
+                    {
+                        Header = plugin.Menu.Title,
+                        Command = new DelegateCommand(plugin.Menu.Command),
+                        ItemsSource = FullPMenu(plugin.Menu.MenuItems)
+                    });
+                    PluginMenu.Add(item);
+                }
             }
+        }
+
+        private ObservableCollection<MenuItem> FullPMenu(IReadOnlyCollection<PluginMenuItemModel> menu)
+        {
+            var list = new ObservableCollection<MenuItem>();
+            if (menu == null)
+                return list;
+            foreach (var pluginMenuItemModel in menu)
+            {
+                list.Add(new MenuItem
+                {
+                    Header = pluginMenuItemModel.Title,
+                    Command = new DelegateCommand(pluginMenuItemModel.Command),
+                    ItemsSource = (pluginMenuItemModel.MenuItems?.Count > 0) ? FullPMenu(pluginMenuItemModel.MenuItems) : null
+                });
+            }
+            return list;
         }
 
         /// <summary>

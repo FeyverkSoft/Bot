@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-using Plugin;
+using Core.Plugin;
 
 namespace Core.ActionExecutors.Factory
 {
     /// <summary>
     /// Фабрика для плагинов по умолчанию
     /// </summary>
-    internal class DefaultPluginFactory : IPluginFactory
+    public class DefaultPluginFactory : IPluginFactory
     {
         /// <summary>
         /// Возвращает плагин по его названию

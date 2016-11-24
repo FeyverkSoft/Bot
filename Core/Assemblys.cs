@@ -5,21 +5,22 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Core.Helpers;
+using Core.Plugin;
 using LogWrapper;
-using Plugin;
 
 namespace Core
 {
-    internal static class Assemblys
+    public static class Assemblys
     {
         /// <summary>
         /// Список сборок в плагинах
         /// </summary>
         internal static readonly List<Assembly> AssemblyPluginsList = new List<Assembly>();
+
         /// <summary>
         /// Список плагинов
         /// </summary>
-        internal static readonly List<IPlugin> PluginsList = new List<IPlugin>();
+        public static readonly List<IPlugin> PluginsList = new List<IPlugin>();
 
         /// <summary>
         /// Список плагинов
@@ -27,7 +28,9 @@ namespace Core
         internal static readonly List<Type> PluginsTypeList = new List<Type>();
 
         private static List<Type> _typeList;
-        internal static List<Type> TypeList => _typeList ?? (_typeList = Assembly.GetExecutingAssembly().GetTypes().ToList());
+
+        internal static List<Type> TypeList
+            => _typeList ?? (_typeList = Assembly.GetExecutingAssembly().GetTypes().ToList());
 
         /// <summary>
         /// Загрузка плагинов и их типов
@@ -41,10 +44,10 @@ namespace Core
                 return;
             }
             //При повторном вызове не загружаем всё снова
-            if (AssemblyPluginsList.Count > 0)
+            if (AssemblyPluginsList.Count > 0 || PluginsList.Count > 0)
                 return;
             //Получаем путь до программы
-            var sPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName); ;
+            var sPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
 
             //Проходим циклом по всем файлом с расширением .dll
             DirectoryHelper.CreateDirectory($"{sPath}/Plugins");
@@ -53,26 +56,30 @@ namespace Core
                 var assem = Assembly.LoadFrom(f);
                 if (!AssemblyPluginsList.Contains(assem))
                     AssemblyPluginsList.Add(assem);
-
-                foreach (var t in AssemblyPluginsList.Select(x => x.GetTypes().FirstOrDefault(t => t.GetInterfaces().Any(i => i == typeof(IPlugin)))).Where(tt => tt != null))
+                try
                 {
+                    var tm = assem.GetTypes().FirstOrDefault(t => t.GetInterfaces().Any(i => i == typeof(IPlugin)));
                     try
                     {
                         //Подписываемся на события плагина и добавляем его в список плагинов
-                        IPlugin p = (IPlugin)Activator.CreateInstance(t);
+                        IPlugin p = (IPlugin)Activator.CreateInstance(tm);
                         if (!PluginsList.Contains(p))
                         {
                             //Добавляем плагины
-                            if (!AppConfig.Instance.PrioritetList.Contains(t.Assembly.GetName().Name))
-                                AppConfig.Instance.PrioritetList.Add(t.Assembly.GetName().Name);
+                            if (!AppConfig.Instance.PrioritetList.Contains(tm.Assembly.GetName().Name))
+                                AppConfig.Instance.PrioritetList.Add(tm.Assembly.GetName().Name);
                             PluginsList.Add(p);
                             PluginsTypeList.AddRange(assem.GetTypes());
                         }
                         Log.WriteLine(new { message = $"Add plagin {p.Name}" });
                     }
                     catch { }
-                }
 
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteLine(ex, LogLevel.Error);
+                }
                 foreach (var s in AppConfig.Instance.PrioritetList.Where(s => s != Assembly.GetExecutingAssembly().GetName().Name))
                 {
                     if (PluginsList.Any(x => x.GetType().Assembly.GetName().Name == s))

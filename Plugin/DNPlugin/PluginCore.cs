@@ -2,8 +2,8 @@
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
+using Core.Plugin;
 using ImgComparer.ActionObjects;
-using Plugin;
 
 namespace ImgComparer
 {
@@ -42,5 +42,26 @@ namespace ImgComparer
             throw new NotSupportedException();
         }
 
+        /// <summary>
+        /// Отображать меню или нет?
+        /// </summary>
+        public Boolean ShowMenue => true;
+
+        /// <summary>
+        /// Меню которое предоставляет бот
+        /// </summary>
+        public PluginMenuItemModel Menu { get; }
+
+        public PluginCore()
+        {
+            Menu = new PluginMenuItemModel
+            {
+                Title = "Показать настройки распознователя",
+                Command = () =>
+                {
+                    throw  new Exception("Oooooooooooooooooooo");
+                }
+            };
+        }
     }
 }

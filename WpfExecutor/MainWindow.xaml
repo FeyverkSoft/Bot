@@ -91,15 +91,11 @@
                 </MenuItem>
 
                 <MenuItem Template="{StaticResource MenuItemControlTemplate}" MaxHeight="60" Header="{localization:Localization Key=Text_Plugins}"
-                          ItemsSource="{Binding PluginMenu}">
+                          ItemsSource="{Binding PluginMenu}"
+                         >
                     <MenuItem.Icon>
                         <Image Source="{StaticResource PluginIcon}" />
                     </MenuItem.Icon>
-                    <MenuItem.ItemTemplate>
-                        <DataTemplate>
-                            <Button Command="{Binding Command}" Content="{Binding Title}" Background="Transparent"/>
-                        </DataTemplate>
-                    </MenuItem.ItemTemplate>
                 </MenuItem>
             </Menu>
             <!--Меню справа-->

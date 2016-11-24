@@ -140,6 +140,7 @@
     <Compile Include="ConfigEntity\IConfigReader.cs" />
     <Compile Include="ConfigEntity\SaveFileParam.cs" />
     <Compile Include="CoreFactory.cs" />
+    <Compile Include="Plugin\PluginMenuItemModel.cs" />
     <Compile Include="Resources\CoreText.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,7 +173,7 @@
     <Compile Include="Helpers\MySerializationBinder.cs" />
     <Compile Include="Helpers\ScreenCaptureHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
-    <Compile Include="IPlugin.cs" />
+    <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Assemblys.cs" />
     <Compile Include="Message\EmailMessageSender.cs" />
     <Compile Include="Message\EMessageType.cs" />
