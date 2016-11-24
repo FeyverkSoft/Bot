@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Core;
 using Core.ConfigEntity;
 using Core.Core;
+using Core.Plugin;
 using LogWrapper.Helpers;
 using Microsoft.Win32;
 using WpfConverters.Extensions;
@@ -74,6 +76,11 @@ namespace WpfExecutor.Model
         public String Path => Document.Instance.Path;
 
         /// <summary>
+        /// Меню предоставляемые плагинами
+        /// </summary>
+        public List<PluginMenuItemModel> PluginMenu { get; }
+
+        /// <summary>
         /// Логи бота
         /// </summary>
         public String TextLog
@@ -108,6 +115,12 @@ namespace WpfExecutor.Model
             }
 
             StaticPropertyChanged += OnStaticPropertyChanged;
+            PluginMenu = new List<PluginMenuItemModel>();
+            foreach (var plugin in Assemblys.PluginsList.Distinct())
+            {
+                if (plugin.ShowMenue)
+                    PluginMenu.Add(plugin.Menu);
+            }
         }
 
         /// <summary>

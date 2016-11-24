@@ -383,7 +383,7 @@ Size - Размер
     <value>Ширина: </value>
   </data>
   <data name="Title_AboutWin" xml:space="preserve">
-    <value>О программе: Консоль управления для бота</value>
+    <value>О программе: Консоль управления автоматизатором действий</value>
   </data>
   <data name="Title_MainWin" xml:space="preserve">
     <value>Консоль управления для бота</value>

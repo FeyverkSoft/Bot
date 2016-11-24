@@ -9,7 +9,7 @@ using System.Windows;
 [assembly: AssemblyDescription("Графическая консоль управления и конфигрурирования для бота")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("FeyverkSoft")]
-[assembly: AssemblyProduct("Консоль управления ботом")]
+[assembly: AssemblyProduct("Консоль управления")]
 [assembly: AssemblyCopyright("Copyright FeyverkSoft ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -49,5 +49,5 @@ using System.Windows;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.2.3")]
-[assembly: AssemblyFileVersion("1.0.2.3")]
+[assembly: AssemblyVersion("1.0.2.8")]
+[assembly: AssemblyFileVersion("1.0.2.8")]

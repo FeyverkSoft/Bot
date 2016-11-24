@@ -89,6 +89,18 @@
                     <MenuItem Header="{localization:Localization Text_About}" Command="{Binding AboutCommand}">
                     </MenuItem>
                 </MenuItem>
+
+                <MenuItem Template="{StaticResource MenuItemControlTemplate}" MaxHeight="60" Header="{localization:Localization Key=Text_Plugins}"
+                          ItemsSource="{Binding PluginMenu}">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource PluginIcon}" />
+                    </MenuItem.Icon>
+                    <MenuItem.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding Command}" Content="{Binding Title}" Background="Transparent"/>
+                        </DataTemplate>
+                    </MenuItem.ItemTemplate>
+                </MenuItem>
             </Menu>
             <!--Меню справа-->
             <Menu Grid.Column="1" HorizontalAlignment="Right"  Background="Transparent">
