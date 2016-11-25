@@ -17,7 +17,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Тип действия для внутренней фабрики
         /// </summary>
         [IgnoreDataMember]
-        public new static ActionType ActionType => ActionType.KeyBoardKeys;
+        public new static ActionType ActionType => ActionType.KeyBoardShortcut;
 
         [JsonConstructor]
         public KeyBoardKeysAct(KeyName key, UInt32 time = 0):base(key, time)

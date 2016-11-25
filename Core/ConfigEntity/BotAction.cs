@@ -115,8 +115,8 @@ namespace Core.ConfigEntity
                         return true;
                     case ActionType.MouseSetPos:
                         return true;
-                    case ActionType.KeyBoard:
-                    case ActionType.KeyBoardKeys:
+                    case ActionType.KeyBoardPressKey:
+                    case ActionType.KeyBoardShortcut:
                         return true;
                     case ActionType.Sleep:
                         return false;

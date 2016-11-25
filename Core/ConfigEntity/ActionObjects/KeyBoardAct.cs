@@ -18,7 +18,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// Тип действия для внутренней фабрики
         /// </summary>
         [IgnoreDataMember]
-        public new static ActionType ActionType => ActionType.KeyBoard;
+        public new static ActionType ActionType => ActionType.KeyBoardPressKey;
         /// <summary>
         /// Клавиша, нажатие которой надо эмулировать
         /// </summary>

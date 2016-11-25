@@ -27,8 +27,9 @@ namespace WpfExecutor.Converter
                     case ActionType.GetMousePos:
                         group = "Mouse";
                         break;
-                    case ActionType.KeyBoard:
-                    case ActionType.KeyBoardKeys:
+                    case ActionType.KeyBoardPressKey:
+                    case ActionType.KeyBoardShortcut:
+                    case ActionType.KeyBoardAction:
                         group = "Keyboard";
                         break;
                     case ActionType.Sleep:

@@ -20,7 +20,7 @@ namespace Core.ActionExecutors
         /// <summary>
         /// Тип действия для внутренней фабрики
         /// </summary>
-        public new static ActionType ActionType => ActionType.KeyBoard;
+        public new static ActionType ActionType => ActionType.KeyBoardPressKey;
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
