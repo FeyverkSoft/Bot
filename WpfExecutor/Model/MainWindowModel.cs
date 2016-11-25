@@ -166,6 +166,7 @@ namespace WpfExecutor.Model
             {
                 OnPropertyChanged(nameof(Json));
                 OnPropertyChanged(nameof(ErrList));
+                OnPropertyChanged(nameof(Path));
             }
         }
 
