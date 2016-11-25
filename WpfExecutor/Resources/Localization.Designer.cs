@@ -354,11 +354,21 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Расширенный параметры действий с клавиатурой :)
+        ///За все возможные побочные эффекты, юзер отвечает сам..
+        /// </summary>
+        internal static string Description_KeyBoardAction {
+            get {
+                return ResourceManager.GetString("Description_KeyBoardAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Действие нажатия одной или нескольких клавиш последовательно..
         /// </summary>
-        internal static string Description_KeyBoard {
+        internal static string Description_KeyBoardPressKey {
             get {
-                return ResourceManager.GetString("Description_KeyBoard", resourceCulture);
+                return ResourceManager.GetString("Description_KeyBoardPressKey", resourceCulture);
             }
         }
         
@@ -366,9 +376,9 @@ namespace WpfExecutor.Resources {
         ///   Ищет локализованную строку, похожую на Действие нажатия одновременно нескольких клавиш на клавиатуре.
         ///Иначе говоря нажатие сочитания клавиш..
         /// </summary>
-        internal static string Description_KeyBoardKeys {
+        internal static string Description_KeyBoardShortcut {
             get {
-                return ResourceManager.GetString("Description_KeyBoardKeys", resourceCulture);
+                return ResourceManager.GetString("Description_KeyBoardShortcut", resourceCulture);
             }
         }
         
@@ -844,6 +854,15 @@ namespace WpfExecutor.Resources {
         internal static string Text_Path {
             get {
                 return ResourceManager.GetString("Text_Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меню плагинов.
+        /// </summary>
+        internal static string Text_Plugins {
+            get {
+                return ResourceManager.GetString("Text_Plugins", resourceCulture);
             }
         }
         

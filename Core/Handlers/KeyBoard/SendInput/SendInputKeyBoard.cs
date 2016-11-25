@@ -110,9 +110,8 @@ namespace Core.Handlers.KeyBoard.SendInput
         /// <param name="pressTime"></param>
         public void PressKey(KeyName key, UInt32 pressTime = 0)
         {
-            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
+            Log.WriteLine($"-- PressKey -- {GetType().Name}.{nameof(PressKeys)}; key:{key}; pressTime: {pressTime}");
             SimulateKeyPress(key);
-            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
         }
 
         /// <summary>
@@ -130,6 +129,30 @@ namespace Core.Handlers.KeyBoard.SendInput
                 SimulateKeyUp(k);
             }
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
+        }
+
+        /// <summary>
+        /// Вызвать событие для клавиши
+        /// </summary>
+        /// <param name="key">Клавиша</param>
+        /// <param name="action">Событие</param>
+        public void InvokeKeyAct(KeyName key, KeyAction action)
+        {
+            Log.WriteLine($"-- InvokeKeyAct -- {GetType().Name}.{nameof(PressKeys)}, key:{key}; action:{action}");
+            switch (action)
+            {
+                case KeyAction.Press:
+                    PressKey(key);
+                    break;
+                case KeyAction.Down:
+                    SimulateKeyDown(key);
+                    break;
+                case KeyAction.Up:
+                    SimulateKeyUp(key);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(action), action, null);
+            }
         }
     }
 }

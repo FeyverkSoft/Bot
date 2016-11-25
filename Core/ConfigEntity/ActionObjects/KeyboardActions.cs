@@ -2,44 +2,46 @@
 using System.Runtime.Serialization;
 using CommonLib.Attributes;
 using Core.Core;
+using Core.Handlers.KeyBoard;
 using LogWrapper;
 using Newtonsoft.Json;
 
 namespace Core.ConfigEntity.ActionObjects
 {
     /// <summary>
-    /// Событие нажатия клавишы на клавиатуре.
+    /// Событие клавиатуры
     /// </summary>
     [DataContract]
-    [LocDescription("KeyBoardAct", typeof(Resources.CoreText))]
-    public class KeyBoardAct : BaseActionObject
+    [LocDescription("KeyboardAct", typeof(Resources.CoreText))]
+    public class KeyboardAct : BaseActionObject
     {
         /// <summary>
         /// Тип действия для внутренней фабрики
         /// </summary>
         [IgnoreDataMember]
-        public new static ActionType ActionType => ActionType.KeyBoardPressKey;
+        public new static ActionType ActionType => ActionType.KeyBoardAction;
+
         /// <summary>
         /// Клавиша, нажатие которой надо эмулировать
         /// </summary>
         [DataMember]
         [LocDescription("KeyBoardAct_Key", typeof(Resources.CoreText))]
         public KeyName Key { get; set; }
+
         /// <summary>
-        /// Время удержания клавиши
+        /// Клавиша, нажатие которой надо эмулировать
         /// </summary>
         [DataMember]
-        [LocDescription("KeyBoardAct_Time", typeof(Resources.CoreText))]
-        public UInt32 Time { get; set; }
+        [LocDescription("KeyboardAct_KeyAction", typeof(Resources.CoreText))]
+        public KeyAction KeyAction { get; set; }
 
         [JsonConstructor]
-        public KeyBoardAct(KeyName key, UInt32 time = 0)
+        public KeyboardAct(KeyName key, KeyAction action)
         {
             Log.WriteLine($"{GetType().Name}.ctor->(key:{key};)");
             Key = key;
-            Time = time;
+            KeyAction = action;
         }
-
-        public KeyBoardAct() { }
+        public KeyboardAct(){}
     }
 }

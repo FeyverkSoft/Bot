@@ -66,11 +66,12 @@
     <Compile Include="ActionExecutors\GetScreenShotExecutor.cs" />
     <Compile Include="ActionExecutors\GetMousePosExecutor.cs" />
     <Compile Include="ActionExecutors\IfExecutor.cs" />
+    <Compile Include="ActionExecutors\KeyBoardActionExecutor.cs" />
     <Compile Include="ActionExecutors\SendMessageExecutor.cs" />
-    <Compile Include="ActionExecutors\KeyBoardKeysExecutor.cs" />
+    <Compile Include="ActionExecutors\KeyBoardShortcutExecutor.cs" />
     <Compile Include="ActionExecutors\MockExecutor.cs" />
     <Compile Include="ActionExecutors\MouseLClickExecutor.cs" />
-    <Compile Include="ActionExecutors\KeyBoardExecutor.cs" />
+    <Compile Include="ActionExecutors\KeyBoardPressKeyExecutor.cs" />
     <Compile Include="ActionExecutors\ExpectWindowExecutor.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\EResultState.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\ExpectWindowExecutorResult.cs" />
@@ -89,7 +90,8 @@
     <Compile Include="ConfigEntity\ActionObjects\Conditional.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ConditionalParam.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GoToAct.cs" />
-    <Compile Include="ConfigEntity\ActionObjects\KeyBoardKeysAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\KeyBoardShortcut.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\KeyboardActions.cs" />
     <Compile Include="ConfigEntity\ActionObjects\StackAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LabelAct.cs" />
     <Compile Include="Core\ConfigValidator.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="Handlers\KeyBoard\DxInput\KEYBDINPUT.cs" />
     <Compile Include="Handlers\KeyBoard\DxInput\MOUSEINPUT.cs" />
     <Compile Include="Handlers\KeyBoard\Key.cs" />
+    <Compile Include="Handlers\KeyBoard\KeyAction.cs" />
     <Compile Include="Handlers\KeyBoard\KeyCodeHelper.cs" />
     <Compile Include="Handlers\KeyBoard\SendInput\INPUT.cs" />
     <Compile Include="Handlers\KeyBoard\SendInput\KEYBDINPUT.cs" />
@@ -127,7 +130,7 @@
     <Compile Include="ConfigEntity\ListBotAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ListAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IAction.cs" />
-    <Compile Include="ConfigEntity\ActionObjects\KeyBoardAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\KeyBoardPressKeyAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\MouseMoveAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LoopAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\MouseSetPosAct.cs" />

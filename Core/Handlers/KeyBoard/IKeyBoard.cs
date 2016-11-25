@@ -20,5 +20,12 @@ namespace Core.Handlers.KeyBoard
         /// Эмулирует нажатие нескольких клавиш
         /// </summary>
         void PressKeys(List<KeyName> list);
+
+        /// <summary>
+        /// Вызвать событие для клавиши
+        /// </summary>
+        /// <param name="key">Клавиша</param>
+        /// <param name="action">Событие</param>
+        void InvokeKeyAct(KeyName key, KeyAction action);
     }
 }

@@ -304,6 +304,9 @@ Third-party Fonts:
   <data name="Text_Path" xml:space="preserve">
     <value>Path</value>
   </data>
+  <data name="Text_Plugins" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
   <data name="Text_Run" xml:space="preserve">
     <value>Run</value>
   </data>

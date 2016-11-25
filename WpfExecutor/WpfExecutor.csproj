@@ -86,6 +86,9 @@
     <Compile Include="Control\ConditionsListControl.xaml.cs">
       <DependentUpon>ConditionsListControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\KeyActionControl.xaml.cs">
+      <DependentUpon>KeyActionControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SizeControl.xaml.cs">
       <DependentUpon>SizeControl.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\ConditionsListControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\KeyActionControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

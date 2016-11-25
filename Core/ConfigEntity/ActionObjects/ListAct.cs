@@ -17,7 +17,7 @@ namespace Core.ConfigEntity.ActionObjects
             temp.AddRange(list);
             return temp;
         }
-        public static implicit operator ListAct(List<KeyBoardAct> list)
+        public static implicit operator ListAct(List<KeyBoardPressKeyAct> list)
         {
             var temp = new ListAct();
             temp.AddRange(list);

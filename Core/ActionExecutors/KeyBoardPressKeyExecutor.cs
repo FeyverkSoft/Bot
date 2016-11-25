@@ -14,7 +14,7 @@ namespace Core.ActionExecutors
     /// <summary>
     /// Исполнитель действия одиночного нажатия клавишы на клавиатуре
     /// </summary>
-    internal sealed class KeyBoardExecutor : BaseExecutor
+    internal sealed class KeyBoardPressKeyExecutor : BaseExecutor
     {
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Core.ActionExecutors
             {
                 var keyBoard = KeyBoardHandlFactory.GetKeyBoard();
                 if (actions != null)
-                    foreach (var action in actions.SubActions.Cast<KeyBoardAct>())
+                    foreach (var action in actions.SubActions.Cast<KeyBoardPressKeyAct>())
                     {
                         if (isAbort)
                             return new BaseExecutorResult(EResultState.NoResult);

@@ -40,11 +40,10 @@ namespace Core.Handlers.KeyBoard.DxInput
         /// <param name="pressTime"></param>
         public void PressKey(KeyName key, UInt32 pressTime = 0)
         {
-            Log.WriteLine($"-- BEGIN -- {GetType().Name}.{nameof(PressKeys)}");
+            Log.WriteLine($"-- PressKey -- {GetType().Name}.{nameof(PressKeys)}; key: {key}; pressTime:{pressTime}");
             SendKey(key, (Int32)KeyboardFlag.Scancode);
-            Thread.Sleep((Int32) (pressTime + _rand.Next(25)));
+            Thread.Sleep((Int32) (pressTime + _rand.Next(25)));//дичь
             SendKey(key, (Int32)(KeyboardFlag.Keyup | KeyboardFlag.Scancode));
-            Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
         }
 
         /// <summary>
@@ -62,6 +61,30 @@ namespace Core.Handlers.KeyBoard.DxInput
                 SendKey(k, (Int32)(KeyboardFlag.Keyup | KeyboardFlag.Scancode));
             }
             Log.WriteLine($"-- END -- {GetType().Name}.{nameof(PressKeys)}");
+        }
+
+        /// <summary>
+        /// Вызвать событие для клавиши
+        /// </summary>
+        /// <param name="key">Клавиша</param>
+        /// <param name="action">Событие</param>
+        public void InvokeKeyAct(KeyName key, KeyAction action)
+        {
+            Log.WriteLine($"-- InvokeKeyAct -- {GetType().Name}.{nameof(PressKeys)}, key:{key}; action:{action}");
+            switch (action)
+            {
+                case KeyAction.Press:
+                    PressKey(key);
+                    break;
+                case KeyAction.Down:
+                    SendKey(key, (Int32)KeyboardFlag.Scancode);
+                    break;
+                case KeyAction.Up:
+                    SendKey(key, (Int32)(KeyboardFlag.Keyup | KeyboardFlag.Scancode));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(action), action, null);
+            }
         }
     }
 }

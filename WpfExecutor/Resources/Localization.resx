@@ -209,10 +209,10 @@ Size - Размер
   <data name="Description_If" xml:space="preserve">
     <value>Оператор условного ветвления, В РАЗРАБОТКЕ</value>
   </data>
-  <data name="Description_KeyBoard" xml:space="preserve">
+  <data name="Description_KeyBoardPressKey" xml:space="preserve">
     <value>Действие нажатия одной или нескольких клавиш последовательно.</value>
   </data>
-  <data name="Description_KeyBoardKeys" xml:space="preserve">
+  <data name="Description_KeyBoardShortcut" xml:space="preserve">
     <value>Действие нажатия одновременно нескольких клавиш на клавиатуре.
 Иначе говоря нажатие сочитания клавиш.</value>
   </data>
@@ -420,5 +420,12 @@ Size - Размер
   </data>
   <data name="CoreSettingWindow_KeyBoardInputMethod" xml:space="preserve">
     <value>Метод ввода с клавы</value>
+  </data>
+  <data name="Description_KeyBoardAction" xml:space="preserve">
+    <value>Расширенный параметры действий с клавиатурой :)
+За все возможные побочные эффекты, юзер отвечает сам.</value>
+  </data>
+  <data name="Text_Plugins" xml:space="preserve">
+    <value>Меню плагинов</value>
   </data>
 </root>

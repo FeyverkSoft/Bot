@@ -12,15 +12,15 @@ using Core.Helpers;
 namespace Core.ActionExecutors
 {
     /// <summary>
-    /// Исполнитель действия одновременно нажатия нескольких клавиш на клавиатуре
-    /// Например ctr+a
+    /// Исполнитель действия одиночного нажатия/удерживание/отжатия клавишы на клавиатуре
     /// </summary>
-    internal sealed class KeyBoardKeysExecutor : BaseExecutor
+    internal sealed class KeyBoardActionExecutor : BaseExecutor
     {
+
         /// <summary>
         /// Тип действия для внутренней фабрики
         /// </summary>
-        public new static ActionType ActionType => ActionType.KeyBoardShortcut;
+        public new static ActionType ActionType => ActionType.KeyBoardAction;
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
@@ -41,18 +41,23 @@ namespace Core.ActionExecutors
                 },
                 Status = EStatus.Info
             }, false);
+            if (isAbort)
+                return new BaseExecutorResult(EResultState.NoResult);
             try
             {
                 var keyBoard = KeyBoardHandlFactory.GetKeyBoard();
                 if (actions != null)
-                    keyBoard.PressKeys(actions.SubActions.Select(x => ((KeyBoardKeysAct)x).Key).ToList());
+                    foreach (var action in actions.SubActions.Cast<KeyboardAct>())
+                    {
+                        keyBoard.InvokeKeyAct(action.Key, action.KeyAction);
+                    }
             }
             catch (Exception ex)
             {
                 Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), ex });
                 return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
             }
-            return previousResult?? new BaseExecutorResult();
+            return previousResult ?? new BaseExecutorResult();
         }
 
         public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)

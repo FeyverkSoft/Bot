@@ -243,13 +243,13 @@
   <data name="IncorrectAction" xml:space="preserve">
     <value>При выполнении действия {0}, произошла ошибка. {1}Тип действия не совпадает с членами действия.</value>
   </data>
-  <data name="KeyBoardAct" xml:space="preserve">
+  <data name="KeyBoardPressKeyAct" xml:space="preserve">
     <value>Параметр нажатия клавиши</value>
   </data>
   <data name="KeyBoardAct_Key" xml:space="preserve">
     <value>Клавиша, нажатие которой надо эмулировать</value>
   </data>
-  <data name="KeyBoardAct_Time" xml:space="preserve">
+  <data name="KeyBoardPressKeyAct_Time" xml:space="preserve">
     <value>Время удерживания (DxInput only)</value>
   </data>
   <data name="LoopAct" xml:space="preserve">
@@ -363,7 +363,7 @@
   <data name="GoToAct_LabelName" xml:space="preserve">
     <value>Название ярлычка для перехода</value>
   </data>
-  <data name="KeyBoardKeysAct" xml:space="preserve">
+  <data name="KeyBoardShortcut" xml:space="preserve">
     <value>Парметры событя одновременного нажатия нескольких клавиш</value>
   </data>
   <data name="ConfigValidator_Invalid_action_Label_not_found" xml:space="preserve">
@@ -434,5 +434,23 @@
   </data>
   <data name="NotEqual" xml:space="preserve">
     <value>Не равно</value>
+  </data>
+  <data name="KeyboardAct" xml:space="preserve">
+    <value>Событие клавиатуры</value>
+  </data>
+  <data name="KeyboardAct_KeyAction" xml:space="preserve">
+    <value>Тип события клавиатуры</value>
+  </data>
+  <data name="KeyAction_Down" xml:space="preserve">
+    <value>Нажать и удерживать</value>
+  </data>
+  <data name="KeyAction_Press" xml:space="preserve">
+    <value>Нажать</value>
+  </data>
+  <data name="KeyAction_Up" xml:space="preserve">
+    <value>Отпустить</value>
+  </data>
+  <data name="ActionType_KeyBoardAction" xml:space="preserve">
+    <value>Событие клавиатуры</value>
   </data>
 </root>

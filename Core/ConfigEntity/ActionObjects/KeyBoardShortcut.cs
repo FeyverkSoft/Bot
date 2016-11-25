@@ -10,8 +10,8 @@ namespace Core.ConfigEntity.ActionObjects
     /// Событие нажатия клавишы на клавиатуре.
     /// </summary>
     [DataContract]
-    [LocDescription("KeyBoardKeysAct", typeof(Resources.CoreText))]
-    public sealed class KeyBoardKeysAct : KeyBoardAct
+    [LocDescription("KeyBoardShortcut", typeof(Resources.CoreText))]
+    public sealed class KeyBoardShortcut : BaseActionObject
     {
         /// <summary>
         /// Тип действия для внутренней фабрики
@@ -19,11 +19,19 @@ namespace Core.ConfigEntity.ActionObjects
         [IgnoreDataMember]
         public new static ActionType ActionType => ActionType.KeyBoardShortcut;
 
+        /// <summary>
+        /// Клавиша, нажатие которой надо эмулировать
+        /// </summary>
+        [DataMember]
+        [LocDescription("KeyBoardAct_Key", typeof(Resources.CoreText))]
+        public KeyName Key { get; set; }
+
         [JsonConstructor]
-        public KeyBoardKeysAct(KeyName key, UInt32 time = 0):base(key, time)
+        public KeyBoardShortcut(KeyName key)
         {
+            Key = key;
         }
 
-        public KeyBoardKeysAct() { }
+        public KeyBoardShortcut() { }
     }
 }

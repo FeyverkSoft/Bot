@@ -65,6 +65,9 @@ namespace Core.ConfigEntity
         /// </summary>
         [LocDescription("ActionType_KeyBoardKeys", typeof(Resources.CoreText))]
         KeyBoardShortcut,
+        /// <summary>
+        /// Действие с клавишами
+        /// </summary>
         [LocDescription("ActionType_KeyBoardAction", typeof(Resources.CoreText))]
         KeyBoardAction,
         /// <summary>

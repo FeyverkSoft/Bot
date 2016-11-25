@@ -117,6 +117,7 @@ namespace Core.ConfigEntity
                         return true;
                     case ActionType.KeyBoardPressKey:
                     case ActionType.KeyBoardShortcut:
+                    case ActionType.KeyBoardAction:
                         return true;
                     case ActionType.Sleep:
                         return false;
