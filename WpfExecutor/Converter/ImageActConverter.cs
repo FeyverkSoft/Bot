@@ -44,6 +44,7 @@ namespace WpfExecutor.Converter
                         group = "If";
                         break;
                     case ActionType.ExpectWindow:
+                        group = "Win";
                         break;
                     case ActionType.GetObject:
                         group = "Object";
