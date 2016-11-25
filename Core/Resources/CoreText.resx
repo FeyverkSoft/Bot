@@ -157,7 +157,7 @@
     <value>Кликни левой кнопкой мыши</value>
   </data>
   <data name="ActionType_MouseLPress" xml:space="preserve">
-    <value>Нажми лувую кнопку мыши</value>
+    <value>Нажми левую кнопку мыши</value>
   </data>
   <data name="ActionType_MouseLUp" xml:space="preserve">
     <value>Отпусти левую кнопку мыши</value>

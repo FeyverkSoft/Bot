@@ -178,7 +178,7 @@ namespace Core.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Нажми лувую кнопку мыши.
+        ///   Ищет локализованную строку, похожую на Нажми левую кнопку мыши.
         /// </summary>
         internal static string ActionType_MouseLPress {
             get {
