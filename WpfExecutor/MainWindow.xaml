@@ -75,6 +75,15 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
+
+                <MenuItem Template="{StaticResource MenuItemControlTemplate}" MaxHeight="60" Header="{localization:Localization Key=Text_Plugins}"
+                          ItemsSource="{Binding PluginMenu}"
+                         >
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource PluginIcon}" />
+                    </MenuItem.Icon>
+                </MenuItem>
+
                 <MenuItem Template="{StaticResource MenuItemControlTemplate}" MaxHeight="60" Header="{localization:Localization Key=Text_Help}">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource HelpIcon}" />
@@ -90,13 +99,6 @@
                     </MenuItem>
                 </MenuItem>
 
-                <MenuItem Template="{StaticResource MenuItemControlTemplate}" MaxHeight="60" Header="{localization:Localization Key=Text_Plugins}"
-                          ItemsSource="{Binding PluginMenu}"
-                         >
-                    <MenuItem.Icon>
-                        <Image Source="{StaticResource PluginIcon}" />
-                    </MenuItem.Icon>
-                </MenuItem>
             </Menu>
             <!--Меню справа-->
             <Menu Grid.Column="1" HorizontalAlignment="Right"  Background="Transparent">
