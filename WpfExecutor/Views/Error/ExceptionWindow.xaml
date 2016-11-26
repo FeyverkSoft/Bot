@@ -41,7 +41,7 @@
             </Grid.RowDefinitions>
 
             <Expander Grid.Row="0" Margin="1,0,0,0" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"
-                      Expanded="Expander_OnExpanded" Collapsed="Expander_OnCollapsed">
+                      Expanded="Expander_OnExpanded" Collapsed="Expander_OnCollapsed" MaxHeight="500">
                 <Expander.Style>
                     <Style TargetType="Expander" BasedOn="{StaticResource {x:Type Expander}}">
                         <Style.Triggers>
