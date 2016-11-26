@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
+using Core;
 
 namespace WpfExecutor.Model.Error
 {
@@ -25,6 +26,12 @@ namespace WpfExecutor.Model.Error
             builder.AppendLine($"Processor Count: {Environment.ProcessorCount}");
             builder.AppendLine($"Uptime: {TimeSpan.FromMilliseconds(Environment.TickCount)}");
             builder.AppendLine($"CLR Version: {Environment.Version}");
+            builder.AppendLine("Plugins:");
+            if (Assemblys.PluginsList != null)
+                foreach (var plugin in Assemblys.PluginsList)
+                {
+                    builder.AppendLine($"\t{plugin?.Name};");
+                }
             builder.AppendLine();
             builder.AppendLine($"Exception source: {exception.Source}");
             builder.AppendLine($"Exception: {exception}");
