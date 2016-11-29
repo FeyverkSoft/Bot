@@ -4,6 +4,7 @@ using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 using Core.Plugin;
 using ImgComparer.ActionObjects;
+using ImgComparer.Factories;
 
 namespace ImgComparer
 {
@@ -59,7 +60,8 @@ namespace ImgComparer
                 Title = "Показать настройки распознователя",
                 Command = () =>
                 {
-                    throw  new Exception("Oooooooooooooooooooo");
+                    var wf = WindowFactory.CreateMainWindow(null);
+                    wf.ShowDialog();
                 }
             };
         }
