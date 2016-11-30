@@ -94,6 +94,7 @@
     <Compile Include="ConfigEntity\ActionObjects\KeyboardActions.cs" />
     <Compile Include="ConfigEntity\ActionObjects\StackAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LabelAct.cs" />
+    <Compile Include="Core\BaseWrapperProxy.cs" />
     <Compile Include="Core\ConfigValidator.cs" />
     <Compile Include="ConfigEntity\IContainer.cs" />
     <Compile Include="Core\ActionFactory.cs" />

@@ -272,7 +272,6 @@ namespace Core.Core
             catch (Exception ex)
             {
                 Status = CoreStatus.Stop;
-                Log.WriteLine(ex, LogLevel.Error);
                 Print(ex);
                 throw;
             }
