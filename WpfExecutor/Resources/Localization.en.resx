@@ -244,6 +244,9 @@ Third-party Fonts:
   <data name="SaveFileParamUserControl_Type" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>Select folder</value>
+  </data>
   <data name="ShowDetails" xml:space="preserve">
     <value>Show details</value>
   </data>

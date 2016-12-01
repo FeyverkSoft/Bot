@@ -235,7 +235,6 @@ namespace WpfExecutor.Model
         private void RunCommandMethod()
         {
             _core.Run(Document.Instance.DocumentItems);
-            CoreFactory.GetCore();
         }
 
         /// <summary>

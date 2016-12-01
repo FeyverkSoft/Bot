@@ -1,6 +1,4 @@
 ﻿using System;
-using Core.ConfigEntity;
-using Core.ConfigEntity.ActionObjects;
 using ImgComparer.Model;
 
 namespace ImgComparer.Factories

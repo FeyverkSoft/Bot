@@ -428,4 +428,7 @@ Size - Размер
   <data name="Text_Plugins" xml:space="preserve">
     <value>Меню плагинов</value>
   </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>Выбирете папку</value>
+  </data>
 </root>
