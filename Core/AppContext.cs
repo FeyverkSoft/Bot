@@ -31,7 +31,7 @@ namespace Core
             switch (typeof(T).Name)
             {
                 case nameof(IExecutiveCore):
-                    return new DefaultExecutiveCore(new DefaultActionExecutorFactory(), Get<IConfigValidator>()) as T;
+                    return CoreWrapperProxy.CreateInstance(new DefaultExecutiveCore(new DefaultActionExecutorFactory(), Get<IConfigValidator>())) as T;
                 case nameof(IActionExecutorFactory):
                     return new DefaultActionExecutorFactory() as T;
             }
