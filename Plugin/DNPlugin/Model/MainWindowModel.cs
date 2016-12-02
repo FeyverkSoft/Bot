@@ -68,6 +68,9 @@ namespace ImgComparer.Model
 
         private void RunCommandMethod()
         {
+            /*var recogn = new Recogn();
+            recogn.ImgRecogn(new Bitmap("D:\\users\\peter\\Desktop\\..Образцы\\poz\\1.png"), "D:\\users\\peter\\Desktop\\..Образцы\\база.aidb");
+            return;*/
             if (PosPath == null || NegPath == null)
                 throw new Exception("Выбирете директории образцов");
 
@@ -98,14 +101,13 @@ namespace ImgComparer.Model
                 height = bmmp.Height;
             }
 
-            IPerceptron perceptron = new Perceptron(new[] { "pos", "neg" }, width, height);
-            ITeacher teacher = new Teacher(perceptron);
-
             var sempls = new List<ImageData>();
-            sempls.AddRange(GetSemp(posList, "pos", perceptron.X, perceptron.Y));
-            sempls.AddRange(GetSemp(negList, "neg", perceptron.X, perceptron.Y));
+            sempls.AddRange(GetSemp(posList, "pos", width, height));
+            sempls.AddRange(GetSemp(negList, "neg", width, height));
 
-            teacher.Teach(sempls, 85);
+            IPerceptron perceptron = new Perceptron(new[] { "pos", "neg" }, width, height, sempls[0].Data.Count);
+            ITeacher teacher = new Teacher(perceptron);
+            teacher.Teach(sempls, 100);
 
             using (var open = new SaveFileDialog { Filter = "Файл базы знаний|*.aidb", FilterIndex = 0 })
                 if (open.ShowDialog() == DialogResult.OK || open.ShowDialog() == DialogResult.Yes)

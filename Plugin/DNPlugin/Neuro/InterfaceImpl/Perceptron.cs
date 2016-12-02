@@ -116,7 +116,7 @@ namespace ImgComparer.Neuro.InterfaceImpl
         /// <param name="y">правильный выходной вектор</param>
         public void Teach(IList<float[]> x, Dictionary<String, float>[] y)
         {
-            const float v = 0.5f; // скорость обучения
+            const float v = 0.13f; // скорость обучения
             Boolean f;
             do
             {
@@ -147,7 +147,7 @@ namespace ImgComparer.Neuro.InterfaceImpl
         private Boolean VectorEqual(Dictionary<String, float> a, Dictionary<String, float> b)
         {
             if (a.Count != b.Count) return false;
-            return !a.Any(t => Math.Abs(t.Value - b[t.Key]) > 0.001);
+            return !a.Any(t => Math.Abs(t.Value - b[t.Key]) > 0.01);
         }
 
 

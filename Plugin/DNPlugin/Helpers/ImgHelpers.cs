@@ -188,13 +188,13 @@ namespace ImgComparer.Helpers
                     b[z] = bitmapColor.B;
                     z++;
                 }
-            var gs = imgArrray.GrayScale();
+           // var gs = imgArrray.GrayScale();
             result.Add(r);
             result.Add(g);
             result.Add(b);
-            result.Add(gs.ToLine());
-            result.Add(gs.Chunked(6).ToLine());
-            result.Add(gs.Thresholds(6).ToLine());
+            //result.Add(gs.ToLine());
+            //result.Add(gs.Chunked(6).ToLine());
+            //result.Add(gs.Thresholds(6).ToLine());
             return result;
         }
     }
