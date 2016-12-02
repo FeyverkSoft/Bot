@@ -92,7 +92,7 @@ namespace ImgComparer.Model
                 throw new Exception("Отсутсвуют негативные корректные образцы, png,jpg,bmp,jpeg ");
 
             Int32 width, height;
-            using (var bmmp = new Bitmap(Directory.GetFiles(PosPath, "*.png|*.jpg|*.bmp|*.jpeg").First()))
+            using (var bmmp = new Bitmap(posList.First()))
             {
                 width = bmmp.Width;
                 height = bmmp.Height;
