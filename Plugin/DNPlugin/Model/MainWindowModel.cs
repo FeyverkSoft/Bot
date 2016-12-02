@@ -73,11 +73,22 @@ namespace ImgComparer.Model
 
             if (PosPath.Equals(NegPath, StringComparison.InvariantCultureIgnoreCase))
                 throw new Exception("Папка с негативными и позитивными образцами не может совпадать.");
+            var posList = new List<String>();
+            var negList = new List<String>();
 
-            if (Directory.GetFiles(PosPath, "*.png|*.jpg|*.bmp|*.jpeg").Length == 0)
+            foreach (var s in "*.png|*.jpg|*.bmp|*.jpeg".Split(new []{'|'}, StringSplitOptions.RemoveEmptyEntries))
+            {
+                posList.AddRange(Directory.GetFiles(PosPath, s));
+            }
+            foreach (var s in "*.png|*.jpg|*.bmp|*.jpeg".Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                negList.AddRange(Directory.GetFiles(NegPath, s));
+            }
+
+            if (posList.Count == 0)
                 throw new Exception("Отсутсвуют позитивные корректные образцы, png,jpg,bmp,jpeg ");
 
-            if (Directory.GetFiles(NegPath, "*.png|*.jpg|*.bmp|*.jpeg").Length == 0)
+            if (negList.Count == 0)
                 throw new Exception("Отсутсвуют негативные корректные образцы, png,jpg,bmp,jpeg ");
 
             Int32 width, height;
@@ -91,8 +102,8 @@ namespace ImgComparer.Model
             ITeacher teacher = new Teacher(perceptron);
 
             var sempls = new List<ImageData>();
-            sempls.AddRange(GetSemp(PosPath, "pos", perceptron.X, perceptron.Y));
-            sempls.AddRange(GetSemp(NegPath, "neg", perceptron.X, perceptron.Y));
+            sempls.AddRange(GetSemp(posList, "pos", perceptron.X, perceptron.Y));
+            sempls.AddRange(GetSemp(negList, "neg", perceptron.X, perceptron.Y));
 
             teacher.Teach(sempls, 85);
 
@@ -104,10 +115,10 @@ namespace ImgComparer.Model
 
         }
 
-        private List<ImageData> GetSemp(String path, String @class, Int32 x, Int32 y)
+        private List<ImageData> GetSemp(IEnumerable<String> path, String @class, Int32 x, Int32 y)
         {
             var sempls = new List<ImageData>();
-            Parallel.ForEach(Directory.GetFiles(path, "*.png|*.jpg|*.bmp|*.jpeg"), (file) =>
+            Parallel.ForEach(path, (file) =>
             {
                 using (var bm = new Bitmap(file))
                 {
