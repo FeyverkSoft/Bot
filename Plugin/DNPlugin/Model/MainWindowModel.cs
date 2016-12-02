@@ -68,9 +68,6 @@ namespace ImgComparer.Model
 
         private void RunCommandMethod()
         {
-            /*var recogn = new Recogn();
-            recogn.ImgRecogn(new Bitmap("D:\\users\\peter\\Desktop\\..Образцы\\poz\\1.png"), "D:\\users\\peter\\Desktop\\..Образцы\\база.aidb");
-            return;*/
             if (PosPath == null || NegPath == null)
                 throw new Exception("Выбирете директории образцов");
 
@@ -114,7 +111,9 @@ namespace ImgComparer.Model
                 {
                     perceptron.Save(open.FileName);
                 }
-
+            /*var recogn = new Recogn();
+            recogn.ImgRecogn(new Bitmap("D:\\users\\peter\\Desktop\\..Образцы\\poz\\1.png"), "D:\\users\\peter\\Desktop\\..Образцы\\база.aidb");
+            return;*/
         }
 
         private List<ImageData> GetSemp(IEnumerable<String> path, String @class, Int32 x, Int32 y)

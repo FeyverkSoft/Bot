@@ -176,7 +176,8 @@ namespace ImgComparer.Helpers
             Single[]
                 r = new Single[x * y],
                 g = new Single[x * y],
-                b = new Single[x * y];
+                b = new Single[x * y],
+                gs = new Single[x * y];
             var z = 0;
             for (var i = 0; i < img.Width; i++)
                 for (var j = 0; j < img.Height; j++)
@@ -186,13 +187,14 @@ namespace ImgComparer.Helpers
                     r[z] = bitmapColor.R;
                     g[z] = bitmapColor.G;
                     b[z] = bitmapColor.B;
+                    gs[z] = r[z]*0.299f + g[z]*0.587f + b[z]*0.114f;
                     z++;
                 }
            // var gs = imgArrray.GrayScale();
             result.Add(r);
             result.Add(g);
             result.Add(b);
-            //result.Add(gs.ToLine());
+            result.Add(gs);
             //result.Add(gs.Chunked(6).ToLine());
             //result.Add(gs.Thresholds(6).ToLine());
             return result;
