@@ -23,5 +23,9 @@ namespace ImgComparer.ActionObjects
         [ControlType("FilePath")]
         public String SamplePath { get; set; }
 
+        public PluginCompareImgAction()
+        {
+            
+        }
     }
 }
