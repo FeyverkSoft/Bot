@@ -107,7 +107,7 @@ namespace ImgComparer.Model
 
             teacher.Teach(sempls, 85);
 
-            using (var open = new OpenFileDialog { Filter = "Файл базы знаний|*.aidb", FilterIndex = 0 })
+            using (var open = new SaveFileDialog { Filter = "Файл базы знаний|*.aidb", FilterIndex = 0 })
                 if (open.ShowDialog() == DialogResult.OK || open.ShowDialog() == DialogResult.Yes)
                 {
                     perceptron.Save(open.FileName);
