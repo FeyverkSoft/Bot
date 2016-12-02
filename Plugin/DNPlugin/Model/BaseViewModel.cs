@@ -6,7 +6,7 @@ using System.Windows.Input;
 using Core;
 using WpfConverters.Extensions.Commands;
 
-namespace ImgComparer
+namespace ImgComparer.Model
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {

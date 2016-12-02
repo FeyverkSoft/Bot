@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionObjects\PluginCompareImgAction.cs" />
-    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="Model\BaseViewModel.cs" />
     <Compile Include="Factories\WindowFactory.cs" />
     <Compile Include="Helpers\ImgHelpers.cs" />
     <Compile Include="IRecogn.cs" />
