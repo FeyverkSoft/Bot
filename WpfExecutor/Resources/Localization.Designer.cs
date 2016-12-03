@@ -506,6 +506,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вызвать внешнюю программу или выполнить комманду.
+        /// </summary>
+        internal static string Description_Run {
+            get {
+                return ResourceManager.GetString("Description_Run", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Функция инициирует отправку заданного сообщения на указанный канал связи.
         ///На текущий момент поддерживается только емайл..
         /// </summary>

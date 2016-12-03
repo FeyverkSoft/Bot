@@ -431,4 +431,7 @@ Size - Размер
   <data name="SelectFolder" xml:space="preserve">
     <value>Выбирете папку</value>
   </data>
+  <data name="Description_Run" xml:space="preserve">
+    <value>Вызвать внешнюю программу или выполнить комманду</value>
+  </data>
 </root>
