@@ -43,11 +43,16 @@ namespace Core.ActionExecutors
             }, false);
             try
             {
+
                 var runParam = actions.SubActions.Cast<RunAct>().FirstOrDefault();
                 if (runParam == null)
                     throw new NullReferenceException(nameof(runParam));
+                ProcessStartInfo psi;
 
-                var psi = new ProcessStartInfo(runParam.ProcessName, runParam.ProcessKey);
+                if ("smd".Equals(runParam.ProcessName, StringComparison.InvariantCultureIgnoreCase))
+                    psi = new ProcessStartInfo(runParam.ProcessName, $"/k {runParam.ProcessKey}");
+                else
+                    psi = new ProcessStartInfo(runParam.ProcessName, runParam.ProcessKey);
                 Process.Start(psi);
 
             }

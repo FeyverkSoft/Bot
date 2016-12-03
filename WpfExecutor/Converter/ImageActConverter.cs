@@ -12,7 +12,7 @@ namespace WpfExecutor.Converter
         {
             if (value is ActionType)
             {
-                var act = ((ActionType) value);
+                var act = ((ActionType)value);
                 var group = String.Empty;
                 switch (act)
                 {
@@ -70,8 +70,11 @@ namespace WpfExecutor.Converter
                     case ActionType.Stack:
                         group = "Stack";
                         break;
+                    case ActionType.Run:
+                        group = "Play";
+                        break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        break;
                 }
                 if (!String.IsNullOrEmpty(group))
                 {
