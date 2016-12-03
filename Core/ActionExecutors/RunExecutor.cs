@@ -49,7 +49,7 @@ namespace Core.ActionExecutors
                     throw new NullReferenceException(nameof(runParam));
                 ProcessStartInfo psi;
 
-                if ("smd".Equals(runParam.ProcessName, StringComparison.InvariantCultureIgnoreCase))
+                if ("cmd".Equals(runParam.ProcessName, StringComparison.InvariantCultureIgnoreCase))
                     psi = new ProcessStartInfo(runParam.ProcessName, $"/k {runParam.ProcessKey}");
                 else
                     psi = new ProcessStartInfo(runParam.ProcessName, runParam.ProcessKey);
