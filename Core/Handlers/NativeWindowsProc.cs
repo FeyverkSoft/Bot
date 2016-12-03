@@ -45,7 +45,7 @@ namespace Core.Handlers
         /// </summary>
         [DllImport("user32.dll", SetLastError = true)]
         static extern Int32 GetWindowTextLength(IntPtr hWnd);
-        string GetWindowText(IntPtr hWnd)
+        String GetWindowText(IntPtr hWnd)
         {
             var len = GetWindowTextLength(hWnd) + 1;
             StringBuilder sb = new StringBuilder(len);
@@ -86,7 +86,7 @@ namespace Core.Handlers
         /// <returns></returns>
         [DllImport("User32.dll", CallingConvention = CallingConvention.StdCall, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool ShowWindow([In] IntPtr hWnd, [In] Int32 nCmdShow);
+        private static extern Boolean ShowWindow([In] IntPtr hWnd, [In] Int32 nCmdShow);
 
         [DllImport("User32.dll", SetLastError = true)]
         private static extern Int32 SetForegroundWindow([In] IntPtr hWnd);

@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
+using System.Threading;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
+using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Handlers;
 using Core.Helpers;
+using System.Diagnostics;
 
 namespace Core.ActionExecutors
 {
     /// <summary>
-    /// Исполнитель действия щелчка правой кнопки мышки
+    /// Исполнитель действия запуска внешней программы
     /// </summary>
-    internal sealed class MouseRClickExecutor : BaseExecutor
+    internal sealed class RunExecutor : BaseExecutor
     {
         /// <summary>
         /// Тип действия для внутренней фабрики
         /// </summary>
-        public new static ActionType ActionType => ActionType.MouseRClick;
-
-        private IMouse Mouse { get; set; } = AppContext.Get<IMouse>();
+        public new static ActionType ActionType => ActionType.Run;
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
@@ -29,7 +31,32 @@ namespace Core.ActionExecutors
         /// <returns></returns>
         public override IExecutorResult Invoke(IActionsContainer actions, ref Boolean isAbort, IExecutorResult previousResult = null)
         {
-            throw new NotSupportedException();
+            Print(new
+            {
+                Date = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                Message = new
+                {
+                    func = $"{GetType().Name}.{nameof(Invoke)}",
+                    param = $"{nameof(actions)}: {actions.ToJson(false, false)} ;{nameof(previousResult)}: {previousResult?.ToJson(false, false)})"
+                },
+                Status = EStatus.Info
+            }, false);
+            try
+            {
+                var runParam = actions.SubActions.Cast<RunAct>().FirstOrDefault();
+                if (runParam == null)
+                    throw new NullReferenceException(nameof(runParam));
+
+                var psi = new ProcessStartInfo(runParam.ProcessName, runParam.ProcessKey);
+                Process.Start(psi);
+
+            }
+            catch (Exception ex)
+            {
+                Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), ex });
+                return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
+            }
+            return previousResult ?? new BaseExecutorResult();
         }
 
         /// <summary>
@@ -50,18 +77,7 @@ namespace Core.ActionExecutors
                 },
                 Status = EStatus.Info
             }, false);
-            try
-            {
-                // Для данного действия не поддерживается список действий actions игнорируем, знаю что косяк архитектуры
-                // Но возможно потом будут дабл клики, итд
-                Mouse.MouseRightCl();
-            }
-            catch (Exception ex)
-            {
-                Print(new { Date = DateTime.Now.ToString(CultureInfo.InvariantCulture), ex });
-                return new BaseExecutorResult(EResultState.Error & EResultState.NoResult);
-            }
-            return previousResult ?? new BaseExecutorResult();
+            throw new NotSupportedException();
         }
     }
 }

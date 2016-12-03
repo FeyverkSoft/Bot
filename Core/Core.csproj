@@ -67,6 +67,7 @@
     <Compile Include="ActionExecutors\GetMousePosExecutor.cs" />
     <Compile Include="ActionExecutors\IfExecutor.cs" />
     <Compile Include="ActionExecutors\KeyBoardActionExecutor.cs" />
+    <Compile Include="ActionExecutors\RunExecutor.cs" />
     <Compile Include="ActionExecutors\SendMessageExecutor.cs" />
     <Compile Include="ActionExecutors\KeyBoardShortcutExecutor.cs" />
     <Compile Include="ActionExecutors\MockExecutor.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="ConfigEntity\ActionObjects\GoToAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\KeyBoardShortcut.cs" />
     <Compile Include="ConfigEntity\ActionObjects\KeyboardActions.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\RunAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\StackAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LabelAct.cs" />
     <Compile Include="Core\BaseWrapperProxy.cs" />

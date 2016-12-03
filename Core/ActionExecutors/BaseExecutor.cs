@@ -38,7 +38,7 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, не обязательно</param>
         /// <returns></returns>
-        public abstract IExecutorResult Invoke(IActionsContainer action, ref bool isAbort, IExecutorResult previousResult = null);
+        public abstract IExecutorResult Invoke(IActionsContainer action, ref Boolean isAbort, IExecutorResult previousResult = null);
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
@@ -46,6 +46,6 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public abstract IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null);
+        public abstract IExecutorResult Invoke(ref Boolean isAbort, IExecutorResult previousResult = null);
     }
 }

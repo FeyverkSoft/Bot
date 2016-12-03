@@ -20,6 +20,11 @@ namespace Core.ConfigEntity
         [LocDescription("ActionType_MouseSetPos", typeof(Resources.CoreText))]
         MouseSetPos,
         /// <summary>
+        /// Запуск внешней программы
+        /// </summary>
+        [LocDescription("ActionType_Run", typeof(Resources.CoreText))]
+        Run,
+        /// <summary>
         /// Действие клика Правой кнопки мышки
         /// </summary>
         [LocDescription("ActionType_MouseRClick", typeof(Resources.CoreText))]

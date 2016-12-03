@@ -453,4 +453,13 @@
   <data name="ActionType_KeyBoardAction" xml:space="preserve">
     <value>Событие клавиатуры</value>
   </data>
+  <data name="ActionType_Run" xml:space="preserve">
+    <value>Запуск программы</value>
+  </data>
+  <data name="RunAct_ProcessKey" xml:space="preserve">
+    <value>Ключи коммандной строки</value>
+  </data>
+  <data name="RunAct_ProcessName" xml:space="preserve">
+    <value>Имя или путь к запускамому процессу</value>
+  </data>
 </root>

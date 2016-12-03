@@ -268,6 +268,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Запуск программы.
+        /// </summary>
+        internal static string ActionType_Run {
+            get {
+                return ResourceManager.GetString("ActionType_Run", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Отправь уведомление.
         /// </summary>
         internal static string ActionType_SendMessage {
@@ -876,6 +885,24 @@ namespace Core.Resources {
         internal static string PluginInvokeAct_PluginName {
             get {
                 return ResourceManager.GetString("PluginInvokeAct_PluginName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ключи коммандной строки.
+        /// </summary>
+        internal static string RunAct_ProcessKey {
+            get {
+                return ResourceManager.GetString("RunAct_ProcessKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя или путь к запускамому процессу.
+        /// </summary>
+        internal static string RunAct_ProcessName {
+            get {
+                return ResourceManager.GetString("RunAct_ProcessName", resourceCulture);
             }
         }
         
