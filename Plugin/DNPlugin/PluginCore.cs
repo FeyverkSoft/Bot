@@ -2,8 +2,9 @@
 using System.Linq;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
+using Core.Plugin;
 using ImgComparer.ActionObjects;
-using Plugin;
+using ImgComparer.Factories;
 
 namespace ImgComparer
 {
@@ -42,5 +43,27 @@ namespace ImgComparer
             throw new NotSupportedException();
         }
 
+        /// <summary>
+        /// Отображать меню или нет?
+        /// </summary>
+        public Boolean ShowMenue => true;
+
+        /// <summary>
+        /// Меню которое предоставляет бот
+        /// </summary>
+        public PluginMenuItemModel Menu { get; }
+
+        public PluginCore()
+        {
+            Menu = new PluginMenuItemModel
+            {
+                Title = "Показать настройки распознователя",
+                Command = () =>
+                {
+                    var wf = WindowFactory.CreateMainWindow(null);
+                    wf.ShowDialog();
+                }
+            };
+        }
     }
 }

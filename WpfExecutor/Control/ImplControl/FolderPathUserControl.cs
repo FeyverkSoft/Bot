@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using WpfConverters.Controls.Impl;
+using WpfExecutor.Extensions.Localization;
 
 namespace WpfExecutor.Control.ImplControl
 {
@@ -56,7 +57,7 @@ namespace WpfExecutor.Control.ImplControl
 
         private void _button_Click(Object sender, RoutedEventArgs e)
         {
-            var open = new System.Windows.Forms.FolderBrowserDialog();
+            var open = new System.Windows.Forms.FolderBrowserDialog {Description = LocalizationManager.GetString("SelectFolder")};
             if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FolderPath = open.SelectedPath;

@@ -14,7 +14,7 @@ namespace Core.Helpers
         {
             if (!String.IsNullOrEmpty(logPath))
             {
-                if (!string.IsNullOrEmpty(logPath) && !Directory.Exists(logPath))
+                if (!String.IsNullOrEmpty(logPath) && !Directory.Exists(logPath))
                 {
                     try
                     {

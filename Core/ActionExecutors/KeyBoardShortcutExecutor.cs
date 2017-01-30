@@ -6,6 +6,7 @@ using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Handlers;
+using Core.Handlers.Factory;
 using Core.Helpers;
 
 namespace Core.ActionExecutors
@@ -14,14 +15,12 @@ namespace Core.ActionExecutors
     /// Исполнитель действия одновременно нажатия нескольких клавиш на клавиатуре
     /// Например ctr+a
     /// </summary>
-    internal sealed class KeyBoardKeysExecutor : BaseExecutor
+    internal sealed class KeyBoardShortcutExecutor : BaseExecutor
     {
         /// <summary>
         /// Тип действия для внутренней фабрики
         /// </summary>
-        public new static ActionType ActionType => ActionType.KeyBoardKeys;
-
-        private IKeyBoard KeyBoard { get; set; } = AppContext.Get<IKeyBoard>();
+        public new static ActionType ActionType => ActionType.KeyBoardShortcut;
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
@@ -30,7 +29,7 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(IActionsContainer actions, ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(IActionsContainer actions, ref Boolean isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -44,8 +43,9 @@ namespace Core.ActionExecutors
             }, false);
             try
             {
+                var keyBoard = KeyBoardHandlFactory.GetKeyBoard();
                 if (actions != null)
-                    KeyBoard.PressKeys(actions.SubActions.Select(x => ((KeyBoardKeysAct)x).Key).ToList());
+                    keyBoard.PressKeys(actions.SubActions.Select(x => ((KeyBoardShortcut)x).Key).ToList());
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace Core.ActionExecutors
             return previousResult?? new BaseExecutorResult();
         }
 
-        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref Boolean isAbort, IExecutorResult previousResult = null)
         {
             throw new NotSupportedException();
         }

@@ -133,6 +133,15 @@ namespace Core.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Событие клавиатуры.
+        /// </summary>
+        internal static string ActionType_KeyBoardAction {
+            get {
+                return ResourceManager.GetString("ActionType_KeyBoardAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Нажми сочитание клавиш.
         /// </summary>
         internal static string ActionType_KeyBoardKeys {
@@ -178,7 +187,7 @@ namespace Core.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Нажми лувую кнопку мыши.
+        ///   Ищет локализованную строку, похожую на Нажми левую кнопку мыши.
         /// </summary>
         internal static string ActionType_MouseLPress {
             get {
@@ -255,6 +264,15 @@ namespace Core.Resources {
         internal static string ActionType_PluginInvoke {
             get {
                 return ResourceManager.GetString("ActionType_PluginInvoke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Запуск программы.
+        /// </summary>
+        internal static string ActionType_Run {
+            get {
+                return ResourceManager.GetString("ActionType_Run", resourceCulture);
             }
         }
         
@@ -628,11 +646,38 @@ namespace Core.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Параметр нажатия клавиши.
+        ///   Ищет локализованную строку, похожую на Нажать и удерживать.
         /// </summary>
-        internal static string KeyBoardAct {
+        internal static string KeyAction_Down {
             get {
-                return ResourceManager.GetString("KeyBoardAct", resourceCulture);
+                return ResourceManager.GetString("KeyAction_Down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нажать.
+        /// </summary>
+        internal static string KeyAction_Press {
+            get {
+                return ResourceManager.GetString("KeyAction_Press", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отпустить.
+        /// </summary>
+        internal static string KeyAction_Up {
+            get {
+                return ResourceManager.GetString("KeyAction_Up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Событие клавиатуры.
+        /// </summary>
+        internal static string KeyboardAct {
+            get {
+                return ResourceManager.GetString("KeyboardAct", resourceCulture);
             }
         }
         
@@ -646,20 +691,38 @@ namespace Core.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Время удерживания.
+        ///   Ищет локализованную строку, похожую на Тип события клавиатуры.
         /// </summary>
-        internal static string KeyBoardAct_Time {
+        internal static string KeyboardAct_KeyAction {
             get {
-                return ResourceManager.GetString("KeyBoardAct_Time", resourceCulture);
+                return ResourceManager.GetString("KeyboardAct_KeyAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметр нажатия клавиши.
+        /// </summary>
+        internal static string KeyBoardPressKeyAct {
+            get {
+                return ResourceManager.GetString("KeyBoardPressKeyAct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Время удерживания (DxInput only).
+        /// </summary>
+        internal static string KeyBoardPressKeyAct_Time {
+            get {
+                return ResourceManager.GetString("KeyBoardPressKeyAct_Time", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Парметры событя одновременного нажатия нескольких клавиш.
         /// </summary>
-        internal static string KeyBoardKeysAct {
+        internal static string KeyBoardShortcut {
             get {
-                return ResourceManager.GetString("KeyBoardKeysAct", resourceCulture);
+                return ResourceManager.GetString("KeyBoardShortcut", resourceCulture);
             }
         }
         
@@ -822,6 +885,24 @@ namespace Core.Resources {
         internal static string PluginInvokeAct_PluginName {
             get {
                 return ResourceManager.GetString("PluginInvokeAct_PluginName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ключи коммандной строки.
+        /// </summary>
+        internal static string RunAct_ProcessKey {
+            get {
+                return ResourceManager.GetString("RunAct_ProcessKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя или путь к запускамому процессу.
+        /// </summary>
+        internal static string RunAct_ProcessName {
+            get {
+                return ResourceManager.GetString("RunAct_ProcessName", resourceCulture);
             }
         }
         

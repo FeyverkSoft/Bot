@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using Core;
+using Core.Handlers.Factory;
 using WpfConverters.Extensions.Commands;
 using WpfExecutor.Extensions.Localization;
 
@@ -98,6 +99,21 @@ namespace WpfExecutor.Model.Settings
             set
             {
                 _conf.LoadPlugin = value;
+            }
+        }
+
+        /// <summary>
+        /// Метод эмуляции клавиатуры
+        /// </summary>
+        public KeyBoardType KeyBoardType
+        {
+            get
+            {
+                return _conf.KeyBoardType;
+            }
+            set
+            {
+                _conf.KeyBoardType = value;
             }
         }
 

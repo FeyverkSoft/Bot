@@ -86,6 +86,12 @@
     <Compile Include="Control\ConditionsListControl.xaml.cs">
       <DependentUpon>ConditionsListControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\PluginNameControl.xaml.cs">
+      <DependentUpon>PluginNameControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\KeyActionControl.xaml.cs">
+      <DependentUpon>KeyActionControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\SizeControl.xaml.cs">
       <DependentUpon>SizeControl.xaml</DependentUpon>
     </Compile>
@@ -192,6 +198,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\ConditionsListControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\PluginNameControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\KeyActionControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -484,7 +498,9 @@
   <ItemGroup>
     <Resource Include="Resources\icons\Object-48.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\icons\win-96.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

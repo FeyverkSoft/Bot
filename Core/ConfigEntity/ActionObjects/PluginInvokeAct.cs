@@ -21,6 +21,7 @@ namespace Core.ConfigEntity.ActionObjects
         /// </summary>
         [LocDescription("PluginInvokeAct_PluginName", typeof(Resources.CoreText))]
         [DataMember]
+        [ControlType("PluginName")]
         public String PluginName { get; set; }
 
         /// <summary>

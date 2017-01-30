@@ -20,6 +20,11 @@ namespace Core.ConfigEntity
         [LocDescription("ActionType_MouseSetPos", typeof(Resources.CoreText))]
         MouseSetPos,
         /// <summary>
+        /// Запуск внешней программы
+        /// </summary>
+        [LocDescription("ActionType_Run", typeof(Resources.CoreText))]
+        Run,
+        /// <summary>
         /// Действие клика Правой кнопки мышки
         /// </summary>
         [LocDescription("ActionType_MouseRClick", typeof(Resources.CoreText))]
@@ -58,13 +63,18 @@ namespace Core.ConfigEntity
         /// Действие нажатия клавишы на клавиатуре если переданно несколько, то они нажимаются последовательно
         /// </summary>
         [LocDescription("ActionType_KeyBoard", typeof(Resources.CoreText))]
-        KeyBoard,
+        KeyBoardPressKey,
         /// <summary>
         /// Действие нажатия одновременно нескольких клавиш на клавиатуре
         /// Если перереданно несколько, то они нажимаются одновременно :D
         /// </summary>
         [LocDescription("ActionType_KeyBoardKeys", typeof(Resources.CoreText))]
-        KeyBoardKeys,
+        KeyBoardShortcut,
+        /// <summary>
+        /// Действие с клавишами
+        /// </summary>
+        [LocDescription("ActionType_KeyBoardAction", typeof(Resources.CoreText))]
+        KeyBoardAction,
         /// <summary>
         /// Действие сна бота на указанное время
         /// </summary>

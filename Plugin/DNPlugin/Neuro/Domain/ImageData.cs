@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ImgComparer.Neuro.Domain
 {
@@ -10,7 +11,7 @@ namespace ImgComparer.Neuro.Domain
         /// <summary>
         /// Образ представленный в виде целочисленного вектора
         /// </summary>
-        public float[][] Data { get; set; }
+        public IList<Single[]> Data { get; set; }
 
         /// <summary>
         /// Класс к которому принадлежит образ

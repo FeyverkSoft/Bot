@@ -16,7 +16,7 @@ namespace Core.Helpers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static String ToXml(this object input)
+        public static String ToXml(this Object input)
         {
             if (input.GetType().Name.Contains("AnonymousType"))
             {
@@ -49,8 +49,8 @@ namespace Core.Helpers
         }
 
         private static readonly Type[] WriteTypes = {
-        typeof(string), typeof(DateTime), typeof(Enum),
-        typeof(decimal), typeof(Guid)
+        typeof(String), typeof(DateTime), typeof(Enum),
+        typeof(Decimal), typeof(Guid)
     };
         /// <summary>
         /// Это объект простого типа?
@@ -72,7 +72,7 @@ namespace Core.Helpers
         }
 
 
-        private static XElement ToXml(this object input, string element)
+        private static XElement ToXml(this Object input, String element)
         {
             if (input == null)
                 return null;

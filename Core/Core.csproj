@@ -66,11 +66,13 @@
     <Compile Include="ActionExecutors\GetScreenShotExecutor.cs" />
     <Compile Include="ActionExecutors\GetMousePosExecutor.cs" />
     <Compile Include="ActionExecutors\IfExecutor.cs" />
+    <Compile Include="ActionExecutors\KeyBoardActionExecutor.cs" />
+    <Compile Include="ActionExecutors\RunExecutor.cs" />
     <Compile Include="ActionExecutors\SendMessageExecutor.cs" />
-    <Compile Include="ActionExecutors\KeyBoardKeysExecutor.cs" />
+    <Compile Include="ActionExecutors\KeyBoardShortcutExecutor.cs" />
     <Compile Include="ActionExecutors\MockExecutor.cs" />
     <Compile Include="ActionExecutors\MouseLClickExecutor.cs" />
-    <Compile Include="ActionExecutors\KeyBoardExecutor.cs" />
+    <Compile Include="ActionExecutors\KeyBoardPressKeyExecutor.cs" />
     <Compile Include="ActionExecutors\ExpectWindowExecutor.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\EResultState.cs" />
     <Compile Include="ActionExecutors\ExecutorResult\ExpectWindowExecutorResult.cs" />
@@ -89,9 +91,12 @@
     <Compile Include="ConfigEntity\ActionObjects\Conditional.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ConditionalParam.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GoToAct.cs" />
-    <Compile Include="ConfigEntity\ActionObjects\KeyBoardKeysAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\KeyBoardShortcut.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\KeyboardActions.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\RunAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\StackAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LabelAct.cs" />
+    <Compile Include="Core\BaseWrapperProxy.cs" />
     <Compile Include="Core\ConfigValidator.cs" />
     <Compile Include="ConfigEntity\IContainer.cs" />
     <Compile Include="Core\ActionFactory.cs" />
@@ -99,6 +104,23 @@
     <Compile Include="Core\ImageFileFormat.cs" />
     <Compile Include="Core\Point.cs" />
     <Compile Include="Core\Size.cs" />
+    <Compile Include="Handlers\Factory\KeyBoardHandlFactory.cs" />
+    <Compile Include="Handlers\Factory\KeyBoardType.cs" />
+    <Compile Include="Handlers\HARDWAREINPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\DxInput\HARDWAREINPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\DxInput\INPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\DxInput\KEYBDINPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\DxInput\MOUSEINPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\Key.cs" />
+    <Compile Include="Handlers\KeyBoard\KeyAction.cs" />
+    <Compile Include="Handlers\KeyBoard\KeyCodeHelper.cs" />
+    <Compile Include="Handlers\KeyBoard\SendInput\INPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\SendInput\KEYBDINPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\KeyboardFlag.cs" />
+    <Compile Include="Handlers\MOUSEINPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\SendInput\MOUSEKEYBDHARDWAREINPUT.cs" />
+    <Compile Include="Handlers\KeyBoard\DxInput\DxInputKeyBoard.cs" />
+    <Compile Include="Handlers\KeyBoard\SendInput\SendInputKeyBoard.cs" />
     <Compile Include="Helpers\ActionHelper.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ExpectWindowAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\GetObjectAct.cs" />
@@ -111,7 +133,7 @@
     <Compile Include="ConfigEntity\ListBotAction.cs" />
     <Compile Include="ConfigEntity\ActionObjects\ListAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\IAction.cs" />
-    <Compile Include="ConfigEntity\ActionObjects\KeyBoardAct.cs" />
+    <Compile Include="ConfigEntity\ActionObjects\KeyBoardPressKeyAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\MouseMoveAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\LoopAct.cs" />
     <Compile Include="ConfigEntity\ActionObjects\MouseSetPosAct.cs" />
@@ -124,6 +146,7 @@
     <Compile Include="ConfigEntity\IConfigReader.cs" />
     <Compile Include="ConfigEntity\SaveFileParam.cs" />
     <Compile Include="CoreFactory.cs" />
+    <Compile Include="Plugin\PluginMenuItemModel.cs" />
     <Compile Include="Resources\CoreText.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,10 +166,10 @@
     <Compile Include="Core\ObjectInfo.cs" />
     <Compile Include="Core\WinInfo.cs" />
     <Compile Include="Core\ESearchParam.cs" />
-    <Compile Include="Handlers\IKeyBoard.cs" />
+    <Compile Include="Handlers\KeyBoard\IKeyBoard.cs" />
     <Compile Include="Handlers\IMouse.cs" />
     <Compile Include="Handlers\IWindowsProc.cs" />
-    <Compile Include="Handlers\NativeKeyBoard.cs" />
+    <Compile Include="Handlers\KeyBoard\Native\NativeKeyBoard.cs" />
     <Compile Include="Core\Keys.cs" />
     <Compile Include="Handlers\NativeMouse.cs" />
     <Compile Include="Events\PrintMessageEvent.cs" />
@@ -156,7 +179,7 @@
     <Compile Include="Helpers\MySerializationBinder.cs" />
     <Compile Include="Helpers\ScreenCaptureHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
-    <Compile Include="IPlugin.cs" />
+    <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Assemblys.cs" />
     <Compile Include="Message\EmailMessageSender.cs" />
     <Compile Include="Message\EMessageType.cs" />

@@ -202,6 +202,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Метод ввода с клавы.
+        /// </summary>
+        internal static string CoreSettingWindow_KeyBoardInputMethod {
+            get {
+                return ResourceManager.GetString("CoreSettingWindow_KeyBoardInputMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Загружать плагины.
         /// </summary>
         internal static string CoreSettingWindow_LoadPlugin {
@@ -345,11 +354,21 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Расширенный параметры действий с клавиатурой :)
+        ///За все возможные побочные эффекты, юзер отвечает сам..
+        /// </summary>
+        internal static string Description_KeyBoardAction {
+            get {
+                return ResourceManager.GetString("Description_KeyBoardAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Действие нажатия одной или нескольких клавиш последовательно..
         /// </summary>
-        internal static string Description_KeyBoard {
+        internal static string Description_KeyBoardPressKey {
             get {
-                return ResourceManager.GetString("Description_KeyBoard", resourceCulture);
+                return ResourceManager.GetString("Description_KeyBoardPressKey", resourceCulture);
             }
         }
         
@@ -357,9 +376,9 @@ namespace WpfExecutor.Resources {
         ///   Ищет локализованную строку, похожую на Действие нажатия одновременно нескольких клавиш на клавиатуре.
         ///Иначе говоря нажатие сочитания клавиш..
         /// </summary>
-        internal static string Description_KeyBoardKeys {
+        internal static string Description_KeyBoardShortcut {
             get {
-                return ResourceManager.GetString("Description_KeyBoardKeys", resourceCulture);
+                return ResourceManager.GetString("Description_KeyBoardShortcut", resourceCulture);
             }
         }
         
@@ -483,6 +502,15 @@ namespace WpfExecutor.Resources {
         internal static string Description_PluginInvoke {
             get {
                 return ResourceManager.GetString("Description_PluginInvoke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вызвать внешнюю программу или выполнить комманду.
+        /// </summary>
+        internal static string Description_Run {
+            get {
+                return ResourceManager.GetString("Description_Run", resourceCulture);
             }
         }
         
@@ -655,6 +683,15 @@ namespace WpfExecutor.Resources {
         internal static string SaveFileParamUserControl_Type {
             get {
                 return ResourceManager.GetString("SaveFileParamUserControl_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбирете папку.
+        /// </summary>
+        internal static string SelectFolder {
+            get {
+                return ResourceManager.GetString("SelectFolder", resourceCulture);
             }
         }
         
@@ -839,6 +876,15 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Меню плагинов.
+        /// </summary>
+        internal static string Text_Plugins {
+            get {
+                return ResourceManager.GetString("Text_Plugins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Старт.
         /// </summary>
         internal static string Text_Run {
@@ -893,7 +939,7 @@ namespace WpfExecutor.Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на О программе: Консоль управления для бота.
+        ///   Ищет локализованную строку, похожую на О программе: Консоль управления автоматизатором действий.
         /// </summary>
         internal static string Title_AboutWin {
             get {

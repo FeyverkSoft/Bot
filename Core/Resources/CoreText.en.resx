@@ -243,14 +243,14 @@
   <data name="IncorrectAction" xml:space="preserve">
     <value>In step {0} An error occurred. type of action {1} is not the same with the members of the action.</value>
   </data>
-  <data name="KeyBoardAct" xml:space="preserve">
+  <data name="KeyBoardPressKeyAct" xml:space="preserve">
     <value>Press key act params</value>
   </data>
   <data name="KeyBoardAct_Key" xml:space="preserve">
     <value>Key</value>
   </data>
-  <data name="KeyBoardAct_Time" xml:space="preserve">
-    <value>Time</value>
+  <data name="KeyBoardPressKeyAct_Time" xml:space="preserve">
+    <value>Time  (DxInput only)</value>
   </data>
   <data name="LoopAct" xml:space="preserve">
     <value>Loop</value>
@@ -366,7 +366,7 @@
   <data name="GoToAct_LabelName" xml:space="preserve">
     <value>The label name to jump</value>
   </data>
-  <data name="KeyBoardKeysAct" xml:space="preserve">
+  <data name="KeyBoardShortcut" xml:space="preserve">
     <value>KeyBoardKeysAct</value>
   </data>
   <data name="ConfigValidator_Invalid_action" xml:space="preserve">
@@ -434,5 +434,20 @@
   </data>
   <data name="NotEqual" xml:space="preserve">
     <value>Not equal</value>
+  </data>
+  <data name="KeyboardAct" xml:space="preserve">
+    <value>Keyboard action</value>
+  </data>
+  <data name="KeyboardAct_KeyAction" xml:space="preserve">
+    <value>Keyboard action type</value>
+  </data>
+  <data name="KeyAction_Down" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="KeyAction_Press" xml:space="preserve">
+    <value>Press</value>
+  </data>
+  <data name="KeyAction_Up" xml:space="preserve">
+    <value>Up</value>
   </data>
 </root>

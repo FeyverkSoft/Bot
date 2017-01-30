@@ -164,6 +164,9 @@ Third-party Fonts:
   <data name="CoreSettingWindow_DefaultCore" xml:space="preserve">
     <value>Use the default kernel</value>
   </data>
+  <data name="CoreSettingWindow_KeyBoardInputMethod" xml:space="preserve">
+    <value>Keyboard input method</value>
+  </data>
   <data name="CoreSettingWindow_LoadPlugin" xml:space="preserve">
     <value>Load plug-ins</value>
   </data>
@@ -241,6 +244,9 @@ Third-party Fonts:
   <data name="SaveFileParamUserControl_Type" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>Select folder</value>
+  </data>
   <data name="ShowDetails" xml:space="preserve">
     <value>Show details</value>
   </data>
@@ -300,6 +306,9 @@ Third-party Fonts:
   </data>
   <data name="Text_Path" xml:space="preserve">
     <value>Path</value>
+  </data>
+  <data name="Text_Plugins" xml:space="preserve">
+    <value>Plugins</value>
   </data>
   <data name="Text_Run" xml:space="preserve">
     <value>Run</value>

@@ -1,7 +1,7 @@
 ﻿using System;
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
-using Plugin;
+using Core.Plugin;
 
 namespace TestPlugin
 {

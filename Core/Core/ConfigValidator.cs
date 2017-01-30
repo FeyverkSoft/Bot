@@ -85,10 +85,10 @@ namespace Core.Core
                             if (ifAction != null)
                             {
                                 if (!FindLabel(actions, ifAction.SuccessLabel))
-                                    list.Add(string.Format(CoreText.ConfigValidator_Invalid_action_Label_not_found,
+                                    list.Add(String.Format(CoreText.ConfigValidator_Invalid_action_Label_not_found,
                                         action.ActionType, ifAction.SuccessLabel));
                                 if (!FindLabel(actions, ifAction.FailLabel))
-                                    list.Add(string.Format(CoreText.ConfigValidator_Invalid_action_Label_not_found,
+                                    list.Add(String.Format(CoreText.ConfigValidator_Invalid_action_Label_not_found,
                                         action.ActionType, ifAction.FailLabel));
                             }
                         }

@@ -6,22 +6,21 @@ using Core.ConfigEntity;
 using Core.ConfigEntity.ActionObjects;
 using Core.Core;
 using Core.Handlers;
+using Core.Handlers.Factory;
 using Core.Helpers;
 
 namespace Core.ActionExecutors
 {
     /// <summary>
-    /// Исполнитель действия одиночного нажатия клавишы на клавиатуре
+    /// Исполнитель действия одиночного нажатия/удерживание/отжатия клавишы на клавиатуре
     /// </summary>
-    internal sealed class KeyBoardExecutor : BaseExecutor
+    internal sealed class KeyBoardActionExecutor : BaseExecutor
     {
 
         /// <summary>
         /// Тип действия для внутренней фабрики
         /// </summary>
-        public new static ActionType ActionType => ActionType.KeyBoard;
-
-        private IKeyBoard KeyBoard { get; set; } = AppContext.Get<IKeyBoard>();
+        public new static ActionType ActionType => ActionType.KeyBoardAction;
 
         /// <summary>
         /// Вызвать выполнение действия у указанной фабрики
@@ -30,7 +29,7 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(IActionsContainer actions, ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(IActionsContainer actions, ref Boolean isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -42,15 +41,15 @@ namespace Core.ActionExecutors
                 },
                 Status = EStatus.Info
             }, false);
-
+            if (isAbort)
+                return new BaseExecutorResult(EResultState.NoResult);
             try
             {
+                var keyBoard = KeyBoardHandlFactory.GetKeyBoard();
                 if (actions != null)
-                    foreach (var action in actions.SubActions.Cast<KeyBoardAct>())
+                    foreach (var action in actions.SubActions.Cast<KeyboardAct>())
                     {
-                        if (isAbort)
-                            return new BaseExecutorResult(EResultState.NoResult);
-                        KeyBoard.PressKey(action.Key, action.Time);
+                        keyBoard.InvokeKeyAct(action.Key, action.KeyAction);
                     }
             }
             catch (Exception ex)
@@ -61,7 +60,7 @@ namespace Core.ActionExecutors
             return previousResult ?? new BaseExecutorResult();
         }
 
-        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref Boolean isAbort, IExecutorResult previousResult = null)
         {
             throw new NotSupportedException();
         }

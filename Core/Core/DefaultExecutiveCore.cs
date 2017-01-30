@@ -67,7 +67,7 @@ namespace Core.Core
 
         public event PropertyChangedEventHandler PropertyChanged;
         [NotifyPropertyChangedInvocator]
-        internal void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        internal void OnPropertyChanged([CallerMemberName] String propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -272,7 +272,6 @@ namespace Core.Core
             catch (Exception ex)
             {
                 Status = CoreStatus.Stop;
-                Log.WriteLine(ex, LogLevel.Error);
                 Print(ex);
                 throw;
             }

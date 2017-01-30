@@ -1,5 +1,5 @@
 ﻿using System;
-using Plugin;
+using Core.Plugin;
 
 namespace Core.ActionExecutors.Factory
 {    

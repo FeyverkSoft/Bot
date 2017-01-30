@@ -2,7 +2,7 @@
 using Core.ActionExecutors.ExecutorResult;
 using Core.ConfigEntity;
 
-namespace Plugin
+namespace Core.Plugin
 {
     public interface IPlugin
     {
@@ -22,5 +22,14 @@ namespace Plugin
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
         IExecutorResult Invoke(IExecutorResult previousResult = null);
+        /// <summary>
+        /// Отображать меню или нет?
+        /// </summary>
+        Boolean ShowMenue { get; }
+        /// <summary>
+        /// Меню которое предоставляет бот
+        /// </summary>
+        PluginMenuItemModel Menu { get; }
     }
+
 }

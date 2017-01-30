@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Core.ConfigEntity;
+using Core.Handlers.Factory;
 
 namespace Core
 {
@@ -61,6 +62,11 @@ namespace Core
         /// эмулировать некую случайную неточность при движении указателя мышки?
         /// </summary>
         public Boolean RandomMouse { get; set; } = false;
+
+        /// <summary>
+        /// Тип эмулятора клавиатуры
+        /// </summary>
+        public KeyBoardType KeyBoardType { get; set; } = KeyBoardType.Native;
 
         public static void LoadInstance()
         {

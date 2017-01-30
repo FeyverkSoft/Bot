@@ -15,7 +15,7 @@ namespace Core.ConfigEntity
     [DataContract]
     public sealed class BotAction : IBotAction
     {
-        private bool _isCurrent = false;
+        private Boolean _isCurrent = false;
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -115,8 +115,11 @@ namespace Core.ConfigEntity
                         return true;
                     case ActionType.MouseSetPos:
                         return true;
-                    case ActionType.KeyBoard:
-                    case ActionType.KeyBoardKeys:
+                    case ActionType.Run:
+                        return false;
+                    case ActionType.KeyBoardPressKey:
+                    case ActionType.KeyBoardShortcut:
+                    case ActionType.KeyBoardAction:
                         return true;
                     case ActionType.Sleep:
                         return false;

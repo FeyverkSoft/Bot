@@ -8,85 +8,139 @@
         xmlns:settings="clr-namespace:WpfExecutor.Model.Settings"
         xmlns:controls="clr-namespace:WpfConverters.Controls;assembly=WpfConverters"
         xmlns:impl="clr-namespace:WpfConverters.Controls.Impl;assembly=WpfConverters"
+        xmlns:configEntity="clr-namespace:Core.ConfigEntity;assembly=Core"
+        xmlns:converter="clr-namespace:WpfExecutor.Converter"
+        xmlns:factory="clr-namespace:Core.Handlers.Factory;assembly=Core"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance settings:CoreSettingViewModel}"
         Title="{localization:Localization CoreSettingWindow}" ResizeMode="NoResize"
         WindowStyle="None" Style="{StaticResource WindowStyle}" MinHeight="40" MinWidth="400"
         SizeToContent="WidthAndHeight"  WindowStartupLocation="CenterScreen"
         Icon="{StaticResource Icon}">
-    <Grid Margin="5">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <!-- Настройки каналов уведомлений -->
-        <Expander Grid.Row="0" Header="{localization:Localization Key=CoreSettingWindow_NotificationChannelSettings}" Margin="0,5">
-            <Grid>
+        <ScrollViewer VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinHeight="130"
+                  VerticalScrollBarVisibility="Auto" Background="Transparent" MaxHeight="350"
+                      x:Name="ContentScrollViewer">
+            <Grid Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <!-- SmtpPort -->
-                <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPort}"></TextBlock>
-                <impl:Int32UpDown Grid.Row="0" Grid.Column="1" Margin="2" Padding="0, 1" Value="{Binding SmtpPort}"></impl:Int32UpDown>
+                <!-- Настройки каналов уведомлений -->
+                <Expander Grid.Row="0" Header="{localization:Localization Key=CoreSettingWindow_NotificationChannelSettings}" Margin="0,5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!-- SmtpPort -->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPort}"></TextBlock>
+                        <impl:Int32UpDown Grid.Row="0" Grid.Column="1" Margin="2" Padding="0, 1" Value="{Binding SmtpPort}"></impl:Int32UpDown>
 
-                <!-- SmtpHost -->
-                <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpHost}"></TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpHost}"/>
+                        <!-- SmtpHost -->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpHost}"></TextBlock>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpHost}"/>
 
-                <!-- SmtpLogin -->
-                <TextBlock Grid.Row="2" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpLogin}"></TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpLogin}"></TextBox>
+                        <!-- SmtpLogin -->
+                        <TextBlock Grid.Row="2" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpLogin}"></TextBlock>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpLogin}"></TextBox>
 
-                <!-- SmtpPassword -->
-                <TextBlock Grid.Row="3" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPassword}"></TextBlock>
-                <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpPassword}"/>
+                        <!-- SmtpPassword -->
+                        <TextBlock Grid.Row="3" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_SmtpPassword}"></TextBlock>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Padding="0, 1" Text="{Binding SmtpPassword}"/>
+                    </Grid>
+                </Expander>
+
+                <!-- Настройки плагинов и ядра -->
+                <Expander Grid.Row="1" Header="{localization:Localization Key=CoreSettingWindow_CoreSettings}" Margin="0,5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- DefaultCore -->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_DefaultCore}"></TextBlock>
+                        <CheckBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding DefaultCore}" IsEnabled="False" VerticalAlignment="Center"></CheckBox>
+
+                        <!-- LoadPlugin -->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_LoadPlugin}"></TextBlock>
+                        <CheckBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding LoadPlugin}" VerticalAlignment="Center"></CheckBox>
+
+                        <!-- KeyBoard Input Method -->
+                        <TextBlock Grid.Row="2" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_KeyBoardInputMethod}"></TextBlock>
+                        <ComboBox  Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center"
+                           SelectedValue="{Binding KeyBoardType, Converter={converter:TupleConverter}, ConverterParameter={x:Type factory:KeyBoardType}}" 
+                           ItemsSource="{Binding Source={x:Type factory:KeyBoardType}, Converter={converter:EnumConverter}}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Item1}"></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+                </Expander>
+
+                <Expander Grid.Row="2" Header="{localization:Localization Key=CoreSettingWindow_Priority}" Margin="0,5">
+                    <Grid>
+                        <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Priority}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Background="Transparent" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Expander>
             </Grid>
-        </Expander>
-
-        <!-- Настройки плагинов и ядра -->
-        <Expander Grid.Row="1" Header="{localization:Localization Key=CoreSettingWindow_CoreSettings}" Margin="0,5">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <!-- DefaultCore -->
-                <TextBlock Grid.Row="0" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_DefaultCore}"></TextBlock>
-                <CheckBox Grid.Row="0" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding DefaultCore}" IsEnabled="False" VerticalAlignment="Center"></CheckBox>
-
-                <!-- LoadPlugin -->
-                <TextBlock Grid.Row="1" Grid.Column="0" Padding="0, 5" Text="{localization:Localization Key=CoreSettingWindow_LoadPlugin}"></TextBlock>
-                <CheckBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="0, 1" IsChecked="{Binding LoadPlugin}" VerticalAlignment="Center"></CheckBox>
-            </Grid>
-        </Expander>
-
-        <Expander Grid.Row="2" Header="{localization:Localization Key=CoreSettingWindow_Priority}" Margin="0,5">
-            <Grid>
-                <ListBox BorderThickness="0" Background="Transparent" ItemsSource="{Binding Priority}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Background="Transparent" Text="{Binding}"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
-        </Expander>
+        </ScrollViewer>
 
 
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding SaveCommand}" Margin="0, 2">
+        <!--Тень под шапкой-->
+        <Border Grid.Row="0" VerticalAlignment="Top" BorderThickness="0,0,0,1">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Reference ContentScrollViewer}, Path=VerticalOffset, UpdateSourceTrigger=PropertyChanged}">
+                            <DataTrigger.Value>
+                                <system:Double>0</system:Double>
+                            </DataTrigger.Value>
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="Background" Value="#AAAAAAAA"/>
+                    <Setter Property="Height" Value="7"/>
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Setter Property="OpacityMask">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                                <GradientStop Color="#00FFFFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Border.Style>
+        </Border>
+
+
+        <Button Grid.Row="1" Command="{Binding SaveCommand}" Margin="0, 2">
             <TextBlock Text="{localization:Localization Key=Text_Save}"></TextBlock>
         </Button>
     </Grid>

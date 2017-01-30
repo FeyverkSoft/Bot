@@ -12,7 +12,7 @@ namespace WpfExecutor.Converter
         {
             if (value is ActionType)
             {
-                var act = ((ActionType) value);
+                var act = ((ActionType)value);
                 var group = String.Empty;
                 switch (act)
                 {
@@ -27,8 +27,9 @@ namespace WpfExecutor.Converter
                     case ActionType.GetMousePos:
                         group = "Mouse";
                         break;
-                    case ActionType.KeyBoard:
-                    case ActionType.KeyBoardKeys:
+                    case ActionType.KeyBoardPressKey:
+                    case ActionType.KeyBoardShortcut:
+                    case ActionType.KeyBoardAction:
                         group = "Keyboard";
                         break;
                     case ActionType.Sleep:
@@ -44,6 +45,7 @@ namespace WpfExecutor.Converter
                         group = "If";
                         break;
                     case ActionType.ExpectWindow:
+                        group = "Win";
                         break;
                     case ActionType.GetObject:
                         group = "Object";
@@ -68,8 +70,11 @@ namespace WpfExecutor.Converter
                     case ActionType.Stack:
                         group = "Stack";
                         break;
+                    case ActionType.Run:
+                        group = "Play";
+                        break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        break;
                 }
                 if (!String.IsNullOrEmpty(group))
                 {

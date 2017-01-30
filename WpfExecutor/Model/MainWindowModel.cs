@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Core;
 using Core.ConfigEntity;
 using Core.Core;
+using Core.Plugin;
 using LogWrapper.Helpers;
 using Microsoft.Win32;
 using WpfConverters.Extensions;
@@ -74,6 +78,11 @@ namespace WpfExecutor.Model
         public String Path => Document.Instance.Path;
 
         /// <summary>
+        /// Меню предоставляемые плагинами
+        /// </summary>
+        public List<MenuItem> PluginMenu { get; }
+
+        /// <summary>
         /// Логи бота
         /// </summary>
         public String TextLog
@@ -108,6 +117,42 @@ namespace WpfExecutor.Model
             }
 
             StaticPropertyChanged += OnStaticPropertyChanged;
+            PluginMenu = new List<MenuItem>();
+            foreach (var plugin in Assemblys.PluginsList.Distinct())
+            {
+
+                if (plugin.ShowMenue)
+                {
+                    var item = new MenuItem
+                    {
+                        Header = plugin.Name
+                    };
+                    item.Items.Add(new MenuItem
+                    {
+                        Header = plugin.Menu.Title,
+                        Command = new DelegateCommand(plugin.Menu.Command),
+                        ItemsSource = FullPMenu(plugin.Menu.MenuItems)
+                    });
+                    PluginMenu.Add(item);
+                }
+            }
+        }
+
+        private ObservableCollection<MenuItem> FullPMenu(IReadOnlyCollection<PluginMenuItemModel> menu)
+        {
+            var list = new ObservableCollection<MenuItem>();
+            if (menu == null)
+                return list;
+            foreach (var pluginMenuItemModel in menu)
+            {
+                list.Add(new MenuItem
+                {
+                    Header = pluginMenuItemModel.Title,
+                    Command = new DelegateCommand(pluginMenuItemModel.Command),
+                    ItemsSource = (pluginMenuItemModel.MenuItems?.Count > 0) ? FullPMenu(pluginMenuItemModel.MenuItems) : null
+                });
+            }
+            return list;
         }
 
         /// <summary>
@@ -121,6 +166,7 @@ namespace WpfExecutor.Model
             {
                 OnPropertyChanged(nameof(Json));
                 OnPropertyChanged(nameof(ErrList));
+                OnPropertyChanged(nameof(Path));
             }
         }
 
@@ -189,7 +235,6 @@ namespace WpfExecutor.Model
         private void RunCommandMethod()
         {
             _core.Run(Document.Instance.DocumentItems);
-            CoreFactory.GetCore();
         }
 
         /// <summary>

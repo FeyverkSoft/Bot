@@ -16,7 +16,7 @@ namespace Core.Handlers
     {
         private static readonly Random Rand = new Random();
         [DllImport("User32.dll")]
-        private static extern void mouse_event(MouseFlags dwFlags, int dx, int dy, int dwData, UIntPtr dwExtraInfo);
+        private static extern void mouse_event(MouseFlags dwFlags, Int32 dx, Int32 dy, Int32 dwData, UIntPtr dwExtraInfo);
 
         [Flags]
         private enum MouseFlags : int

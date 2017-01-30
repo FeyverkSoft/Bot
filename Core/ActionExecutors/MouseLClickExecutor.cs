@@ -27,7 +27,7 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(IActionsContainer actions, ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(IActionsContainer actions, ref Boolean isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {
@@ -49,7 +49,7 @@ namespace Core.ActionExecutors
         /// <param name="isAbort"></param>
         /// <param name="previousResult">Результат выполнения предыдущего действия, (не обязательно :))</param>
         /// <returns></returns>
-        public override IExecutorResult Invoke(ref bool isAbort, IExecutorResult previousResult = null)
+        public override IExecutorResult Invoke(ref Boolean isAbort, IExecutorResult previousResult = null)
         {
             Print(new
             {

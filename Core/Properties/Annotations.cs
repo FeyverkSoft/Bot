@@ -76,12 +76,12 @@ namespace Core
         /// <param name="formatParameterName">
         /// Specifies which parameter of an annotated method should be treated as format-string
         /// </param>
-        public StringFormatMethodAttribute(string formatParameterName)
+        public StringFormatMethodAttribute(String formatParameterName)
         {
             FormatParameterName = formatParameterName;
         }
 
-        public string FormatParameterName { get; private set; }
+        public String FormatParameterName { get; private set; }
     }
 
     /// <summary>
@@ -91,13 +91,13 @@ namespace Core
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
     public sealed class ValueProviderAttribute : Attribute
     {
-        public ValueProviderAttribute(string name)
+        public ValueProviderAttribute(String name)
         {
             Name = name;
         }
 
         [NotNull]
-        public string Name { get; private set; }
+        public String Name { get; private set; }
     }
 
     /// <summary>
@@ -154,12 +154,12 @@ namespace Core
     public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
     {
         public NotifyPropertyChangedInvocatorAttribute() { }
-        public NotifyPropertyChangedInvocatorAttribute(string parameterName)
+        public NotifyPropertyChangedInvocatorAttribute(String parameterName)
         {
             ParameterName = parameterName;
         }
 
-        public string ParameterName { get; private set; }
+        public String ParameterName { get; private set; }
     }
 
     /// <summary>
@@ -208,17 +208,17 @@ namespace Core
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class ContractAnnotationAttribute : Attribute
     {
-        public ContractAnnotationAttribute([NotNull] string contract)
+        public ContractAnnotationAttribute([NotNull] String contract)
           : this(contract, false) { }
 
-        public ContractAnnotationAttribute([NotNull] string contract, bool forceFullStates)
+        public ContractAnnotationAttribute([NotNull] String contract, Boolean forceFullStates)
         {
             Contract = contract;
             ForceFullStates = forceFullStates;
         }
 
-        public string Contract { get; private set; }
-        public bool ForceFullStates { get; private set; }
+        public String Contract { get; private set; }
+        public Boolean ForceFullStates { get; private set; }
     }
 
     /// <summary>
@@ -234,12 +234,12 @@ namespace Core
     public sealed class LocalizationRequiredAttribute : Attribute
     {
         public LocalizationRequiredAttribute() : this(true) { }
-        public LocalizationRequiredAttribute(bool required)
+        public LocalizationRequiredAttribute(Boolean required)
         {
             Required = required;
         }
 
-        public bool Required { get; private set; }
+        public Boolean Required { get; private set; }
     }
 
     /// <summary>
@@ -381,12 +381,12 @@ namespace Core
     public sealed class PublicAPIAttribute : Attribute
     {
         public PublicAPIAttribute() { }
-        public PublicAPIAttribute([NotNull] string comment)
+        public PublicAPIAttribute([NotNull] String comment)
         {
             Comment = comment;
         }
 
-        public string Comment { get; private set; }
+        public String Comment { get; private set; }
     }
 
     /// <summary>
@@ -419,12 +419,12 @@ namespace Core
     public sealed class PathReferenceAttribute : Attribute
     {
         public PathReferenceAttribute() { }
-        public PathReferenceAttribute([PathReference] string basePath)
+        public PathReferenceAttribute([PathReference] String basePath)
         {
             BasePath = basePath;
         }
 
-        public string BasePath { get; private set; }
+        public String BasePath { get; private set; }
     }
 
     /// <summary>
@@ -488,7 +488,7 @@ namespace Core
         /// Allows specifying a macro that will be executed for a <see cref="SourceTemplateAttribute">source template</see>
         /// parameter when the template is expanded.
         /// </summary>
-        public string Expression { get; set; }
+        public String Expression { get; set; }
 
         /// <summary>
         /// Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
@@ -498,79 +498,79 @@ namespace Core
         /// other occurrences are changed synchronously. To specify the zero-based index of the editable occurrence,
         /// use values >= 0. To make the parameter non-editable when the template is expanded, use -1.
         /// </remarks>>
-        public int Editable { get; set; }
+        public Int32 Editable { get; set; }
 
         /// <summary>
         /// Identifies the target parameter of a <see cref="SourceTemplateAttribute">source template</see> if the
         /// <see cref="MacroAttribute"/> is applied on a template method.
         /// </summary>
-        public string Target { get; set; }
+        public String Target { get; set; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class AspMvcAreaMasterLocationFormatAttribute : Attribute
     {
-        public AspMvcAreaMasterLocationFormatAttribute(string format)
+        public AspMvcAreaMasterLocationFormatAttribute(String format)
         {
             Format = format;
         }
 
-        public string Format { get; private set; }
+        public String Format { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class AspMvcAreaPartialViewLocationFormatAttribute : Attribute
     {
-        public AspMvcAreaPartialViewLocationFormatAttribute(string format)
+        public AspMvcAreaPartialViewLocationFormatAttribute(String format)
         {
             Format = format;
         }
 
-        public string Format { get; private set; }
+        public String Format { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class AspMvcAreaViewLocationFormatAttribute : Attribute
     {
-        public AspMvcAreaViewLocationFormatAttribute(string format)
+        public AspMvcAreaViewLocationFormatAttribute(String format)
         {
             Format = format;
         }
 
-        public string Format { get; private set; }
+        public String Format { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class AspMvcMasterLocationFormatAttribute : Attribute
     {
-        public AspMvcMasterLocationFormatAttribute(string format)
+        public AspMvcMasterLocationFormatAttribute(String format)
         {
             Format = format;
         }
 
-        public string Format { get; private set; }
+        public String Format { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class AspMvcPartialViewLocationFormatAttribute : Attribute
     {
-        public AspMvcPartialViewLocationFormatAttribute(string format)
+        public AspMvcPartialViewLocationFormatAttribute(String format)
         {
             Format = format;
         }
 
-        public string Format { get; private set; }
+        public String Format { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class AspMvcViewLocationFormatAttribute : Attribute
     {
-        public AspMvcViewLocationFormatAttribute(string format)
+        public AspMvcViewLocationFormatAttribute(String format)
         {
             Format = format;
         }
 
-        public string Format { get; private set; }
+        public String Format { get; private set; }
     }
 
     /// <summary>
@@ -583,12 +583,12 @@ namespace Core
     public sealed class AspMvcActionAttribute : Attribute
     {
         public AspMvcActionAttribute() { }
-        public AspMvcActionAttribute(string anonymousProperty)
+        public AspMvcActionAttribute(String anonymousProperty)
         {
             AnonymousProperty = anonymousProperty;
         }
 
-        public string AnonymousProperty { get; private set; }
+        public String AnonymousProperty { get; private set; }
     }
 
     /// <summary>
@@ -600,12 +600,12 @@ namespace Core
     public sealed class AspMvcAreaAttribute : Attribute
     {
         public AspMvcAreaAttribute() { }
-        public AspMvcAreaAttribute(string anonymousProperty)
+        public AspMvcAreaAttribute(String anonymousProperty)
         {
             AnonymousProperty = anonymousProperty;
         }
 
-        public string AnonymousProperty { get; private set; }
+        public String AnonymousProperty { get; private set; }
     }
 
     /// <summary>
@@ -618,12 +618,12 @@ namespace Core
     public sealed class AspMvcControllerAttribute : Attribute
     {
         public AspMvcControllerAttribute() { }
-        public AspMvcControllerAttribute(string anonymousProperty)
+        public AspMvcControllerAttribute(String anonymousProperty)
         {
             AnonymousProperty = anonymousProperty;
         }
 
-        public string AnonymousProperty { get; private set; }
+        public String AnonymousProperty { get; private set; }
     }
 
     /// <summary>
@@ -706,24 +706,24 @@ namespace Core
     public sealed class HtmlElementAttributesAttribute : Attribute
     {
         public HtmlElementAttributesAttribute() { }
-        public HtmlElementAttributesAttribute(string name)
+        public HtmlElementAttributesAttribute(String name)
         {
             Name = name;
         }
 
-        public string Name { get; private set; }
+        public String Name { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property)]
     public sealed class HtmlAttributeValueAttribute : Attribute
     {
-        public HtmlAttributeValueAttribute([NotNull] string name)
+        public HtmlAttributeValueAttribute([NotNull] String name)
         {
             Name = name;
         }
 
         [NotNull]
-        public string Name { get; private set; }
+        public String Name { get; private set; }
     }
 
     /// <summary>
@@ -851,13 +851,13 @@ namespace Core
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class AspChildControlTypeAttribute : Attribute
     {
-        public AspChildControlTypeAttribute(string tagName, Type controlType)
+        public AspChildControlTypeAttribute(String tagName, Type controlType)
         {
             TagName = tagName;
             ControlType = controlType;
         }
 
-        public string TagName { get; private set; }
+        public String TagName { get; private set; }
         public Type ControlType { get; private set; }
     }
 
@@ -873,20 +873,20 @@ namespace Core
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class AspRequiredAttributeAttribute : Attribute
     {
-        public AspRequiredAttributeAttribute([NotNull] string attribute)
+        public AspRequiredAttributeAttribute([NotNull] String attribute)
         {
             Attribute = attribute;
         }
 
-        public string Attribute { get; private set; }
+        public String Attribute { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Property)]
     public sealed class AspTypePropertyAttribute : Attribute
     {
-        public bool CreateConstructorReferences { get; private set; }
+        public Boolean CreateConstructorReferences { get; private set; }
 
-        public AspTypePropertyAttribute(bool createConstructorReferences)
+        public AspTypePropertyAttribute(Boolean createConstructorReferences)
         {
             CreateConstructorReferences = createConstructorReferences;
         }
@@ -895,25 +895,25 @@ namespace Core
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class RazorImportNamespaceAttribute : Attribute
     {
-        public RazorImportNamespaceAttribute(string name)
+        public RazorImportNamespaceAttribute(String name)
         {
             Name = name;
         }
 
-        public string Name { get; private set; }
+        public String Name { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public sealed class RazorInjectionAttribute : Attribute
     {
-        public RazorInjectionAttribute(string type, string fieldName)
+        public RazorInjectionAttribute(String type, String fieldName)
         {
             Type = type;
             FieldName = fieldName;
         }
 
-        public string Type { get; private set; }
-        public string FieldName { get; private set; }
+        public String Type { get; private set; }
+        public String FieldName { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Method)]
